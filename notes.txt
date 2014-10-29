@@ -1,0 +1,12 @@
+
+RESOURCES:
+
+...
+
+To Quiet Cider Repl down about the version when using ac-cider's version, 
+just make sure you have a ~/lein/.profiles.clj that adds the specific version as a plugin.
+
+See an example of my ~/lein/.profiles.clj:
+
+	{:user {:plugins [[cider/cider-nrepl "0.7.0"]]}}
+
