@@ -2,6 +2,24 @@
 (add-hook 'comint-exec-hook 
       (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
 
+;; A better version of kill-emacs bound to the standard C-x C-c
+(defun my-kill-emacs ()
+  "save some buffers, then exit unconditionally"
+  (interactive)
+  (save-some-buffers nil t)
+  (kill-emacs))
+
+(global-set-key (kbd "C-x C-c") 'my-kill-emacs)
+
+;; Save here instead of littering current directory with emacs backup files
+(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+
+;; Save place in files
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file "~/.emacs.d/saved-places")
+
+
 ;; Setup package repos
 (require 'package)
 
@@ -33,7 +51,7 @@
 ;; on OSXmake the command key the meta key
 ;;(setq ns-command-modifier 'meta)
  
-;; Read in PATH from .bash_profile - nec to fix shell and find /usr/local/bin/lein
+;; Read in PATH from .bash_profile - nec to fix and find /usr/local/bin/lein
 (if (not (getenv "TERM_PROGRAM"))
      (setenv "PATH"
            (shell-command-to-string "source $HOME/.profile && printf $PATH")))
@@ -82,9 +100,22 @@
 ;; Show parenthesis mode
 (show-paren-mode 1)
 
+;; Turn off toolbar
+(tool-bar-mode 0)
+
+;; shell scripts
+;;(setq-default sh-basic-offset 2)
+;;(setq-default sh-indentation 2)
+
 ;; http://emacsthemes.caisah.info/                                                                                                                                                                                                           
 ;; theme                                                                                                                                                                                                                                     
 ;; (load-theme 'ir-black t) 
 
 ;; Set bigger fonts
 ;(set-default-font "Courier New-13")
+
+
+
+
+
+
