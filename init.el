@@ -12,12 +12,12 @@
 (global-set-key (kbd "C-x C-c") 'my-kill-emacs)
 
 ;; Save here instead of littering current directory with emacs backup files
-(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
 ;; Save place in files
 (require 'saveplace)
 (setq-default save-place t)
-(setq save-place-file "~/.emacs.d/saved-places")
+(setq save-place-file "~/.emacs.d/.saved-places")
 
 
 ;; Setup package repos
@@ -55,7 +55,6 @@
 (if (not (getenv "TERM_PROGRAM"))
      (setenv "PATH"
            (shell-command-to-string "source $HOME/.profile && printf $PATH")))
-
 
 ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
 (setq explicit-bash-args (list "--login" "-i"))
@@ -112,7 +111,7 @@
 ;; (load-theme 'ir-black t) 
 
 ;; Set bigger fonts
-;(set-default-font "Courier New-13")
+;; (set-default-font "Courier New-13")
 
 
 

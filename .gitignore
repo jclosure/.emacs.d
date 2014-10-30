@@ -1,4 +1,4 @@
 # For this project, don't bring in these directories #
 ######################################################
 .saves/
-.saved-places/
+.saved-places
