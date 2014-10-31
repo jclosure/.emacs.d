@@ -1,14 +1,41 @@
 .emacs.d
 ========
 
-My clean Emacs setup
+My Sweet Emacs Setup
 
-Optimized for Development
+Optimized for Clojure Development
 
-done: Clojure
+F10 - Toggle Top Menu Activation
+F9  - Runs cider-jack-in
+F7  - Toggle Paraedit
 
-todo: Scheme
-todo: Ruby
-todo: Python
-todo: Powershell
-todo: C++
+---
+
+Keys:
+
+C-c C-k  => Build
+C-c ,    => Run Tests
+C-c, M-n => Change Namespace
+C-c, M-o => Clear REPL
+
+---
+
+Features:
+
+Removes annoying nags screens on exit
+Consolidated saves directory
+Saves place in files
+Corrects Emacs shell path to one specified in .profile (or .bash_profile)
+Shows matching parens
+
+---
+
+Packages (Melpa Stable):
+
+auto-complete
+cider
+ac-cider
+company
+paredit
+rainbow-delimiters
+ir-black-theme
