@@ -9,6 +9,11 @@ Optimized for Clojure Development
 	F9  - Runs cider-jack-in
 	F7  - Toggle Paraedit
 
+
+
+
+
+
 ---
 
 [Keys]
