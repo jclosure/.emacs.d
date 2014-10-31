@@ -5,13 +5,12 @@ My Sweet Emacs Setup
 
 Optimized for Clojure Development
 
+![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/screenshot.png)
+
+
 	F10 - Toggle Top Menu Activation
 	F9  - Runs cider-jack-in
 	F7  - Toggle Paraedit
-
-
-![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/screenshot.png)
-
 
 ---
 
@@ -48,7 +47,9 @@ Optimized for Clojure Development
 		C-x ->   => Next Buffer
 		C-x b    => Pop Buffer
 
+	Cheat Sheet:
 
+	      http://www.cs.colostate.edu/helpdocs/emacs.html
 ---
 
 [Features]
