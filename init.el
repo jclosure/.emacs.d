@@ -76,6 +76,7 @@
 
 ;;turn on global goodies
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-pretty-mode)
 ;(add-hook 'after-init-hook 'global-auto-complete-mode)
 
 ;;extra clojure-mode goodies
@@ -90,6 +91,7 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'auto-complete-mode)
+
 
 ;;
 (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
@@ -120,12 +122,6 @@
 ;; Set bigger fonts
 ;; (set-default-font "Courier New-13")
 
-;; Set up natural Undo/Redo (use OSX keys)
-;(require 'redo+)
-;(when (require 'redo nil 'noerror)
-;(global-set-key (kbd "C-S-z") 'redo+)
-;)
-;(global-set-key (kbd "C-z") 'undo)
 
 ;; Undo/Redo
 (require 'undo-tree)
@@ -139,6 +135,26 @@
 
 
 
+;; Use C-x C-y to paste C-x M-w to copy.
 
+(defun pt-pbpaste ()
+  "Paste data from pasteboard."
+  (interactive)
+  (shell-command-on-region
+   (point)
+   (if mark-active (mark) (point))
+   "pbpaste" nil t))
+
+(defun pt-pbcopy ()
+  "Copy region to pasteboard."
+  (interactive)
+  (print (mark))
+  (when mark-active
+    (shell-command-on-region
+     (point) (mark) "pbcopy")
+    (kill-buffer "*Shell Command Output*")))
+
+(global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
+(global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
 
 
