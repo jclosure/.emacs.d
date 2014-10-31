@@ -10,8 +10,7 @@ Optimized for Clojure Development
 	F7  - Toggle Paraedit
 
 
-
-
+![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/screenshot.png)
 
 
 ---
