@@ -19,6 +19,9 @@
 (setq-default save-place t)
 (setq save-place-file "~/.emacs.d/.saved-places")
 
+;; Add extra to load-path
+(add-to-list 'load-path "~/.emacs.d/extra/")
+
 
 ;; Setup package repos
 (require 'package)
@@ -112,6 +115,23 @@
 
 ;; Set bigger fonts
 ;; (set-default-font "Courier New-13")
+
+;; Set up natural Undo/Redo (use OSX keys)
+;(require 'redo+)
+;(when (require 'redo nil 'noerror)
+;(global-set-key (kbd "C-S-z") 'redo+)
+;)
+;(global-set-key (kbd "C-z") 'undo)
+
+;; Undo/Redo
+(require 'undo-tree)
+(global-undo-tree-mode 1)
+
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
+;(global-set-key (kbd "C-a") 'redo) ; [Ctrl+Shift+z]  Mac style
+(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
+;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
 
 
 
