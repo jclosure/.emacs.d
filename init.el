@@ -109,8 +109,12 @@
 ;;(setq-default sh-basic-offset 2)
 ;;(setq-default sh-indentation 2)
 
-;; http://emacsthemes.caisah.info/                                                                                                                                                                                                           
-;; theme                                                                                                                                                                                                                                     
+;; I like white on black
+(set-background-color "black")
+(set-foreground-color "honeydew")
+
+;; http://emacsthemes.caisah.info/
+;; theme
 ;; (load-theme 'ir-black t) 
 
 ;; Set bigger fonts
@@ -129,8 +133,8 @@
 
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
-;(global-set-key (kbd "C-a") 'redo) ; [Ctrl+Shift+z]  Mac style
-(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
+(global-set-key (kbd "C-a") 'redo) ; [Ctrl+a]  Workaround until I can Mac terminal accepting [Ctrl+Shift+z].
+;(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
 ;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
 
 
