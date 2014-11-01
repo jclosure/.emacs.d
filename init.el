@@ -51,9 +51,6 @@
 
 
 
-;; on OSXmake the command key the meta key
-;;(setq ns-command-modifier 'meta)
- 
 ;; Read in PATH from .bash_profile - nec to fix and find /usr/local/bin/lein
 (if (not (getenv "TERM_PROGRAM"))
      (setenv "PATH"
@@ -91,6 +88,9 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'auto-complete-mode)
+;Don’t go to REPL buffer when starting Cider:
+
+(setq cider-repl-pop-to-buffer-on-connect nil)
 
 
 ;;
@@ -129,8 +129,7 @@
 
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
-(global-set-key (kbd "C-a") 'redo) ; [Ctrl+a]  Workaround until I can Mac terminal accepting [Ctrl+Shift+z].
-;(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
+(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
 ;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
 
 
@@ -156,5 +155,4 @@
 
 (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
 (global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
-
 

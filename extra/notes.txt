@@ -11,3 +11,9 @@ See an example of my ~/lein/.profiles.clj:
 
 	{:user {:plugins [[cider/cider-nrepl "0.7.0"]]}}
 
+
+---------
+
+
+This makes Alt work as meta in OSX terminal: 
+http://blog.remibergsma.com/2012/01/30/alt-key-aan-de-praat-in-osx-terminal/

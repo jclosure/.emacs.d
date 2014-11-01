@@ -16,12 +16,15 @@ Optimized for Clojure Development
 
 [Keys]
 
-	IDE:
+	CIDER IDE:
 
 		C-c C-k  => Build
 		C-c ,    => Run Tests
-		C-c, M-n => Change Namespace
-
+		C-c M-n  => Change Namespace
+        C-c M-e  => cider-eval-last-sexp-to-repl
+		C-c M-p  => cider-insert-last-sexp-in-repl
+		C-c C-w  => cider-eval-last-expression-and-replace (This on is crazy powerful for inplace computed value replacement of the source with output from the source itself)
+		 
 	REPL:
 
 		C-c, M-o => Clear REPL
@@ -73,3 +76,4 @@ Optimized for Clojure Development
 		paredit
 		rainbow-delimiters
 		ir-black-theme
+		pretty-mode
