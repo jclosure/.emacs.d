@@ -11,6 +11,34 @@
 
 (global-set-key (kbd "C-x C-c") 'my-kill-emacs)
 
+;; --------------------------------------------------
+;; OSX/LINUX RELATED (REMOVE FOR WINDOWS) - START
+;; --------------------------------------------------
+
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+
+;; Read in PATH from .bash_profile - nec to fix and find /usr/local/bin/lein
+(if (not (getenv "TERM_PROGRAM"))
+     (setenv "PATH"
+           (shell-command-to-string "source $HOME/.profile && printf $PATH")))
+
+;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
+(setq explicit-bash-args (list "--login" "-i"))
+
+;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx] 
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell
+         (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(when window-system (set-exec-path-from-shell-PATH))
+
+;; --------------------------------------------------
+;; OSX/LINUX RELATED (REMOVE FOR WINDOWS) - END
+;; --------------------------------------------------
+
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
 
@@ -36,7 +64,9 @@
 (package-initialize)
 
 ;; Ensure my packages are all installed
-(defvar my-packages '(auto-complete
+(defvar my-packages '(pretty-mode
+		      undo-tree
+		      auto-complete
 		      cider
 		      ac-cider
 		      company
@@ -49,25 +79,7 @@
   (unless (package-installed-p p)
     (package-install p)))
 
-
-
-;; Read in PATH from .bash_profile - nec to fix and find /usr/local/bin/lein
-(if (not (getenv "TERM_PROGRAM"))
-     (setenv "PATH"
-           (shell-command-to-string "source $HOME/.profile && printf $PATH")))
-
-;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
-(setq explicit-bash-args (list "--login" "-i"))
-
-;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx] 
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell
-         (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(when window-system (set-exec-path-from-shell-PATH))
-
+;; global function keys
 (global-set-key [f7] 'paredit-mode)
 (global-set-key [f9] 'cider-jack-in)
 
@@ -156,3 +168,7 @@
 (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
 (global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
 
+;; Start up config
+(setq initial-major-mode (quote text-mode))
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")

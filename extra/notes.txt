@@ -16,4 +16,30 @@ See an example of my ~/lein/.profiles.clj:
 
 
 This makes Alt work as meta in OSX terminal: 
-http://blog.remibergsma.com/2012/01/30/alt-key-aan-de-praat-in-osx-terminal/
+http://blog.remibergsma.com/2012/01/30/alt-key-aan-de-praat-in-osx-terminal/-
+
+
+
+---------
+
+For Windows:
+
+To make the default directory be your profile dir change the "Start In" field under the properties of your emacs short cut.
+
+To install into windows:
+
+Install Cygwin
+	wget
+
+Put cygwin bin in PATH env var
+
+Create an env var called HOME that points to %userprofile%
+
+Create the directory: %userprofile%\bin
+
+Put %userprofile%\bin into PATH env var
+
+Download leiningen batch file and put into %userprofile%\bin
+
+Run lein self-install
+
