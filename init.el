@@ -15,8 +15,8 @@
 ;; OSX/LINUX RELATED (REMOVE FOR WINDOWS) - START
 ;; --------------------------------------------------
 
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
+;(setq mac-option-modifier 'super)
+;(setq mac-command-modifier 'meta)
 
 ;; Read in PATH from .bash_profile - nec to fix and find /usr/local/bin/lein
 (if (not (getenv "TERM_PROGRAM"))
@@ -66,14 +66,14 @@
 ;; Ensure my packages are all installed
 (defvar my-packages '(ir-black-theme
           pretty-mode
-		      undo-tree
-		      auto-complete
-          ; clojure packages
-		      cider
-		      ac-cider
-		      company
-		      paredit
-		      rainbow-delimiters
+	  undo-tree
+	  auto-complete
+	  ; clojure packages
+	  cider
+	  ac-cider
+	  company
+	  paredit
+	  rainbow-delimiters
           ; c++ packages
           yasnippet
           auto-complete-c-headers
@@ -81,7 +81,10 @@
           flymake-google-cpplint
           flymake-cursor
           google-c-style
-		      ))
+	  ; python packages - make sure to run jedi:install-server (requires pip install virtualenv)
+	  elpy
+	  jedi
+	  ))
 
 (dolist (p my-packages)
   (unless (package-installed-p p)
@@ -148,12 +151,28 @@
 (global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
 
 ;; Start up config
-(setq initial-major-mode (quote text-mode))
+;(setq initial-major-mode (quote text-mode))
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
 
 ; GLOBAL STUFF
+
+;;turn on desktop-save-mode
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
+
+;; window movement configuration
+;; use Shift+arrow_keys to move cursor around split panes
+;(windmove-default-keybindings)
+;; for use in console mode
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+;; when cursor is on edge, move to the other side, as in a toroidal space
+(setq windmove-wrap-around t )
+
 
 ;;turn on global goodies
 (add-hook 'after-init-hook 'global-company-mode)
@@ -270,10 +289,15 @@
 ; turn on ede mode 
 (global-ede-mode 1)
 ; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
-;(ede-cpp-root-project "my project" :file "~/demos/my_program/src/main.cpp"
-;          :include-path '("/../my_inc"))
+(ede-cpp-root-project "my project" :file "~/projects/demos/cpp/my_program/src/main.cpp"
+         :include-path '("/../my_inc"))
 
 ; you can use system-include-path for setting up the system header file locations.
 ; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
+; PYTHON
+;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional

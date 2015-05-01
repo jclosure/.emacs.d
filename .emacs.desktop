@@ -1,0 +1,19 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Fri May  1 02:25:30 2015
+;; Desktop file format version 206
+;; Emacs version 25.0.50.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (21827 10858 119639 0) (desktop . "206") "jclosure@Walled-Garden" nil nil ((((tty-type . "xterm-256color") (tty . "/dev/tty") (display-type . color) (background-mode . light) (foreground-color . "unspecified-fg") (cursor-color . "black") (tool-bar-lines . 0) (background-color . "unspecified-bg") (font . "tty") (height . 55) (width . 209) (modeline . t) (unsplittable) (menu-bar-lines . 1) (frameset--id . "79CE-4E4F-D6F4-1B43") (frameset--mini t) (minibuffer . t)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 2) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 4) (min-pixel-width . 10) (min-pixel-height-ignore . 2) (min-pixel-width-ignore . 2) (min-pixel-height-safe . 1) (min-pixel-width-safe . 2)) leaf (pixel-width . 209) (pixel-height . 54) (total-width . 209) (total-height . 54) (normal-height . 1.0) (normal-width . 1.0) (buffer "*scratch*" (selected . t) (hscroll . 0) (fringes 0 0 nil) (margins nil) (scroll-bars nil 0 t nil 0 nil) (vscroll . 0) (dedicated) (point . 22) (start . 1))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist (list (list 66 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk)) (list 108 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk)) (list 115 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook `(lambda nil (set-marker ,mk ,nil (get-buffer ," *temp*")))) mk))))
+(setq file-name-history '("~/.emacs.d/" "~/.emacs.d/init.el" "~/projects/python_play/prog2.py" "~/projects/python_play/prog1.py" "~/.emacs.d/" "~/.emacs.d/init.el" "~/.emacs.d/"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:

@@ -1,0 +1,68 @@
+;; Object CCiA_SourceCode/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "CCiA_SourceCode/"
+  :tables
+  (list
+    (semanticdb-table "listing_1.1.cpp"
+      :major-mode 'c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [35 54])
+            ("vector" include (:system-flag t) nil [55 72])
+            ("thread" include (:system-flag t) nil [73 90])
+            ("hello" function (:type "void") nil [92 153])
+            ("main" function (:type "int") nil [155 308])
+            ("t" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("hello" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [287 293]))                  
+                :type ("std::thread" type (:type "class") nil nil))
+                nil [273 294])
+            ("join" function
+               (:prototype-flag t
+                :type "int")
+                nil [299 306]))          
+      :file "listing_1.1.cpp"
+      :pointmax 309
+      :fsize 328
+      :lastmodtime '(21798 8390 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "listing_2.1.cpp"
+      :major-mode 'c++-mode
+      :tags 
+        '( ("thread" include (:system-flag t) nil [1 18])
+            ("do_something" function
+               (:arguments 
+                  ( ("i" variable
+                       (:reference 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [38 45]))                  
+                :type "void")
+                nil [20 58])
+            ("func" type
+               (:members 
+                  ( ("i" variable (:type "int") (reparse-symbol classsubparts) [78 85])
+                    ("func" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("i_" variable
+                               (:reference 1
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [96 104]))                          
+                        :type ("func" type (:type "struct") nil nil))
+                        (reparse-symbol classsubparts) [91 112])
+                    ("()" function
+                       (:operator-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [118 236]))                  
+                :type "struct")
+                nil [60 239])
+            ("oops" function (:type "void") nil [242 381])
+            ("main" function (:type "int") nil [383 409]))          
+      :file "listing_2.1.cpp"
+      :pointmax 410
+      :fsize 409
+      :lastmodtime '(20271 36965 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!jclosure!Desktop!C++ Concurrently!CCiA_SourceCode!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

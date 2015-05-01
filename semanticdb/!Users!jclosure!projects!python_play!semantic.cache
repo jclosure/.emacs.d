@@ -1,0 +1,32 @@
+;; Object python_play/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "python_play/"
+  :tables
+  (list
+    (semanticdb-table "prog2.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("numpy" include nil nil [1 19])
+            ("os" include nil nil [20 29])
+            ("data1" variable nil nil [31 64])
+            ("q" variable nil nil [65 92])
+            ("print" code nil nil [93 100]))          
+      :file "prog2.py"
+      :pointmax 101
+      :fsize 100
+      :lastmodtime '(21827 8974 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "prog1.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("sys" include nil nil [29 39])
+            ("main" function nil nil [41 159])
+            ("if" code nil nil [160 195]))          
+      :file "prog1.py"
+      :pointmax 195
+      :fsize 194
+      :lastmodtime '(21827 6661 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!jclosure!projects!python_play!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
