@@ -1,3 +1,14 @@
+;; Add extra directories to load-path  
+(add-to-list 'load-path "~/.emacs.d/my-lib/")
+
+
+;; Start up config
+;(setq initial-major-mode (quote text-mode))
+(setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+
+
+
 ;; Don't annoy me with those messages about active processes when I exit
 (add-hook 'comint-exec-hook 
       (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
@@ -11,9 +22,11 @@
 
 (global-set-key (kbd "C-x C-c") 'my-kill-emacs)
 
-;; --------------------------------------------------
-;; OSX/LINUX RELATED (REMOVE FOR WINDOWS) - START
-;; --------------------------------------------------
+
+
+;; ------------------------------------------------------
+;; START - OSX/LINUX RELATED (REMOVE FOR WINDOWS) - START
+;; ------------------------------------------------------
 
 ;(setq mac-option-modifier 'super)
 ;(setq mac-command-modifier 'meta)
@@ -36,19 +49,26 @@
 (when window-system (set-exec-path-from-shell-PATH))
 
 ;; --------------------------------------------------
-;; OSX/LINUX RELATED (REMOVE FOR WINDOWS) - END
+;; END - OSX/LINUX RELATED (REMOVE FOR WINDOWS) - END
 ;; --------------------------------------------------
 
-;; Save here instead of littering current directory with emacs backup files
-(setq backup-directory-alist `(("." . "~/.emacs.d/saves")))
+
+;; TEMPORARY, BACKUPS, AN
+;; evaluate temporary-file-directory in scratch to see what it is set to for your os
+;; Save all tempfiles in $TMPDIR/emacs-$UID/
+(defconst emacs-tmp-dir (format "%s%s%s/" temporary-file-directory "emacs-" (user-login-name)))
+
+(setq backup-directory-alist
+      `((".*" . ,(format "%s/%s" emacs-tmp-dir "backed-up-files"))))
+(setq auto-save-file-name-transforms
+      `((".*" ,(format "%s/%s" emacs-tmp-dir "auto-saved-files") t)))
+(setq auto-save-list-file-prefix (format "%s/%s" emacs-tmp-dir "auto-saved-files"))
 
 ;; Save place in files
 (require 'saveplace)
 (setq-default save-place t)
-(setq save-place-file "~/.emacs.d/.saved-places")
+(setq save-place-file (format "%s/%s" emacs-tmp-dir "saved-places"))
 
-;; Add extra to load-path
-(add-to-list 'load-path "~/.emacs.d/extra/")
 
 
 ;; Setup package repos
@@ -67,6 +87,7 @@
 (defvar my-packages '(ir-black-theme
           pretty-mode
 	  undo-tree
+	  workgroups2
 	  auto-complete
 	  ; clojure packages
 	  cider
@@ -98,8 +119,9 @@
 ;; Show parenthesis mode
 (show-paren-mode 1)
 
-;; Turn off toolbar
-(tool-bar-mode 0)
+;; turn off toolbar
+(if window-system
+    (tool-bar-mode 0))
 
 ;; shell scripts
 ;;(setq-default sh-basic-offset 2)
@@ -117,15 +139,14 @@
 ;; (set-default-font "Courier New-13")
 
 
-;; Undo/Redo
+;; Undo/Redo - activate with "C-x u"
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
 (defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
-(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
+;(global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
+;(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
 ;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
-
 
 
 ;; Use C-x C-y to paste C-x M-w to copy.
@@ -150,17 +171,9 @@
 (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
 (global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
 
-;; Start up config
-;(setq initial-major-mode (quote text-mode))
-(setq inhibit-startup-message t)
-(setq initial-scratch-message "")
 
 
 ; GLOBAL STUFF
-
-;;turn on desktop-save-mode
-;; save/restore opened files and windows config
-(desktop-save-mode 1) ; 0 for off
 
 ;; window movement configuration
 ;; use Shift+arrow_keys to move cursor around split panes
@@ -275,7 +288,6 @@
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
 ; cedet is built in to emacs so no need to install a package to get semantic ide behavior
 ; just enable as follows
 ; turn on Semantic
@@ -296,8 +308,26 @@
 ; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
-; PYTHON
+; PYTHON - enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
+;(require 'python-mode)
+;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
+
 ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
+
+
+
+;WORKGROUPS
+;; workgroups2 enables saving window configurations, etc..
+;(require 'workgroups2)
+
+;; Change workgroups session file
+;(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+
+;; What to do on Emacs exit / workgroups-mode exit?
+;(setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
+;(setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
+
+;(workgroups-mode 1)
