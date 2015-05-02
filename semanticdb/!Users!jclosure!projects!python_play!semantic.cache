@@ -6,24 +6,24 @@
     (semanticdb-table "prog2.py"
       :major-mode 'python-mode
       :tags 
-        '( ("numpy" include nil nil [1 19])
-            ("os" include nil nil [20 29])
-            ("data1" variable nil nil [32 65])
-            ("print" code nil nil [97 104]))          
+        '( ("numpy" include nil nil [3 21])
+            ("os" include nil nil [22 31])
+            ("data1" variable nil nil [37 70])
+            ("q" variable nil nil [74 101]))          
       :file "prog2.py"
-      :pointmax 105
-      :fsize 104
-      :lastmodtime '(21828 28998 0 0)
+      :pointmax 112
+      :fsize 106
+      :lastmodtime '(21828 33240 0 0)
       :unmatched-syntax nil)
     (semanticdb-table "blah.py"
       :major-mode 'python-mode
       :tags 
-        '( ("os" include nil nil [1 10]))          
+        '( ("os" include nil nil [2 11]))          
       :file "blah.py"
-      :pointmax 11
+      :pointmax 12
       :fsize 10
       :lastmodtime '(21828 29570 0 0)
-      :unmatched-syntax nil))
+      :unmatched-syntax '(($EOI 12 . 12) ($EOI 13 . 13) ($EOI 12 . 12))))
   :file "!Users!jclosure!projects!python_play!semantic.cache"
   :semantic-tag-version "2.0"
   :semanticdb-version "2.2")

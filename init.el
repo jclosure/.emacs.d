@@ -128,8 +128,13 @@
 ;;(setq-default sh-indentation 2)
 
 ;; I like white on black
-(set-background-color "black")
-(set-foreground-color "honeydew")
+;(set-background-color "black")
+;(set-foreground-color "honeydew")
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "color-235")
+(set-face-foreground 'highlight nil)
+(set-face-attribute 'region nil :background "color-18")
+
 
 ;; http://emacsthemes.caisah.info/
 ;; theme
@@ -192,7 +197,20 @@
 
 ;(add-hook 'after-init-hook 'global-auto-complete-mode)
 
-; CLOJURE STUFF
+; neotree setup
+(add-to-list 'load-path "~/projects/")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+(setq linum-format "%4d \u2502 ")
+(linum-mode)
+
+; THEMES
+(require 'sublime-themes)
+;(load-theme 'hickey t)
+
+
+;CLOJURE STUFF
 
 ;; global function keys
 (global-set-key [f7] 'paredit-mode)
