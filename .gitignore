@@ -4,4 +4,6 @@ saves/
 .saved-places
 auto-saves-list/
 ac-comphist.dat
-semanticdb
+semanticdb/
+elpa/
+.python-environments/
