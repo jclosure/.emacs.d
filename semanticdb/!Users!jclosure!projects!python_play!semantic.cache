@@ -8,10 +8,11 @@
       :tags 
         '( ("numpy" include nil nil [3 21])
             ("os" include nil nil [22 31])
-            ("data1" variable nil nil [37 70])
-            ("q" variable nil nil [74 101]))          
+            ("data1" variable nil nil [34 67])
+            ("q" variable nil nil [71 98])
+            ("print" code nil nil [99 106]))          
       :file "prog2.py"
-      :pointmax 112
+      :pointmax 108
       :fsize 106
       :lastmodtime '(21828 33240 0 0)
       :unmatched-syntax nil)
