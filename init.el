@@ -283,17 +283,20 @@
 ; NOTE: the paths below may change as Xcode evolves.  be prepared to change them
 ; NOTE: to find c headers in system use this command
 ; gcc -xc++ -E -v -
-(defun my:ac-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/include")
-  (add-to-list 'achead:include-directories '"/usr/local/include")
-  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")
-  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/include")
-  (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
-  (add-to-list 'achead:include-directories '"/System/Library/Frameworks")
-  (add-to-list 'achead:include-directories '"/Library/Frameworks")
-)
+
+; setting up c header awareness here for OSX - Setup Linux and Windows similarly
+(if (eq system-type 'darwin)
+    (defun my:ac-c-header-init ()
+      (require 'auto-complete-c-headers)
+      (add-to-list 'ac-sources 'ac-source-c-headers)
+      (add-to-list 'achead:include-directories '"/usr/include")
+      (add-to-list 'achead:include-directories '"/usr/local/include")
+      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")
+      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/include")
+      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
+      (add-to-list 'achead:include-directories '"/System/Library/Frameworks")
+      (add-to-list 'achead:include-directories '"/Library/Frameworks")
+      ))
 
 
 
