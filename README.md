@@ -1,9 +1,31 @@
 .emacs.d
 ========
 
-My Sweet Emacs Setup
+##Manicured Emacs Configuration
 
-Optimized for Clojure Development
+###Optimized for Clojure, C++, and Python  Development
+  
+####Global Features
+
+	Removes annoying nags screens on exit
+	Moves saves and backups to system temp directory
+	Saves place in files
+	Corrects Emacs shell path to one specified in .profile (or .bash_profile)
+	Shows matching parens
+	Windmove easy moving between windows
+	Sublime themes
+
+---
+
+####Python Development
+
+
+	C-c C-p Active REPL
+	C-c C-c Send buffer to REPL
+
+---
+
+####Clojure Development
 
 ![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/screenshot.png)
 
@@ -12,9 +34,8 @@ Optimized for Clojure Development
 	F9  - Runs cider-jack-in
 	F7  - Toggle Paraedit
 
----
 
-[Keys]
+####Keys
 
 	CIDER IDE:
 
@@ -50,30 +71,12 @@ Optimized for Clojure Development
 		C-x ->   => Next Buffer
 		C-x b    => Pop Buffer
 
-	Cheat Sheet:
-
-	      http://www.cs.colostate.edu/helpdocs/emacs.html
 ---
 
-[Features]
+Resources:
 
-	Removes annoying nags screens on exit
-	Consolidated saves directory
-	Saves place in files
-	Corrects Emacs shell path to one specified in .profile (or .bash_profile)
-	Shows matching parens
+[Emacs Cheat Sheet](https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf)
 
----
+[Emacs Survival Guide](https://www.gnu.org/software/emacs/refcards/pdf/survival.pdf)
 
-[Packages]
 
-	Melpa Stable:
-
-		auto-complete
-		cider
-		ac-cider
-		company
-		paredit
-		rainbow-delimiters
-		ir-black-theme
-		pretty-mode
