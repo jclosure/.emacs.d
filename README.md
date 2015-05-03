@@ -19,6 +19,8 @@
 
 ####Python Development
 
+![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/python-dev-screenshot.png)
+
 
 	C-c C-p Active REPL
 	C-c C-c Send buffer to REPL
@@ -27,7 +29,7 @@
 
 ####Clojure Development
 
-![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/screenshot.png)
+![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/clojure-dev-screenshot.png)
 
 
 	F10 - Toggle Top Menu Activation
