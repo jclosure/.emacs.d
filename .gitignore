@@ -7,3 +7,6 @@ ac-comphist.dat
 semanticdb/
 elpa/
 .python-environments/
+.emacs.workgroups
+.emacs.desktop
+ede-projects.el
