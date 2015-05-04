@@ -5,9 +5,7 @@
 (load-library "support-functions.el")
 
 
-;; wire up some keys from support functions
-(global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
-(global-set-key [?\C-x ?\M-w] 'pt-pbcopy)
+
 
 
 
@@ -70,6 +68,8 @@
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
     (progn
+	
+		;; EXTEND PATH INTO EMACS
 	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
 	    (if (not (getenv "TERM_PROGRAM"))
 		(setenv "PATH"
@@ -86,8 +86,14 @@
 		(setq exec-path (split-string path-from-shell path-separator))))
 
 	    (when window-system (set-exec-path-from-shell-PATH)))
-
-  )
+ )
+ 
+ ;; wire up the osx pastboard
+(if (or (eq system-type 'darwin))
+    (progn
+	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
+	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
+)
 
 ;; --------------------------------------------------
 ;; END - OSX/LINUX RELATED - END
@@ -109,34 +115,33 @@
 (package-initialize)
 
 ;; Ensure my packages are all installed
-(defvar my-packages '(ir-black-theme
-	  sublime-themes
-          pretty-mode
-	  undo-tree
-	  workgroups2
-	  auto-complete
-	  neotree
-	  ; clojure packages
-	  cider
-	  ac-cider
-	  company
-	  paredit
-	  rainbow-delimiters
-          ; c++ packages
-          yasnippet
-          auto-complete-c-headers
-          iedit
-          flymake-google-cpplint
-          flymake-cursor
-          google-c-style
-	  ; python packages - make sure to run jedi:install-server (requires pip install virtualenv)
-	  elpy
-	  jedi
-	  ))
 
-(dolist (p my-packages)
-  (unless (package-installed-p p)
-    (package-install p)))
+(package-refresh-and-install 
+	; global packages
+		'ir-black-theme
+		'sublime-themes
+		'pretty-mode
+		'undo-tree
+		'workgroups2
+		'auto-complete
+		'neotree
+	; clojure packages
+		'cider
+		'ac-cider
+		'company
+		'paredit
+		'rainbow-delimiters
+	; c++ packages
+		'yasnippet
+		'auto-complete-c-headers
+		'iedit
+		'flymake-google-cpplint
+		'flymake-cursor
+		'google-c-style
+	; python packages - make sure to run jedi:install-server (requires pip install virtualenv)
+		'elpy
+		'jedi
+)
 
 
 
@@ -339,9 +344,12 @@
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
 ; turn on ede mode 
 (global-ede-mode 1)
+
+
+
 ; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
-(ede-cpp-root-project "my project" :file "~/projects/demos/cpp/my_program/src/main.cpp"
-         :include-path '("/../my_inc"))
+;(ede-cpp-root-project "my project" :file "~/projects/demos/cpp/my_program/src/main.cpp"
+;         :include-path '("/../my_inc"))
 
 ; you can use system-include-path for setting up the system header file locations.
 ; turn on automatic reparsing of open buffers in semantic
