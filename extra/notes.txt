@@ -2,6 +2,7 @@
 
 RESOURCES:
 
+Emacs colors: http://raebear.net/comp/emacscolors.html
 
 ...
 

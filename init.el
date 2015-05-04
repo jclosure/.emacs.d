@@ -389,15 +389,8 @@
 
 ;(workgroups-mode 1)
 
-;; tab bar setup - keep near bottom of file for gensym func resolution timing
-(setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
-;(setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
-;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
-;(setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
-(require 'tabbar-ruler)
-(load-library "my-tabbar-config.el")
-(load-library "my-tabbar-style.el")
 
+;; SET DARK
 ;; run (customize) in scratch and search for what you want to customize
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -411,3 +404,29 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil)))))
+
+
+;; TABBAR
+;; tab bar setup - keep near bottom of file for gensym func resolution timing
+(setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
+;(setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
+;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
+;(setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
+(require 'tabbar-ruler)
+;(load-library "my-tabbar-config.el")
+;(load-library "my-tabbar-style.el")
+(setq tabbar-background-color "#959A79") ;; the color of the tabbar background
+(custom-set-faces
+ '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
+
+;; TODO - work on these
+(global-set-key (kbd "C-S-p") 'tabbar-backward-group)
+(global-set-key (kbd "C-S-n") 'tabbar-forward-group)
+(global-set-key (kbd "C-<") 'tabbar-backward)
+(global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
