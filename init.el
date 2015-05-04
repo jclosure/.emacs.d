@@ -165,14 +165,8 @@
 ;(set-face-background 'hl-line "color-235")
 ;(set-face-foreground 'highlight nil)
 ;(set-face-attribute 'region nil :background "color-18")
-
-
-;; http://emacsthemes.caisah.info/
-;; theme
-;; (load-theme 'ir-black t) 
-
-;; Set bigger fonts
-;; (set-default-font "Courier New-13")
+;; set bigger fonts
+; (set-default-font "Courier New-13")
 
 
 ;; Undo/Redo - activate with "C-x u"
@@ -183,8 +177,6 @@
 ;(global-set-key (kbd "C-z") 'undo) ; [Ctrl+z]
 ;(global-set-key (kbd "C-S-z") 'redo) ; [Ctrl+Shift+z]  Mac style
 ;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
-
-
 
 
 
