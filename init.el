@@ -63,7 +63,7 @@
 
 
 ;; ------------------------------------------------------
-;; START - OSX/LINUX RELATED - START
+;; START - OSX/LINUX/WINDOWS RELATED - START
 ;; ------------------------------------------------------
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
@@ -95,8 +95,13 @@
 	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
 )
 
+(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+	(cua-mode 1)
+)
+
+
 ;; --------------------------------------------------
-;; END - OSX/LINUX RELATED - END
+;; END - OSX/LINUX/WINDOWS RELATED - END
 ;; --------------------------------------------------
 
 
@@ -118,6 +123,9 @@
 
 (package-refresh-and-install 
 	; global packages
+	; tabbar
+		'tabbar
+		'tabbar-ruler
 		'ir-black-theme
 		'sublime-themes
 		'pretty-mode
@@ -146,8 +154,22 @@
 
 
 
-;; Show parenthesis mode
+
+;; show parenthesis mode
 (show-paren-mode 1)
+;; auto-insert/close bracket pairs
+; (electric-pair-mode 1)
+; highlight entire bracket expression
+;(setq show-paren-style 'expression) 
+; display line numbers in margin.
+;(global-linum-mode 1) 
+
+
+; clean wrapping of text
+; (global-visual-line-mode 1)
+
+; make each file pop up in a new window
+(setq pop-up-frames t)
 
 ;; turn off toolbar
 (if window-system
@@ -321,7 +343,7 @@
 (defun my:flymake-google-init () 
   (require 'flymake-google-cpplint)
   (custom-set-variables
-   '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
+   '(flymake-google-cpplint-command "C:\\Anaconda3\\Scripts\\cpplint.exe"))
   (flymake-google-cpplint-load)
 )
 (add-hook 'c-mode-hook 'my:flymake-google-init)
@@ -380,6 +402,12 @@
 
 ;(workgroups-mode 1)
 
+;; tab bar setup - keep near bottom of file for gensym func resolution timing
+(setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
+;(setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
+;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
+;(setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
+(require 'tabbar-ruler)
 
 ;; run (customize) in scratch and search for what you want to customize
 (custom-set-variables
