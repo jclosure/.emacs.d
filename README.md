@@ -17,6 +17,25 @@
 
 ---
 
+####Installation
+
+* Basic Installation:
+  * cd ~
+  * git clone https://github.com/jclosure/.emacs.d.git
+  * emacs
+
+* Setup External Dependencies:
+  * install python
+  * install cpplint
+    * pip install cpplint
+    * set the path to cpplint in init.el
+  * install jedi server
+    * pip install virtualenv
+    * (fron in emacs) run M-x jedi:install-server
+    
+
+---
+
 ####Python Development
 
 ![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/python-dev-screenshot.png)
@@ -54,24 +73,6 @@
 		M-p      => Previous Command
 		M-n      => Next Command
 
-
-	Standard:
-
-		M-:      => Eval in minibuff
-		M-x      => Execute in minibuff
-
-		C-x C-e  => Run prev s-expression in Minibuff
-		C-x C-f  => Find/Create File
-		C-x C-s  => Save buffer to File
-		C-x C-w  => Save As buffer to File
-		C-x C-c  => Exit
-
-		C-v      => Page Up
-		M-v      => Page Down
-
-		C-x <-   => Prev Buffer
-		C-x ->   => Next Buffer
-		C-x b    => Pop Buffer
 
 ---
 
