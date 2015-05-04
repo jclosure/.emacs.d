@@ -1,16 +1,5 @@
 
 
-THINGS YOU NEED TO DO:
-
-1. install python
-2. install cpplint
-	2a. pip install cpplint
-	2b. set the path to cpplint in init.el
-3. install jedi server
-	3a. pip install virtualenv
-	3b. (fron in emacs) run M-x jedi:install-server
-
-
 RESOURCES:
 
 

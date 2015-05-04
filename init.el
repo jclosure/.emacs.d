@@ -1,11 +1,9 @@
 ;; Add extra directories to load-path  
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lib"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
 
 ;; load some extra libraries
 (load-library "support-functions.el")
-
-
-
 
 
 
@@ -123,7 +121,6 @@
 
 (package-refresh-and-install 
 	; global packages
-	; tabbar
 		'tabbar
 		'tabbar-ruler
 		'ir-black-theme
@@ -168,8 +165,6 @@
 ; clean wrapping of text
 ; (global-visual-line-mode 1)
 
-; make each file pop up in a new window
-(setq pop-up-frames t)
 
 ;; turn off toolbar
 (if window-system
@@ -227,15 +222,16 @@
 
 ;(add-hook 'after-init-hook 'global-auto-complete-mode)
 
-; neotree setup
+;; neotree setup
 (add-to-list 'load-path "~/projects/")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+;; add | between linenumbers
 (setq linum-format "%4d \u2502 ")
 (linum-mode)
 
-; THEMES
+;; THEMES
 (require 'sublime-themes)
 (load-theme 'hickey 1)
 
@@ -360,10 +356,11 @@
 (global-ede-mode 1)
 
 
-
+;; PERSONAL PROJECT SYMBOLS FOR C++
 ; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
 ;(ede-cpp-root-project "my project" :file "~/projects/demos/cpp/my_program/src/main.cpp"
 ;         :include-path '("/../my_inc"))
+
 
 ; you can use system-include-path for setting up the system header file locations.
 ; turn on automatic reparsing of open buffers in semantic
@@ -377,8 +374,6 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
-
-
 
 
 ;WORKGROUPS
@@ -400,6 +395,8 @@
 ;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
 ;(setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
 (require 'tabbar-ruler)
+(load-library "my-tabbar-config.el")
+(load-library "my-tabbar-style.el")
 
 ;; run (customize) in scratch and search for what you want to customize
 (custom-set-variables
