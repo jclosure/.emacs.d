@@ -39,8 +39,8 @@
    :box nil)
   (set-face-attribute
    'tabbar-selected nil
-   :background "#f2f2f6"
-   :foreground "black"
+   :background "blaccck"
+   :foreground "white"
    :box nil)
   (set-face-attribute
    'tabbar-button nil
@@ -59,8 +59,8 @@
     "Return a label for TAB.
 That is, a string used to represent it on the tab bar."
     (let ((label  (if tabbar--buffer-show-groups
-		      (format "[%s]  " (tabbar-tab-tabset tab))
-		    (format "%s  " (tabbar-tab-value tab)))))
+		      (format "  [%s]  " (tabbar-tab-tabset tab))
+		    (format "  %s  " (tabbar-tab-value tab)))))
       ;; Unless the tab bar auto scrolls to keep the selected tab
       ;; visible, shorten the tab label to keep as many tabs as possible
       ;; in the visible area of the tab bar.

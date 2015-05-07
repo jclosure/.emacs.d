@@ -390,14 +390,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
- '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
- '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
- '(tabbar-highlight ((t (:underline t))))
- '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
- '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
- '(tabbar-unselected ((t (:inherit tabbar-default)))))
+ ;; '(default ((t (:background nil))))
+ ;; '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ ;; '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ ;; '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
+ ;; '(tabbar-highlight ((t (:underline t))))
+ ;; '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
+ ;; '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
+ ;; '(tabbar-unselected ((t (:inherit tabbar-default))))
+ )
 
 
 (set-default-font "Monaco 14") 
@@ -427,7 +428,9 @@
 (tabbar-mode t)
 (global-set-key [(control ?c) (left)] 'tabbar-backward)
 (global-set-key [(control ?c) (right)] 'tabbar-forward)
+(load-file "~/.emacs.d/extra/init-tabbar.el")
 (load-file "~/.emacs.d/extra/my-tabbar-style.el")
+
 
 ;; tab bar setup - keep near bottom of file for gensym func resolution timing
 ;; (setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
@@ -437,7 +440,7 @@
 ;; (require 'tabbar-ruler)
 ;; ;(load-library "my-tabbar-config.el")
 ;; ;(load-library "my-tabbar-style.el")
-(setq tabbar-background-color "#959A79") ;; the color of the tabbar background
+;; (setq tabbar-background-color "#959A79") ;; the color of the tabbar background
 
 
 ;; these don't work in osx terminal becaues of need for C-S-kp-next
