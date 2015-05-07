@@ -175,16 +175,6 @@
 ;(setq-default sh-indentation 2)
 
 
-;; some manual color settings
-;(set-background-color "black")
-;(set-foreground-color "honeydew")
-;(global-hl-line-mode 1)
-;(set-face-background 'hl-line "color-235")
-;(set-face-foreground 'highlight nil)
-;(set-face-attribute 'region nil :background "color-18")
-;; set bigger fonts
-; (set-default-font "Courier New-13")
-
 
 ;; Undo/Redo - activate with "C-x u"
 (require 'undo-tree)
@@ -393,21 +383,53 @@
 ;; SET DARK
 ;; run (customize) in scratch and search for what you want to customize
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(frame-background-mode (quote dark)))
+ '(frame-background-mode (quote dark))
+ '(tabbar-separator (quote (0.5))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ '(default ((t (:background nil))))
+ '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
+ '(tabbar-button-highlight ((t (:inherit tabbar-default))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
+ '(tabbar-highlight ((t (:underline t))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
+ '(tabbar-unselected ((t (:inherit tabbar-default)))))
+
+
+(set-default-font "Monaco 14") 
+;(load-library  "blackboard-theme.el")
+(load-library "afternoon-theme.el")
+(load-theme 'afternoon t)
+;(set-background-color "black")
+
+;(when (display-graphic-p)
+;    (set-background-color "darkgrey"))
+
+;; some manual color settings
+;(set-background-color "black")
+;(set-foreground-color "honeydew")
+;(global-hl-line-mode 1)
+;(set-face-background 'hl-line "color-235")
+;(set-face-foreground 'highlight nil)
+;(set-face-attribute 'region nil :background "color-18")
+;; set bigger fonts
+; (set-default-font "Courier New-13")
+
+
+
 
 
 ;; ;; TABBAR
-;; ;; tab bar setup - keep near bottom of file for gensym func resolution timing
+(tabbar-mode t)
+(global-set-key [(control ?c) (left)] 'tabbar-backward)
+(global-set-key [(control ?c) (right)] 'tabbar-forward)
+(load-file "~/.emacs.d/extra/my-tabbar-style.el")
+
+;; tab bar setup - keep near bottom of file for gensym func resolution timing
 ;; (setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
 ;; ;(setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
 ;; ;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
@@ -415,18 +437,11 @@
 ;; (require 'tabbar-ruler)
 ;; ;(load-library "my-tabbar-config.el")
 ;; ;(load-library "my-tabbar-style.el")
-;; (setq tabbar-background-color "#959A79") ;; the color of the tabbar background
-;; (custom-set-faces
-;;  '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
-;;  '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
-;;  '(tabbar-button-highlight ((t (:inherit tabbar-default))))
-;;  '(tabbar-highlight ((t (:underline t))))
-;;  '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
-;;  '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
-;;  '(tabbar-unselected ((t (:inherit tabbar-default)))))
+(setq tabbar-background-color "#959A79") ;; the color of the tabbar background
 
-;; ;; TODO - work on these
-;; (global-set-key (kbd "C-S-p") 'tabbar-backward-group)
-;; (global-set-key (kbd "C-S-n") 'tabbar-forward-group)
-;; (global-set-key (kbd "C-<") 'tabbar-backward)
-;; (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
+
+;; these don't work in osx terminal becaues of need for C-S-kp-next
+(global-set-key (kbd "C-S-p") 'tabbar-backward-group)
+(global-set-key (kbd "C-S-n") 'tabbar-forward-group)
+(global-set-key (kbd "C-<") 'tabbar-backward)
+(global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.

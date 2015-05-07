@@ -1,5 +1,12 @@
 
 
+TRICKS:
+
+See all key sequences configured in your emacs:
+
+M-x describe-bindings RET
+
+
 RESOURCES:
 
 Emacs colors: http://raebear.net/comp/emacscolors.html

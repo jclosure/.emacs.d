@@ -2,11 +2,15 @@
 ######################################################
 saves/
 .saved-places
-auto-saves-list/
 ac-comphist.dat
+SessionDesktop.el
+auto-save-list/
+eshell/
 semanticdb/
 elpa/
 .python-environments/
 .emacs.workgroups
 .emacs.desktop
 ede-projects.el
+**/.#*
+**/#*
