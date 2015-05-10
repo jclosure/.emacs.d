@@ -41,6 +41,7 @@
 ;;; Code:
 
 (deftheme afternoon
+
   "Dark color theme with a deep blue background")
 
 (let* ((class '((class color) (min-colors 89)))
@@ -49,6 +50,10 @@
        (background (if 256color "black" "black"))
        ;(background (if 256color "#1c1c1c" "#181a26"))
 
+       
+
+
+       
        (current-line (if 256color "#121212" "#14151E"))
        (block-background (if 256color "#262626" "#1F2232"))
        (selection "#103050")

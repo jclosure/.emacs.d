@@ -39,8 +39,8 @@
    :box nil)
   (set-face-attribute
    'tabbar-selected nil
-   :background "blaccck"
-   :foreground "white"
+   :background "white"
+   :foreground "black"
    :box nil)
   (set-face-attribute
    'tabbar-button nil
