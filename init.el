@@ -466,7 +466,7 @@
  )
 
 
-(set-default-font "Monaco 14") 
+
 ;(load-library  "blackboard-theme.el")
 (load-library "afternoon-theme.el")
 (load-theme 'afternoon t)
