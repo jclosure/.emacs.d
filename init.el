@@ -448,22 +448,13 @@
 ;; SET DARK
 ;; run (customize) in scratch and search for what you want to customize
 (custom-set-variables
- '(frame-background-mode (quote dark))
- '(tabbar-separator (quote (0.5))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
+ ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(default ((t (:background nil))))
- ;; '(tabbar-button ((t (:inherit tabbar-default :foreground "dark red"))))
- ;; '(tabbar-button-highlight ((t (:inherit tabbar-default))))
- ;; '(tabbar-default ((t (:inherit variable-pitch :background "#959A79" :foreground "black" :weight bold))))
- ;; '(tabbar-highlight ((t (:underline t))))
- ;; '(tabbar-selected ((t (:inherit tabbar-default :background "#95CA59"))))
- ;; '(tabbar-separator ((t (:inherit tabbar-default :background "#95CA59"))))
- ;; '(tabbar-unselected ((t (:inherit tabbar-default))))
- )
+ '(frame-background-mode (quote dark))
+ '(tabbar-separator (quote (0.5))))
+
 
 
 
@@ -513,3 +504,10 @@
 (global-set-key (kbd "C-S-n") 'tabbar-forward-group)
 (global-set-key (kbd "C-<") 'tabbar-backward)
 (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
+
+
+;; set active background
+(custom-set-faces
+   ;; '(mode-line ((t (:box (:line-width 2 :color "red")))))
+   '(mode-line ((t (:foreground "white" :background "dark slate gray"))))
+)
