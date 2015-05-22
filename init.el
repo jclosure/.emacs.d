@@ -64,27 +64,27 @@
 ;; START - OSX/LINUX/WINDOWS RELATED - START
 ;; ------------------------------------------------------
 
-(if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
-    (progn
+;; (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
+;;     (progn
 	
-		;; EXTEND PATH INTO EMACS
-	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
-	    (if (not (getenv "TERM_PROGRAM"))
-		(setenv "PATH"
-			(shell-command-to-string "source $HOME/.profile && printf $PATH")))
+;; 		;; EXTEND PATH INTO EMACS
+;; 	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
+;; 	    (if (not (getenv "TERM_PROGRAM"))
+;; 		(setenv "PATH"
+;; 			(shell-command-to-string "source $HOME/.profile && printf $PATH")))
 
-	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
-	    (setq explicit-bash-args (list "--login" "-i"))
+;; 	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
+;; 	    (setq explicit-bash-args (list "--login" "-i"))
 
-	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
-	    (defun set-exec-path-from-shell-PATH ()
-	      (let ((path-from-shell
-		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
-		(setenv "PATH" path-from-shell)
-		(setq exec-path (split-string path-from-shell path-separator))))
+;; 	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
+;; 	    (defun set-exec-path-from-shell-PATH ()
+;; 	      (let ((path-from-shell
+;; 		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
+;; 		(setenv "PATH" path-from-shell)
+;; 		(setq exec-path (split-string path-from-shell path-separator))))
 
-	    (when window-system (set-exec-path-from-shell-PATH)))
- )
+;; 	    (when window-system (set-exec-path-from-shell-PATH)))
+;;  )
  
  ;; wire up the osx pastboard
 (if (or (eq system-type 'darwin))
@@ -130,8 +130,16 @@
 		'workgroups2
 		'auto-complete
 		'neotree
+		'ido-ubiquitous
+		'smex
+		'projectile
+		'magit
+	;; html
+		'tagedit
 	; clojure packages
 		'cider
+		'clojure-mode
+		'clojure-mode-extra-font-locking
 		'ac-cider
 		'company
 		'paredit
@@ -149,6 +157,17 @@
 )
 
 
+
+;; On OS X, an Emacs instance started from the graphical user
+;; interface will have a different environment than a shell in a
+;; terminal window, because OS X does not run a shell during the
+;; login. Obviously this will lead to unexpected results when
+;; calling external utilities like make from Emacs.
+;; This library works around this problem by copying important
+;; environment variables from the user's shell.
+;; https://github.com/purcell/exec-path-from-shell
+(if (eq system-type 'darwin)
+    (package-refresh-and-install 'exec-path-from-shell))
 
 
 
@@ -287,7 +306,7 @@
 (linum-mode)
 
 ;; THEMES
-(require 'sublime-themes)
+;; (require 'sublime-themes)
 ;(load-theme 'hickey 1)
 
 
@@ -457,29 +476,6 @@
 
 
 
-
-;(load-library  "blackboard-theme.el")
-(load-library "afternoon-theme.el")
-(load-theme 'afternoon t)
-;(set-background-color "black")
-
-;(when (display-graphic-p)
-;    (set-background-color "darkgrey"))
-
-;; some manual color settings
-;(set-background-color "black")
-;(set-foreground-color "honeydew")
-;(global-hl-line-mode 1)
-;(set-face-background 'hl-line "color-235")
-;(set-face-foreground 'highlight nil)
-;(set-face-attribute 'region nil :background "color-18")
-;; set bigger fonts
-; (set-default-font "Courier New-13")
-
-
-
-
-
 ;; ;; TABBAR
 (tabbar-mode t)
 (global-set-key [(control ?c) (left)] 'tabbar-backward)
@@ -487,16 +483,6 @@
 (load-file "~/.emacs.d/extra/init-tabbar.el")
 (load-file "~/.emacs.d/extra/my-tabbar-style.el")
 
-
-;; tab bar setup - keep near bottom of file for gensym func resolution timing
-;; (setq tabbar-ruler-global-tabbar 't) ; If you want tabbar
-;; ;(setq tabbar-ruler-global-ruler 't) ; if you want a global ruler
-;; ;(setq tabbar-ruler-popup-menu 't) ; If you want a popup menu.
-;; ;(setq tabbar-ruler-popup-toolbar 't) ; If you want a popup toolbar
-;; (require 'tabbar-ruler)
-;; ;(load-library "my-tabbar-config.el")
-;; ;(load-library "my-tabbar-style.el")
-;; (setq tabbar-background-color "#959A79") ;; the color of the tabbar background
 
 
 ;; these don't work in osx terminal becaues of need for C-S-kp-next
@@ -506,8 +492,42 @@
 (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
 
 
-;; set active background
-(custom-set-faces
-   ;; '(mode-line ((t (:box (:line-width 2 :color "red")))))
-   '(mode-line ((t (:foreground "white" :background "dark slate gray"))))
-)
+
+
+;;;;
+;; Customization
+;;;;
+
+;; Add a directory to our load path so that when you `load` things
+;; below, Emacs knows where to look for the corresponding file.
+(add-to-list 'load-path "~/.emacs.d/customizations")
+
+;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; environment variables
+(load "shell-integration.el")
+
+;; These customizations make it easier for you to navigate files,
+;; switch buffers, and choose options from the minibuffer.
+(load "navigation.el")
+
+;; These customizations change the way emacs looks and disable/enable
+;; some user interface elements
+(load "ui.el")
+
+;; These customizations make editing a bit nicer.
+(load "editing.el")
+
+;; Hard-to-categorize customizations
+(load "misc.el")
+
+
+;; For editing lisps
+(load "elisp-editing.el")
+
+;; Langauage-specific
+(load "setup-clojure.el")
+(load "setup-js.el")                                              
+
+
+
+ 

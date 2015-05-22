@@ -1,6 +1,7 @@
 # For this project, don't bring in these directories #
 ######################################################
 saves/
+places
 .saved-places
 ac-comphist.dat
 SessionDesktop.el
@@ -14,3 +15,9 @@ elpa/
 ede-projects.el
 **/.#*
 **/#*
+ido.last
+projectile-bookmarks.eld
+cider-history
+.smex-items
+.recentf
+backups/
