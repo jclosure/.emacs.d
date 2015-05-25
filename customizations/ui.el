@@ -5,7 +5,7 @@
 ;; preferences
 
 ;; Turn off the menu bar at the top of each frame because it's distracting
-(menu-bar-mode -1)
+; (menu-bar-mode -1)
 
 ;; Show line numbers
 ; (global-linum-mode)

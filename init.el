@@ -110,11 +110,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
-             '("tromey" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -138,8 +134,9 @@
 		'smex
 		'projectile
 		'magit
-	;; html
+	;; web
 		'tagedit
+                'web-mode
 	; clojure packages
 		'cider
 		'clojure-mode
@@ -155,9 +152,14 @@
 		'flymake-google-cpplint
 		'flymake-cursor
 		'google-c-style
-	; python packages - make sure to run jedi:install-server (requires pip install virtualenv)
+	; python packages - make sure to run jedi:install-server (requires pip install virtualexnv)
 		'elpy
 		'jedi
+        ; ruby
+                'flymake-ruby
+                'inf-ruby
+                'robe
+                
 )
 
 
@@ -313,6 +315,12 @@
 ;; (require 'sublime-themes)
 ;(load-theme 'hickey 1)
 
+; RUBY
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;CLOJURE STUFF
 
@@ -530,8 +538,17 @@
 
 ;; Langauage-specific
 (load "setup-clojure.el")
-(load "setup-js.el")                                              
+(load "setup-js.el")                                     
 
+;; WEB
 
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
- 
