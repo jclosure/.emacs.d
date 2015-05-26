@@ -1,4 +1,10 @@
-.emacs.d
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+;(add-to-list 'package-archives
+;	     '("melpa" . "http://melpa.milkbox.net/packages/") t)(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+;(add-to-list 'package-archives
+;	     '("melpa" . "http://melpa.milkbox.net/packages/") t).emacs.d
 ========
 
 ##Manicured Emacs Configuration
@@ -36,6 +42,33 @@
 
 ---
 
+####Web Development
+
+todo...
+
+References:
+
+http://web-mode.org/
+
+
+Keys:
+
+Code folding - todo...
+
+####Ruby Development
+
+todo...
+
+References: 
+
+https://github.com/asok/projectile-rails
+
+
+Keys:
+
+M-x inf-ruby - enables REPL
+C-c r (m v c) - Open corresponding models, views, and controllers for Rails
+
 ####Python Development
 
 ![alt tag](https://github.com/jclosure/.emacs.d/blob/master/extra/python-dev-screenshot.png)
@@ -43,7 +76,7 @@
 
 	C-c C-p Active REPL
 	C-c C-c Send buffer to REPL
-
+        C-M-x   Send current block to REPL
 ---
 
 ####Clojure Development
