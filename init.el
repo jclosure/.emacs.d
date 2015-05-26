@@ -134,6 +134,8 @@
 		'smex
 		'projectile
 		'magit
+        ;; general
+                'yaml-mode
 	;; web
 		'tagedit
                 'web-mode
@@ -159,6 +161,8 @@
                 'flymake-ruby
                 'inf-ruby
                 'robe
+                'haml-mode
+                'projectile-rails
                 
 )
 
@@ -315,12 +319,31 @@
 ;; (require 'sublime-themes)
 ;(load-theme 'hickey 1)
 
+;; GENERAL LANGUAGES
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+
+;; WEB
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(require 'haml-mode)
+
+
 ; RUBY
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'robe-mode)
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 (add-hook 'robe-mode-hook 'ac-robe-setup)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 ;CLOJURE STUFF
 
@@ -540,15 +563,4 @@
 (load "setup-clojure.el")
 (load "setup-js.el")                                     
 
-;; WEB
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
