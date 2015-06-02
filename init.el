@@ -123,6 +123,7 @@
 
 (package-refresh-and-install 
 	; global packages
+		'dash
 		'tabbar
 		'tabbar-ruler
 		'ir-black-theme
