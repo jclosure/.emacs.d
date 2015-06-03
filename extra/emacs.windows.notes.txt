@@ -1,0 +1,20 @@
+(elpy-enable)
+(elpy-use-ipython)
+
+  
+  
+
+  winpython (http://winpython.github.io/):
+  
+  (setq python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab")
+  pip install epc
+  pip install pyreadline
+  
+  example from init.el:
+
+  (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+    (setq
+     python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
+     python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+     ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
+	 warning-suppress-types '((emacs))))
