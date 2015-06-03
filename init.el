@@ -101,10 +101,11 @@
 
 ;; NOTE: set this to the correct path for your python installation in windows
 (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
-	(setq
-		python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
-		python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
-		))
+    (setq
+     python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
+     python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab")
+  (setq
+   python-shell-interpreter "ipython"))
 
 ;; --------------------------------------------------
 ;; END - OSX/LINUX/WINDOWS RELATED - END
