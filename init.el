@@ -93,10 +93,18 @@
 	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
 )
 
-(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
-	(cua-mode 1)
-)
 
+;; force start in homedirs
+;(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+;  (setq default-directory (concat (getenv "USERPROFILE") "/"))
+;  (setq default-directory (concat (getenv "HOME") "/")))
+
+;; NOTE: set this to the correct path for your python installation in windows
+(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+	(setq
+		python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
+		python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+		))
 
 ;; --------------------------------------------------
 ;; END - OSX/LINUX/WINDOWS RELATED - END
@@ -486,7 +494,8 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
-
+(elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
+;(elpy-use-ipython)
 
 ;WORKGROUPS
 ;; workgroups2 enables saving window configurations, etc..
