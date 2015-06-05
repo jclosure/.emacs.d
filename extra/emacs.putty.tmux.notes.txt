@@ -1,0 +1,20 @@
+
+
+1:
+Don't use stock putty.  It doesn't send proper xterm-keys, so you're emacs binding won't be recognized properly anyway.
+Instead, use kitty, which fixes the key issues.  Its a fork of current putty with improvements.
+
+http://www.9bis.net/kitty/?page=Download
+
+
+2:
+make a ~/.tmux.conf file
+
+put this in it:
+
+#set-window-option -g xterm-keys on
+set -g xterm-keys on
+set -g default-terminal "xterm-256color"
+set -g terminal-overrides "xterm*:kLFT2=\eOD:kRIT2=\eOC:kUP2=\eOA:kDN2=\eOB:smkx@:rmkx@"
+
+Now, everything will behave as normal through terminal sessions.
