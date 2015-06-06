@@ -99,15 +99,8 @@
 ;  (setq default-directory (concat (getenv "USERPROFILE") "/"))
 ;  (setq default-directory (concat (getenv "HOME") "/")))
 
-;; NOTE: set this to the correct path for your python installation in windows
-(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
-    (setq
-     python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
-     python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
-     ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
-	 warning-suppress-types '((emacs)))
-   (setq
-    python-shell-interpreter "ipython"))
+
+
 
 ;; --------------------------------------------------
 ;; END - OSX/LINUX/WINDOWS RELATED - END
@@ -447,60 +440,90 @@
 (define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 
-; need to install flymake-google-cpplint and flymake-cursor packages
-; NOTE: you must install cpplint with: pip install cpplint (note the dir it installs into, must be below)
-; start flymake-google-cpplint-load
-; let's define a function for flymake initialization
+;; need to install flymake-google-cpplint and flymake-cursor packages
+;; NOTE: you must install cpplint with: pip install cpplint (note the dir it installs into, must be below)
+;; start flymake-google-cpplint-load
+;; let's define a function for flymake initialization
 (defun my:flymake-google-init () 
   (require 'flymake-google-cpplint)
   (custom-set-variables
-   '(flymake-google-cpplint-command "C:\\Anaconda3\\Scripts\\cpplint.exe"))
+   '(flymake-google-cpplint-command "cpplint")) ; cpplint executable in $PATH, e.g. /usr/local/bin/cpplint
   (flymake-google-cpplint-load)
 )
 (add-hook 'c-mode-hook 'my:flymake-google-init)
 (add-hook 'c++-mode-hook 'my:flymake-google-init)
 
-; install google-c-style package
-; start google-c-style with emacs
+;; install google-c-style package
+;; start google-c-style with emacs
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
-; cedet is built in to emacs so no need to install a package to get semantic ide behavior
-; just enable as follows
-; turn on Semantic
+;; cedet is built in to emacs so no need to install a package to get semantic ide behavior
+;; just enable as follows
+;; turn on Semantic
 (semantic-mode 1)
-; let's define a function which adds semantic as a suggestion backend to auto complete
-; and hook this function to c-mode-common-hook
+;; let's define a function which adds semantic as a suggestion backend to auto complete
+;; and hook this function to c-mode-common-hook
 (defun my:add-semantic-to-autocomplete() 
   (add-to-list 'ac-sources 'ac-source-semantic)
 )
 (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-; turn on ede mode 
+;; turn on ede mode 
 (global-ede-mode 1)
 
 
 ;; PERSONAL PROJECT SYMBOLS FOR C++
-; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
-;(ede-cpp-root-project "my project" :file "~/projects/demos/cpp/my_program/src/main.cpp"
-;         :include-path '("/../my_inc"))
+;; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
+;(ede-cpp-root-project
+;  "my project"
+;  :file "~/projects/demos/cpp/my_program/src/main.cpp"
+;  :include-path '("/../my_inc"))
 
 
-; you can use system-include-path for setting up the system header file locations.
-; turn on automatic reparsing of open buffers in semantic
+;; you can use system-include-path for setting up the system header file locations.
+;; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
-; PYTHON - enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
+;; PYTHON
+;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
 ;(require 'python-mode)
 ;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
+
+;; setting up IPython
+(progn 
+  ;; NOTE: set this to the correct path for your python installation in windows
+  (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+      (setq
+       python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
+       python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+       ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
+       warning-suppress-types '((emacs)))
+    (setq
+     python-shell-interpreter "ipython"))
+
+  (setq
+   ;python-shell-interpreter "ipython"
+   ;python-shell-interpreter-args ""
+   python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+   python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+   python-shell-completion-setup-code
+   "from IPython.core.completerlib import module_completion"
+   python-shell-completion-module-string-code
+   "';'.join(module_completion('''%s'''))\n"
+   python-shell-completion-string-code
+   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
+
 
 ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)                      ; optional
 (setq jedi:complete-on-dot t)                 ; optional
 (elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
-;(elpy-use-ipython)
+;(elpy-use-ipython) ;deprecated
 
-;WORKGROUPS
+
+
+;: WORKGROUPS
 ;; workgroups2 enables saving window configurations, etc..
 ;(require 'workgroups2)
 
@@ -526,7 +549,7 @@
 
 
 
-;; ;; TABBAR
+;; TABBAR
 (tabbar-mode t)
 (global-set-key [(control ?c) (left)] 'tabbar-backward)
 (global-set-key [(control ?c) (right)] 'tabbar-forward)
