@@ -7,10 +7,11 @@
 
 (defun package-refresh-and-install (&rest pkgs)
   "Utility function to refresh package contents and install several packages at once"
-  (dolist (pkg pkgs)
-    (unless (package-installed-p pkg)
-      (package-refresh-contents)
-      (package-install pkg))))
+  (progn
+    (package-refresh-contents)
+    (dolist (pkg pkgs)
+      (unless (package-installed-p pkg)
+        (package-install pkg)))))
 
 
 
