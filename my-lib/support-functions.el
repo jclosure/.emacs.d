@@ -1,22 +1,25 @@
 
 (load "memoize.el")
 
-(defun ensure-directory (dir)
-	"Utility function to create directories in a path if they do not already exist"
-    (unless (file-exists-p dir)                                                               
-	      (make-directory dir t)))
+;; memoized version 
+(defun memo-package-refresh-contents ()
+  (progn
+    (package-refresh-contents)
+    t))
+(memoize 'memo-package-refresh-contents)
 
 (defun package-refresh-and-install (&rest pkgs)
   "Utility function to refresh package contents and install several packages at once"
-  (progn
-    (memoize 'package-refresh-contents)
-    (dolist (pkg pkgs)
-      (unless (package-installed-p pkg)
-        (package-refresh-contents)
-        (package-install pkg)))))
+  (dolist (pkg pkgs)
+    (unless (package-installed-p pkg)
+      (if  (memo-package-refresh-contents)
+          (package-install pkg)))))
 
 
-
+(defun ensure-directory (dir)
+    "Utility function to create directories in a path if they do not already exist"
+    (unless (file-exists-p dir)                                                               
+	      (make-directory dir t)))
 
 ;; for indenting and unindenting
 (defun my-indent-region (N)
