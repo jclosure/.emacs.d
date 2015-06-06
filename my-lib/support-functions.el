@@ -1,4 +1,5 @@
 
+(load "memoize.el")
 
 (defun ensure-directory (dir)
 	"Utility function to create directories in a path if they do not already exist"
@@ -8,9 +9,10 @@
 (defun package-refresh-and-install (&rest pkgs)
   "Utility function to refresh package contents and install several packages at once"
   (progn
-    (package-refresh-contents)
+    (memoize 'package-refresh-contents)
     (dolist (pkg pkgs)
       (unless (package-installed-p pkg)
+        (package-refresh-contents)
         (package-install pkg)))))
 
 
