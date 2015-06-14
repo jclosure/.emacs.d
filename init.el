@@ -170,6 +170,9 @@
                 'robe
                 'haml-mode
                 'projectile-rails
+        ; node
+                'sws-mode
+                'jade-mode
                 
 )
 
@@ -351,6 +354,14 @@
   '(push 'company-robe company-backends))
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+;; NODE
+;; jade
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+
+
 
 ;CLOJURE STUFF
 
@@ -602,3 +613,19 @@
 (load "setup-js.el")                                     
 
 
+;; late fly-make support for jade templates
+(progn
+  (defun flymake-jade-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                 'flymake-create-temp-intemp))
+     (local-file (file-relative-name
+                  temp-file
+                  (file-name-directory buffer-file-name)))
+     (arglist (list local-file)))
+    (list "jade" arglist)))
+(setq flymake-err-line-patterns
+       (cons '("\\(.*\\): \\(.+\\):\\([[:digit:]]+\\)$"
+              2 3 nil 1)
+            flymake-err-line-patterns))
+(add-to-list 'flymake-allowed-file-name-masks
+         '("\\.jade\\'" flymake-jade-init)))

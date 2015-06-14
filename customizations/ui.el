@@ -29,12 +29,15 @@
 (load-theme 'tomorrow-night-bright t)
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+(if (eq system-type 'darwin)
+    (set-face-attribute 'default nil :height 150)
+    (set-face-attribute 'default nil :height 140))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
 ;; (in lines high) Emacs will have whenever you start it
-;(setq initial-frame-alist '((top . 0) (left . 0) (width . 175) (height . 53)))
+(if (eq system-type 'darwin)
+    (setq initial-frame-alist '((top . 0) (left . 0) (width . 175) (height . 53))))
 
 
 
