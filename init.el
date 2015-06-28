@@ -228,8 +228,7 @@
 
 ; GLOBAL STUFF
 
-;; window movement configuration
-;; use Shift+arrow_keys to move cursor around split panes
+(global-set-key (kbd "C-a") 'smart-line-beginning)
 
 ;; for use in xterm-256 console mode
 
