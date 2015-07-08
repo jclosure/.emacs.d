@@ -228,6 +228,8 @@
 
 ; GLOBAL STUFF
 
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
 (global-set-key (kbd "C-a") 'smart-line-beginning)
 
 ;; for use in xterm-256 console mode
