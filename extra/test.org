@@ -81,6 +81,13 @@ POST /_search?pretty
 GET /
 {}
 #+END_SRC
+
+#+RESULTS:
+: "Hag"
+: "1.4.4"
+
+
+
 ** Searching ES with the CSV Plugin
 #+BEGIN_SRC es
 POST /_search_csv?pretty
