@@ -315,9 +315,31 @@
 
 
 ;;turn on global goodies
+
+; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+; org mode's babel languages
+
+; org-mode babel elasticsearch setup
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((elasticsearch . t)
+   (ruby . t)
+   (python . t)))
+
+
+
+
+
+; setup company mode
 (add-hook 'after-init-hook 'global-company-mode)
 
-;(add-hook 'after-init-hook 'global-auto-complete-mode)
+; setup global auto complete
+(add-hook 'after-init-hook 'global-auto-complete-mode)
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
@@ -353,6 +375,8 @@
 ;; ELASTICSEARCH - note: set to your desired es host url
 (add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
 (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
+
+
 
 
 

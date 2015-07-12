@@ -1,0 +1,44 @@
+
+* Tasks
+** DONE Start a new org file
+   CLOSED: [2015-07-11 Sat 22:52]
+** TODO Provide some working examples
+** TODO Have a beer
+** TODO Commit this example
+
+#+begin_src python
+import datetime
+today = datetime.date.today()
+return today
+#+end_src
+
+#+begin_src ruby
+,require 'date'
+,"This file was last evaluated on #{Date.today}"
+#+end_src
+
+#+begin_src clojure
+(defn now [] (java.util.Date.))
+(now)
+#+end_src
+
+
+** Searching ES
+#+BEGIN_SRC es
+POST /_search?pretty
+{
+  "query": {
+    "match_all": {}
+  }
+}
+#+END_SRC
+
+** Searching with the CSV Plugin
+#+BEGIN_SRC es
+POST /_search_csv?pretty
+{
+  "query": {
+    "match_all": {}
+  }
+}
+#+END_SRC
