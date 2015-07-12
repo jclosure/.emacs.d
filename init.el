@@ -363,9 +363,10 @@
 ; replace "sbcl" with the path to your implementation
 ; books - https://www.youtube.com/watch?v=YwDpjDZOxF0
 (if (executable-find "sbcl")
-    (setq inferior-lisp-program "sbcl")
-    ; setup slime
-    (load (expand-file-name "~/quicklisp/slime-helper.el")))
+    (progn 
+      (setq inferior-lisp-program "sbcl")
+      ; setup slime
+      (load (expand-file-name "~/quicklisp/slime-helper.el"))))
 
 ;; WEB
 (require 'web-mode)
