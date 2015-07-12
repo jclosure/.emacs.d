@@ -173,6 +173,8 @@
         ; node
                 'sws-mode
                 'jade-mode
+        ; elasticsearch
+                'es-mode
                 
 )
 
@@ -346,7 +348,13 @@
 (require 'haml-mode)
 
 
-; RUBY
+;; ELASTICSEARCH - note: set to your desired es host url
+(add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
+(setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
+
+
+
+;; RUBY
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 (add-hook 'ruby-mode-hook 'robe-mode)
 (eval-after-load 'company
