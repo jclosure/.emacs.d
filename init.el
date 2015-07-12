@@ -358,6 +358,14 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+;; COMMON LISP
+; ref - https://www.youtube.com/watch?v=VnWVu8VVDbI
+; replace "sbcl" with the path to your implementation
+; books - https://www.youtube.com/watch?v=YwDpjDZOxF0
+(if (executable-find "sbcl")
+    (setq inferior-lisp-program "sbcl")
+    ; setup slime
+    (load (expand-file-name "~/quicklisp/slime-helper.el")))
 
 ;; WEB
 (require 'web-mode)
