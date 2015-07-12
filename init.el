@@ -324,12 +324,15 @@
 
 ; org mode's babel languages
 
-; org-mode babel elasticsearch setup
+                                        ; babel languages setup - http://orgmode.org/worg/org-contrib/babel/languages.html#MissingReference
+;(require 'ob-clojure)
+;(setq org-babel-clojure-backend 'cider)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((elasticsearch . t)
    (ruby . t)
-   (python . t)))
+   (python . t)
+   (lisp . t)))
 
 
 
