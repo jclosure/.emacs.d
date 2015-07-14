@@ -82,10 +82,22 @@ GET /
 {}
 #+END_SRC
 
-#+RESULTS:
-: "Hag"
-: "1.4.4"
 
+** Creating and Searching for documents in ES for user data with local jq filter
+
+#+begin_src es
+POST /twitter/tweet/
+{
+     "user" : "jclosure",
+     "post_date" : "2009-11-15T14:12:12",
+     "message" : "trying org-mode posting"
+}
+#+end_src
+
+#+begin_src es :jq .hits.hits
+GET /twitter/_search?q=user:jclosure
+{}
+#+end_src
 
 
 ** Searching ES with the CSV Plugin

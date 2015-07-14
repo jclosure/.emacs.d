@@ -386,8 +386,14 @@
 
 ;; ELASTICSEARCH - note: set to your desired es host url
 (add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
-(setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
-
+;local
+(setq  es-default-url "http://localhost:9200/_search?pretty=true")
+;; ;docker
+;; (setq  es-default-url "http://192.168.59.103:9200/_search?pretty=true")
+;; ;work
+;; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
+;; (setq  es-default-url "http://atlesbanlqv01:9200/_search?pretty=true")
+;; (setq  es-default-url "http://atlesbanlpv01:9200/_search?pretty=true")
 
 
 
