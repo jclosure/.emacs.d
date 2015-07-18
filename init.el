@@ -188,8 +188,9 @@
 ;; This library works around this problem by copying important
 ;; environment variables from the user's shell.
 ;; https://github.com/purcell/exec-path-from-shell
-(if (eq system-type 'darwin)
-    (package-refresh-and-install 'exec-path-from-shell))
+
+;; (if (eq system-type 'darwin)
+;;     (package-refresh-and-install 'exec-path-from-shell))
 
 
 
