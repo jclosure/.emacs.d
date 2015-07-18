@@ -2,8 +2,10 @@
 * Tasks
 ** DONE Start a new org file
    CLOSED: [2015-07-11 Sat 22:52]
-** TODO Provide some working examples
-** TODO Have a beer
+** DONE Provide some working examples
+   CLOSED: [2015-07-15 Wed 11:34]
+** DONE Have a beer
+   CLOSED: [2015-07-15 Wed 11:34]
 ** TODO Commit this example
 
 ** Using python
@@ -68,7 +70,7 @@ POST /_search?pretty
 }
 #+END_SRC
 
-** Searching ES without parameters
+** TODO Searching ES without parameters
 #+BEGIN_SRC es :method POST :url localhost:9200/_search?pretty
 {
   "query": {
@@ -83,22 +85,40 @@ GET /
 #+END_SRC
 
 
+
 ** Creating and Searching for documents in ES for user data with local jq filter
+
+
 
 #+begin_src es
 POST /twitter/tweet/
 {
-     "user" : "jclosure",
+     "user" : "samplesup",
      "post_date" : "2009-11-15T14:12:12",
-     "message" : "trying org-mode posting"
+     "message" : "hi there...",
+     "foo" : "bar"
 }
 #+end_src
 
-#+begin_src es :jq .hits.hits
-GET /twitter/_search?q=user:jclosure
+#+RESULTS:
+: {"_index":"twitter","_type":"tweet","_id":"AU6TomIOkVIVRvoN30L9","_version":1,"created":true}
+
+#+begin_src es
+GET /twitter/_search?pretty&q=user:samples
 {}
 #+end_src
 
+
+
+
+
+
+** Digging out logstash documents
+
+#+begin_src es :jq .hits.hits[0]
+GET /logstash-2015.07.14/_search
+{}
+#+end_src
 
 ** Searching ES with the CSV Plugin
 #+BEGIN_SRC es

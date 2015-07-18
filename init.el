@@ -3,7 +3,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
 
 ;; load some extra libraries
-(load-library "support-functions.el")
+(load-library "support-functions")
 
 
 
@@ -175,7 +175,7 @@
                 'jade-mode
         ; elasticsearch
                 'es-mode
-                
+                'logstash-conf
 )
 
 
@@ -386,12 +386,19 @@
 
 ;; ELASTICSEARCH - note: set to your desired es host url
 (add-to-list 'auto-mode-alist '("\\.es$" . es-mode))
-;local
-(setq  es-default-url "http://localhost:9200/_search?pretty=true")
+
+; for logstash configuration support
+; run logstash-conf-mode on the file
+
+;(setq  es-default-url "http://localhost:9200/_search?pretty=true")
+
+;(setq  es-default-url "http://atlcrmbestgv01.amd.com:9200/_search?pretty=true")
 ;; ;docker
 ;; (setq  es-default-url "http://192.168.59.103:9200/_search?pretty=true")
 ;; ;work
-;; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
+ 
+(setq  es-default-url "http://ausfusppdap00:9200/_search?pretty=true")
+; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlqv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlpv01:9200/_search?pretty=true")
 

@@ -1,5 +1,5 @@
 
-(load "memoize.el")
+(load "memoize.elc")
 
 ;; memoized version 
 (defun memo-package-refresh-contents ()
