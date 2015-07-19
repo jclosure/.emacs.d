@@ -731,3 +731,8 @@
             flymake-err-line-patterns))
 (add-to-list 'flymake-allowed-file-name-masks
          '("\\.jade\\'" flymake-jade-init)))
+
+
+;; set modeline for active buffer to be visually salient
+(custom-set-faces
+ '(mode-line ((t (:foreground "white" :background "dark slate gray")))))
