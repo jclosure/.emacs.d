@@ -31,6 +31,7 @@
  ;; example tabbar coloring code...
   (set-face-attribute
    'tabbar-default nil
+   
    :background "gray24")
   (set-face-attribute
    'tabbar-unselected nil
@@ -49,6 +50,32 @@
    'tabbar-separator nil
    :height 0.7)
 
+
+
+;; set big fonts
+(set-face-attribute
+ 'tabbar-button nil
+ :inherit 'tabbar-default-face
+ :box '(:line-width 1 :color "gray30"))
+
+(set-face-attribute 'tabbar-default  nil
+ :family "Courier"
+ :height 1.1)
+
+(set-face-attribute
+ 'tabbar-selected nil
+ :inherit 'tabbar-default-face
+ :foreground "DarkGreen"
+ :background "LightGoldenrod"
+ :box '(:line-width 2 :color "DarkGoldenrod")
+ ;;:overline "black" :underline "black"
+ :weight 'bold)
+
+(set-face-attribute
+ 'tabbar-unselected nil
+ :inherit 'tabbar-default-face
+ :box '(:line-width 2 :color "gray70"))
+;;end set big fonts
 
 ;; Change padding of the tabs
 ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
