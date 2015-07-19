@@ -4,6 +4,7 @@
 
 ;; load some extra libraries
 (load-library "support-functions")
+;(load-library "profile-dotemacs")
 
 
 
@@ -12,6 +13,11 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
+;; motd
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (when (string= (buffer-name) "*scratch*")
+              (animate-string ";; Your command is my wish..." (/ (frame-height) 2)))))
 
 
 ;; Don't annoy me with those messages about active processes when I exit
@@ -127,7 +133,8 @@
 
 (package-refresh-and-install 
 	; global packages
-		'dash
+                'dash
+                'use-package
 		'tabbar
 		'tabbar-ruler
 		'ir-black-theme
@@ -179,6 +186,7 @@
 )
 
 
+(require 'use-package)
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -318,32 +326,47 @@
 ;;turn on global goodies
 
 ; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-(require 'org)
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
 
-; org mode's babel languages
+(use-package org
+             :defer t
+             :init
+             (progn
+               (define-key global-map "\C-cl" 'org-store-link)
+               (define-key global-map "\C-ca" 'org-agenda))
+             :config
+             (progn
+               (setq org-log-done t)
+               (org-babel-do-load-languages
+                'org-babel-load-languages
+                '((elasticsearch . t)
+                  (ruby . t)
+                  (python . t)
+                  (lisp . t)))
+               )
 
-                                        ; babel languages setup - http://orgmode.org/worg/org-contrib/babel/languages.html#MissingReference
-;(require 'ob-clojure)
-;(setq org-babel-clojure-backend 'cider)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((elasticsearch . t)
-   (ruby . t)
-   (python . t)
-   (lisp . t)))
+;; (require 'org)
+;; (define-key global-map "\C-cl" 'org-store-link)
+;; (define-key global-map "\C-ca" 'org-agenda)
+;; (setq org-log-done t)
 
+;; ; org mode's babel languages
 
+;; ; babel languages setup - http://orgmode.org/worg/org-contrib/babel/languages.html#MissingReference
+;; ;(require 'ob-clojure)
+;; ;(setq org-babel-clojure-backend 'cider)
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((elasticsearch . t)
+;;    (ruby . t)
+;;    (python . t)
+;;    (lisp . t)))
 
-
-
-; setup company mode
-(add-hook 'after-init-hook 'global-company-mode)
 
 ; setup global auto complete
 (add-hook 'after-init-hook 'global-auto-complete-mode)
+
+;; setup company mode
+(add-hook 'after-init-hook 'global-company-mode))
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
@@ -391,15 +414,15 @@
 ; for logstash configuration support
 ; run logstash-conf-mode on the file
 
-;(setq  es-default-url "http://localhost:9200/_search?pretty=true")
+(setq  es-default-url "http://localhost:9200/_search?pretty=true")
 
-;(setq  es-default-url "http://atlcrmbestgv01.amd.com:9200/_search?pretty=true")
 ;; ;docker
 ;; (setq  es-default-url "http://192.168.59.103:9200/_search?pretty=true")
-;; ;work
- 
-(setq  es-default-url "http://ausfusppdap00:9200/_search?pretty=true")
-; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
+
+;; ;place
+;; (setq  es-default-url "http://atlcrmbestgv01:9200/_search?pretty=true") 
+;; (setq  es-default-url "http://ausfusppdap00:9200/_search?pretty=true")
+;; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlqv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlpv01:9200/_search?pretty=true")
 
@@ -470,127 +493,146 @@
 
 
 
-; initialize default snippets directory
-(ensure-directory "~/.emacs.d/snippets")
-; start yasnippet
-(require 'yasnippet)
-;; set custom snippets directories
-; (setq yas-snippet-dirs '("~/emacs.d/my-snippets"
-;  			   "~/Downloads/interesting-snippets"))
-(yas-global-mode 1)
+;; C/C++ ENV LOADER FUNCTION
+(defun setup-cpp-env ()
+  (progn
+
+    ; initialize default snippets directory
+    (ensure-directory "~/.emacs.d/snippets")
+    ; start yasnippet
+    (require 'yasnippet)
+    ;; set custom snippets directories
+    ; (setq yas-snippet-dirs '("~/emacs.d/my-snippets"
+    ;  			   "~/Downloads/interesting-snippets"))
+    (yas-global-mode 1)
 
 
-; define a function which initializes auto-complete-c-headers
-; NOTE: the paths below may change as Xcode evolves.  be prepared to change them
-; NOTE: to find c headers in system use this command
-; gcc -xc++ -E -v -
+    ; define a function which initializes auto-complete-c-headers
+    ; NOTE: the paths below may change as Xcode evolves.  be prepared to change them
+    ; NOTE: to find c headers in system use this command
+    ; gcc -xc++ -E -v -
 
-; setting up c header awareness here for OSX - Setup Linux and Windows similarly
-(if (eq system-type 'darwin)
-    (defun my:ac-c-header-init ()
-      (require 'auto-complete-c-headers)
-      (add-to-list 'ac-sources 'ac-source-c-headers)
-      (add-to-list 'achead:include-directories '"/usr/include")
-      (add-to-list 'achead:include-directories '"/usr/local/include")
-      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")
-      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/include")
-      (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
-      (add-to-list 'achead:include-directories '"/System/Library/Frameworks")
-      (add-to-list 'achead:include-directories '"/Library/Frameworks")
-      ))
-
-
-
-; now lets call it from c/c++ hooks
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
+    ; setting up c header awareness here for OSX - Setup Linux and Windows similarly
+    (if (eq system-type 'darwin)
+        (defun my:ac-c-header-init ()
+          (require 'auto-complete-c-headers)
+          (add-to-list 'ac-sources 'ac-source-c-headers)
+          (add-to-list 'achead:include-directories '"/usr/include")
+          (add-to-list 'achead:include-directories '"/usr/local/include")
+          (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1")
+          (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.0/include")
+          (add-to-list 'achead:include-directories '"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include")
+          (add-to-list 'achead:include-directories '"/System/Library/Frameworks")
+          (add-to-list 'achead:include-directories '"/Library/Frameworks")
+          ))
 
 
-; ; Fix iedit bug in Mac
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
+
+    ; now lets call it from c/c++ hooks
+    (add-hook 'c++-mode-hook 'my:ac-c-header-init)
+    (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 
-;; need to install flymake-google-cpplint and flymake-cursor packages
-;; NOTE: you must install cpplint with: pip install cpplint (note the dir it installs into, must be below)
-;; start flymake-google-cpplint-load
-;; let's define a function for flymake initialization
-(defun my:flymake-google-init () 
-  (require 'flymake-google-cpplint)
-  (custom-set-variables
-   '(flymake-google-cpplint-command "cpplint")) ; cpplint executable in $PATH, e.g. /usr/local/bin/cpplint
-  (flymake-google-cpplint-load)
-)
-(add-hook 'c-mode-hook 'my:flymake-google-init)
-(add-hook 'c++-mode-hook 'my:flymake-google-init)
+    ; ; Fix iedit bug in Mac
+    (define-key global-map (kbd "C-c ;") 'iedit-mode)
 
-;; install google-c-style package
-;; start google-c-style with emacs
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-;; cedet is built in to emacs so no need to install a package to get semantic ide behavior
-;; just enable as follows
+
+    ;; need to install flymake-google-cpplint and flymake-cursor packages
+    ;; NOTE: you must install cpplint with: pip install cpplint (note the dir it installs into, must be below)
+    ;; start flymake-google-cpplint-load
+    ;; let's define a function for flymake initialization
+    (defun my:flymake-google-init () 
+      (require 'flymake-google-cpplint)
+      (custom-set-variables
+       '(flymake-google-cpplint-command "cpplint")) ; cpplint executable in $PATH, e.g. /usr/local/bin/cpplint
+      (flymake-google-cpplint-load)
+    )
+    (add-hook 'c-mode-hook 'my:flymake-google-init)
+    (add-hook 'c++-mode-hook 'my:flymake-google-init)
+
+    ;; install google-c-style package
+    ;; start google-c-style with emacs
+    (require 'google-c-style)
+    (add-hook 'c-mode-common-hook 'google-set-c-style)
+    (add-hook 'c-mode-common-hook 'google-make-newline-indent)
+    ;; cedet is built in to emacs so no need to install a package to get semantic ide behavior
+    ;; just enable as follows
+
+    ;; let's define a function which adds semantic as a suggestion backend to auto complete
+    ;; and hook this function to c-mode-common-hook
+    (defun my:add-semantic-to-autocomplete() 
+      (add-to-list 'ac-sources 'ac-source-semantic)
+    )
+    (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+    ;; turn on ede mode 
+    (global-ede-mode 1)
+
+
+    ;; PERSONAL PROJECT SYMBOLS FOR C++
+    ;; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
+    ;(ede-cpp-root-project
+    ;  "my project"
+    ;  :file "~/projects/demos/cpp/my_program/src/main.cpp"
+    ;  :include-path '("/../my_inc"))
+
+    
+    ))
+
+
 ;; turn on Semantic
 (semantic-mode 1)
-;; let's define a function which adds semantic as a suggestion backend to auto complete
-;; and hook this function to c-mode-common-hook
-(defun my:add-semantic-to-autocomplete() 
-  (add-to-list 'ac-sources 'ac-source-semantic)
-)
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-;; turn on ede mode 
-(global-ede-mode 1)
-
-
-;; PERSONAL PROJECT SYMBOLS FOR C++
-;; create a project for our program. (NOTE: THIS WILL BE PROJECT SPECIFIC.  RUN FROM IN EMACS MAYBE)
-;(ede-cpp-root-project
-;  "my project"
-;  :file "~/projects/demos/cpp/my_program/src/main.cpp"
-;  :include-path '("/../my_inc"))
-
-
 ;; you can use system-include-path for setting up the system header file locations.
 ;; turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
-;; PYTHON
-;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
-;(require 'python-mode)
-;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
+(add-hook 'c++-mode-hook 'setup-cpp-env)
+(add-hook 'c-mode-hook 'setup-cpp-env)
 
-;; setting up IPython
-(progn 
-  ;; NOTE: set this to the correct path for your python installation in windows
-  (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+
+;; SETUP PYTHON ENVIRONMENT
+(defun setup-python-env ()
+
+    ;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
+    ;(require 'python-mode)
+    ;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
+
+    ;; setting up IPython
+    (progn 
+      ;; NOTE: set this to the correct path for your python installation in windows
+      (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+          (setq
+           python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
+           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+           ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
+           warning-suppress-types '((emacs)))
+        (setq
+         python-shell-interpreter "ipython"))
+
       (setq
-       python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
-       python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
-       ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
-       warning-suppress-types '((emacs)))
-    (setq
-     python-shell-interpreter "ipython"))
-
-  (setq
-   ;python-shell-interpreter "ipython"
-   ;python-shell-interpreter-args ""
-   python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-   python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
-   python-shell-completion-setup-code
-   "from IPython.core.completerlib import module_completion"
-   python-shell-completion-module-string-code
-   "';'.join(module_completion('''%s'''))\n"
-   python-shell-completion-string-code
-   "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
+       ;python-shell-interpreter "ipython"
+       ;python-shell-interpreter-args ""
+       python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+       python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+       python-shell-completion-setup-code
+       "from IPython.core.completerlib import module_completion"
+       python-shell-completion-module-string-code
+       "';'.join(module_completion('''%s'''))\n"
+       python-shell-completion-string-code
+       "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
 
-;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)                      ; optional
-(setq jedi:complete-on-dot t)                 ; optional
-(elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
-;(elpy-use-ipython) ;deprecated
+    ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
+    ;(add-hook 'python-mode-hook 'jedi:setup)
+    (setq jedi:setup-keys t)                      ; optional
+    (setq jedi:complete-on-dot t)                 ; optional
+    (jedi:setup)
+    (elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
+    ;(elpy-use-ipython) ;deprecated
 
+  
+  )
+
+ (add-hook 'python-mode-hook 'setup-python-env)
 
 
 ;: WORKGROUPS
@@ -645,12 +687,12 @@
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
+;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; ;; environment variables
 (load "shell-integration.el")
 
-;; These customizations make it easier for you to navigate files,
-;; switch buffers, and choose options from the minibuffer.
+;; ;; These customizations make it easier for you to navigate files,
+;; ;; switch buffers, and choose options from the minibuffer.
 (load "navigation.el")
 
 ;; These customizations change the way emacs looks and disable/enable
@@ -674,6 +716,7 @@
 
 ;; late fly-make support for jade templates
 (progn
+  (require 'flymake)
   (defun flymake-jade-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                  'flymake-create-temp-intemp))

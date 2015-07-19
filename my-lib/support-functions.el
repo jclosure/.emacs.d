@@ -94,6 +94,18 @@ the current position of point, then move it to the beginning of the line."
     (emacs-lisp-mode)
         (font-lock-fontify-buffer)))
 
+(defun google (arg)
+  "Googles a query or region if any.
+With prefix argument, wrap search query in quotes."
+  (interactive "P")
+  (let ((query
+         (if (region-active-p)
+             (buffer-substring (region-beginning) (region-end))
+           (read-string "Query: "))))
+    (when arg (setq query (concat "\"" query "\"")))
+    (browse-url
+     (concat "http://www.google.com/search?ie=utf-8&oe=utf-8&q=" query))))
+
 ;https://github.com/milkypostman/dotemacs/blob/master/init.el
 (defun my-rotate-windows ()
   "Rotate your windows"

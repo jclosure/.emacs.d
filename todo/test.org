@@ -1,13 +1,16 @@
 
+
 * Tasks
 ** DONE Start a new org file
    CLOSED: [2015-07-11 Sat 22:52]
 ** DONE Provide some working examples
    CLOSED: [2015-07-15 Wed 11:34]
-** DONE Have a beer
+** DONE Have a cup of tea c
    CLOSED: [2015-07-15 Wed 11:34]
 ** TODO Commit this example
 
+
+* Running code from multiple languages
 ** Using python
 #+begin_src python
 import datetime
@@ -60,6 +63,8 @@ examples - http://orgmode.org/manual/var.html
 
 
 
+
+* Working With Elasticsearch
 ** Searching ES
 #+BEGIN_SRC es
 POST /_search?pretty
@@ -70,7 +75,7 @@ POST /_search?pretty
 }
 #+END_SRC
 
-** TODO Searching ES without parameters
+** Searching ES without parameters
 #+BEGIN_SRC es :method POST :url localhost:9200/_search?pretty
 {
   "query": {
@@ -78,12 +83,13 @@ POST /_search?pretty
   }
 }
 #+END_SRC
+
+
 ** Searching ES with local jq filter
 #+BEGIN_SRC es :jq .name, .version.number
 GET /
 {}
 #+END_SRC
-
 
 
 ** Creating and Searching for documents in ES for user data with local jq filter
@@ -112,7 +118,6 @@ GET /twitter/_search?pretty&q=user:samples
 
 
 
-
 ** Digging out logstash documents
 
 #+begin_src es :jq .hits.hits[0]
@@ -129,3 +134,4 @@ POST /_search_csv?pretty
   }
 }
 #+END_SRC
+   

@@ -1,0 +1,3 @@
+
+;; for nix cli timing
+time emacs -l init.elc -batch --eval '(message "Hello, world!")'
