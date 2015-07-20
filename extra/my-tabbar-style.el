@@ -59,7 +59,7 @@
  :box '(:line-width 1 :color "gray30"))
 
 (set-face-attribute 'tabbar-default  nil
- :family "Courier"
+ ;;:family "Courier"
  :height 1.1)
 
 (set-face-attribute

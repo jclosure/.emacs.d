@@ -17,7 +17,9 @@
 (add-hook 'emacs-startup-hook
           (lambda ()
             (when (string= (buffer-name) "*scratch*")
-              (animate-string ";; Your command is my wish..." (/ (frame-height) 2)))))
+              (progn 
+                (animate-string ";; Your command is my wish..." (/ (frame-height) 2)))
+                (goto-char (point-min)))))
 
 
 ;; Don't annoy me with those messages about active processes when I exit
@@ -656,6 +658,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
  '(frame-background-mode (quote dark))
  '(tabbar-separator (quote (0.5))))
 
@@ -734,5 +737,6 @@
 
 
 ;; set modeline for active buffer to be visually salient
-(custom-set-faces
- '(mode-line ((t (:foreground "white" :background "dark slate gray")))))
+;; (custom-set-faces
+;;  '(mode-line ((t (:foreground "white" :background "dark slate gray")))))
+
