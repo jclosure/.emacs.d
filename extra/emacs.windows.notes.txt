@@ -1,10 +1,15 @@
+
+;;; IF YOU GET IDO-MODE HANGS IN WINDOWS
+(setq w32-get-true-file-attributes nil)
+
+;;; PYTHON ON WINDOWS
+;; for python dev in windows
 (elpy-enable)
 (elpy-use-ipython)
 
-  
-  
 
-  winpython (http://winpython.github.io/):
+;; get winpython http://winpython.github.io/
+;; winpython specific setup:
   
   (setq python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab")
   pip install epc
