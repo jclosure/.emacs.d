@@ -134,7 +134,7 @@
 ;; Ensure my packages are all installed
 
 (package-refresh-and-install 
-	; global packages
+	;; global packages
                 'dash
                 'use-package
 		'tabbar
@@ -150,12 +150,13 @@
 		'smex
 		'projectile
 		'magit
+                'gist
         ;; general
                 'yaml-mode
 	;; web
 		'tagedit
                 'web-mode
-	; clojure packages
+	;; clojure packages
 		'cider
 		'clojure-mode
 		'clojure-mode-extra-font-locking
@@ -163,26 +164,26 @@
 		'company
 		'paredit
 		'rainbow-delimiters
-	; c++ packages
+	;; c++ packages
 		'yasnippet
 		'auto-complete-c-headers
 		'iedit
 		'flymake-google-cpplint
 		'flymake-cursor
 		'google-c-style
-	; python packages - make sure to run jedi:install-server (requires pip install virtualexnv)
+	;; python packages - make sure to run jedi:install-server (requires pip install virtualexnv)
 		'elpy
 		'jedi
-        ; ruby
+        ;; ruby
                 'flymake-ruby
                 'inf-ruby
                 'robe
                 'haml-mode
                 'projectile-rails
-        ; node
+        ;; node
                 'sws-mode
                 'jade-mode
-        ; elasticsearch
+        ;; elasticsearch
                 'es-mode
                 'logstash-conf
 )
@@ -432,12 +433,26 @@
 
 
 ;; RUBY
+
+
 (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
 (add-hook 'ruby-mode-hook 'robe-mode)
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+;; hooking up run-pry - see https://github.com/jacott/emacs-pry
+;;(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+;;(add-to-list 'load-path "~/.emacs.d/vendor/emacs-pry")
+;(require 'pry)
+
+;; optional suggestions
+(global-set-key [S-f6] 'pry-intercept)
+(global-set-key [f6] 'pry-intercept-rerun)
+
+
 
 ;; NODE
 ;; jade
@@ -603,8 +618,8 @@
       ;; NOTE: set this to the correct path for your python installation in windows
       (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
           (setq
-           python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
-           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+           python-shell-interpreter "C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\python.exe"
+           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console --pylab=inline"
            ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
            warning-suppress-types '((emacs)))
         (setq
@@ -634,8 +649,8 @@
   
   )
 
- (add-hook 'python-mode-hook 'setup-python-env)
-
+;;(add-hook 'python-mode-hook 'setup-python-env)
+(setup-python-env)
 
 ;: WORKGROUPS
 ;; workgroups2 enables saving window configurations, etc..
