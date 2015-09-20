@@ -1,6 +1,13 @@
 ;; Add extra directories to load-path  
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lib"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations"))
+
+
+;; emacs25 workarounds
+(load-library "emacs25.hacks")
+
+(delete-selection-mode 1)
 
 ;; load some extra libraries
 (load-library "support-functions")
@@ -328,7 +335,7 @@
 ;;turn on global goodies
 
 ; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-
+(setq org-startup-indented t)
 (use-package org
              :defer t
              :init
@@ -346,22 +353,7 @@
                   (lisp . t)))
                )
 
-;; (require 'org)
-;; (define-key global-map "\C-cl" 'org-store-link)
-;; (define-key global-map "\C-ca" 'org-agenda)
-;; (setq org-log-done t)
 
-;; ; org mode's babel languages
-
-;; ; babel languages setup - http://orgmode.org/worg/org-contrib/babel/languages.html#MissingReference
-;; ;(require 'ob-clojure)
-;; ;(setq org-babel-clojure-backend 'cider)
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((elasticsearch . t)
-;;    (ruby . t)
-;;    (python . t)
-;;    (lisp . t)))
 
 
 ; setup global auto complete
@@ -653,14 +645,14 @@
 
 ;; SET DARK
 ;; run (customize) in scratch and search for what you want to customize
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(coffee-tab-width 2)
- '(frame-background-mode (quote dark))
- '(tabbar-separator (quote (0.5))))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(coffee-tab-width 2)
+;;  '(frame-background-mode (quote dark))
+;;  '(tabbar-separator (quote (0.5))))
 
 
 
@@ -668,7 +660,7 @@
 (tabbar-mode t)
 (global-set-key [(control ?c) (left)] 'tabbar-backward)
 (global-set-key [(control ?c) (right)] 'tabbar-forward)
-(load-file "~/.emacs.d/extra/init-tabbar.el")
+;(load-file "~/.emacs.d/extra/init-tabbar.el")
 (load-file "~/.emacs.d/extra/my-tabbar-style.el")
 
 
@@ -739,4 +731,7 @@
 ;; set modeline for active buffer to be visually salient
 ;; (custom-set-faces
 ;;  '(mode-line ((t (:foreground "white" :background "dark slate gray")))))
+
+; (require 'oneonone)
+; (1on1-emacs)
 
