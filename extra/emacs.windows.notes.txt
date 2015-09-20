@@ -1,10 +1,17 @@
+
+
+
+;;; IF YOU GET IDO-MODE HANGS IN WINDOWS
+(setq w32-get-true-file-attributes nil)
+
+;;; PYTHON ON WINDOWS
+;; for python dev in windows
 (elpy-enable)
 (elpy-use-ipython)
 
-  
-  
 
-  winpython (http://winpython.github.io/):
+;; get winpython http://winpython.github.io/
+;; winpython specific setup:
   
   (setq python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab")
   pip install epc
@@ -18,3 +25,16 @@
      python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
      ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
 	 warning-suppress-types '((emacs))))
+
+;; CYGWIN SLOW BASH STARTUP TIME
+https://stackoverflow.com/questions/28507014/cygwin-commands-from-cmd-are-slow-from-bash-are-fast/28608622#28608622
+
+A section in Cygwin's FAQ addresses slow startup times. Cygwin recently changed to using Active Directory lookups for authentication, rather than using flat files. Changing the defaults in /etc/nsswitch.conf from
+
+passwd:   files db
+group:    files db
+to
+
+passwd:   files
+group:    files
+skips the AD lookup. My Cygwin commands are now speedy again.
