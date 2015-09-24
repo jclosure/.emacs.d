@@ -1,4 +1,4 @@
-
+Exemplar Bag
 
 * Tasks
 ** DONE Start a new org file
@@ -8,7 +8,7 @@
 ** DONE Have a cup of tea c
    CLOSED: [2015-07-15 Wed 11:34]
 ** TODO Commit this example
-
+   
 
 * Running code from multiple languages
 ** Using python
@@ -84,13 +84,11 @@ POST /_search?pretty
 }
 #+END_SRC
 
-
 ** Searching ES with local jq filter
 #+BEGIN_SRC es :jq .name, .version.number
 GET /
 {}
 #+END_SRC
-
 
 ** Creating and Searching for documents in ES for user data with local jq filter
 
@@ -106,8 +104,6 @@ POST /twitter/tweet/
 }
 #+end_src
 
-#+RESULTS:
-: {"_index":"twitter","_type":"tweet","_id":"AU-52iGz1ohHlns3s51Z","_version":1,"created":true}
 
 
 #+begin_src es
@@ -115,45 +111,6 @@ GET /twitter/_search?pretty&q=user:samples
 {}
 #+end_src
 
-#+RESULTS:
-#+begin_example
-{
-  "took" : 1,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
-  },
-  "hits" : {
-    "total" : 2,
-    "max_score" : 0.5945348,
-    "hits" : [ {
-      "_index" : "twitter",
-      "_type" : "tweet",
-      "_id" : "AU-4nMNq1ohHlns3s51T",
-      "_score" : 0.5945348,
-      "_source":{
-     "user" : "samples",
-     "post_date" : "2015-09-10T13:12:12",
-     "message" : "hi there...",
-     "foo" : "bar"
-}
-    }, {
-      "_index" : "twitter",
-      "_type" : "tweet",
-      "_id" : "AU-4nbdg1ohHlns3s51U",
-      "_score" : 0.5945348,
-      "_source":{
-     "user" : "samples",
-     "post_date" : "2015-09-10T13:12:12",
-     "message" : "bye bye...",
-     "foo" : "bar"
-}
-    } ]
-  }
-}
-#+end_example
 
 
 
