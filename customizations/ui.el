@@ -26,7 +26,9 @@
 ;; for a more technical explanation.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/themes")
-;(load-theme 'tomorrow-night-bright t)
+
+;; load default theme
+(load-theme 'tomorrow-night-bright t)
 
 ;; increase font size for better readability
 (if (eq system-type 'darwin)
