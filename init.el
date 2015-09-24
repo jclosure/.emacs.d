@@ -428,30 +428,6 @@
 
 ;; RUBY
 
-;;(require 'inf-ruby)
-;;    (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-;;    (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
-;;
-;; Or, for enh-ruby-mode:
-;;
-    (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-;;
-;; Installation via ELPA interface does the above for you
-;; automatically.
-;;
-;; Additionally, consider adding
-;;
-    (add-hook 'after-init-hook 'inf-ruby-switch-setup)
-;;
-;; to your init file to easily switch from common Ruby compilation
-;; modes to interact with a debugger.
-;;
-;; To call `inf-ruby-console-auto' more easily, you can, for example,
-;; replace the original `inf-ruby' binding:
-;;
-  (eval-after-load 'inf-ruby
-    '(define-key inf-ruby-minor-mode-map
-       (kbd "C-c C-s") 'inf-ruby-console-auto))
 
 
 
@@ -460,33 +436,24 @@
 ;;(add-to-list 'load-path "~/.emacs.d/vendor/emacs-pry")
 ;(require 'pry)
 
-;; (progn 
-;;   (add-hook 'ruby-mode-hook 'inf-ruby)
-;;   (add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
+
+  ;; (add-hook 'ruby-mode-hook 'inf-ruby)
+  (add-hook 'ruby-mode-hook 'flymake-ruby-load)
   
-;;   ;;(add-hook 'ruby-mode-hook 'start-robe)
+  ;;(add-hook 'ruby-mode-hook 'start-robe)
 
-;;   (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'robe-mode)
 
-;;   ;;(eval-after-load 'company
-;;   ;;  '(push 'company-robe company-backends))
-;;   ;;(add-hook 'robe-mode-hook 'ac-robe-setup)
-;;   ;;(add-hook 'projectile-mode-hook 'projectile-rails-on)
-;;   ;;;; connects to localhost:????
-;;   ;;(push 'company-robe company-backends)
-;;   )
-
-;; inf-ruby pry setup: https://gist.github.com/jsvnm/1390890
-
-;(add-to-list 'inf-ruby-implementations' ("pry". "pry"))
-;(setq inf-ruby-default-implementation "pry") 
-
-;; optional suggestions
-;;(global-set-key [S-f6] 'pry-intercept)
-;;(global-set-key [f6] 'pry-intercept-rerun)
-
-
+  ;; (eval-after-load 'company
+  ;;  '(push 'company-robe company-backends))
+  ;; (add-hook 'robe-mode-hook 'ac-robe-setup)
+  ;; (add-hook 'projectile-mode-hook 'projectile-rails-on)
+  ;; ;;connects to localhost:????
+  ;; (push 'company-robe company-backends)
+ 
+  (require 'inf-ruby)
+  (setq inf-ruby-default-implementation "pry")
 
 ;; NODE
 ;; jade

@@ -1,0 +1,40 @@
+How to setup Emacs, Putty, Tmux, and Bash for Great Goodness
+
+* Emacs
+
+** Keys
+Putty Keymap
+
+** wind move
+default keys
+
+* Terminal
+** Emacs Themes
+In order for them to work fully and properly, set 
+**  Terminal setup
+export TERM=xterm-256color
+** Kitty
+Fixes control key characters
+
+1:
+Don't use stock putty.  It doesn't send proper xterm-keys, so you're emacs binding won't be recognized properly anyway.
+Instead, use kitty, which fixes the key issues.  Its a fork of current putty with improvements.
+
+http://www.9bis.net/kitty/?page=Download
+
+
+2:
+make a ~/.tmux.conf file
+
+put this in it:
+
+#set-window-option -g xterm-keys on
+set -g xterm-keys on
+set -g default-terminal "xterm-256color"
+set -g terminal-overrides "xterm*:kLFT2=\eOD:kRIT2=\eOC:kUP2=\eOA:kDN2=\eOB:smkx@:rmkx@"
+
+Now, everything will behave as normal through terminal sessions.
+
+*** you may want to remap C-x C-b in tmux because its a key from emacs
+
+ 

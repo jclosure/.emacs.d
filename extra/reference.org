@@ -1,0 +1,5 @@
+* gist
+https://github.com/defunkt/gist.el
+
+* ruby
+https://translate.googleusercontent.com/translate_c?depth=1&hl=en&prev=search&rurl=translate.google.com&sl=ja&u=http://block-given.hatenablog.com/entry/2014/11/12/005657&usg=ALkJrhhUPyiufUfmbm7fmu6fl2ColcKZow
