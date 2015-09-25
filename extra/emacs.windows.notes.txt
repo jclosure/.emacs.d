@@ -7,6 +7,14 @@
 ;;; IF EMACS CRASHES ON EXIT.  LIKELY IT'S FINDING A LINKED C LIBRARY THAT'S INCOMPATIBLE WITH ITS NEEDS.  THIS CAN HAPPEN IS SOMETHING LIKE C:\MINGW\BIN IS IN PATH.
 ;; A common cause is ZLib: zlib1.dll.  If this is the case, download the 64bit compiled ver from: http://www.zlib.net/ and place it in the $EMACS_HOME\bin dir.  Make sure that $EMACS_HOME\bin is in the $PATH before any other MinGW dirs that might have zlib.
 
+;;; TO MAKE EMACS START IN HOME (%PROFILE%) DIR BY DEFAULT:
+1. pin a shortcut to runemacs to taskbar
+2. edit its properties and set "start in" to %USERPROFILE%
+
+;;; RUBY WITH PRY
+see $EMACS_HOME/extra/.pryrc.  There's a problem with Readline in Windows not working with emacs.  Place the contents of this .pryrc into your ~/.pryrc to monkey patch and configure a good experience for windows.
+
+- possible enhancement - might want to make the ruby code in .pryrc only run if it detects its inside emacs.  see .pryrc for how.
 
 
 ;;; PYTHON ON WINDOWS
