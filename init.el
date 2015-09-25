@@ -338,7 +338,6 @@
 ;;turn on global goodies
 
 ; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-(setq org-startup-indented t)
 (use-package org
              :defer t
              :init
@@ -354,16 +353,19 @@
                   (ruby . t)
                   (python . t)
                   (lisp . t)))
-               )
+               ))
 
-
+;; start org mode with identing (outline format instead of book)
+(setq org-startup-indented t)
+;; enable code syntax hightlighting in org-mode             
+(setq org-src-fontify-natively t)
 
 
 ; setup global auto complete
 (add-hook 'after-init-hook 'global-auto-complete-mode)
 
 ;; setup company mode
-(add-hook 'after-init-hook 'global-company-mode))
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
