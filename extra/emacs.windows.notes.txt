@@ -4,6 +4,11 @@
 ;;; IF YOU GET IDO-MODE HANGS IN WINDOWS
 (setq w32-get-true-file-attributes nil)
 
+;;; IF EMACS CRASHES ON EXIT.  LIKELY IT'S FINDING A LINKED C LIBRARY THAT'S INCOMPATIBLE WITH ITS NEEDS.  THIS CAN HAPPEN IS SOMETHING LIKE C:\MINGW\BIN IS IN PATH.
+;; A common cause is ZLib: zlib1.dll.  If this is the case, download the 64bit compiled ver from: http://www.zlib.net/ and place it in the $EMACS_HOME\bin dir.  Make sure that $EMACS_HOME\bin is in the $PATH before any other MinGW dirs that might have zlib.
+
+
+
 ;;; PYTHON ON WINDOWS
 ;; for python dev in windows
 (elpy-enable)
