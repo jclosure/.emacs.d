@@ -1,3 +1,12 @@
 
 * try ein for python dev:
 https://github.com/tkf/emacs-ipython-notebook#readme
+
+* org-mode publishing to html
+
+http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+
+** build site structure
+** publish formulas with latex
+** publish code samples with syntax highlighting
+** images and links (both relative and external)
