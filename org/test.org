@@ -8,7 +8,7 @@ Exemplar Bag
 ** DONE Have a cup of tea c
    CLOSED: [2015-07-15 Wed 11:34]
 ** TODO Commit this example
-   
+
 
 * Running code from multiple languages
 ** Using python
@@ -110,7 +110,6 @@ POST /twitter/tweet/
 GET /twitter/_search?pretty&q=user:samples
 {}
 #+end_src
-
 
 
 

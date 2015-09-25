@@ -1,0 +1,3 @@
+
+* try ein for python dev:
+https://github.com/tkf/emacs-ipython-notebook#readme

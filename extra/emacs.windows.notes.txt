@@ -25,17 +25,28 @@ see $EMACS_HOME/extra/.pryrc.  There's a problem with Readline in Windows not wo
 
 ;; get winpython http://winpython.github.io/
 ;; winpython specific setup:
-  
-  (setq python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab")
+
+;; ipython has now changed to jupyter.  make sure that you've installed it:
+
+
+  (setq python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console")
   pip install epc
   pip install pyreadline
-  
+
+
+  pip install --upgrade jupyter
+
+  to use matplotlib, use "import pylab" at top of script with plots.
+
+  pylab can be added into ipython repl directly by typing: %pylab at prompt. 
+
+
   example from init.el:
 
   (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
     (setq
      python-shell-interpreter "C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\python.exe"
-     python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console --pylab"
+     python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.9.3\\python-2.7.9.amd64\\Scripts\\ipython.exe console"
      ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
 	 warning-suppress-types '((emacs))))
 

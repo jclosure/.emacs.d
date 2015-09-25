@@ -622,7 +622,7 @@
       (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
           (setq
            python-shell-interpreter "C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\python.exe"
-           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console --pylab=inline"
+           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console"
            ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
            warning-suppress-types '((emacs)))
         (setq
