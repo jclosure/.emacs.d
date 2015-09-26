@@ -1,0 +1,168 @@
+* to blog
+
+** java generate wsdl documentation
+
+*** write up how to
+
+xslt 
+transform class
+remote acquisition
+shell script
+build integration
+add to jboss project
+
+*** script
+
+#todo: scrape wsdls from the cxf listing: http://localhost:8181/cxf/
+
+#remote example
+#java -cp "commons-io-2.4.jar:crud-router-1.0-SNAPSHOT.jar"  com.amd.esb.cdr.XslTransformer http://atlesbanlqv01:8443/cxf/CamelCrudService?wsdl out.html wsdl-viewer.xsl
+
+#local example
+#java -cp "lib/commons-io-2.4.jar:lib/crud-router-1.0-SNAPSHOT.jar" com.amd.esb.cdr.XslTransformer camel_crud_ws.wsdl out.html wsdl-viewer.xsl
+
+
+wsdl=$1
+output=$2
+xsl=$3
+
+if [[ -z "$wsdl" ]] || [[ -z "$output" ]] || [[ -z "$xsl" ]]; then
+	echo ""
+	echo "Error: pass in all required variables"
+	echo "Usage: " $0 " http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL Weather.html wsdl-viewer.xsl"
+	echo ""
+	exit
+fi
+
+java -cp "lib/commons-io-2.4.jar:lib/crud-router-1.0-SNAPSHOT.jar" com.amd.esb.cdr.XslTransformer "$wsdl" "$output" "$xsl"
+** emacs
+
+*** notions
+
+it's a hosted lisp operating system
+common across all operating systems (key board and portable muscle memory)
+buffers are process attached scratch space
+files are just a way to store off and recover scratch spaces
+it just happens to also have excellent text editing features, which makes it a great editor
+
+**** org mode
+
+its a great writer's tool - org-mode
+publishers tool - org-mode html
+multilanguage io flow tool and live editor of documentation and code together - org-mode babel
+
+elasticsearch example
+
+it can also be a full featured ide
+
+**** features
+
+global company mode
+global autocomplete
+remember location in files
+ido-mode
+bring the shell into the editor
+
+edit multiple languages
+
+***** lisps
+ 
+****** elisp
+
+****** scheme
+
+****** sbcl
+
+****** clojure
+
+**** c/cpp
+
+***** platform specific headers
+
+linux
+windows
+osx
+
+***** linter, flymake, snippets
+
+**** ruby
+
+***** repl
+
+inf-ruby
+irb
+pry
+
+****** readline hack for windows
+
+***** robe
+
+***** rails
+
+**** python
+
+***** python
+
+ipython
+jupyter
+pylab
+
+***** debugging
+
+ipdb
+
+**** shell
+
+***** bash
+
+***** cmd shell
+**** javascript
+
+node
+
+** logstash_search
+
+discuss problem
+solution approach
+features
+implementation
+
+kibana as a query sculpter
+
+*** emacs - all together
+
+coding
+repl
+debugging
+testing
+shell  
+
+** ldap_tester.py
+
+put together project structure around it
+general purpose query tool
+reusable module
+
+** nltk and pylab
+
+walk through concepts stepwise
+matplotlib of text data
+zipfs data
+debugging and repl
+
+** pandas stock data
+
+get code and show off feature set
+pyplot stock data
+api provider (can't remember name - look at code - starts with q I think)
+
+** 6 new syntax
+
+var myvar = blah?foo?bar?baz ?? quux
+
+** donkus
+
+lexing
+parsing
+simple ast
+d3 viz

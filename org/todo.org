@@ -1,5 +1,10 @@
 * todo
 
+** zed shaw
+
+his secret writing tool
+go through c, the hardway
+
 ** try ein for python dev:
 https://github.com/tkf/emacs-ipython-notebook#readme
 
@@ -15,3 +20,92 @@ http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
 ** provide access to org-mode reference card in documentation
 
 http://orgmode.org/orgcard.txt
+** connect emacs buffer to javascript or clojurescipt fe
+
+live coding reflected in realtime
+possible node eng
+see jupyter notebooks with jupyter server connected to remotely through ein for inspiration
+live hacking experience
+play surface
+serious collaborative shared process with multiple attached buffers
+not repl, buffer
+research slime experience and how it achieves
+** lisp matrix math
+
+check scheme
+clojure
+
+*** spreadsheet as an i/o surface and hookup cell, row, and column through fn pipelining 
+
+read published paper and get code
+
+** d3 ast visualization of normal human lanuage
+
+pattern identification
+pattern visual overlaying to determine structural similarity
+categorical pinning of nodes into graph model
+maybe store in neo
+
+** concept space
+
+algorithms to find k
+folding and fixing to categories
+thresholds and weighting
+meaning halos
+math and stat
+visualization of semantic space
+lenses and filtering in/out
+pivoting
+drill in/out
+d3
+
+** emergent reality representation
+
+suskind how to think about what is and how works
+reality cascade
+capture whiteboard
+evaluate from god's eye view
+
+*** a lifetime is a point
+
+evaluate to innermost
+emmergent causality backward cascade
+
+*** church thesis
+
+*** scoping and bounding
+
+a life time of closing over the state of previous experience (state)
+the notion of environment (initial state)
+feedback of execution changing environment (its not static)
+
+*** many lifetimes many points
+
+interacitivy between points
+
+*** the meaning of time
+
+the flow of execution
+change is evidence of time and evident
+
+*** similation and similacra
+
+us
+here
+now
+
+** the meaning of let
+
+let there be
+invoke into existence
+permit to exist (to be and be in such a way)
+the prime keyword of all existence
+god spoke everything into existence
+nothingness and thingness
+energy (don't go into physics)
+wave forms and formulas
+
+** write book in org-mode
+
+research
+publishing latex
