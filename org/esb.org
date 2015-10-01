@@ -1,0 +1,148 @@
+* DONE installing Java
+  CLOSED: [2015-09-21 Mon 14:12]
+** DONE download
+   CLOSED: [2015-09-21 Mon 14:12]
+jdk-8u60-linux-x64.rpm
+
+** DONE install
+   CLOSED: [2015-09-21 Mon 14:12]
+rpm -Uvh jdk-8u60-linux-x64.rpm
+
+** DONE setup java
+   CLOSED: [2015-09-21 Mon 14:12]
+# Swap between OpenJDK and Sun/Oracle Java JDK/JRE
+
+alternatives --config java
+alternatives --config javaws
+alternatives --config libjavaplugin.so
+alternatives --config libjavaplugin.so.x86_64
+alternatives --config javac
+
+# Post-Installation Setup
+
+# Add JAVA_HOME environment variable to /etc/profile file or $HOME/.bash_profile
+
+# Java JDK and JRE latest version (/usr/java/latest)
+
+# You can make a symbolic link from your Java JDK to that directory, so it makes it easier to handle several versions of java
+
+# export JAVA_HOME JDK/JRE
+
+export JAVA_HOME="/usr/java/latest"
+
+# e.g. echo 'export JAVA_HOME="/usr/java/latest"' >> /etc/profile
+
+# Java JDK and JRE absolute version (/usr/java/jdk-8u60) or other version
+
+# export JAVA_HOME JDK 
+
+export JAVA_HOME="/usr/java/jdk-8u60" 
+
+# export JAVA_HOME JRE #  
+
+export JAVA_HOME="/usr/java/jdk-8u60"
+
+
+* TODO install JCE Unlimited for JDK8
+download: http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
+backup original $JAVA_HOME/jre/lib/security
+  cp -prv $JAVA_HOME/jre/lib/security $JAVA_HOME/jre/lib/security.bak
+unzip the jce_policy-8.zip file
+copy UnlimitedJCEPolicyJDK8/*.jar to $JAVA_HOME/jre/lib/security
+  cp $JAVA_HOME/jre/lib/security $JAVA_HOME/jre/lib/security/
+  note: this will overwrite the 2 jars that are already there with the ones from UnlimitedJCEPolicyJDK8
+
+* DONE install bits
+  CLOSED: [2015-09-21 Mon 14:12]
+cd /opt
+scp jholder@atlesbqv03:/opt/jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.GOLDEN.beta.3.tar.gz .
+tar xzvf jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.GOLDEN.beta.3.tar.gz
+ln -s ./jboss-a-mq-pre-patch-6.2.0.redhat-143-p1 ./jboss-a-mq
+ln -s /opt/jboss-a-mq/bin/amq-service /etc/init.d/
+chkconfig --add amq-service
+
+note: MAKE SURE YOU CHANGE TO JBOSS USER:
+verify /opt/jboss-a-mq/bin/amq-service has this setting:  RUN_AS_USER=jboss
+then...
+cd /opt
+chown -R jboss:jboss jboss-a-mq-pre-patch-6.2.0.redhat-143-p1
+rm -rf ./jboss-a-mq/data/*
+verify /data/esbdata/amq-6.2 nfs mount is owned and writable by jboss
+chown -R jboss:jboss /data/esbdata/amq-6.2
+
+* TODO configuration
+** point kahadb message store to shared storage backend
+ 
+
+* TODO issues
+
+** TODO disappearing browse option in hawtio
+https://access.redhat.com/support/cases/#/case/01511487
+https://access.redhat.com/support/cases/#/case/01496504
+
+*** fix
+in $AMQ_HOME/etc/auth/jmx.acl.org.apache.activemq.Broker.cfg 
+add to bottom:
+* = *
+
+if exists $AMQ_HOME/etc/auth/jmx.acl.org.apache.activemq.Broker._.cfg
+do the same as above
+
+service amq-service restart
+
+** TODO research exceptions
+
+*** problem 1
+: org.apache.activemq:type=Broker,brokerName=amq
+javax.management.InstanceAlreadyExistsException: org.apache.activemq:type=Broker,brokerName=amq
+        at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)[:1.8.0_60]
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerWithRepository(DefaultMBeanServerInterceptor.java:1898)[:1.8.0_60]
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerDynamicMBean(DefaultMBeanServerInterceptor.java:966)[:1.8.0_60]
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerObject(DefaultMBeanServerInterceptor.java:900)[:1.8.0_60]
+        at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.registerMBean(DefaultMBeanServerInterceptor.java:324)[:1.8.0_60]
+        at com.sun.jmx.mbeanserver.JmxMBeanServer.registerMBean(JmxMBeanServer.java:522)[:1.8.0_60]
+        at org.apache.activemq.broker.jmx.ManagementContext.registerMBean(ManagementContext.java:424)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.jmx.AnnotatedMBean.registerMBean(AnnotatedMBean.java:72)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerService.startManagementContext(BrokerService.java:2475)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerService.start(BrokerService.java:591)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at io.fabric8.mq.fabric.ActiveMQServiceFactory$ClusteredConfiguration.doStart(ActiveMQServiceFactory.java:506)[184:io.fabric8.mq.mq-fabric:1.2.0.redhat-143]
+        at io.fabric8.mq.fabric.ActiveMQServiceFactory$ClusteredConfiguration.access$400(ActiveMQServiceFactory.java:317)[184:io.fabric8.mq.mq-fabric:1.2.0.redhat-143]
+        at io.fabric8.mq.fabric.ActiveMQServiceFactory$ClusteredConfiguration$1.run(ActiveMQServiceFactory.java:449)[184:io.fabric8.mq.mq-fabric:1.2.0.redhat-143]
+        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)[:1.8.0_60]
+        at java.util.concurrent.FutureTask.run(FutureTask.java:266)[:1.8.0_60]
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)[:1.8.0_60]
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)[:1.8.0_60]
+
+**** solution
+service amq-service stop
+cd $AMQ_HOME
+rm -rf data/*
+sertive amq-service start
+
+*** problem 2 (intermitten connection failure)
+
+2015-09-24 16:52:19,563 | WARN  | 66.82:6626@61616 | TransportConnection              | ivemq.broker.TransportConnection  819 | 171 - org.apache.activemq.activemq-osgi - 5.11.0.redhat-620143 | Failed to add Connection ID:AUS-L8-JHOLDER-52187-635787057385992727-2:2009 due to javax.jms.InvalidClientIDException: Broker: amq - Client: ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22 already connected from tcp://10.236.66.82:6626
+2015-09-24 16:52:19,563 | DEBUG | 66.82:6626@61616 | Service                          | ivemq.broker.TransportConnection  340 | 171 - org.apache.activemq.activemq-osgi - 5.11.0.redhat-620143 | Error occured while processing sync command: ConnectionInfo {commandId = 23, responseRequired = true, connectionId = ID:AUS-L8-JHOLDER-52187-635787057385992727-2:2009, clientId = ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22, clientIp = tcp://10.236.66.82:6626, userName = esbtestadmin, password = *****, brokerPath = null, brokerMasterConnector = false, manageable = false, clientMaster = false, faultTolerant = true, failoverReconnect = true}, exception: javax.jms.InvalidClientIDException: Broker: amq - Client: ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22 already connected from tcp://10.236.66.82:6626
+javax.jms.InvalidClientIDException: Broker: amq - Client: ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22 already connected from tcp://10.236.66.82:6626
+        at org.apache.activemq.broker.region.RegionBroker.addConnection(RegionBroker.java:255)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.jmx.ManagedRegionBroker.addConnection(ManagedRegionBroker.java:231)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerFilter.addConnection(BrokerFilter.java:97)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.advisory.AdvisoryBroker.addConnection(AdvisoryBroker.java:93)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerFilter.addConnection(BrokerFilter.java:97)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerFilter.addConnection(BrokerFilter.java:97)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerFilter.addConnection(BrokerFilter.java:97)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.security.JaasAuthenticationBroker.addConnection(JaasAuthenticationBroker.java:75)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.BrokerFilter.addConnection(BrokerFilter.java:97)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.MutableBrokerFilter.addConnection(MutableBrokerFilter.java:102)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.TransportConnection.processAddConnection(TransportConnection.java:813)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.jmx.ManagedTransportConnection.processAddConnection(ManagedTransportConnection.java:79)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.command.ConnectionInfo.visit(ConnectionInfo.java:139)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.TransportConnection.service(TransportConnection.java:334)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.broker.TransportConnection$1.onCommand(TransportConnection.java:188)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.MutexTransport.onCommand(MutexTransport.java:50)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.WireFormatNegotiator.onCommand(WireFormatNegotiator.java:113)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.AbstractInactivityMonitor.onCommand(AbstractInactivityMonitor.java:300)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.TransportSupport.doConsume(TransportSupport.java:83)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.tcp.TcpTransport.doRun(TcpTransport.java:214)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at org.apache.activemq.transport.tcp.TcpTransport.run(TcpTransport.java:196)[171:org.apache.activemq.activemq-osgi:5.11.0.redhat-620143]
+        at java.lang.Thread.run(Thread.java:745)[:1.8.0_60]

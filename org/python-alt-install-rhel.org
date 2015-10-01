@@ -1,0 +1,65 @@
+* install a specific version of python in rhel
+
+** install python 2.x
+
+#!/bin/bash
+# Install Python 2.7.3 alternatively
+yum groupinstall "development tools" -y
+yum install readline-devel openssl-devel gmp-devel ncurses-devel gdbm-devel zlib-devel expat-devel libGL-devel tk tix gcc-c++ libX11-devel glibc-devel bzip2 tar tcl-devel tk-devel pkgconfig tix-devel bzip2-devel sqlite-devel autoconf db4-devel libffi-devel valgrind-devel -y
+
+mkdir tmp
+cd tmp
+wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tgz
+tar xvfz Python-2.7.3.tgz
+cd Python-2.7.3
+./configure --prefix=/opt/python2.7 --enable-shared
+make
+make altinstall
+echo "/opt/python2.7/lib" >> /etc/ld.so.conf.d/opt-python2.7.conf
+ldconfig
+cd ..
+cd ..
+rm -rf tmp
+
+
+[root@ip-10-59-143-73 bin]# pwd
+/opt/python2.7/bin
+[root@ip-10-59-143-73 bin]# tree
+.
+├── 2to3
+├── idle
+├── pydoc
+├── python2.7
+├── python2.7-config
+└── smtpd.py
+
+0 directories, 6 files
+[root@ip-10-59-143-73 bin]# ./python2.7 --version
+Python 2.7.3
+
+[root@ip-10-59-143-73 bin]# python --version
+Python 2.6.6
+
+** install setup tools
+
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python
+
+** install pip
+
+curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python2.7 -
+
+** install ipython
+
+# Use pip to install ipython notebook
+pip install "ipython[notebook]"
+
+# start it up (in background—maybe should use screen)
+# Note use of ip parm to avoid issue with not runnin IPV6, per:
+# https://github.com/ipython/ipython/issues/5802
+
+# cd to the directory that you want to serve your notebooks from and…
+ipython notebook --ip 127.0.0.1
+
+# the --ip 127.0.0.1 was to avoid a problem with not running IPv6 (you may be able to leave that off)
+
+# Then open http://localhost:8888/ and you should be up and running
