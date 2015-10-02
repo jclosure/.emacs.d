@@ -1,17 +1,17 @@
 ;; Add extra directories to load-path  
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lib"))
+
+;; load some extra libraries
+(load-library "support-functions")
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations"))
-
 
 ;; emacs25 workarounds
 (load-library "emacs25.hacks")
 
 (delete-selection-mode 1)
 
-;; load some extra libraries
-(load-library "support-functions")
-;(load-library "profile-dotemacs")
 
 
 
@@ -336,30 +336,6 @@
 
 
 ;;turn on global goodies
-
-; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
-(use-package org
-             :defer t
-             :init
-             (progn
-               (define-key global-map "\C-cl" 'org-store-link)
-               (define-key global-map "\C-ca" 'org-agenda))
-             :config
-             (progn
-               (setq org-log-done t)
-               (org-babel-do-load-languages
-                'org-babel-load-languages
-                '((elasticsearch . t)
-                  (ruby . t)
-                  (python . t)
-                  (lisp . t)))
-               ))
-
-;; start org mode with identing (outline format instead of book)
-(setq org-startup-indented t)
-;; enable code syntax hightlighting in org-mode             
-(setq org-src-fontify-natively t)
-
 
 ; setup global auto complete
 (add-hook 'after-init-hook 'global-auto-complete-mode)
@@ -704,9 +680,11 @@
 ;; Customization
 ;;;;
 
+
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
 (add-to-list 'load-path "~/.emacs.d/customizations")
+
 
 ;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; ;; environment variables
@@ -726,6 +704,9 @@
 ;; Hard-to-categorize customizations
 (load "misc.el")
 
+
+;; MY ORG-MODE SETUP
+(load "my-orgmode.el")
 
 ;; For editing lisps
 (load "elisp-editing.el")
@@ -761,8 +742,3 @@
 ; (require 'oneonone)
 ; (1on1-emacs)
 
-(defun hide-ctrl-M ()
-  "Hides the disturbing '^M' showing up in files containing mixed UNIX and DOS line endings."
-  (interactive)
-  (setq buffer-display-table (make-display-table))
-  (aset buffer-display-table ?\^M []))

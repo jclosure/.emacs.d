@@ -16,10 +16,15 @@
           (package-install pkg)))))
 
 
+(defun ensure-text-file (file)
+  "Utility function to create files in a path if they do not already exist"
+  (unless (file-exists-p file) 
+    (write-region "" nil file)))
+
 (defun ensure-directory (dir)
-    "Utility function to create directories in a path if they do not already exist"
-    (unless (file-exists-p dir)                                                               
-	      (make-directory dir t)))
+  "Utility function to create directories in a path if they do not already exist"
+  (unless (file-exists-p dir)         
+    (make-directory dir t)))
 
 
 (defun smart-line-beginning ()

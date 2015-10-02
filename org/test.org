@@ -7,9 +7,29 @@ Exemplar Bag
    CLOSED: [2015-07-15 Wed 11:34]
 ** DONE Have a cup of tea c
    CLOSED: [2015-07-15 Wed 11:34]
-** TODO Commit this example
+** DONE Commit this example
+CLOSED: [2015-10-02 Fri 02:38]
 
-
+** TODO Try org inline images
+this version of emacs has support for both win and osx:
+http://vgoulet.act.ulaval.ca/en/emacs/
+* Playing with pretty entities
+** reference
+http://orgmode.org/manual/Special-symbols.html
+** Greek Alphabet: 
+meanings: http://www.greece.com/info/language/greek_alphabet/
+*** examples
+Angles are written as Greek letters \alpha, \beta and \gamma.
+\alpha \to \omega
+something is \not \empty 
+\pi tastes like pie
+\sum of the parts
+\lambda expressions are fun
+\psi chological wonderland
+\theta theta cool
+\epsilon epsilon
+\ni ni
+\nu nu
 * Running code from multiple languages
 ** Using python
 #+begin_src python
@@ -17,30 +37,29 @@ import datetime
 today = datetime.date.today()
 return today
 #+end_src
-
 ** Using ruby
 #+begin_src ruby
-,require 'date'
-,"This file was last evaluated on #{Date.today}"
+  require 'date'
+  "This file was last evaluated on #{Date.today}"
 #+end_src
 
 ** Using clojure
 #+begin_src clojure
-(defn now [] (java.util.Date.))
-(now)
+  (defn now [] (java.util.Date.))
+  (now)
 #+end_src
 
 ** Using lisp
 examples - http://orgmode.org/manual/var.html
 
 #+begin_src lisp
-(defun current-date-string ()
-  "Returns current date as a string."
-  (multiple-value-bind (sec min hr day mon yr dow dst-p tz)
-                       (get-decoded-time)
-    (declare (ignore sec min hr dow dst-p tz))
-    (format nil "~4,'0d-~2,'0d-~2,'0d" yr mon day)))
-(current-date-string)
+  (defun current-date-string ()
+    "Returns current date as a string."
+    (multiple-value-bind (sec min hr day mon yr dow dst-p tz)
+                         (get-decoded-time)
+      (declare (ignore sec min hr dow dst-p tz))
+      (format nil "~4,'0d-~2,'0d-~2,'0d" yr mon day)))
+  (current-date-string)
 #+end_src
 
 #+name: hello-world
@@ -54,14 +73,20 @@ examples - http://orgmode.org/manual/var.html
 | 2 |
 | 3 |
 | 4 |
-
 #+NAME: table-length
 #+BEGIN_SRC emacs-lisp :var table=example-table
-(length table)
+  (length table)
 #+END_SRC
 
+#+RESULTS: table-length
+: 4
 
+** Using Elisp
+#+begin_src elisp
 
+  (setq org-pretty-entities t) 
+
+#+end_sr         
 
 
 * Working With Elasticsearch
@@ -92,7 +117,6 @@ POST /_search?pretty
   }
 }
 #+end_example
-
 
 ** Searching ES without parameters
 #+BEGIN_SRC es :method POST :url localhost:9200/_search?pretty
@@ -131,9 +155,6 @@ GET /twitter/_search?pretty&q=user:samples
 #+end_src
 
 
-
-
-
 ** Digging out logstash documents
 
 #+begin_src es :jq .hits.hits[0]
@@ -151,3 +172,4 @@ POST /_search_csv?pretty
 }
 #+END_SRC
    
+
