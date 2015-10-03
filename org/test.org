@@ -14,6 +14,7 @@
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 #+XSLT: 
 
+it works!...
 
 file:img/runningman.gif
 

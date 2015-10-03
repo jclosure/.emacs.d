@@ -1,0 +1,16 @@
+
+* cookbook: 
+http://emacswiki.org/emacs/ElispCookbook
+
+* creating symbols
+http://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Symbols.html
+
+symbol hashtable can be a specified obarray or the global one called "objarray" 
+
+* string quoting problem's inside lists
+
+http://stackoverflow.com/questions/9449364/elisp-alist-and-strings-type-confusion
+
+* debugging
+
+If you need to figure out in more detail where your errors are coming from, try doing M-x toggle-debug-on-error or evaluate (setq debug-on-error t) to get a detailed backtrace.
