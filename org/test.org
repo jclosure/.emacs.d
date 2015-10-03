@@ -86,8 +86,7 @@ examples - http://orgmode.org/manual/var.html
 
   (setq org-pretty-entities t) 
 
-#+end_sr         
-
+#+end_src         
 
 * Working With Elasticsearch
 ** Searching ES

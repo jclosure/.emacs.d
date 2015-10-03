@@ -81,6 +81,31 @@ C-c p f
 # list colors and change faces
 # change themes
 
+*** recommendations about way to work
+**** use a cloud-synced folder for project work
+
+# This way it can be used from multiple locations and its backed up automatically.
+
+# I use google drive, but dropbox or similar will also work.
+https://www.google.com/drive/download/
+
+# Instructions:
+Install googledrivesync.exe
+It will put a folder at %USERPROFILE%\Google Drive
+Create a folder at %USERPROFILE%\Google Drive\projects
+Create a hard symlink from it into your profile directory
+
+# Example Command:
+C:\Users\Joel>mklink /J C:\Users\Joel\projects "C:\Users\Joel\Google Drive\proje
+cts"
+
+# Output:
+Junction created for C:\Users\Joel\projects <<===>> C:\Users\Joel\Google Drive\p
+rojects
+
+# now you can develop your projects in subdirectories of:
+C:\Users\Joel\projects
+
 
 ** DONE installing python
 CLOSED: [2015-10-01 Thu 22:45]
