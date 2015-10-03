@@ -1,0 +1,15 @@
+
+* things to know about orgmode
+
+** Keys
+
+# <S[TAB] 
+
+will stub out a babel source block
+
+** Config file
+
+# location
+
+~/.emacs.d/customizations/my-orgmode.el
+

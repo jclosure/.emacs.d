@@ -782,7 +782,10 @@
 
 
 
-;; comment/uncomment keybindings - work in gui - test in shell
+;; comment/uncomment keybindings
+;; normally:
+;; C-/ for undo
+;; C-S-/ for redo
 (global-set-key (kbd "C-S-c") 'comment-region)
 (global-set-key (kbd "C-S-u") 'uncomment-region)
 

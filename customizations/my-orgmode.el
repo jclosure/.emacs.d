@@ -61,6 +61,12 @@
 (setq org-hide-emphasis-markers t) ;; to hide the *,=, or / markers
 (setq org-pretty-entities t)       ;; to have \alpha, \to and others display as utf8 http://orgmode.org/manual/Special-symbols.html
 
+;; enable/disable subscripts and superscripts
+;;(setq org-export-with-sub-superscripts t)
+;; can be done on a single file with this header:
+;; #+OPTIONS: ^:nil
+
+
 ;; if you don't want normal auto src indentation from emacs  
 ;;(setq org-src-preserve-indentation t)
 
@@ -133,6 +139,75 @@
 
 ;; see arnaud's init.el file
 ;;(global-set-key (kbd "C-c g") 'org-git-insert-link-interactively)
+
+
+
+;;;;;;;;;;;;;;;;;;;;; PUBLISHING SETUP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; the publishing function!!!
+(load "ox-publish")
+
+;; to run execute:
+;;(org-export-blog)
+
+(ensure-directory "~/projects/blog/_posts")
+
+;; TODO: fix hard coded names and directories
+
+(setq org-publish-project-alist
+      '(
+        ("my-blog" ;; #1
+         :base-directory "~/.emacs.d/org"
+         :publishing-directory "~/projects/blog/_posts"
+         :publishing-function org-html-publish-to-html
+         :preparation-function (lambda () (mapcar 'pn-expand-blog-file (pn-select-blog-files)))
+         :completion-function pn-delete-blog-files
+         :table-of-contents nil
+         :html-extension "html"
+         :body-only t 
+         :exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
+         ))
+      )
+
+
+(defun org-export-blog ()
+  "1-click blog publishing"
+  (interactive)
+  ;;(org-capture nil "b")
+  (org-publish "my-blog")) ;; #2
+
+;;; publishing helpers
+
+(defun pn-get-property (prop)
+  (plist-get (cdr (assoc "my-blog" org-publish-project-alist)) prop)) ;; #3
+
+(defun pn-select-blog-files ()
+  (directory-files (pn-get-property :base-directory) t "\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"))
+
+(defun pn-delete-blog-files ()
+  (mapcar (lambda (file)
+            (kill-buffer (find-buffer-visiting file))
+            (delete-file file)) (pn-select-blog-files))
+  ) 
+(defun chomp (str)
+  "Chomp leading and trailing whitespace from STR."
+  (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
+                       str)
+    (setq str (replace-match "" t t str)))
+  str)
+
+(defun pn-delete-line ()
+  (delete-region (point) (progn (forward-line -1) (point))))
+
+(defun pn-expand-blog-file (file)
+  (with-current-buffer (find-file-noselect file)
+    (end-of-buffer)
+    (beginning-of-line)
+    (let ((root-file (chomp (thing-at-point 'line))))
+      (pn-delete-line)
+      (insert-file-contents root-file)
+      (delete-region (point) (line-end-position)))
+    (save-buffer)))
 
 
 

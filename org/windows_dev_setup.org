@@ -1,3 +1,26 @@
+#+TITLE: Windows Development Environment Setup
+#+AUTHOR: Joel Holder
+#+EMAIL: jclosure@gmail.com
+#+STARTUP: indent
+#+OPTIONS: ^:nil
+#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS: author:nil email:nil creator:nil timestamp:nil
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LANGUAGE: en
+#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
+
+
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="../css/worg.css" type="text/css" />
+#+XSLT: 
+
+-#+HTML_HEAD: <script type="text/javascript"><?php include ("libjs/layersmenu-browser_detection.js"); ?></script>
+-#+HTML_HEAD: <link rel="stylesheet" href="../layerstreemenu.css" type="text/css"></link>
+-#+HTML_HEAD: <script type="text/javascript" src="libjs/layerstreemenu-cookies.js"></script>
+
+
 
 * setting up a proper windows development environment
 
@@ -83,7 +106,7 @@ C-c p f
 
 *** recommendations about way to work
 **** use a cloud-synced folder for project work
-
+ 
 # This way it can be used from multiple locations and its backed up automatically.
 
 # I use google drive, but dropbox or similar will also work.
@@ -105,7 +128,6 @@ rojects
 
 # now you can develop your projects in subdirectories of:
 C:\Users\Joel\projects
-
 
 ** DONE installing python
 CLOSED: [2015-10-01 Thu 22:45]
@@ -257,3 +279,5 @@ you may re-evaluate code blocks over and over and they will overwrite the adjace
 ** TODO installing common lisp
 get sbcl
 install slime
+
+

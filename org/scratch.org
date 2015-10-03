@@ -1,2 +1,11 @@
 
+* foobar
 
+* blah
+
+* nar
+
+
+** link test
+
+file:~/.emacs.d/.gitignore
