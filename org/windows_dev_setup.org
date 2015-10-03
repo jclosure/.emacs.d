@@ -5,8 +5,9 @@
 CLOSED: [2015-10-01 Thu 22:45]
 
 *** preparation
-**** set a HOME system environment variable
+**** set a HOME user-level environment variable
 HOME=%USERPROFILE% 
+note this may need to be hard-coded to C:\Users\<your_name>
 *** emacs program
 **** download emacs
 https://ftp.gnu.org/gnu/emacs/windows/
@@ -28,6 +29,24 @@ git clone https://github.com/jclosure/.emacs.d.git
 *** run emacs
 emacs will start up and detect missing packages that it needs to support development
 after it completes, you will have a fully functional emacs development environment
+
+**** emacs is too hard to learn
+
+# i want to make it's greatness more approachable and learnable
+
+**** quick feature walk through video
+
+# package listing and install
+# elisp evaluation in scratch
+# searching forward/backward
+# introduce buffers and files
+# introduce highlighting and indenting
+# introduce cut,paste
+# introduce frame, windows, and point
+# creating windows and moving around in them
+# list colors and change faces
+# change themes
+
 
 ** DONE installing python
 CLOSED: [2015-10-01 Thu 22:45]
