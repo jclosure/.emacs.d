@@ -369,7 +369,8 @@
 (global-set-key [f8] 'neotree-toggle)
 
 ;; add | between linenumbers
-(setq linum-format "%4d \u2502 ")
+;;(setq linum-format "%4d \u2502 ")
+(setq linum-format "%4d ")
 (linum-mode)
 
 ;; THEMES
@@ -769,3 +770,38 @@
 (setq tramp-default-method "scp")
 ;; example: C-x C-f /user@your.host.com:/path/to/file
 ;; If you don't want to enter your password every time you open or save a file consider using Public Key Authentication.
+
+
+
+;; nyan mode
+;; (defun toggle-nyan-mode (&optional frame)
+;;   (when (display-graphic-p frame)
+;;       (nyan-mode t)))
+;; (add-hook 'after-init-hook 'toggle-nyan-mode)
+;; (add-hook 'after-make-frame-functions 'toggle-nyan-mode)
+
+
+
+;; comment/uncomment keybindings - work in gui - test in shell
+(global-set-key (kbd "C-S-c") 'comment-region)
+(global-set-key (kbd "C-S-u") 'uncomment-region)
+
+
+
+;;;; recursive grep with helm
+
+;; You could try helm-do-grep. Calling it with a prefix arg gives you a recursive grep, as explained in the Helm Wiki.
+
+;; If you want to launch helm-do-grep recursively without starting helm-find-files, do:
+
+;; C-u helm-command-prefix-key M-g s
+
+;; NOTE: If you forget to hit C-u before M-g s you can do it after file selection.
+
+;; You will be prompted for selecting in which category of files to search: Use the wilcard syntax like *.el for example (search in only .el files).
+
+;; By default, the extension of the file at point is used when the cursor is on a filename. If the cursor is at root of a directory, all the filename extensions found in the directory and not matching grep-find-ignored-files are inserted into the prompt.
+;; Try it like so:
+
+;; C-u helm-command-prefix-key M-g s
+
