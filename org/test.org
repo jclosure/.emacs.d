@@ -14,7 +14,9 @@
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 #+XSLT: 
 
-asdf
+
+file:img/runningman.gif
+
 
 * Tasks
 ** DONE Start a new org file

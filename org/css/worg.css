@@ -117,7 +117,9 @@
     text-align: right;
     /* ensure doesn't flow off the screen when expanded */
     max-height: 80%;
-    overflow: auto; }
+    overflow: auto;
+    z-index: 9999;
+  }
     #table-of-contents h2 {
       font-size: 12pt;
       max-width: 9em;

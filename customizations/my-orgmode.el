@@ -180,13 +180,6 @@
   (ensure-directory blog-base-directory)
   (ensure-directory blog-publishing-directory)
 
-  ;; ;; precopy asset directories
-  ;; (copy-directory
-  ;;  (concat (file-name-as-directory blog-base-directory) "css")
-  ;;  (concat (file-name-as-directory blog-publishing-directory) "css"))
-  ;; (copy-directory
-  ;;  (concat (file-name-as-directory blog-base-directory) "img")
-  ;;  (concat (file-name-as-directory blog-publishing-directory) "img"))
 
   ;; publishing configuration
   ;; TODO: fix hard coded names and directories
