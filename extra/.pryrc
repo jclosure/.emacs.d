@@ -16,3 +16,7 @@ Pry.config.exception_handler = proc do |output, exception, _|
     output.puts "#{exception.class}: #{exception.message}"
     output.puts "from #{exception.backtrace.first}"
 end
+
+## note awesome_print should be installed for nice printing
+require "awesome_print"
+AwesomePrint.pry!

@@ -4,6 +4,9 @@
 ;; inspired by see ref:
 ;; source: http://mescal.imag.fr/membres/arnaud.legrand/misc/init.php
 
+;; dealing with conflicts, e.g. windmove, yasnippets, etc..
+;; ref: http://orgmode.org/manual/Conflicts.html
+
 ;; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
 (use-package org
              :defer t

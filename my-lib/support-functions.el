@@ -36,6 +36,11 @@ the current position of point, then move it to the beginning of the line."
     (when (eq pt (point))
       (beginning-of-line))))
 
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer t t))
 
 ;; for indenting and unindenting
 (defun my-indent-region (N)

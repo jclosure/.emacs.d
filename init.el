@@ -141,59 +141,69 @@
 ;; Ensure my packages are all installed
 
 (package-refresh-and-install 
-	;; global packages
+       
+        ;; global packages
         'dash
         'use-package
-		'tabbar
-		'tabbar-ruler
-		'ir-black-theme
-		'sublime-themes
-		'pretty-mode
-		'undo-tree
-		'workgroups2
-		'auto-complete
-		'neotree
-		'ido-ubiquitous
-		'smex
-		'projectile
-		'magit
-                'gist
+        'helm
+        'tabbar
+        'tabbar-ruler
+        'ir-black-theme
+        'sublime-themes
+        'pretty-mode
+        'undo-tree
+        'workgroups2
+        'auto-complete
+        'neotree
+        'ido-ubiquitous
+        'smex
+        'projectile
+        'helm-projectile
+        'magit
+        'gist
+        
         ;; general
-                'yaml-mode
-	;; web
-		'tagedit
-                'web-mode
-	;; clojure packages
-		'cider
-		'clojure-mode
-		'clojure-mode-extra-font-locking
-		'ac-cider
-		'company
-		'paredit
-		'rainbow-delimiters
-	;; c++ packages
-		'yasnippet
-		'auto-complete-c-headers
-		'iedit
-		'flymake-google-cpplint
-		'flymake-cursor
-		'google-c-style
-	;; python packages - make sure to run jedi:install-server (requires pip install virtualexnv)
-		'elpy
-		'jedi
+        'yaml-mode
+
+        ;; web
+        'tagedit
+        'web-mode
+
+        ;; clojure packages
+        'cider
+        'clojure-mode
+        'clojure-mode-extra-font-locking
+        'ac-cider
+        'company
+        'paredit
+        'rainbow-delimiters
+
+        ;; c++ packages
+        'yasnippet
+        'auto-complete-c-headers
+        'iedit
+        'flymake-google-cpplint
+        'flymake-cursor
+        'google-c-style
+
+        ;; python packages - make sure to run jedi:install-server (requires pip install virtualexnv)
+        'elpy
+        'jedi
+
         ;; ruby
-                'flymake-ruby
-                'inf-ruby
-                'robe
-                'haml-mode
-                'projectile-rails
+        'flymake-ruby
+        'inf-ruby
+        'robe
+        'haml-mode
+        'projectile-rails
+
         ;; node
-                'sws-mode
-                'jade-mode
+        'sws-mode
+        'jade-mode
+
         ;; elasticsearch
-                'es-mode
-                'logstash-conf
-)
+        'es-mode
+        'logstash-conf)
 
 
 (require 'use-package)
@@ -247,12 +257,22 @@
 
 
 
-; GLOBAL STUFF
+;;; GLOBAL STUFF
 
+;; turning company-mode on globally
 (global-company-mode t)
 
-(setq scroll-step 1) ;; keyboard scroll one line at a time
+;; turning projectile on globally
+(projectile-global-mode)
+;; (setq helm-projectile-fuzzy-match nil)
+;; (require 'helm-projectile)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
+;; keyboard scroll one line at a time
+(setq scroll-step 1) 
+
+;; front of line jump fix
 (global-set-key (kbd "C-a") 'smart-line-beginning)
 
 ;; for use in xterm-256 console mode
@@ -406,39 +426,36 @@
 
 ;; RUBY
 
+;; (add-hook 'ruby-mode-hook 'inf-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
+;;(add-hook 'ruby-mode-hook 'start-robe)
 
+(add-hook 'ruby-mode-hook 'robe-mode)
 
-;; hooking up run-pry - see https://github.com/jacott/emacs-pry
-;;(add-hook 'after-init-hook 'inf-ruby-switch-setup)
-;;(add-to-list 'load-path "~/.emacs.d/vendor/emacs-pry")
-;(require 'pry)
+;; auto-complete from company in robe
+;; (eval-after-load 'company
+;;   '(push 'company-robe company-backends))
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
+;; rails support in projectile
+;; (projectile-global-mode)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
+(require 'inf-ruby)
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+(add-hook 'after-init-hook (lambda () (setq inf-ruby-default-implementation "pry"))) 
 
-  ;; (add-hook 'ruby-mode-hook 'inf-ruby)
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load)
-  
-  ;;(add-hook 'ruby-mode-hook 'start-robe)
-
-  (add-hook 'ruby-mode-hook 'robe-mode)
-
-  ;; (eval-after-load 'company
-  ;;  '(push 'company-robe company-backends))
-  ;; (add-hook 'robe-mode-hook 'ac-robe-setup)
-  ;; (add-hook 'projectile-mode-hook 'projectile-rails-on)
-  ;; ;;connects to localhost:????
-  ;; (push 'company-robe company-backends)
- 
-  (require 'inf-ruby)
-  (setq inf-ruby-default-implementation "pry")
+;; note: to use ruby dev stuff
+;; M-x inf-ruby
+(global-set-key (kbd "C-c r r") 'inf-ruby)
+;; M-x robe-start
 
 ;; NODE
 ;; jade
 (require 'sws-mode)
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
-
 
 
 ;CLOJURE STUFF

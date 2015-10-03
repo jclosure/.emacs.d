@@ -33,6 +33,28 @@ after it completes, you will have a fully functional emacs development environme
 **** emacs is too hard to learn
 
 # i want to make it's greatness more approachable and learnable
+# reasons people come up with not to learn emacs: 
+
+http://c2.com/cgi/wiki?WhyNotUseEmacs
+
+#  emacs quotelines:
+
+http://www.emacswiki.org/emacs/EmacsKoans
+
+An old master asked on the newsgroup: What is the best question a newbie can ask about Emacs?
+
+The newbie answered: What is Emacs?
+
+
+A newbie asked on the newsgroup: “What is the meaning of Emacs”?
+
+“What is the value of one parenthesis evaluating?”, answered the old masters. 
+
+
+A novice of the temple once approached the Master Programmer with a question: “Master, does Emacs have the Buddha nature?” the novice asked.
+
+The Master Programmer had been in the temple for many years and could be relied upon to know these things. He thought for several minutes before replying: “I don’t see why not. It’s bloody well got everything else.”
+
 
 **** quick feature walk through video
 
@@ -40,6 +62,18 @@ after it completes, you will have a fully functional emacs development environme
 # elisp evaluation in scratch
 # searching forward/backward
 # introduce buffers and files
+# bring in shell and show git
+git status
+git diff
+git log
+# Show integrated git (history and changes from base)
+git diff
+git log
+# introduce neotree and ido-mode
+F8
+# introduce projectile-helm for git projects
+C-c p f
+# introduce typing, undo, redo (tree & branching)
 # introduce highlighting and indenting
 # introduce cut,paste
 # introduce frame, windows, and point
@@ -129,8 +163,11 @@ this last command will offer to bind the devkit to your ruby install.  if you ha
 *** install baseline gems
 gem install bundler
 gem install rb-readline
+gem install awesome_print
 gem install pry
 gem install pry-byebug
+gem install pry-doc
+gem install rspec
 *** add .pryrc (do this only if your pry sessions hang in emacs)
 This is necessary because rb-readline apparently doesn't work well from inside Emacs.
 I have included a monkey-patched version that fixes this issue.

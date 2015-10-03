@@ -21,3 +21,4 @@ cider-history
 .smex-items
 .recentf
 backups/
+projectile.cache
