@@ -451,6 +451,10 @@
 (global-set-key (kbd "C-c r r") 'inf-ruby)
 ;; M-x robe-start
 
+
+
+
+
 ;; NODE
 ;; jade
 (require 'sws-mode)
@@ -759,3 +763,9 @@
 ; (require 'oneonone)
 ; (1on1-emacs)
 
+
+;; configure TRAMP (Transparent Remote (file) Access, Multiple Protocol) 
+(require 'tramp)
+(setq tramp-default-method "scp")
+;; example: C-x C-f /user@your.host.com:/path/to/file
+;; If you don't want to enter your password every time you open or save a file consider using Public Key Authentication.

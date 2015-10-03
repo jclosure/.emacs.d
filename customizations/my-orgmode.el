@@ -3,6 +3,7 @@
 
 ;; inspired by see ref:
 ;; source: http://mescal.imag.fr/membres/arnaud.legrand/misc/init.php
+;; source file: http://mescal.imag.fr/membres/arnaud.legrand/misc/init.org
 
 ;; dealing with conflicts, e.g. windmove, yasnippets, etc..
 ;; ref: http://orgmode.org/manual/Conflicts.html
@@ -46,6 +47,11 @@
 (ensure-directory org-directory)
 (mapcar 'ensure-text-file org-agenda-files)
 
+;; more agenda stuff from arnaud
+(setq org-agenda-include-all-todo t)
+(setq org-agenda-include-diary t)
+
+
 ;; org cosmetics
 ;;(setq org-hide-leading-stars t)
 (setq org-startup-indented t)      ;; start org mode with identing (outline format instead of book)
@@ -77,3 +83,53 @@
 (add-hook 'org-shiftdown-final-hook 'windmove-down)
 (add-hook 'org-shiftright-final-hook 'windmove-right)
 
+;; list completion tracking - arnaud - look into
+;; see http://thread.gmane.org/gmane.emacs.orgmode/42715
+(eval-after-load 'org-list
+  '(add-hook 'org-checkbox-statistics-hook (function ndk/checkbox-list-complete)))
+
+(defun ndk/checkbox-list-complete ()
+  (save-excursion
+    (org-back-to-heading t)
+    (let ((beg (point)) end)
+      (end-of-line)
+      (setq end (point))
+      (goto-char beg)
+      (if (re-search-forward "\\[\\([0-9]*%\\)\\]\\|\\[\\([0-9]*\\)/\\([0-9]*\\)\\]" end t)
+            (if (match-end 1)
+                (if (equal (match-string 1) "100%")
+                    ;; all done - do the state change
+                    (org-todo 'done)
+                  (org-todo 'todo))
+              (if (and (> (match-end 2) (match-beginning 2))
+                       (equal (match-string 2) (match-string 3)))
+                  (org-todo 'done)
+                (org-todo 'todo)))))))
+
+
+;; DATE HELPER FUNCTIONS
+
+;; insert a date
+;;(global-set-key (kbd "C-c d") 'insert-date)
+(defun insert-date (prefix)
+    "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+    (interactive "P")
+    (let ((format (cond
+                   ((not prefix) "** %Y-%m-%d")
+                   ((equal prefix '(4)) "[%Y-%m-%d]"))))
+      (insert (format-time-string format))))
+
+;; insert date with timer
+;; (global-set-key (kbd "C-c t") 'insert-time-date)
+(defun insert-time-date (prefix)
+    "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+    (interactive "P")
+    (let ((format (cond
+                   ((not prefix) "[%H:%M:%S; %d.%m.%Y]")
+                   ((equal prefix '(4)) "[%H:%M:%S; %Y-%m-%d]"))))
+      (insert (format-time-string format))))
+
+;; see arnaud's init.el file
+;;(global-set-key (kbd "C-c g") 'org-git-insert-link-interactively)
