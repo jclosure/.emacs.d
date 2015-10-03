@@ -20,9 +20,6 @@
                ;; http://orgmode.org/manual/Handling-links.html#Handling-links
                (define-key global-map "\C-cl" 'org-store-link)
                (define-key global-map "\C-ca" 'org-agenda)
-               ;; more convenient link navigation
-               (define-key org-mode-map "\C-n" 'org-next-link)
-               (define-key org-mode-map "\C-p" 'org-previous-link))
              :config
              (progn
                (setq org-log-done t)
@@ -44,7 +41,11 @@
                   (makefile . t)))
                ;; To use this type <S and then TAB
                (add-to-list 'org-structure-template-alist
-                            '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>"))))
+                            '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")))
+             ;; more convenient link navigation
+             (define-key org-mode-map "\C-n" 'org-next-link)
+             (define-key org-mode-map "\C-p" 'org-previous-link))
+)
 
 
 ;; set default directory and agenda files for org
