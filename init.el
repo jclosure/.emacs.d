@@ -349,10 +349,27 @@
       (define-key input-decode-map "\e\e[X" [M-f12])))
 
 
+;;; windmove configuration
 (windmove-default-keybindings)
+(setq windmove-wrap-around nil)
 
+;; Here I override the default user-error message because I don't think just because a window isn't there that it's an error.
+;; It was annoying me...
 
-(setq windmove-wrap-around t)
+;; Selects the window that's hopefully at the location returned by
+;; `windmove-other-window-loc', or screams if there's no window there.
+(defun windmove-do-window-select (dir &optional arg window)
+  "Move to the window at direction DIR.
+DIR, ARG, and WINDOW are handled as by `windmove-other-window-loc'.
+If no window is at direction DIR, an error is signaled."
+  (let ((other-window (windmove-find-other-window dir arg window)))
+    (cond ((null other-window)
+           (user-error ""))
+          ((and (window-minibuffer-p other-window)
+                (not (minibuffer-window-active-p other-window)))
+           (user-error "Minibuffer is inactive"))
+          (t
+           (select-window other-window)))))
 
 
 ;;turn on global goodies

@@ -11,8 +11,10 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+LANGUAGE: en
 #+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
-#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="../css/worg.css" type="text/css" />
-#+HTML: 
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
+#+XSLT: 
+
+asdf
 
 * Tasks
 ** DONE Start a new org file
@@ -45,6 +47,12 @@ something is \not \empty
 \ni ni
 \nu nu
 * Running code from multiple languages
+** Using Emacs Lisp
+#+begin_src emacs-lisp
+
+  (setq org-pretty-entities t) 
+
+#+end_src         
 ** Using python
 #+begin_src python
 import datetime
@@ -94,13 +102,6 @@ examples - http://orgmode.org/manual/var.html
 
 #+RESULTS: table-length
 : 4
-
-** Using Elisp
-#+begin_src elisp
-
-  (setq org-pretty-entities t) 
-
-#+end_src         
 
 * Working With Elasticsearch
 ** Searching ES
@@ -185,4 +186,5 @@ POST /_search_csv?pretty
 }
 #+END_SRC
    
+
 

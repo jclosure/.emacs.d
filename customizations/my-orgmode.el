@@ -5,6 +5,9 @@
 ;; source: http://mescal.imag.fr/membres/arnaud.legrand/misc/init.php
 ;; source file: http://mescal.imag.fr/membres/arnaud.legrand/misc/init.org
 
+;; good examples:
+;; https://pavpanchekha.com/blog/org-mode-publish.html
+
 ;; dealing with conflicts, e.g. windmove, yasnippets, etc..
 ;; ref: http://orgmode.org/manual/Conflicts.html
 
@@ -13,8 +16,13 @@
              :defer t
              :init
              (progn
+               ;; handling links
+               ;; http://orgmode.org/manual/Handling-links.html#Handling-links
                (define-key global-map "\C-cl" 'org-store-link)
-               (define-key global-map "\C-ca" 'org-agenda))
+               (define-key global-map "\C-ca" 'org-agenda)
+               ;; more convenient link navigation
+               (define-key org-mode-map "\C-n" 'org-next-link)
+               (define-key org-mode-map "\C-p" 'org-previous-link))
              :config
              (progn
                (setq org-log-done t)
@@ -32,12 +40,12 @@
                   (octave . t)
                   (sqlite . t)
                   (perl . t)
-                  (lilypond . t)
                   (org . t)
                   (makefile . t)))
                ;; To use this type <S and then TAB
                (add-to-list 'org-structure-template-alist
                             '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>"))))
+
 
 ;; set default directory and agenda files for org
 (setq org-directory "~/org/")
@@ -150,64 +158,92 @@
 ;; to run execute:
 ;;(org-export-blog)
 
-(ensure-directory "~/projects/blog/_posts")
+;; bootstrap publishing setup
+(progn
+  
 
-;; TODO: fix hard coded names and directories
+  (defun org-export-blog ()
+    "1-click blog publishing"
+    (interactive)
+    ;;(org-capture nil "b")
+    (org-publish "my-blog") ;; #1
+    (org-publish "my-blog-static")) 
 
-(setq org-publish-project-alist
-      '(
-        ("my-blog" ;; #1
-         :base-directory "~/.emacs.d/org"
-         :publishing-directory "~/projects/blog/_posts"
-         :publishing-function org-html-publish-to-html
-         :preparation-function (lambda () (mapcar 'pn-expand-blog-file (pn-select-blog-files)))
-         :completion-function pn-delete-blog-files
-         :table-of-contents nil
-         :html-extension "html"
-         :body-only t 
-         :exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
-         ))
-      )
+  ;; local prep work
 
+  ;; TODO: FACTOR OUT REPEATED DIR NAMES
+  
+  (setq blog-base-directory "~/projects/blog/posts")
+  (setq blog-publishing-directory "~/projects/blog/posts")
 
-(defun org-export-blog ()
-  "1-click blog publishing"
-  (interactive)
-  ;;(org-capture nil "b")
-  (org-publish "my-blog")) ;; #2
+  ;; make sure directories are there
+  (ensure-directory blog-base-directory)
+  (ensure-directory blog-publishing-directory)
+
+  ;; ;; precopy asset directories
+  ;; (copy-directory
+  ;;  (concat (file-name-as-directory blog-base-directory) "css")
+  ;;  (concat (file-name-as-directory blog-publishing-directory) "css"))
+  ;; (copy-directory
+  ;;  (concat (file-name-as-directory blog-base-directory) "img")
+  ;;  (concat (file-name-as-directory blog-publishing-directory) "img"))
+
+  ;; publishing configuration
+  ;; TODO: fix hard coded names and directories
+
+  (setq org-publish-project-alist
+        '(
+          ("my-blog" ;; #2
+           :base-directory "~/.emacs.d/org"
+           :publishing-directory "~/projects/blog/posts"
+           :publishing-function org-html-publish-to-html
+           :preparation-function (lambda () (mapcar 'pn-expand-blog-file (pn-select-blog-files)))
+           :completion-function pn-delete-blog-files
+           :table-of-contents nil
+           :html-extension "html"
+           :body-only nil
+           :recursive t
+           :exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
+           )
+          ("my-blog-static"
+           :base-directory "~/.emacs.d/org"
+           :publishing-directory "~/projects/blog/posts"
+           :publishing-function org-publish-attachment
+           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|gz\\|tar\\|zip\\|bz2\\|xz\\|tex\\|txt\\|html\\|scm\\|key\\|svg"
+           :recursive t)
+          ))
 
 ;;; publishing helpers
 
-(defun pn-get-property (prop)
-  (plist-get (cdr (assoc "my-blog" org-publish-project-alist)) prop)) ;; #3
+  (defun pn-get-property (prop)
+    (plist-get (cdr (assoc "my-blog" org-publish-project-alist)) prop)) ;; #3
 
-(defun pn-select-blog-files ()
-  (directory-files (pn-get-property :base-directory) t "\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"))
+  (defun pn-select-blog-files ()
+    (directory-files (pn-get-property :base-directory) t "\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"))
 
-(defun pn-delete-blog-files ()
-  (mapcar (lambda (file)
-            (kill-buffer (find-buffer-visiting file))
-            (delete-file file)) (pn-select-blog-files))
-  ) 
-(defun chomp (str)
-  "Chomp leading and trailing whitespace from STR."
-  (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
-                       str)
-    (setq str (replace-match "" t t str)))
-  str)
+  (defun pn-delete-blog-files ()
+    (mapcar (lambda (file)
+              (kill-buffer (find-buffer-visiting file))
+              (delete-file file)) (pn-select-blog-files))
+    ) 
+  (defun chomp (str)
+    "Chomp leading and trailing whitespace from STR."
+    (while (string-match "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'"
+                         str)
+      (setq str (replace-match "" t t str)))
+    str)
 
-(defun pn-delete-line ()
-  (delete-region (point) (progn (forward-line -1) (point))))
+  (defun pn-delete-line ()
+    (delete-region (point) (progn (forward-line -1) (point))))
 
-(defun pn-expand-blog-file (file)
-  (with-current-buffer (find-file-noselect file)
-    (end-of-buffer)
-    (beginning-of-line)
-    (let ((root-file (chomp (thing-at-point 'line))))
-      (pn-delete-line)
-      (insert-file-contents root-file)
-      (delete-region (point) (line-end-position)))
-    (save-buffer)))
+  (defun pn-expand-blog-file (file)
+    (with-current-buffer (find-file-noselect file)
+      (end-of-buffer)
+      (beginning-of-line)
+      (let ((root-file (chomp (thing-at-point 'line))))
+        (pn-delete-line)
+        (insert-file-contents root-file)
+        (delete-region (point) (line-end-position)))
+      (save-buffer)))
 
-
-
+  )

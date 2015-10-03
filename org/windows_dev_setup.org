@@ -11,15 +11,8 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+LANGUAGE: en
 #+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
-
-
-#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="../css/worg.css" type="text/css" />
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 #+XSLT: 
-
--#+HTML_HEAD: <script type="text/javascript"><?php include ("libjs/layersmenu-browser_detection.js"); ?></script>
--#+HTML_HEAD: <link rel="stylesheet" href="../layerstreemenu.css" type="text/css"></link>
--#+HTML_HEAD: <script type="text/javascript" src="libjs/layerstreemenu-cookies.js"></script>
-
 
 
 * setting up a proper windows development environment
