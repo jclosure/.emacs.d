@@ -808,6 +808,21 @@ If no window is at direction DIR, an error is signaled."
 
 
 
+;;; IRC CONFIGURATION
+
+(use-package erc
+  :ensure t
+  :defer t
+  :config
+  (setq erc-autojoin-channels-alist '(("freenode.net"
+                                       "#org-mode"
+                                       "#hacklabto"
+                                       "#emacs"))
+        erc-server "irc.freenode.net"
+        erc-nick "jclosure"))
+
+
+
 ;;;; recursive grep with helm
 
 ;; You could try helm-do-grep. Calling it with a prefix arg gives you a recursive grep, as explained in the Helm Wiki.
