@@ -11,6 +11,11 @@
 ;; dealing with conflicts, e.g. windmove, yasnippets, etc..
 ;; ref: http://orgmode.org/manual/Conflicts.html
 
+;; FIX SUBSCRIPT/SUPERSCRIPT
+;; http://emacs.stackexchange.com/questions/10549/org-mode-how-to-export-underscore-as-underscore-instead-of-highlight-in-html
+;; http://stackoverflow.com/questions/698562/disabling-underscore-to-subscript-in-emacs-org-mode-export
+
+
 ;; setup org mode - http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html
 (use-package org
              :defer t
@@ -184,6 +189,11 @@
             "\n</div>"))
   (setq org-html-format-drawer-function 'my-org-export-format-drawer)
 
+
+  (setf my-head-extra
+      (concat
+       "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+       "<link rel='stylesheet' href='css/main.css' />"))
   
   ;; local setup
   
@@ -206,7 +216,24 @@
            :html-extension "html"
            :body-only nil
            :recursive t
+           ;;:with-drawers t
+
+
+           :with-author t
+           :with-creator nil
+
+           :headline-level 4
+           :section-numbers nil
+           :with-toc t
            :with-drawers t
+
+           :html-link-home "/"
+           :html-preamble nil
+           :html-postamble t
+           :html-head-extra ,my-head-extra
+           :html-head-include-default-style nil
+           :html-head-include-scripts nil
+           
            ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
            )
           ("org-site-static"

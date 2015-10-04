@@ -2,10 +2,9 @@
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
 #+STARTUP: indent
-#+OPTIONS: ^:nil
-#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+OPTIONS: author:nil email:nil creator:nil timestamp:nil
+#+OPTIONS: d:t
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -38,6 +37,8 @@ http://orgmode.org/manual/Special-symbols.html
 ** Greek Alphabet: 
 meanings: http://www.greece.com/info/language/greek_alphabet/
 *** examples
+
+:Greek:
 Angles are written as Greek letters \alpha, \beta and \gamma.
 \alpha \to \omega
 something is \not \empty 
@@ -49,6 +50,8 @@ something is \not \empty
 \epsilon epsilon
 \ni ni
 \nu nu
+:END:
+
 * Running code from multiple languages
 ** Using Emacs Lisp
 #+begin_src emacs-lisp
@@ -62,11 +65,18 @@ import datetime
 today = datetime.date.today()
 return today
 #+end_src
+
+#+RESULTS:
+: 2015-10-04
+
 ** Using ruby
 #+begin_src ruby
   require 'date'
   "This file was last evaluated on #{Date.today}"
 #+end_src
+
+#+RESULTS:
+: This file was last evaluated on 2015-10-04
 
 ** Using clojure
 #+begin_src clojure
@@ -157,19 +167,62 @@ GET /
 #+begin_src es
 POST /twitter/tweet/
 {
-     "user" : "samples",
+     "user" : "jclosure",
      "@timestamp" : "2015-09-10T19:12:12-05:00",
-     "message" : "bye bye...",
+     "message" : "Hello all you my lovelies...",
      "foo" : "bar"
 }
 #+end_src
 
+#+RESULTS:
+: {"_index":"twitter","_type":"tweet","_id":"AVAxl3sTRUBzWRyZZIby","_version":1,"created":true}
+
 
 
 #+begin_src es
-GET /twitter/_search?pretty&q=user:samples
+GET /twitter/_search?pretty&q=user:jclosure
 {}
 #+end_src
+
+#+RESULTS:
+#+begin_example
+{
+  "took" : 18,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 0.5945348,
+    "hits" : [ {
+      "_index" : "twitter",
+      "_type" : "tweet",
+      "_id" : "AVAsFIBSRUBzWRyZZIbs",
+      "_score" : 0.5945348,
+      "_source":{
+     "user" : "jclosure",
+     "@timestamp" : "2015-09-10T19:12:12-05:00",
+     "message" : "bye bye...",
+     "foo" : "bar"
+}
+    }, {
+      "_index" : "twitter",
+      "_type" : "tweet",
+      "_id" : "AVAxl3sTRUBzWRyZZIby",
+      "_score" : 0.5945348,
+      "_source":{
+     "user" : "jclosure",
+     "@timestamp" : "2015-09-10T19:12:12-05:00",
+     "message" : "Hello all you my lovelies...",
+     "foo" : "bar"
+}
+    } ]
+  }
+}
+#+end_example
 
 
 ** Digging out logstash documents

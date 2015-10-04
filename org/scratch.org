@@ -2,7 +2,6 @@
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
 #+STARTUP: indent
-#+OPTIONS: d:t prop:t p:t
 
 
 * ASDFASDF
@@ -14,3 +13,19 @@ ASDFASDFASDFASDF
 :NOTES:
 Here's a note I don't want to export
 :END:
+
+* Solution
+
+The answer was right in front of your face
+
+:TAGLINE:
+
+It was just thousands of miles away from it
+
+Ok is more of a tag paragraph
+
+With some stuff in here..
+
+:END:
+
+Good thing bits can ride electrons, no?
