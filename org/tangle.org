@@ -1,0 +1,19 @@
+
+* setup init.el as an org-mode babel document
+
+the init file: 
+
+(package-initialize)
+(require 'ob-tangle)
+(org-babel-load-file "~/.emacs.d/emacs.org")
+
+source: https://github.com/pavpanchekha/dotfiles/blob/master/.emacs.d/emacs.org
+
+#+BEGIN_SRC emacs-lisp :tangle "~/.emacs.d/init.el"
+  (package-initialize)
+  (require 'ob-tangle)
+  (org-babel-load-file "~/.emacs.d/emacs.org")
+#+END_SRC
+
+source: https://raw.githubusercontent.com/pavpanchekha/dotfiles/master/.emacs.d/emacs.org
+

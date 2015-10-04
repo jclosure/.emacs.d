@@ -157,22 +157,22 @@
 (load "ox-publish")
 
 ;; to run execute:
-;;(org-export-blog)
+;;(org-export-site)
 
 ;; bootstrap publishing setup
 (progn
   
-  (defun org-export-blog ()
+  (defun org-export-site ()
     "1-click blog publishing"
     (interactive)
     ;;(org-capture nil "b")
-    (org-publish "my-blog")
-    (org-publish "my-blog-static")) 
+    (org-publish "org-site")
+    (org-publish "org-site-static")) 
 
   ;; local setup
   
   (setq blog-base-directory "~/.emacs.d/org")
-  (setq blog-publishing-directory "~/projects/blog/posts")
+  (setq blog-publishing-directory "~/projects/www/org-site")
 
   ;; make sure directories are there
   (ensure-directory blog-base-directory)
@@ -182,7 +182,7 @@
   ;; publishing configuration
   (setq org-publish-project-alist
         `(
-          ("my-blog"
+          ("org-site"
            :base-directory ,blog-base-directory
            :publishing-directory ,blog-publishing-directory
            :publishing-function org-html-publish-to-html
@@ -190,9 +190,9 @@
            :html-extension "html"
            :body-only nil
            :recursive t
-           :exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
+           ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
            )
-          ("my-blog-static"
+          ("org-site-static"
            :base-directory ,blog-base-directory
            :publishing-directory ,blog-publishing-directory
            :publishing-function org-publish-attachment
