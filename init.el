@@ -128,6 +128,9 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/" ) t)
+             
 ;(add-to-list 'package-archives
 ;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;(add-to-list 'package-archives
@@ -140,8 +143,15 @@
 
 ;; Ensure my packages are all installed
 
-(package-refresh-and-install 
-       
+(package-refresh-and-install
+
+        ;; testing
+
+        ;; from org repo because org-20150929 broken
+        ;; 
+        'org-plus-contrib 
+        
+ 
         ;; global packages
         'dash
         'use-package

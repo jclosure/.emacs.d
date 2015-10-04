@@ -21,6 +21,8 @@ add to jboss project
 #local example
 #java -cp "lib/commons-io-2.4.jar:lib/crud-router-1.0-SNAPSHOT.jar" com.amd.esb.cdr.XslTransformer camel_crud_ws.wsdl out.html wsdl-viewer.xsl
 
+#+begin_src sh
+
 
 wsdl=$1
 output=$2
@@ -35,6 +37,9 @@ if [[ -z "$wsdl" ]] || [[ -z "$output" ]] || [[ -z "$xsl" ]]; then
 fi
 
 java -cp "lib/commons-io-2.4.jar:lib/crud-router-1.0-SNAPSHOT.jar" com.amd.esb.cdr.XslTransformer "$wsdl" "$output" "$xsl"
+
+#+end_src
+
 ** emacs
 
 *** notions

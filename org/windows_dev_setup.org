@@ -2,17 +2,14 @@
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
 #+STARTUP: indent
-#+OPTIONS: ^:nil
-#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
-#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+OPTIONS: author:nil email:nil creator:nil timestamp:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+LANGUAGE: en
 #+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
-#+XSLT: 
 
 
 * setting up a proper windows development environment
@@ -31,13 +28,19 @@ https://ftp.gnu.org/gnu/emacs/windows/
 e.g. C:\emacs-24.5-bin-i686-mingw32
 this will be known as $EMACS_PATH
 **** install zlib
+
 http://www.zlib.net/
-copy zlib1.dll into $EMACS_PATH\bin\
+#+begin_src text
+  copy zlib1.dll into $EMACS_PATH\bin\    
+#+end_src
+
 *** emacs configuration
 **** get emacs to start in %HOME% by default
+
 create a shortcut to %EMACS_PATH\bin\runemacs on desktop
 go to it's properties
 set "start in:" to %HOME%
+
 **** get my preconfigured emacs configuration for development
 clone preconfigured emacs.d into %HOME%
 cd %HOME%

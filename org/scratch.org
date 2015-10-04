@@ -2,33 +2,8 @@
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
 #+STARTUP: indent
-#+OPTIONS: d:nil prop:t p:t
+#+OPTIONS: d:t prop:t p:t
 
-
-
-* Preparation
-  :PROPERTIES:
-  :task_id:  preparation
-  :ORDERED:  t
-  :END:
-* Training material
-  :PROPERTIES:
-  :task_id:  training_material
-  :ORDERED:  t
-  :END:
-** Markup Guidelines
-   :PROPERTIES:
-   :Effort:   2d
-   :END:
-** Workflow Guidelines
-   :PROPERTIES:
-   :Effort:   2d
-   :END:
-* Presentation
-  :PROPERTIES:
-  :Effort:   2d
-  :BLOCKER:  training_material @{ gapduration 1d @} preparation
-  :END:
 
 * ASDFASDF
 :LARP:
