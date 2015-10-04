@@ -20,6 +20,7 @@
                ;; http://orgmode.org/manual/Handling-links.html#Handling-links
                (define-key global-map "\C-cl" 'org-store-link)
                (define-key global-map "\C-ca" 'org-agenda)
+               )
              :config
              (progn
                (setq org-log-done t)
@@ -41,10 +42,10 @@
                   (makefile . t)))
                ;; To use this type <S and then TAB
                (add-to-list 'org-structure-template-alist
-                            '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>")))
-             ;; more convenient link navigation
-             (define-key org-mode-map "\C-n" 'org-next-link)
-             (define-key org-mode-map "\C-p" 'org-previous-link))
+                            '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>"))
+               ;; more convenient link navigation
+               (define-key org-mode-map "\C-n" 'org-next-link)
+               (define-key org-mode-map "\C-p" 'org-previous-link))
 )
 
 
@@ -67,8 +68,14 @@
 (setq org-alphabetical-lists t)
 (setq org-src-fontify-natively t)  ;; you want this to activate coloring in blocks
 (setq org-src-tab-acts-natively t) ;; you want this to have completion in blocks
-(setq org-hide-emphasis-markers t) ;; to hide the *,=, or / markers
+;;(setq org-hide-emphasis-markers t) ;; to hide the *,=, or / markers
 (setq org-pretty-entities t)       ;; to have \alpha, \to and others display as utf8 http://orgmode.org/manual/Special-symbols.html
+
+;; TESTING OUT!!!
+(add-hook 'org-mode-hook 'visual-line-mode)
+;;(add-hook 'org-mode-hook 'variable-pitch-mode)
+
+
 
 ;; enable/disable subscripts and superscripts
 ;;(setq org-export-with-sub-superscripts t)
@@ -164,37 +171,47 @@
   
   (defun org-export-site ()
     "1-click blog publishing"
-    (interactive)
+    ;;(interactive)
     ;;(org-capture nil "b")
-    (org-publish "org-site")
-    (org-publish "org-site-static")) 
+    (org-publish "org-site")) 
 
+
+  ;; custom html
+  (defun my-org-export-format-drawer (name content)
+    (concat "<div class=\"drawer " (downcase name) "\">\n"
+            "<h6>" (capitalize name) "</h6>\n"
+            content
+            "\n</div>"))
+  (setq org-html-format-drawer-function 'my-org-export-format-drawer)
+
+  
   ;; local setup
   
-  (setq blog-base-directory "~/.emacs.d/org")
-  (setq blog-publishing-directory "~/projects/www/org-site")
+  (setq site-base-directory "~/.emacs.d/org")
+  (setq site-publishing-directory "~/projects/www/org-site")
 
   ;; make sure directories are there
-  (ensure-directory blog-base-directory)
-  (ensure-directory blog-publishing-directory)
-
+  (ensure-directory site-base-directory)
+  (ensure-directory site-publishing-directory)
 
   ;; publishing configuration
   (setq org-publish-project-alist
         `(
-          ("org-site"
-           :base-directory ,blog-base-directory
-           :publishing-directory ,blog-publishing-directory
+          ("org-site"    :components ("org-site-docs" "org-site-static"))
+          ("org-site-docs"
+           :base-directory ,site-base-directory
+           :publishing-directory ,site-publishing-directory
            :publishing-function org-html-publish-to-html
            :table-of-contents nil
            :html-extension "html"
            :body-only nil
            :recursive t
+           :with-drawers t
            ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
            )
           ("org-site-static"
-           :base-directory ,blog-base-directory
-           :publishing-directory ,blog-publishing-directory
+           :base-directory ,site-base-directory
+           :publishing-directory ,site-publishing-directory
            :publishing-function org-publish-attachment
            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|gz\\|tar\\|zip\\|bz2\\|xz\\|tex\\|txt\\|html\\|scm\\|key\\|svg"
            :recursive t)
