@@ -165,82 +165,105 @@
 
 ;;;;;;;;;;;;;;;;;;;;; PUBLISHING SETUP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; RSS: http://emacs-doctor.com/blogging-from-emacs.html
+;;;      http://bastibe.de/2013-11-13-blogging-with-emacs.html
+
 ;;; the publishing function!!!
 (load "ox-publish")
+(load "ox-rss")
 
 ;; to run execute:
 ;;(org-export-site)
 
 ;; bootstrap publishing setup
-(progn
-  
-  (defun org-export-site ()
-    "1-click blog publishing"
-    ;;(interactive)
-    ;;(org-capture nil "b")
-    (org-publish "org-site")) 
 
 
-  ;; custom html
-  (defun my-org-export-format-drawer (name content)
-    (concat "<div class=\"drawer " (downcase name) "\">\n"
-            "<h6>" (capitalize name) "</h6>\n"
-            content
-            "\n</div>"))
-  (setq org-html-format-drawer-function 'my-org-export-format-drawer)
+(defun org-export-site ()
+  "1-click blog publishing"
+  ;;(interactive)
+  ;;(org-capture nil "b")
+  (org-publish "org-site")) 
 
 
-  (setf my-head-extra
+;; custom html
+(defun my-org-export-format-drawer (name content)
+  (concat "<div class=\"drawer " (downcase name) "\">\n"
+          "<h6>" (capitalize name) "</h6>\n"
+          content
+          "\n</div>"))
+(setq org-html-format-drawer-function 'my-org-export-format-drawer)
+
+
+(setf my-head-extra
       (concat
        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
-       "<link rel='stylesheet' href='css/main.css' />"))
-  
-  ;; local setup
-  
-  (setq site-base-directory "~/.emacs.d/org")
-  (setq site-publishing-directory "~/projects/www/org-site")
+       "<link rel='stylesheet' href='css/main.css' />"
+       "<link rel='alternate' type='application/rss+xml'
+              href='http://mydomain.org/org-site.xml'
+              title='RSS feed for org-site at mydomain.org'>"))
 
-  ;; make sure directories are there
-  (ensure-directory site-base-directory)
-  (ensure-directory site-publishing-directory)
+;; local setup
 
-  ;; publishing configuration
-  (setq org-publish-project-alist
-        `(
-          ("org-site"    :components ("org-site-docs" "org-site-static"))
-          ("org-site-docs"
-           :base-directory ,site-base-directory
-           :publishing-directory ,site-publishing-directory
-           :publishing-function org-html-publish-to-html
-           :table-of-contents nil
-           :html-extension "html"
-           :body-only nil
-           :recursive t
-           ;;:with-drawers t
+(setq site-base-directory "~/.emacs.d/org")
+(setq site-publishing-directory "~/projects/www/org-site")
+(setq site-rss-publishing-directory (concat site-publishing-directory "/rss"))
 
+;; make sure directories are there
+(ensure-directory site-base-directory)
+(ensure-directory site-publishing-directory)
+(ensure-directory site-rss-publishing-directory)
 
-           :with-author t
-           :with-creator nil
+;; initialize
+;;(setq org-publish-project-alist (list))
+;; todo: use (add-to-list ...)
 
-           :headline-level 4
-           :section-numbers nil
-           :with-toc t
-           :with-drawers t
+;; publishing configuration
+(setq org-publish-project-alist
+      `(
+        ("org-site"
+         :components ("org-site-docs" "org-site-static" "org-site-rss")
+         )
+        ("org-site-docs"
+         :base-directory ,site-base-directory
+         :publishing-directory ,site-publishing-directory
+         :publishing-function org-html-publish-to-html
+         :table-of-contents nil
+         :html-extension "html"
+         :body-only nil
+         :recursive t
+         ;;:with-drawers t
 
-           :html-link-home "/"
-           :html-preamble nil
-           :html-postamble t
-           :html-head-extra ,my-head-extra
-           :html-head-include-default-style nil
-           :html-head-include-scripts nil
-           
-           ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
-           )
-          ("org-site-static"
-           :base-directory ,site-base-directory
-           :publishing-directory ,site-publishing-directory
-           :publishing-function org-publish-attachment
-           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|gz\\|tar\\|zip\\|bz2\\|xz\\|tex\\|txt\\|html\\|scm\\|key\\|svg"
-           :recursive t)
-          ))
-  )
+         ;; pretty drawers
+         :with-author t
+         :with-creator nil
+         :headline-level 4
+         :section-numbers nil
+         :with-toc t
+         :with-drawers t
+         :html-link-home "./"
+         :html-preamble nil
+         :html-postamble t
+         :html-head-extra ,my-head-extra
+         :html-head-include-default-style nil
+         :html-head-include-scripts nil
+         
+         ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
+         )
+        ("org-site-static"
+         :base-directory ,site-base-directory
+         :publishing-directory ,site-publishing-directory
+         :publishing-function org-publish-attachment
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|gz\\|tar\\|zip\\|bz2\\|xz\\|tex\\|txt\\|html\\|scm\\|key\\|svg"
+         :recursive t
+         )
+        ("org-site-rss"
+         :base-directory ,site-base-directory
+         :base-extension "org"
+         :publishing-directory ,site-rss-publishing-directory
+         :publishing-function (org-rss-publish-to-rss)
+         :html-link-home "http://mydomain.org/" ;;todo: ...
+         :html-link-use-abs-url t
+         )
+        )
+      )
+
