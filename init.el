@@ -164,6 +164,7 @@
         'auto-complete
         'neotree
         'ido-ubiquitous
+        'flx-ido ;;TESTING
         'smex
         'projectile
         'helm-projectile
@@ -884,6 +885,17 @@ If no window is at direction DIR, an error is signaled."
 
 )
 
+
+
+;;;;;;;;;; FLX-IDO (MORE POWERFUL)
+
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
 
 ;;;; recursive grep with helm
 
