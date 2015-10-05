@@ -1,26 +1,57 @@
 * todo
+:PROPERTIES:
+:ID:       52f3a6c1-0763-4993-8993-b87c098ff4fc
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
 
 ** zed shaw
+:PROPERTIES:
+:ID:       fdb5f69d-52d1-4fb7-8a8a-2f853b8a1da2
+:END:
 
 his secret writing tool
 go through c, the hardway
 
 ** try ein for python dev:
+:PROPERTIES:
+:ID:       5f5d5e6e-bccc-4716-9c83-d2db29e9c49c
+:END:
 https://github.com/tkf/emacs-ipython-notebook#readme
 
 ** org-mode publishing to html
+:PROPERTIES:
+:ID:       8ff07bef-12dc-4d28-b2fb-0874520a52e9
+:END:
 
 http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
 
 *** build site structure
+:PROPERTIES:
+:ID:       8493e08d-9a3a-4847-95b6-9822dd41dfd2
+:END:
 *** publish formulas with latex
+:PROPERTIES:
+:ID:       96623c70-85ee-4958-99fa-1ee1783cc595
+:END:
 *** publish code samples with syntax highlighting
+:PROPERTIES:
+:ID:       d8c342ea-eca0-40a2-92fc-578e417b4fcc
+:END:
 *** images and links (both relative and external)
+:PROPERTIES:
+:ID:       40b62b13-d7cb-4a19-856d-e0d40f3e7737
+:END:
 
 ** provide access to org-mode reference card in documentation
+:PROPERTIES:
+:ID:       1c689196-78e8-4306-86cd-295b085375c4
+:END:
 
 http://orgmode.org/orgcard.txt
 ** connect emacs buffer to javascript or clojurescipt fe
+:PROPERTIES:
+:ID:       5327b704-cc4e-4da7-9fcc-2429b8ee21de
+:END:
 
 live coding reflected in realtime
 possible node eng
@@ -31,15 +62,24 @@ serious collaborative shared process with multiple attached buffers
 not repl, buffer
 research slime experience and how it achieves
 ** lisp matrix math
+:PROPERTIES:
+:ID:       b2f265da-6f40-4ba1-82cb-f2cf0b7a485f
+:END:
 
 check scheme
 clojure
 
 *** spreadsheet as an i/o surface and hookup cell, row, and column through fn pipelining 
+:PROPERTIES:
+:ID:       dd4a80d2-8882-43e3-a0fb-233c907bccc0
+:END:
 
 read published paper and get code
 
 ** d3 ast visualization of normal human lanuage
+:PROPERTIES:
+:ID:       9fcc1d84-c90e-4d85-8ecc-c75416ccf1c7
+:END:
 
 pattern identification
 pattern visual overlaying to determine structural similarity
@@ -47,6 +87,9 @@ categorical pinning of nodes into graph model
 maybe store in neo
 
 ** concept space
+:PROPERTIES:
+:ID:       985e7e25-a157-42b1-b0bd-2107435972b3
+:END:
 
 algorithms to find k
 folding and fixing to categories
@@ -60,6 +103,9 @@ drill in/out
 d3
 
 ** emergent reality representation
+:PROPERTIES:
+:ID:       d51727cf-4965-4926-9f64-fdde3cb37b12
+:END:
 
 suskind how to think about what is and how works
 reality cascade
@@ -67,34 +113,55 @@ capture whiteboard
 evaluate from god's eye view
 
 *** a lifetime is a point
+:PROPERTIES:
+:ID:       591e1985-229e-4a11-ab5f-00262b9958ff
+:END:
 
 evaluate to innermost
 emmergent causality backward cascade
 
 *** church thesis
+:PROPERTIES:
+:ID:       0042ff22-645d-48a3-9be4-a9a07e16f23b
+:END:
 
 *** scoping and bounding
+:PROPERTIES:
+:ID:       0d82bc97-0211-4ce6-adb6-5cbc5d2d9e7f
+:END:
 
 a life time of closing over the state of previous experience (state)
 the notion of environment (initial state)
 feedback of execution changing environment (its not static)
 
 *** many lifetimes many points
+:PROPERTIES:
+:ID:       29bb9ca9-2cba-4f20-83a4-a1315baa8c3f
+:END:
 
 interacitivy between points
 
 *** the meaning of time
+:PROPERTIES:
+:ID:       bbbd2888-dde0-4814-aae1-a9053244db8f
+:END:
 
 the flow of execution
 change is evidence of time and evident
 
 *** similation and similacra
+:PROPERTIES:
+:ID:       4212fbb3-084f-472b-9940-ebf0cdc6d73c
+:END:
 
 us
 here
 now
 
 ** the meaning of let
+:PROPERTIES:
+:ID:       7f64dd88-a0a2-455a-87fe-a46004305cf4
+:END:
 
 let there be
 invoke into existence
@@ -106,6 +173,9 @@ energy (don't go into physics)
 wave forms and formulas
 
 ** write book in org-mode
+:PROPERTIES:
+:ID:       2c102cc6-f212-4466-a9aa-2f669c2a18fc
+:END:
 
 research
 publishing latex

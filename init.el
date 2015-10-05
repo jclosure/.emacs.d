@@ -122,21 +122,19 @@
 ;; --------------------------------------------------
 
 
-
-
 ;; Define package repositories
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/" ) t)
-             
+             '("org" . "http://orgmode.org/elpa/" ) t)            
 ;(add-to-list 'package-archives
 ;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;(add-to-list 'package-archives
 ;	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 
 ;; Initialize all the ELPA packages (what is installed using the packages commands)    
 (package-initialize)
@@ -213,7 +211,11 @@
 
         ;; elasticsearch
         'es-mode
-        'logstash-conf)
+        'logstash-conf
+
+        ;; latex
+        'latex-preview-pane
+)
 
 
 (require 'use-package)
@@ -831,6 +833,56 @@ If no window is at direction DIR, an error is signaled."
         erc-server "irc.freenode.net"
         erc-nick "jclosure"))
 
+
+
+;;;; LATEX CONFIGURATION
+
+;; http://www.latexbuch.de/install-latex-windows-7/#x1-160003.4
+
+(load "auctex.el" nil t t)
+(require 'tex-mik)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq TeX-PDF-mode t)
+
+(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+
+    ;; C-c once compiles the latex code
+    ;; C-c again View's it
+    ;; To enable smooth live previewing in emacs use latex-preview-pane-mode or latex-preview-pane-enable
+
+    ;; note: latex-preview-pane uses doc-view to render pdfs
+    ;; 
+    ;;       for latex-preview-pane to render pdf's, the following must be the case:
+    ;;       1. ghostscript must be installed and gswin64c.exe must be in the path 
+    ;;       2. you must be using emacs from the gui
+    ;;       3. emacs must be compiled with xpm support
+    ;;
+    ;;       once all of these criteria have been met the doc-view command becomes available and just works
+
+    ;; docview how to: http://www.gnu.org/software/emacs/manual/html_node/emacs/Document-View.html
+
+    ;; this tells docview what to use for rendering pdf (it's in my path)
+    (setq doc-view-ghostscript-program "gswin64c")
+
+
+    ;;; setup ghostscript as the devault viewer for "View" command, else it defaults to "start <default_prog>"
+    ;; (setq TeX-output-view-style '("^pdf$" "." "gswin64.exe %o"))
+    ;; (setq TeX-view-program-list
+    ;;       '(("GhostScript" "gswin64.exe %o")
+    ;;         ))
+    ;; (add-hook 'LaTeX-mode-hook
+    ;;             (lambda ()
+    ;;               (setq TeX-view-program-selection '((output-pdf "GhostScript")
+    ;;                                                  (output-dvi "Yap")))))
+
+)
 
 
 ;;;; recursive grep with helm

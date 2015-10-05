@@ -1,8 +1,18 @@
 * to blog
+:PROPERTIES:
+:ID:       b52fce09-5780-4a54-b464-b4bee9598e54
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** java generate wsdl documentation
+:PROPERTIES:
+:ID:       a3199249-8593-4d6b-a289-4fffc671db28
+:END:
 
 *** write up how to
+:PROPERTIES:
+:ID:       75175893-db0f-46ef-8ae3-97ecc6822419
+:END:
 
 xslt 
 transform class
@@ -12,6 +22,9 @@ build integration
 add to jboss project
 
 *** script
+:PROPERTIES:
+:ID:       d5c5101e-d6ec-405f-999f-222ba668db96
+:END:
 
 #todo: scrape wsdls from the cxf listing: http://localhost:8181/cxf/
 
@@ -41,8 +54,14 @@ java -cp "lib/commons-io-2.4.jar:lib/crud-router-1.0-SNAPSHOT.jar" com.amd.esb.c
 #+end_src
 
 ** emacs
+:PROPERTIES:
+:ID:       f115de9a-4013-417d-942c-f7bd924322bb
+:END:
 
 *** notions
+:PROPERTIES:
+:ID:       def186d9-f7a2-4a8f-86c9-b6e164f2dfb7
+:END:
 
 it's a hosted lisp operating system
 common across all operating systems (key board and portable muscle memory)
@@ -51,6 +70,9 @@ files are just a way to store off and recover scratch spaces
 it just happens to also have excellent text editing features, which makes it a great editor
 
 **** org mode
+:PROPERTIES:
+:ID:       1fd764da-6a3d-4ca5-8a47-2d1f098f27b3
+:END:
 
 its a great writer's tool - org-mode
 publishers tool - org-mode html
@@ -61,6 +83,9 @@ elasticsearch example
 it can also be a full featured ide
 
 **** features
+:PROPERTIES:
+:ID:       d32d86df-955c-4ea1-a056-38cf36ff8747
+:END:
 
 global company mode
 global autocomplete
@@ -71,61 +96,124 @@ bring the shell into the editor
 edit multiple languages
 
 ***** lisps
+:PROPERTIES:
+:ID:       67fdf82e-b0ea-45c7-aff4-64170fca2504
+:END:
  
 ****** elisp
+:PROPERTIES:
+:ID:       ee08fe6c-e031-44bc-afe0-81e66f4e17e3
+:END:
 
 ****** scheme
+:PROPERTIES:
+:ID:       5eec7b30-a713-4972-a08e-28fefb5220a5
+:END:
 
 ****** sbcl
+:PROPERTIES:
+:ID:       c699bb1c-869a-472e-b60b-ef38b2f13c98
+:END:
 
 ****** clojure
+:PROPERTIES:
+:ID:       20afa22e-663f-431c-8add-cb4d7c000fc2
+:END:
 
 **** c/cpp
+:PROPERTIES:
+:ID:       04a31b72-7786-41a3-8076-b15852fff7ef
+:END:
 
 ***** platform specific headers
+:PROPERTIES:
+:ID:       28a07e3e-1fef-4bd1-8977-5a42d08dc629
+:END:
 
 linux
 windows
 osx
 
 ***** linter, flymake, snippets
+:PROPERTIES:
+:ID:       c013ccad-3b23-4ca1-b820-153c3878e4fe
+:END:
 
 **** ruby
+:PROPERTIES:
+:ID:       3895d651-b19f-4c63-a9de-07bbe22b6a1e
+:END:
 
 ***** repl
+:PROPERTIES:
+:ID:       333ec591-5b3a-4d0e-9685-cd130a65c060
+:END:
 
 inf-ruby
 irb
 pry
 
 ****** readline hack for windows
+:PROPERTIES:
+:ID:       79ea5d4f-13e3-43d9-89fb-7750926a7739
+:END:
 
 ***** robe
+:PROPERTIES:
+:ID:       c6132daf-b376-48c9-a6bf-3531fbe3a0d5
+:END:
 
 ***** rails
+:PROPERTIES:
+:ID:       6a58e21e-3dac-4413-bbcc-91ca56895d60
+:END:
 
 **** python
+:PROPERTIES:
+:ID:       037f6933-8f59-4569-a08d-f75fd6b2bd9f
+:END:
 
 ***** python
+:PROPERTIES:
+:ID:       3d1f56eb-c268-4d73-b588-fa890cfcd761
+:END:
 
 ipython
 jupyter
 pylab
 
 ***** debugging
+:PROPERTIES:
+:ID:       eb2f106a-145f-4da1-b74c-aa1fbd68ef36
+:END:
 
 ipdb
 
 **** shell
+:PROPERTIES:
+:ID:       40c3232a-1284-421e-ad97-be273c123159
+:END:
 
 ***** bash
+:PROPERTIES:
+:ID:       55e5a49a-2434-4de0-a297-23acbed014ad
+:END:
 
 ***** cmd shell
+:PROPERTIES:
+:ID:       8d4c2adc-cab7-4092-a017-31c8be49d1ec
+:END:
 **** javascript
+:PROPERTIES:
+:ID:       bf0f5a9a-e277-4fa3-98b8-ca5ce9fffb59
+:END:
 
 node
 
 ** logstash_search
+:PROPERTIES:
+:ID:       5afee0b6-3842-4ce4-bf88-2dfc6faf3cd9
+:END:
 
 discuss problem
 solution approach
@@ -135,6 +223,9 @@ implementation
 kibana as a query sculpter
 
 *** emacs - all together
+:PROPERTIES:
+:ID:       edd4ea27-b7d5-41c5-950f-2bbf41315066
+:END:
 
 coding
 repl
@@ -143,12 +234,18 @@ testing
 shell  
 
 ** ldap_tester.py
+:PROPERTIES:
+:ID:       47263401-c181-419d-888f-fb6ed55820f7
+:END:
 
 put together project structure around it
 general purpose query tool
 reusable module
 
 ** nltk and pylab
+:PROPERTIES:
+:ID:       33bbcd3f-9e6f-4db0-92fc-c9070e61c1eb
+:END:
 
 walk through concepts stepwise
 matplotlib of text data
@@ -156,16 +253,25 @@ zipfs data
 debugging and repl
 
 ** pandas stock data
+:PROPERTIES:
+:ID:       e290783a-d85e-4271-931b-302ffafd2437
+:END:
 
 get code and show off feature set
 pyplot stock data
 api provider (can't remember name - look at code - starts with q I think)
 
 ** 6 new syntax
+:PROPERTIES:
+:ID:       54ffa313-947c-4494-9fe9-71ecb015af7f
+:END:
 
 var myvar = blah?foo?bar?baz ?? quux
 
 ** donkus
+:PROPERTIES:
+:ID:       5df7eb27-181f-43d7-b16c-58d1bc4de31a
+:END:
 
 lexing
 parsing

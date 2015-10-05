@@ -1,0 +1,16 @@
+
+* read
+:PROPERTIES:
+:ID:       34259475-cc78-4a5c-94a6-346b93b8cab3
+:PUBDATE:  <2015-10-05 Mon 02:09>
+:END:
+
+http://kieranhealy.org/resources/
+
+* setup latex in windows
+:PROPERTIES:
+:ID:       e76daf8d-e5f6-4d27-ae27-b2e48cd2210d
+:PUBDATE:  <2015-10-05 Mon 02:09>
+:END:
+
+http://www.latexbuch.de/install-latex-windows-7/

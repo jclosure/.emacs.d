@@ -1,5 +1,9 @@
 
 * setup init.el as an org-mode babel document
+:PROPERTIES:
+:ID:       4c6a479a-ef8d-4cfa-9421-a21f3a0ed194
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
 
 the init file: 
 

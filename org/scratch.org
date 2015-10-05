@@ -3,18 +3,34 @@
 #+EMAIL: jclosure@gmail.com
 #+STARTUP: indent
 
+* scratch pad
+:PROPERTIES:
+:ID:       838bcba3-880b-43a4-98c1-db5b03fb9275
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
 
-* ASDFASDF
+** ASDFASDF
+:PROPERTIES:
+:ID:       333eb482-b654-41bd-9685-98819f7a4ff9
+:END:
+
 :LARP:
 ASDFASDFASDFASDF
 :END:
 
-* Problem
+** Problem
+:PROPERTIES:
+:ID:       fff6f18d-4173-44b8-baa4-3af1f005daf4
+:END:
+
 :NOTES:
 Here's a note I don't want to export
 :END:
 
-* Solution
+** Solution
+:PROPERTIES:
+:ID:       85e40e2a-4c76-47dc-a674-13d6c3db5542
+:END:
 
 The answer was right in front of your face
 

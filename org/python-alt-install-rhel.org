@@ -1,6 +1,13 @@
 * install a specific version of python in rhel
+:PROPERTIES:
+:ID:       1c392cd6-e8f5-4021-92b4-458911ae60db
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** install python 2.x
+:PROPERTIES:
+:ID:       2a205801-1068-4d46-8917-274a68a3ee49
+:END:
 
 #!/bin/bash
 # Install Python 2.7.3 alternatively
@@ -41,14 +48,23 @@ Python 2.7.3
 Python 2.6.6
 
 ** install setup tools
+:PROPERTIES:
+:ID:       0e0e22c1-4d28-430b-91e4-6459c99cfff9
+:END:
 
 wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 
 ** install pip
+:PROPERTIES:
+:ID:       c077c102-8fbf-451e-9094-a11066b32422
+:END:
 
 curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python2.7 -
 
 ** install ipython
+:PROPERTIES:
+:ID:       7ef6d0b0-7627-4f13-96dd-75a5bac3d509
+:END:
 
 # Use pip to install ipython notebook
 pip install "ipython[notebook]"

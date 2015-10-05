@@ -1,5 +1,15 @@
 
 * to reads:
+:PROPERTIES:
+:ID:       640922bd-e852-499f-9199-c61bd3a8254b
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
 
 ** https://pavpanchekha.com/blog/stats1.html
+:PROPERTIES:
+:ID:       595edfbd-790a-4ae8-bb14-25266597ab2a
+:END:
 ** https://pavpanchekha.com/blog/emacs-keylogger.html
+:PROPERTIES:
+:ID:       a42be2ec-15ba-4a5b-82d7-e6184dd6b823
+:END:

@@ -1,15 +1,28 @@
 * DONE installing Java
   CLOSED: [2015-09-21 Mon 14:12]
+  :PROPERTIES:
+  :ID:       79db347f-5a41-4f70-92e8-aede47b2db20
+  :PUBDATE:  <2015-10-04 Sun 02:55>
+  :END:
 ** DONE download
    CLOSED: [2015-09-21 Mon 14:12]
+   :PROPERTIES:
+   :ID:       b398bdd3-9e29-4ee3-baea-7ffef9d0c496
+   :END:
 jdk-8u60-linux-x64.rpm
 
 ** DONE install
    CLOSED: [2015-09-21 Mon 14:12]
+   :PROPERTIES:
+   :ID:       670a250c-023d-4b27-b055-c3482b0d1107
+   :END:
 rpm -Uvh jdk-8u60-linux-x64.rpm
 
 ** DONE setup java
    CLOSED: [2015-09-21 Mon 14:12]
+   :PROPERTIES:
+   :ID:       ddfc42ad-76e4-4ede-8d6b-31979dd4aff4
+   :END:
 # Swap between OpenJDK and Sun/Oracle Java JDK/JRE
 
 alternatives --config java
@@ -44,6 +57,10 @@ export JAVA_HOME="/usr/java/jdk-8u60"
 
 
 * TODO install JCE Unlimited for JDK8
+:PROPERTIES:
+:ID:       4c4abdbc-f3e3-433b-9373-6292ce3608f8
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 download: http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
 backup original $JAVA_HOME/jre/lib/security
   cp -prv $JAVA_HOME/jre/lib/security $JAVA_HOME/jre/lib/security.bak
@@ -54,6 +71,10 @@ copy UnlimitedJCEPolicyJDK8/*.jar to $JAVA_HOME/jre/lib/security
 
 * DONE install bits
   CLOSED: [2015-09-21 Mon 14:12]
+  :PROPERTIES:
+  :ID:       b5d182c8-8d00-4def-bffe-993ab9ca584c
+  :PUBDATE:  <2015-10-04 Sun 02:55>
+  :END:
 cd /opt
 scp jholder@atlesbqv03:/opt/jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.GOLDEN.beta.3.tar.gz .
 tar xzvf jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.GOLDEN.beta.3.tar.gz
@@ -71,19 +92,40 @@ verify /data/esbdata/amq-6.2 nfs mount is owned and writable by jboss
 chown -R jboss:jboss /data/esbdata/amq-6.2
 
 * TODO configuration
+:PROPERTIES:
+:ID:       f2e856b8-a8cc-425e-a51a-4c6623c57fc6
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 ** point kahadb message store to shared storage backend
+:PROPERTIES:
+:ID:       dfe588fe-406b-4e9a-af90-bf6077c6aafe
+:END:
  
 
 * TODO issues
+:PROPERTIES:
+:ID:       b7c98cd6-d25d-4e84-9a94-150427a7cdd8
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** TODO disappearing browse option in hawtio
+:PROPERTIES:
+:ID:       937473d6-361a-41a9-bf38-423ffcdef256
+:END:
 https://access.redhat.com/support/cases/#/case/01511487
 https://access.redhat.com/support/cases/#/case/01496504
 
 *** fix
+:PROPERTIES:
+:ID:       2916fd97-c35b-425a-995f-02fa791e557c
+:END:
 in $AMQ_HOME/etc/auth/jmx.acl.org.apache.activemq.Broker.cfg 
 add to bottom:
 * = *
+:PROPERTIES:
+:ID:       ffafef97-ce89-4ac3-ae46-569782e018c3
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 if exists $AMQ_HOME/etc/auth/jmx.acl.org.apache.activemq.Broker._.cfg
 do the same as above
@@ -91,8 +133,14 @@ do the same as above
 service amq-service restart
 
 ** TODO research exceptions
+:PROPERTIES:
+:ID:       fd3cad07-14d3-4a70-959f-2a7397b2dae5
+:END:
 
 *** problem 1
+:PROPERTIES:
+:ID:       bea140e7-9fac-4c29-b330-66d7bfbdaeac
+:END:
 : org.apache.activemq:type=Broker,brokerName=amq
 javax.management.InstanceAlreadyExistsException: org.apache.activemq:type=Broker,brokerName=amq
         at com.sun.jmx.mbeanserver.Repository.addMBean(Repository.java:437)[:1.8.0_60]
@@ -114,12 +162,18 @@ javax.management.InstanceAlreadyExistsException: org.apache.activemq:type=Broker
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)[:1.8.0_60]
 
 **** solution
+:PROPERTIES:
+:ID:       e78db505-fba2-41ae-ac7e-d10cb741a54f
+:END:
 service amq-service stop
 cd $AMQ_HOME
 rm -rf data/*
 sertive amq-service start
 
 *** problem 2 (intermitten connection failure)
+:PROPERTIES:
+:ID:       3841e362-c34d-4a2f-8f21-63254f42ed0e
+:END:
 
 2015-09-24 16:52:19,563 | WARN  | 66.82:6626@61616 | TransportConnection              | ivemq.broker.TransportConnection  819 | 171 - org.apache.activemq.activemq-osgi - 5.11.0.redhat-620143 | Failed to add Connection ID:AUS-L8-JHOLDER-52187-635787057385992727-2:2009 due to javax.jms.InvalidClientIDException: Broker: amq - Client: ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22 already connected from tcp://10.236.66.82:6626
 2015-09-24 16:52:19,563 | DEBUG | 66.82:6626@61616 | Service                          | ivemq.broker.TransportConnection  340 | 171 - org.apache.activemq.activemq-osgi - 5.11.0.redhat-620143 | Error occured while processing sync command: ConnectionInfo {commandId = 23, responseRequired = true, connectionId = ID:AUS-L8-JHOLDER-52187-635787057385992727-2:2009, clientId = ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22, clientIp = tcp://10.236.66.82:6626, userName = esbtestadmin, password = *****, brokerPath = null, brokerMasterConnector = false, manageable = false, clientMaster = false, faultTolerant = true, failoverReconnect = true}, exception: javax.jms.InvalidClientIDException: Broker: amq - Client: ID:AUS-L8-JHOLDER-52187-635787057385992727-2010:22 already connected from tcp://10.236.66.82:6626

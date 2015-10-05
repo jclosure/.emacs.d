@@ -13,43 +13,142 @@
 
 
 * setting up a proper windows development environment
+:PROPERTIES:
+:ID:       114afc14-3106-4fa8-976b-88f7ae7a7d86
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
 
 ** DONE installing emacs
 CLOSED: [2015-10-01 Thu 22:45]
+:PROPERTIES:
+:ID:       b2c14f87-f49e-45e2-accf-0b7e8744929e
+:END:
 
 *** preparation
+:PROPERTIES:
+:ID:       e6c6348d-bfc5-4ab3-8ddd-cbc8a412125a
+:END:
 **** set a HOME user-level environment variable
+:PROPERTIES:
+:ID:       faaaa818-ee53-40be-ad10-545cb5c56f84
+:END:
 HOME=%USERPROFILE% 
 note this may need to be hard-coded to C:\Users\<your_name>
 *** emacs program
+:PROPERTIES:
+:ID:       03545263-14cf-4d03-b815-02c68b5133b0
+:END:
 **** download emacs
+:PROPERTIES:
+:ID:       d25cdbc1-2b2d-42a4-8ffe-e41ceae40fe6
+:END:
+
+if you want no PDF and Graphics support get:
 https://ftp.gnu.org/gnu/emacs/windows/
+
+if you do want PDF and Graphic Support get: (recommended)
+http://vgoulet.act.ulaval.ca/en/emacs/
+
 **** unpack and copy folder to c:\
+:PROPERTIES:
+:ID:       f3f995e4-d86d-4efb-a110-85791eadc8f0
+:END:
 e.g. C:\emacs-24.5-bin-i686-mingw32
 this will be known as $EMACS_PATH
-**** install zlib
+**** install dependencies, if not using vgoulet 
+:PROPERTIES:
+:ID:       d752d852-3625-4e3f-aeef-2babb9605072
+:END:
+
+only need to install deps if using stock emacs.  note: stock emacs is
+not compiled with xmp support, so graphics won't work
+
+32bit: http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/
+64bit: http://ftp.gnome.org/pub/gnome/binaries/win64/dependencies/
+
+
+***** install zlib
+:PROPERTIES:
+:ID:       b0f7de17-59dc-4a59-96b9-eecd29b2e411
+:END:
 
 http://www.zlib.net/
 #+begin_src text
   copy zlib1.dll into $EMACS_PATH\bin\    
 #+end_src
 
+***** install libpng
+:PROPERTIES:
+:ID:       97f81b12-5d38-4698-9e62-10d47e9bcd79
+:END:
+
+download http://ftp.gnome.org/pub/gnome/binaries/win64/dependencies/libpng_1.4.3-1_win64.zip
+
+copy the dll into $EMACS_HOME\bin
+
+***** optional install aspell
+:PROPERTIES:
+:ID:       73db7415-c7b3-4cf9-81dc-79e70d1f90d8
+:END:
+
+http://ftp.gnu.org/gnu/aspell/w32/Aspell-en-0.50-2-3.exe
+
+***** optional install imagemagick 
+:PROPERTIES:
+:ID:       1ce22e37-0e6b-42c9-807a-ddf6f723de41
+:END:
+
+http://imagemagick.org/script/binary-releases.php#windows
+***** pdf
+:PROPERTIES:
+:ID:       f320304a-07f6-49a1-a8c3-39f0ad5a40d4
+:END:
+****** install texlive
+:PROPERTIES:
+:ID:       5ce7fa26-5580-4c20-96f3-fe5fecf50b76
+:END:
+for MiKTeX install nec for PDFs
+****** install ghostscript
+:PROPERTIES:
+:ID:       0397a27b-2ea8-4baf-b73a-afd6d2e2a7c3
+:END:
+http://www.ghostscript.com/download/
+
+put it in path
+
+C:\Program Files\gs\gs9.16\bin
+
 *** emacs configuration
+:PROPERTIES:
+:ID:       9bb0d10f-5f80-4079-9177-53e831b30c45
+:END:
 **** get emacs to start in %HOME% by default
+:PROPERTIES:
+:ID:       3512cdad-1cb4-498c-b92f-9a944566bc7c
+:END:
 
 create a shortcut to %EMACS_PATH\bin\runemacs on desktop
 go to it's properties
 set "start in:" to %HOME%
 
 **** get my preconfigured emacs configuration for development
+:PROPERTIES:
+:ID:       5421b8a7-5a7d-47f0-8e36-f6020039f9fa
+:END:
 clone preconfigured emacs.d into %HOME%
 cd %HOME%
 git clone https://github.com/jclosure/.emacs.d.git
 *** run emacs
+:PROPERTIES:
+:ID:       4c34123d-28c0-4830-8d76-f61228b28060
+:END:
 emacs will start up and detect missing packages that it needs to support development
 after it completes, you will have a fully functional emacs development environment
 
 **** emacs is too hard to learn
+:PROPERTIES:
+:ID:       5de07641-0395-4d37-b1dc-e11e53f50c9c
+:END:
 
 # i want to make it's greatness more approachable and learnable
 # reasons people come up with not to learn emacs: 
@@ -76,6 +175,9 @@ The Master Programmer had been in the temple for many years and could be relied 
 
 
 **** quick feature walk through video
+:PROPERTIES:
+:ID:       c801db36-bd1f-4cb8-b491-4cbbef553e33
+:END:
 
 # package listing and install
 # elisp evaluation in scratch
@@ -101,7 +203,13 @@ C-c p f
 # change themes
 
 *** recommendations about way to work
+:PROPERTIES:
+:ID:       ca4abe04-462c-4565-a559-6d7b780b17c3
+:END:
 **** use a cloud-synced folder for project work
+:PROPERTIES:
+:ID:       3364b835-a135-4751-86fa-60b5cf826ca2
+:END:
  
 # This way it can be used from multiple locations and its backed up automatically.
 
@@ -127,71 +235,131 @@ C:\Users\Joel\projects
 
 ** DONE installing python
 CLOSED: [2015-10-01 Thu 22:45]
+:PROPERTIES:
+:ID:       46c545d2-bf34-4408-9ceb-857b4dea9612
+:END:
 
 *** download python
+:PROPERTIES:
+:ID:       b45859bf-4239-497c-a1ae-5ef5eb19cfa2
+:END:
 I prefer Winpython because it has a fully compiled version of scipy
 http://winpython.github.io/
 *** install python
+:PROPERTIES:
+:ID:       e8bc70c8-5c11-4d46-8918-0448e51c03e7
+:END:
 I will be using WinPython-64bit-2.7.10.2
 Run the executable you downloaded, it will ask where you want it installed.
 Select C:\WinPython-64bit-2.7.10.2 (or whatever version you have)
 *** add python directories to %PATH%
+:PROPERTIES:
+:ID:       67fab484-5d2c-40e4-bdfc-68719aed1342
+:END:
 add the following directories to the PATH variable under system
 C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64
 C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Scripts
 *** create a variable called PYTHONPATH 
+:PROPERTIES:
+:ID:       b8a65274-2e34-4656-827c-b66f26e9318e
+:END:
 My Computer > Properties > Advanced System Settings > Environment Variables >
 Then under system variables I create a new Variable called PYTHONPATH. 
 In this variable I have C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\DLLs;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib\lib-tk
 *** run python
+:PROPERTIES:
+:ID:       3962826e-cfd5-41b6-9a16-907dc1fd1822
+:END:
 from a cmd.exe prompt type: python
 good, it's working
 close it
 *** prep your python environment for emacs development
+:PROPERTIES:
+:ID:       986fa16b-4f93-4fc5-91d4-17be37d2a7c7
+:END:
 pip install virtualenv
 pip install epc
 pip install pyflakes
 pip install pyreadline
 *** adapt your emacs configuration to pickup the python directory
+:PROPERTIES:
+:ID:       880b444d-400c-42fe-9a78-6c5f778f662f
+:END:
 edit %HOME%\emacs.d\init.el
 **** set the variable python variables to pickup the correct directories for ipython-based repl development
+:PROPERTIES:
+:ID:       0c8c5cd4-aea3-4b90-9fab-15294b0e6f5d
+:END:
 (setq
   python-shell-interpreter "C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\python.exe"
   python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console")
 *** run emacs
+:PROPERTIES:
+:ID:       bbc556b2-f6c8-4c65-8c85-a56e6f77237f
+:END:
 create a file called test.py
 **** do M-x
+:PROPERTIES:
+:ID:       41a5aa18-8182-4973-b93b-6030852a2c49
+:END:
 jedi:setup
 **** type:
+:PROPERTIES:
+:ID:       87a9237d-4b80-4cf7-a52b-7aa64273da5e
+:END:
 addition = 2 + 2
 print 'hello ' + str(addition)
 **** save the file
+:PROPERTIES:
+:ID:       4ed65513-72eb-42c5-afaa-f440520ba9ec
+:END:
 **** do C-c, C-c
+:PROPERTIES:
+:ID:       7e85ed08-65c0-49cd-b032-3c4ab7b2d9f8
+:END:
 ipython repl buffer opens in a window and your code is evaluated
 type:
 addition
 it evaluates to 4
 *** you are cooking with python!
+:PROPERTIES:
+:ID:       28e52208-b369-4ef3-84fe-b526619eeae7
+:END:
 
 ** DONE installing ruby
 CLOSED: [2015-10-01 Thu 22:45]
+:PROPERTIES:
+:ID:       70fdf6d9-0004-4219-9c16-88e54120e96f
+:END:
 
 *** download ruby
+:PROPERTIES:
+:ID:       c6816e15-9f5c-448d-91a2-7fe5d014f874
+:END:
 I use the Ruby Installer for Windows
 http://rubyinstaller.org/downloads/
 use 2.2.3 or later
 Get the installer exe (I will be using Ruby 2.2.3 (x64).exe)
 Get the corresponding DevKit (I will be using DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe)
 *** install ruby
+:PROPERTIES:
+:ID:       dbe8240e-6ac7-43be-9a92-c3c3fefed02e
+:END:
 select:
 Install Tcl/Tk support
 Add Ruby executables to your PATH
 Associate .rb and .rbw files with this Ruby installation
 *** run ruby
+:PROPERTIES:
+:ID:       bad68bb4-f5e2-4038-ae94-f6603341f6b9
+:END:
 at cmd.exe prompt type:
 ruby -v
 goodness
 *** install DevKit
+:PROPERTIES:
+:ID:       e4515894-91ec-4406-8620-be965be2833f
+:END:
 You need MinGW environment available to compile native c dependencies for Ruby
 We will install it now
 double-click the exe
@@ -204,6 +372,9 @@ run:
 ruby dk.rb install
 this last command will offer to bind the devkit to your ruby install.  if you have multiple versions, it will allow you to select the one you want
 *** install baseline gems
+:PROPERTIES:
+:ID:       4359d9a1-8e24-45ba-a852-22ec4da1f61e
+:END:
 gem install bundler
 gem install rb-readline
 gem install awesome_print
@@ -212,16 +383,28 @@ gem install pry-byebug
 gem install pry-doc
 gem install rspec
 *** add .pryrc (do this only if your pry sessions hang in emacs)
+:PROPERTIES:
+:ID:       594405c4-b117-4f93-a3c2-251119de4f44
+:END:
 This is necessary because rb-readline apparently doesn't work well from inside Emacs.
 I have included a monkey-patched version that fixes this issue.
 just copy %HOME\.emacs.d\extra\.pryrc to %HOME%\
 *** use the repl
+:PROPERTIES:
+:ID:       2b6004e0-b397-4f5e-b5b0-aed6456b6adb
+:END:
 **** create a file called test.rb
+:PROPERTIES:
+:ID:       a6f47fd0-4e96-48e7-bda9-cb44e47811e9
+:END:
 type:
 addition = 2 + 2
 puts "hello #{addition}"
 save it: C-x C-s
 **** use the repl
+:PROPERTIES:
+:ID:       6c2628d6-a5d8-46d9-ace0-cd1918772e5f
+:END:
 do M-x: inf-ruby
 load the file into pry: C-x C-l
 it will print "hello 4"
@@ -229,39 +412,81 @@ in the repl type:
 addition
 it will evalue to 4
 *** congratulations, you're cooking with Ruby!
+:PROPERTIES:
+:ID:       f710dbfd-c4e0-4a21-a55a-fd99938338be
+:END:
 
 ** DONE install elasticsearch
 CLOSED: [2015-10-01 Thu 22:46]
+:PROPERTIES:
+:ID:       48d3d62f-6bff-4dc1-bb69-c0fb79e196d8
+:END:
 *** install the latest jdk from:
+:PROPERTIES:
+:ID:       f20dd6a7-b802-4adf-b3a3-6c810cb12537
+:END:
 **** if you don't already have it, get it from here:
+:PROPERTIES:
+:ID:       5e18babb-f3fb-4b22-be76-651fd2ae563a
+:END:
 http://www.oracle.com/technetwork/java/javase/downloads/index.html
 **** run the installer and let the defaults stand
+:PROPERTIES:
+:ID:       68d77b7f-56cd-496a-9501-d686cea7627d
+:END:
 **** make sure you have a %JAVA_HOME% environment variable set to the location where you installed the JDK
+:PROPERTIES:
+:ID:       3e49c8cf-fca2-47d7-a437-6abe16fae5fb
+:END:
 In my case I installed Java8, and it went here by default: C:\Program Files\Java\jdk1.8.0_60
 So I set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60
 *** download the latest zip version from:
+:PROPERTIES:
+:ID:       3bddc8cd-1e1a-4f2d-b76f-06f29be19ad7
+:END:
 https://www.elastic.co/downloads/elasticsearch
 I'm using elasticsearch-1.7.2
 *** unpack it to:
+:PROPERTIES:
+:ID:       e21d74ee-f7c7-4d17-925c-3e3aafdcdef4
+:END:
 C:\elasticsearch-1.7.2
 *** set it up as a service
+:PROPERTIES:
+:ID:       5705e710-5aa2-4900-b3e0-746f596af2a0
+:END:
 follow this simple guide:
 https://www.elastic.co/guide/en/elasticsearch/reference/1.3/setup-service-win.html
 **** summary:
+:PROPERTIES:
+:ID:       bd08ccbe-b4cd-454e-805a-68034fb190d9
+:END:
 cd C:\elasticsearch-1.7.2\bin
 service install
 service manage (the services.msc applet for ES will come up)
 **** setup
+:PROPERTIES:
+:ID:       a256ee82-c2fb-4aed-b9b4-e3e19e0fcd40
+:END:
 set as "Automatic" startup
 go ahead and start it for the first time by clicking start
 *** create a personal bin folder
+:PROPERTIES:
+:ID:       06470b20-6a18-44c2-80d4-53b519bacea6
+:END:
 create a directory called bin at %HOME%\bin
 put %HOME%\bin at the beginning of %PATH%
 *** download jq and put it in %HOME%\bin
+:PROPERTIES:
+:ID:       bf3a03da-3c97-42bf-9287-4a7551dd6a1b
+:END:
 get jq.exe from:
 https://stedolan.github.io/jq/download/
 copy it into %HOME%\bin
 *** use ES from Emacs org mode
+:PROPERTIES:
+:ID:       021c17aa-20eb-416f-b62f-4c76b883464e
+:END:
 in emacs open ~/emacs.d/org/test.org
 go down to the "Working With Elasticsearch" sections
 you can place your cursor inside each BEGIN_SRC block and run them with:
@@ -269,10 +494,19 @@ C-c C-c, it will prompt you in minibuffer to "evaluate this es code block on you
 the resulting response from ES will be be displayed directly below the code block in a RESULTS section
 you may re-evaluate code blocks over and over and they will overwrite the adjacent RESULTS section each time
 *** congratulations, you are cooking with ES development inside emacs
+:PROPERTIES:
+:ID:       57881ec1-8660-4947-8dfd-cfc2c6fc8c22
+:END:
 
 ** TODO installing clojure
+:PROPERTIES:
+:ID:       32ea7862-04bc-4344-bf31-a8c827a19e09
+:END:
 
 ** TODO installing common lisp
+:PROPERTIES:
+:ID:       01e1beb5-fa91-462e-a29d-b7b13cf30707
+:END:
 get sbcl
 install slime
 

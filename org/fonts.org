@@ -1,0 +1,15 @@
+
+* see what font displays a particular character
+:PROPERTIES:
+:ID:       7672b0df-424f-4d75-8070-2c19fa8ab48c
+:PUBDATE:  <2015-10-05 Mon 02:09>
+:END:
+
+** position point on the char
+:PROPERTIES:
+:ID:       51f47ee6-6f2d-4154-a11f-43a9df7c25c3
+:END:
+** C-u C-x =
+:PROPERTIES:
+:ID:       2af76c5d-2a9c-4ae8-84ad-3aa4fc909e07
+:END:

@@ -2,8 +2,15 @@
 
 * Ctags
 DEADLINE: <2015-10-15 Thu>
+:PROPERTIES:
+:ID:       141115e9-f663-4fc6-a5fb-37d5b1356ecf
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 https://github.com/danielsz/.emacs.d/blob/master/org-init.org
 
 ** 2015-10-03
+:PROPERTIES:
+:ID:       99ec635e-854e-42bc-8e45-54faf97fa465
+:END:
 

@@ -1,0 +1,9 @@
+
+* try this
+:PROPERTIES:
+:ID:       bb04d74a-fd9b-4543-ac0b-4e05eb95eab5
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
+
+
+http://emacs-doctor.com/blogging-from-emacs.html

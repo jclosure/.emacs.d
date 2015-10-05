@@ -1,13 +1,23 @@
 
 * things to know about orgmode
+:PROPERTIES:
+:ID:       e6171fe2-f9f6-4c99-8dd6-b30c1f36bcb0
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** Keys
+:PROPERTIES:
+:ID:       a3d3c73c-bfc6-4518-8840-c00991827f88
+:END:
 
 # <S[TAB] 
 
 will stub out a babel source block
 
 ** Config file
+:PROPERTIES:
+:ID:       4f9c6cf0-d738-475c-b0d1-22ba78303bce
+:END:
 
 # location
 

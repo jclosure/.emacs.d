@@ -1,6 +1,13 @@
 * importat reference materials
+:PROPERTIES:
+:ID:       e98ea0c1-73e8-4f78-b08b-47e2d3455bf6
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** org-mode keys reference card in documentation
+:PROPERTIES:
+:ID:       f255e7af-9bee-42e7-941f-6185c7c2b8d7
+:END:
 
 http://orgmode.org/orgcard.txt
 

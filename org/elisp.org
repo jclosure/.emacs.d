@@ -1,16 +1,32 @@
 
 * cookbook: 
+:PROPERTIES:
+:ID:       70388116-dda3-40e1-8e09-fcf44cc51261
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 http://emacswiki.org/emacs/ElispCookbook
 
 * creating symbols
+:PROPERTIES:
+:ID:       9f6a50f2-f47c-4b27-9627-a7e1737019a9
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 http://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Symbols.html
 
 symbol hashtable can be a specified obarray or the global one called "objarray" 
 
 * string quoting problem's inside lists
+:PROPERTIES:
+:ID:       0f190875-7d4c-463a-acb7-b54483c5218e
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 http://stackoverflow.com/questions/9449364/elisp-alist-and-strings-type-confusion
 
 * debugging
+:PROPERTIES:
+:ID:       eb07bad5-4c4b-4275-b1e5-79a5c7afdf57
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 If you need to figure out in more detail where your errors are coming from, try doing M-x toggle-debug-on-error or evaluate (setq debug-on-error t) to get a detailed backtrace.

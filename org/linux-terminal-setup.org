@@ -1,19 +1,42 @@
 How to setup Emacs, Putty, Tmux, and Bash for Great Goodness
 
 * Emacs
+:PROPERTIES:
+:ID:       998121fb-5cdc-47d4-b10e-7ea440ce2ba6
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 
 ** Keys
+:PROPERTIES:
+:ID:       40c1f64d-4aee-46e9-a1c6-ce42e2058a37
+:END:
 Putty Keymap
 
 ** wind move
+:PROPERTIES:
+:ID:       13151efc-adc5-43a7-b675-16dbd1314fd1
+:END:
 default keys
 
 * Terminal
+:PROPERTIES:
+:ID:       4fa79a93-93ba-4a69-a7a4-956f013226d4
+:PUBDATE:  <2015-10-04 Sun 02:55>
+:END:
 ** Emacs Themes
+:PROPERTIES:
+:ID:       d271f843-0b58-49a3-9780-a63cf0b2ac6a
+:END:
 In order for them to work fully and properly, set 
 **  Terminal setup
+:PROPERTIES:
+:ID:       f9e94979-3b86-446a-b4d2-44fa8a62429b
+:END:
 export TERM=xterm-256color
 ** Kitty
+:PROPERTIES:
+:ID:       0742675f-129b-43e1-93f1-a8d7aeb538b2
+:END:
 Fixes control key characters
 
 1:
@@ -36,5 +59,8 @@ set -g terminal-overrides "xterm*:kLFT2=\eOD:kRIT2=\eOC:kUP2=\eOA:kDN2=\eOB:smkx
 Now, everything will behave as normal through terminal sessions.
 
 *** you may want to remap C-x C-b in tmux because its a key from emacs
+:PROPERTIES:
+:ID:       3a888fc4-56ad-4eca-afa7-8a839ad3fba6
+:END:
 
  
