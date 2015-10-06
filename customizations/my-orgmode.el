@@ -167,7 +167,7 @@
 ;;;;;;;;;;;;;;;;;;;; LATEX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; (setq org-latex-create-formula-image-program 'imagemagick)
-(setq org-latex-create-formula-image-program 'dvipng)
+;; (setq org-latex-create-formula-image-program 'dvipng)
 
 
 ;;;;;;;;;;;;;;;;;;;;; HTML PUBLISHING SETUP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

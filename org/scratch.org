@@ -1,7 +1,43 @@
 #+TITLE: Org-Mode Scratch Pad
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
-#+STARTUP: indent
+#+STARTUP: indent latexpreview    
+
+- to publish the website:
+
+  do: M-x org-publish
+  then: org-site (that's the name of that I gave the site)
+
+- for starting with preview toggled on visable latex fragments use #+STARTUP: with
+  
+  latexpreview   preview LaTeX fragments
+  nolatexpreview don't preview LaTeX fragments
+
+- scaling latex preview: http://stackoverflow.com/questions/11272236/how-to-make-formule-bigger-in-org-mode-of-emacs
+- (setq org-format-latex-options (plist-put org-format-latex-options
+  :scale 2.0))
+- to view as latex fragments run: M-x org-toggle-latex-fragment with
+  point on the latex frag
+
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+
+
+
+* image meh
+
+
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+
+
+
 
 * scratch pad
 :PROPERTIES:
@@ -46,21 +82,3 @@ With some stuff in here..
 
 Good thing bits can ride electrons, no?
 
-
-
-* The gantt chart
-#+header: :fit yes :noweb yes :headers '("\\usepackage{pgfgantt}")
-#+BEGIN_SRC latex :exports results :file timeline.pdf
-  \begin {ganttchart} [hgrid=true, %
-     vgrid={ *{11}{blue, dotted}, *1{red} } %
-     ]{36}
-    \gantttitlelist {1,...,3}{12} \\
-    \gantttitlelist
-{1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12}{1}
- \\
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \ganttgroup [inline, group label inline anchor/.style=above right, group 
-label shape
-anchor=left] {Modelling}{1}{36} \\
-  \end {ganttchart}
-#+END_SRC
