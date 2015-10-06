@@ -283,7 +283,17 @@
 (helm-projectile-on)
 
 ;; keyboard scroll one line at a time
-(setq scroll-step 1) 
+
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; testing mouse setting: 
+;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+
+
+
 
 ;; front of line jump fix
 (global-set-key (kbd "C-a") 'smart-line-beginning)
@@ -893,9 +903,15 @@ If no window is at direction DIR, an error is signaled."
 (ido-mode 1)
 (ido-everywhere 1)
 (flx-ido-mode 1)
+
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+;; If don't want to use the flx's highlights you can turn them off like this:
+;;(setq flx-ido-use-faces nil)
+
+
 
 ;;;; recursive grep with helm
 

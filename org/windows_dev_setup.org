@@ -99,6 +99,10 @@ http://ftp.gnu.org/gnu/aspell/w32/Aspell-en-0.50-2-3.exe
 :END:
 
 http://imagemagick.org/script/binary-releases.php#windows
+
+for me:
+ftp://ftp.imagemagick.org/pub/ImageMagick/binaries/ImageMagick-6.9.2-3-Q16-x64-dll.exe
+
 ***** pdf
 :PROPERTIES:
 :ID:       f320304a-07f6-49a1-a8c3-39f0ad5a40d4

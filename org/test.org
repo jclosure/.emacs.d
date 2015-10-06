@@ -92,21 +92,24 @@ something is \not \empty
 :PUBDATE:  <2015-10-05 Mon 02:09>
 :END:
 
+# keys
+http://orgmode.org/manual/Previewing-LaTeX-fragments.html
 
 \begin{equation}
 x=\sqrt{b}
 \end{equation}
 
+* latex test
+asdfadf
 
-#+begin_src latex
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
 
-  \begin{equation}
-    x=\sqrt{b}
-  \end{equation}
+asdfadsf
 
-#+end_src
-
-
+* latex cod
+asdfasdfadfs
 * Running code from multiple languages
 :PROPERTIES:
 :ID:       ac7cb5aa-d4c7-4bc5-8bb6-b0f0b924392f

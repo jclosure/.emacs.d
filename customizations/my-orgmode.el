@@ -164,7 +164,13 @@
 
 
 
-;;;;;;;;;;;;;;;;;;;;; PUBLISHING SETUP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;; LATEX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (setq org-latex-create-formula-image-program 'imagemagick)
+(setq org-latex-create-formula-image-program 'dvipng)
+
+
+;;;;;;;;;;;;;;;;;;;;; HTML PUBLISHING SETUP ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; RSS: http://emacs-doctor.com/blogging-from-emacs.html
 ;;;      http://bastibe.de/2013-11-13-blogging-with-emacs.html

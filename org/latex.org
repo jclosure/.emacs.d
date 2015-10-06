@@ -1,3 +1,11 @@
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \usepackage{pgfgantt}
+#+LATEX_HEADER: \usepackage[AUTO]{inputenc}
+
+* examples source:
+texamples:
+http://www.texample.net/tikz/examples/
 
 * read
 :PROPERTIES:
@@ -14,3 +22,171 @@ http://kieranhealy.org/resources/
 :END:
 
 http://www.latexbuch.de/install-latex-windows-7/
+
+imagemagick or dvipng?
+http://orgmode.org/worg/org-tutorials/org-latex-export.html
+
+
+* bar chart
+#+header: :fit yes :noweb yes :headers '("\\usepackage{pgfplots}")
+#+Header: :exports results :file latex/bars.pdf
+#+begin_src latex
+% Bar charts
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\begin{tikzpicture}
+  \begin{axis}[title  = Contributions per category
+                          at LaTeX-Community.org,
+    xbar,
+    y axis line style = { opacity = 0 },
+    axis x line       = none,
+    tickwidth         = 0pt,
+    enlarge y limits  = 0.2,
+    enlarge x limits  = 0.02,
+    symbolic y coords = {LaTeX, Tools, Distributions, Editors},
+    nodes near coords,
+  ]
+  \addplot coordinates { (57727,LaTeX)         (5672,Tools)
+                         (2193,Distributions)  (11106,Editors) };
+  \addplot coordinates { (14320,LaTeX)         (1615,Tools)
+                         (560,Distributions)   (3075,Editors)  };
+  \legend{Topics, Posts}
+  \end{axis}
+\end{tikzpicture}
+#+end_src
+
+#+RESULTS:
+#+BEGIN_LaTeX
+[[file:bars.pdf]]
+#+END_LaTeX
+
+
+* doing math
+
+#+BEGIN_SRC latex :exports results :file latex/math.pdf
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+\begin{equation}
+
+\[
+e^{i\pi} = -1
+\]
+
+\[
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+
+\end{equation}
+
+
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_LaTeX
+[[file:sqrt.pdf]]
+#+END_LaTeX
+
+* tree of nodes to pdf
+#+header: :fit yes :noweb yes :headers '("\\usepackage{tikz}")
+#+header: :imagemagick yes :iminoptions -density 600 :imoutoptions -geometry 400 
+#+Header: :exports results :file latex/tree-of-nodes.pdf
+#+begin_src latex
+  \begin{tikzpicture}[sibling distance=10em,
+    every node/.style = {shape=rectangle, rounded corners,
+      draw, align=center,
+      top color=white, bottom color=blue!20}]]
+    \node {Formulas}
+    child { node {single-line} }
+    child { node {multi-line}
+      child { node {aligned at}
+        child { node {relation sign} }
+        child { node {several places} }
+        child { node {center} } }
+      child { node {first left,\\centered,\\last right} } };
+  \end{tikzpicture}
+#+end_src
+
+
+* tree to png
+
+#+header: :exports results :file latex/tree.png
+#+begin_src latex
+  \usetikzlibrary{trees}
+  \begin{tikzpicture}
+    \node [circle, draw, fill=red!20] at (0,0) {1}
+    child { node [circle, draw, fill=blue!30] {2}
+      child { node [circle, draw, fill=green!30] {3} }
+      child { node [circle, draw, fill=yellow!30] {4} }};
+  \end{tikzpicture}
+#+end_src
+
+#+RESULTS:
+#+BEGIN_LaTeX
+[[file:tree.png]]
+#+END_LaTeX
+
+
+
+* mindmap
+#+name: test_plot_png
+#+header: :exports results :file latex/mindmap.png 
+#+BEGIN_SRC latex
+ % Mindmap
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+\documentclass[border = 60pt]{standalone}
+\usepackage[landscape]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usepackage{metalogo}
+\usepackage{dtklogos}
+\begin{document}
+\begin{tikzpicture}
+  \path [
+    mindmap,
+    text = white,
+    level 1 concept/.append style =
+      {font=\Large\bfseries, sibling angle=90},
+    level 2 concept/.append style =
+      {font=\normalsize\bfseries},
+    level 3 concept/.append style =
+      {font=\small\bfseries},
+    tex/.style     = {concept, ball color=blue,
+      font=\Huge\bfseries},
+    engines/.style = {concept, ball color=green!50!black},
+    formats/.style = {concept, ball color=blue!50!black},
+    systems/.style = {concept, ball color=red!90!black},
+    editors/.style = {concept, ball color=orange!90!black}
+  ]
+  node [tex] {\TeX} [clockwise from=0]
+    child[concept color=green!50!black, nodes={engines}] {
+      node {Engines} [clockwise from=90]
+        child { node {\TeX} }
+        child { node {pdf\TeX} }
+        child { node {\XeTeX} }
+        child { node {Lua\TeX} }}
+    child [concept color=blue, nodes={formats}] {
+      node {Formats} [clockwise from=300]
+        child { node {\LaTeX} }
+        child { node {Con\TeX t} }}
+    child [concept color=red, nodes={systems}] {
+      node {Systems} [clockwise from=210]
+        child { node {\TeX Live} [clockwise from=300]
+          child { node {Mac \TeX} }}
+        child { node {MiK\TeX} [clockwise from=60]
+          child { node {Pro \TeX t} }}}
+    child [concept color=orange, nodes={editors}] {
+      node {Editors} };
+\end{tikzpicture}
+\end{document}
+#+END_SRC
+
+#+RESULTS: test_plot_png
+#+BEGIN_LaTeX
+[[file:mindmap.png]]
+#+END_LaTeX
+
+
+
