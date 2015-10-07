@@ -14,16 +14,13 @@
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 #+XSLT: 
 
-* Controlling what get's exported
-
-<nothing> #=> Exports codeblock only (default behavior) 
-:exports results #=> Exports only results
-:exports both #=> Exporse codeblock and results
-
-See below for examples
 
 
 * working with python code blocks
+:PROPERTIES:
+:ID:       75099537-fbe9-460c-afd2-db274a2d6404
+:PUBDATE:  <2015-10-07 Wed 14:53>
+:END:
 ** Interacting with python
 :PROPERTIES:
 :ID:       352754a9-023d-48c8-8d5d-8a0a6a28ea5f
@@ -78,4 +75,45 @@ See below for examples
 
 #+RESULTS:
 [[file:img/delseepy.png]]
+
+** Creating and calling code blocks
+:PROPERTIES:
+:ID:       485b5c57-7c68-4823-a7c3-abd11169648f
+:END:
+
+Here's a source block that executes automatically (modulo security)
+when we say ~M-x org-latex-export-to-pdf~
+
+#+Name: square
+#+header: :var x=0
+#+begin_src python :exports code
+  return x*x
+#+end_src
+
+#+call: square(7)
+
+
+
+** Emitting output and feeding input
+:PROPERTIES:
+:ID:       5519963d-2b44-481e-aef9-01cba0541a2e
+:END:
+
+Here's a block to generate a value
+#+name: get_value
+#+header: :var x=4
+#+begin_src python :exports code 
+  # x = 4  
+  return 3 + x
+#+end_src
+
+Here's a block that consumes the value
+#+name: square
+#+header: :var x=call: get_value :exports both
+#+begin_src python :exports code
+  return x*x
+#+end_src
+
+#+RESULTS: square
+: 49
 

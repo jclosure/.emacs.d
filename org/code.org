@@ -17,7 +17,6 @@
 
 file:img/runningman.gif
 
-
 * Tasks
 :PROPERTIES:
 :ID:       0da65840-8dee-4085-bc9d-985ebd7c3b87
@@ -123,6 +122,28 @@ e^{i\pi} = -1
 \[
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
 \]
+
+
+* Controlling what get's exported
+:PROPERTIES:
+:ID:       e8d1ac45-e75a-4cca-8326-de37085301c6
+:PUBDATE:  <2015-10-07 Wed 14:53>
+:END:
+
+** :exports code #=> Exports codeblock only (default behavior) 
+:PROPERTIES:
+:ID:       f307c0d8-f6c7-4c5c-b365-6c9539f376c5
+:END:
+** :exports results #=> Exports only results
+:PROPERTIES:
+:ID:       a21672e7-2dc0-419d-8ced-b4587501569f
+:END:
+** :exports both #=> Exporse codeblock and results
+:PROPERTIES:
+:ID:       afc89a8e-9523-4b89-82cb-9a44ec679b6e
+:END:
+
+See below for examples
 
 * Running code from multiple languages
 :PROPERTIES:
@@ -325,3 +346,68 @@ POST /_search_csv?pretty
    \begin{equation}
      x=\sqrt{b}
    \end{equation}
+
+* Crossing Language boundaries in blocks
+:PROPERTIES:
+:ID:       4a239992-09d4-4d23-9494-85ae4f3a3591
+:PUBDATE:  <2015-10-07 Wed 15:22>
+:END:
+
+** Emitting scalars output and feeding input
+:PROPERTIES:
+:ID:       5519963d-2b44-481e-aef9-01cba0541a2e
+:END:
+
+Here's a Ruby block to generate a scaler value
+#+name: get_value
+#+header: :var x=4 :exports both
+#+begin_src ruby
+  # x = 4  
+  3 + x
+#+end_src
+
+Step result
+#+RESULTS: get_value
+: 7
+
+
+
+Here's a Python block that consumes the scalar value
+#+name: square
+#+header: :var x=call: get_value :exports both
+#+begin_src python :exports code
+  return x*x
+#+end_src
+
+Final result
+#+RESULTS: square
+: 49
+
+
+** Emitting lists output and feeding input
+:PROPERTIES:
+:ID:       5519963d-2b44-481e-aef9-01cba0541a2e
+:END:
+
+Here's a Ruby block to generate a list
+#+name: get_list
+#+header: :exports both
+#+begin_src ruby
+  [1 , 2, 3]
+#+end_src
+
+
+
+Here's a Python block that consumes the list
+#+name: print_list
+#+header: :var x=call: get_list :exports both
+#+begin_src python :exports code
+  return x
+#+end_src
+
+Note that the list is output as an org table
+#+RESULTS: print_list
+| 1 | 2 | 3 |
+
+
+

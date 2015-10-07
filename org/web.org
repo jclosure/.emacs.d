@@ -1,0 +1,9 @@
+
+file:img/runningman.gif
+
+#+BEGIN_HTML
+<!-- injecting a snippet of html from inside the org doc -->
+<script>
+    (function(){alert("ding !");})();
+</script>
+#+END_HTML
