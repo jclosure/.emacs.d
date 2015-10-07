@@ -97,9 +97,14 @@ http://orgmode.org/manual/Previewing-LaTeX-fragments.html
 
 \begin{equation}
 x=\sqrt{b}
+
 \end{equation}
 
 * latex test
+:PROPERTIES:
+:ID:       a48792e9-1407-46fd-8edc-2b31b6521307
+:PUBDATE:  <2015-10-06 Tue 16:38>
+:END:
 asdfadf
 
 \begin{equation}
@@ -109,6 +114,10 @@ x=\sqrt{b}
 asdfadsf
 
 * latex cod
+:PROPERTIES:
+:ID:       3ce65779-ff57-4eef-a0ca-ffe2028001f6
+:PUBDATE:  <2015-10-06 Tue 16:38>
+:END:
 asdfasdfadfs
 * Running code from multiple languages
 :PROPERTIES:

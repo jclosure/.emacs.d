@@ -4,6 +4,10 @@
 #+LATEX_HEADER: \usepackage[AUTO]{inputenc}
 
 * examples source:
+:PROPERTIES:
+:ID:       684c63d2-d316-43cd-beaf-be5343903e23
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 texamples:
 http://www.texample.net/tikz/examples/
 
@@ -28,6 +32,10 @@ http://orgmode.org/worg/org-tutorials/org-latex-export.html
 
 
 * bar chart
+:PROPERTIES:
+:ID:       78079e9f-5f36-4c89-ad1e-75b6d33e1506
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 #+header: :fit yes :noweb yes :headers '("\\usepackage{pgfplots}")
 #+Header: :exports results :file latex/bars.pdf
 #+begin_src latex
@@ -62,6 +70,10 @@ http://orgmode.org/worg/org-tutorials/org-latex-export.html
 
 
 * doing math
+:PROPERTIES:
+:ID:       a168f861-b818-495a-8683-7bf64ef09298
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 
 #+BEGIN_SRC latex :exports results :file latex/math.pdf
 \begin{equation}
@@ -89,6 +101,10 @@ e^{i\pi} = -1
 #+END_LaTeX
 
 * tree of nodes to pdf
+:PROPERTIES:
+:ID:       8e125638-1ab8-4df7-9075-ddaeb91d2246
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 #+header: :fit yes :noweb yes :headers '("\\usepackage{tikz}")
 #+header: :imagemagick yes :iminoptions -density 600 :imoutoptions -geometry 400 
 #+Header: :exports results :file latex/tree-of-nodes.pdf
@@ -110,6 +126,10 @@ e^{i\pi} = -1
 
 
 * tree to png
+:PROPERTIES:
+:ID:       8ae94468-52ff-4c97-9174-855b2676879a
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 
 #+header: :exports results :file latex/tree.png
 #+begin_src latex
@@ -130,6 +150,10 @@ e^{i\pi} = -1
 
 
 * mindmap
+:PROPERTIES:
+:ID:       f481aca4-702c-4ef4-80ba-6ce6ef57c87f
+:PUBDATE:  <2015-10-06 Tue 16:39>
+:END:
 #+name: test_plot_png
 #+header: :exports results :file latex/mindmap.png 
 #+BEGIN_SRC latex

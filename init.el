@@ -171,6 +171,10 @@
         'magit
         'gist
         
+
+        ;; org
+        'org-gcal
+        
         ;; general
         'yaml-mode
 
@@ -910,6 +914,32 @@ If no window is at direction DIR, an error is signaled."
 
 ;; If don't want to use the flx's highlights you can turn them off like this:
 ;;(setq flx-ido-use-faces nil)
+
+
+;;;;;;;;;;;;; GOOGLE CALENDAR FOR ORG-MODE
+
+;; https://github.com/myuhe/org-gcal.el
+(setf my-gcal "~/projects/google/my-gcal.el")
+(if (file-exists-p my-gcal)
+    (progn
+      (defun my/org-gcal-notify (title mes)
+        (message "%s - %s" title mes))
+      (use-package org-gcal
+        :init (fset 'org-gcal-notify 'my/org-gcal-notify)
+        :config (load my-gcal))
+      ))
+
+
+
+;;;;;;;;;;;;;;;; windows tools
+
+;; (when (eq system-type 'windows-nt)
+;;   (setenv "CYGWIN" "nodosfilewarning")
+;;   ;; (setq shell-file-name "C:/emacs/libexec/emacs/24.4/i686-pc-mingw32/cmdproxy.exe")
+;;   (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
+;;   (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt nil t))
+
+
 
 
 

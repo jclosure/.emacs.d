@@ -22,3 +22,5 @@ cider-history
 .recentf
 backups/
 projectile.cache
+org-gcal/
+request/

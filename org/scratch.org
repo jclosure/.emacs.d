@@ -15,12 +15,12 @@
 
 - scaling latex preview: http://stackoverflow.com/questions/11272236/how-to-make-formule-bigger-in-org-mode-of-emacs
 - (setq org-format-latex-options (plist-put org-format-latex-options
-  :scale 2.0))
+  :scale 10.0))
 - to view as latex fragments run: M-x org-toggle-latex-fragment with
   point on the latex frag
 
 
-\begin{equation}
+\Begin{equation}
 x=\sqrt{b}
 \end{equation}
 
@@ -28,6 +28,10 @@ x=\sqrt{b}
 
 
 * image meh
+:PROPERTIES:
+:ID:       54f66d07-ea41-4a0e-ac35-f963a6497fc4
+:PUBDATE:  <2015-10-06 Tue 16:38>
+:END:
 
 
 
