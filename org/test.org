@@ -14,7 +14,6 @@
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 #+XSLT: 
 
-it works!...
 
 file:img/runningman.gif
 
@@ -86,39 +85,31 @@ something is \not \empty
 \in infinity
 :END:
 
-* LaTeX
+* LaTeX test
 :PROPERTIES:
-:ID:       0a45c0b0-b42f-4693-8e96-7dafef718f13
-:PUBDATE:  <2015-10-05 Mon 02:09>
+:ID:       f72a3c31-6db3-4cd7-9a0d-b35e0d0bbf62
+:PUBDATE:  <2015-10-06 Tue 10:51>
 :END:
 
-# keys
-http://orgmode.org/manual/Previewing-LaTeX-fragments.html
 
-\begin{equation}
-x=\sqrt{b}
-
-\end{equation}
-
-* latex test
-:PROPERTIES:
-:ID:       a48792e9-1407-46fd-8edc-2b31b6521307
-:PUBDATE:  <2015-10-06 Tue 16:38>
-:END:
-asdfadf
+formula 1:
 
 \begin{equation}
 x=\sqrt{b}
 \end{equation}
 
-asdfadsf
 
-* latex cod
-:PROPERTIES:
-:ID:       3ce65779-ff57-4eef-a0ca-ffe2028001f6
-:PUBDATE:  <2015-10-06 Tue 16:38>
-:END:
-asdfasdfadfs
+
+formula 2:
+
+\[
+e^{i\pi} = -1
+\]
+
+\[
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+
 * Running code from multiple languages
 :PROPERTIES:
 :ID:       ac7cb5aa-d4c7-4bc5-8bb6-b0f0b924392f
@@ -130,9 +121,10 @@ asdfasdfadfs
 :END:
 #+begin_src emacs-lisp
 
-  (setq org-pretty-entities t) 
+  (+ 2 2) 
 
 #+end_src         
+
 ** Using python
 :PROPERTIES:
 :ID:       445154ff-0d9e-453c-bf0a-f18261d24f47
@@ -143,9 +135,6 @@ today = datetime.date.today()
 return today
 #+end_src
 
-#+RESULTS:
-: 2015-10-04
-
 ** Using ruby
 :PROPERTIES:
 :ID:       5128d221-ff05-4933-8ca6-65de91effaa4
@@ -154,9 +143,6 @@ return today
   require 'date'
   "This file was last evaluated on #{Date.today}"
 #+end_src
-
-#+RESULTS:
-: This file was last evaluated on 2015-10-04
 
 ** Using clojure
 :PROPERTIES:
@@ -262,6 +248,7 @@ GET /
 #+END_SRC
 
 ** Creating and Searching for documents in ES for user data with local jq filter
+SCHEDULED: <2015-10-08 Thu>
 :PROPERTIES:
 :ID:       e364744f-5e38-4a6f-88f7-a1fe1bc7a469
 :END:
@@ -273,13 +260,13 @@ POST /twitter/tweet/
 {
      "user" : "jclosure",
      "@timestamp" : "2015-09-10T19:12:12-05:00",
-     "message" : "Hello all you my lovelies...",
+     "message" : "Hi Liz....",
      "foo" : "bar"
 }
 #+end_src
 
 #+RESULTS:
-: {"_index":"twitter","_type":"tweet","_id":"AVAxl3sTRUBzWRyZZIby","_version":1,"created":true}
+: {"_index":"twitter","_type":"tweet","_id":"AVA94UdKYRNKvUGoYQ0G","_version":1,"created":true}
 
 
 
@@ -288,45 +275,7 @@ GET /twitter/_search?pretty&q=user:jclosure
 {}
 #+end_src
 
-#+RESULTS:
-#+begin_example
-{
-  "took" : 18,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
-  },
-  "hits" : {
-    "total" : 2,
-    "max_score" : 0.5945348,
-    "hits" : [ {
-      "_index" : "twitter",
-      "_type" : "tweet",
-      "_id" : "AVAsFIBSRUBzWRyZZIbs",
-      "_score" : 0.5945348,
-      "_source":{
-     "user" : "jclosure",
-     "@timestamp" : "2015-09-10T19:12:12-05:00",
-     "message" : "bye bye...",
-     "foo" : "bar"
-}
-    }, {
-      "_index" : "twitter",
-      "_type" : "tweet",
-      "_id" : "AVAxl3sTRUBzWRyZZIby",
-      "_score" : 0.5945348,
-      "_source":{
-     "user" : "jclosure",
-     "@timestamp" : "2015-09-10T19:12:12-05:00",
-     "message" : "Hello all you my lovelies...",
-     "foo" : "bar"
-}
-    } ]
-  }
-}
-#+end_example
+
 
 
 ** Digging out logstash documents

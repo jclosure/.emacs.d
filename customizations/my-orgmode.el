@@ -166,6 +166,12 @@
 
 ;;;;;;;;;;;;;;;;;;;; LATEX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; previewing - scale up latex for bigness
+(add-hook 'org-mode-hook (lambda ()
+                           (setq org-format-latex-options
+                                 (plist-put org-format-latex-options :scale 4.0))))
+
+;; exporting
 ;; (setq org-latex-create-formula-image-program 'imagemagick)
 ;; (setq org-latex-create-formula-image-program 'dvipng)
 

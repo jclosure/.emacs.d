@@ -173,6 +173,7 @@
         
 
         ;; org
+        'gntp
         'org-gcal
         
         ;; general
@@ -726,20 +727,16 @@ If no window is at direction DIR, an error is signaled."
 
 ;; TABBAR
 (tabbar-mode t)
+(load "my-tabbar-style.el")
+
 (global-set-key [(control ?c) (left)] 'tabbar-backward)
 (global-set-key [(control ?c) (right)] 'tabbar-forward)
-;(load-file "~/.emacs.d/extra/init-tabbar.el")
-(load-file "~/.emacs.d/extra/my-tabbar-style.el")
-
-
 
 ;; these don't work in osx terminal becaues of need for C-S-kp-next
 (global-set-key (kbd "C-S-p") 'tabbar-backward-group)
 (global-set-key (kbd "C-S-n") 'tabbar-forward-group)
 (global-set-key (kbd "C-<") 'tabbar-backward)
 (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
-
-
 
 
 ;;;;
@@ -960,3 +957,19 @@ If no window is at direction DIR, an error is signaled."
 
 ;; C-u helm-command-prefix-key M-g s
 
+
+
+
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(coffee-tab-width 2)
+;;  '(tabbar-separator (quote (0.5))))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(tabbar-modified ((t (:inherit tabbar-default :foreground "red4" :box (:line-width 1 :color "white" :style released-button)))))c)
