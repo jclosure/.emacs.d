@@ -60,6 +60,7 @@
 (setq org-agenda-files (list "~/org/work.org"
                              "~/org/school.org" 
                              "~/org/home.org"))
+
 (ensure-directory org-directory)
 (mapcar 'ensure-text-file org-agenda-files)
 
@@ -171,7 +172,13 @@
                            (setq org-format-latex-options
                                  (plist-put org-format-latex-options :scale 4.0))))
 
-;; exporting
+
+;; toggling preview of latex fragments: http://comments.gmane.org/gmane.emacs.orgmode/88539
+;; the new behavior is just to toggle with: C-c C-x C-l
+;; org-preview-latex-fragment
+;; org-toggle-latex-fragment
+
+;; exporting latex code blocks
 ;; (setq org-latex-create-formula-image-program 'imagemagick)
 ;; (setq org-latex-create-formula-image-program 'dvipng)
 
@@ -220,6 +227,7 @@
 (setq site-base-directory "~/.emacs.d/org")
 (setq site-publishing-directory "~/projects/www/org-site")
 (setq site-rss-publishing-directory (concat site-publishing-directory "/rss"))
+
 
 ;; make sure directories are there
 (ensure-directory site-base-directory)

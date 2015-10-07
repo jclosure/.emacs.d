@@ -27,7 +27,7 @@
 :END:
 
 \begin{equation}
-x=\sqrt{b}
+b=\sqrt{b}*\sqrt{b}
 \end{equation}
 
 
@@ -39,6 +39,14 @@ x=\sqrt{b}
 :ID:       838bcba3-880b-43a4-98c1-db5b03fb9275
 :PUBDATE:  <2015-10-04 Sun 02:54>
 :END:
+
+* combinate
+
+#+begin_src emacs-lisp
+
+((λ (x) (x x)) (λ (x) (x x)))
+
+#+end_src
 
 ** ASDFASDF
 :PROPERTIES:
@@ -74,6 +82,4 @@ Ok is more of a tag paragraph
 With some stuff in here..
 
 :END:
-
-Good thing bits can ride electrons, no?
 
