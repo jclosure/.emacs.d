@@ -1,0 +1,327 @@
+#+TITLE: Code Examples in Org
+#+AUTHOR: Joel Holder
+#+EMAIL: jclosure@gmail.com
+#+STARTUP: indent
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS: author:nil email:nil creator:nil timestamp:nil
+#+OPTIONS: d:t
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LANGUAGE: en
+#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
+#+XSLT: 
+
+
+file:img/runningman.gif
+
+
+* Tasks
+:PROPERTIES:
+:ID:       0da65840-8dee-4085-bc9d-985ebd7c3b87
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
+** DONE Start a new org file
+   CLOSED: [2015-07-11 Sat 22:52]
+   :PROPERTIES:
+   :ID:       0d0e8f5b-0263-436d-a369-8330cd307c40
+   :END:
+** DONE Provide some working examples
+   CLOSED: [2015-07-15 Wed 11:34]
+   :PROPERTIES:
+   :ID:       2f2b0607-fc1f-46f7-92dc-88413a1c291b
+   :END:
+** DONE Have a cup of tea c
+   CLOSED: [2015-07-15 Wed 11:34]
+   :PROPERTIES:
+   :ID:       5e0647cc-3c50-4cdb-8efa-59261575a116
+   :END:
+** DONE Commit this example
+CLOSED: [2015-10-02 Fri 02:38]
+:PROPERTIES:
+:ID:       fe706c6e-ec1f-4120-b2d3-f7a4ac6770cf
+:END:
+
+** TODO Try org inline images
+:PROPERTIES:
+:ID:       7063080b-2b9d-48e8-bde7-cb0b8fc48f0c
+:END:
+this version of emacs has support for both win and osx:
+http://vgoulet.act.ulaval.ca/en/emacs/
+* Playing with pretty entities
+:PROPERTIES:
+:ID:       692d0394-c101-4a8a-b55c-a81f16cd0a3c
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
+** reference
+:PROPERTIES:
+:ID:       feaf00dd-26e7-4e56-9003-56b856a6be2e
+:END:
+http://orgmode.org/manual/Special-symbols.html
+** Greek Playing Around: 
+:PROPERTIES:
+:ID:       c7dd7ec5-5d6b-47b4-ab4f-f7bf2f41bd8d
+:END:
+meanings: http://www.greece.com/info/language/greek_alphabet/
+*** examples
+:PROPERTIES:
+:ID:       7ff6f685-42d5-4a4c-aaf4-6d656dbc66e1
+:END:
+
+:Greek:
+Angles are written as Greek letters \alpha, \beta and \gamma.
+\alpha \to \omega
+something is \not \empty 
+\pi tastes like pie
+\sum of the parts
+\lambda expressions are fun
+\psi chological wonderland
+\theta theta cool
+\epsilon epsilon
+\ni ni
+\nu nu
+\in infinity
+:END:
+
+** Special Symbols 
+:PROPERTIES:
+:ID:       b4fcbf25-6aa4-4d90-8c0d-e8514049e8d2
+:END:
+
+http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+
+** Unicode
+:PROPERTIES:
+:ID:       f2b29801-4a43-4d8f-bc66-584164b4eb1d
+:END:
+
+http://ergoemacs.org/emacs/emacs_n_unicode.html
+
+* LaTeX test
+:PROPERTIES:
+:ID:       f72a3c31-6db3-4cd7-9a0d-b35e0d0bbf62
+:PUBDATE:  <2015-10-06 Tue 10:51>
+:END:
+
+
+formula 1:
+
+\begin{equation}
+x=\sqrt{b}
+\end{equation}
+
+
+
+formula 2:
+
+\[
+e^{i\pi} = -1
+\]
+
+\[
+\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\]
+
+* Running code from multiple languages
+:PROPERTIES:
+:ID:       ac7cb5aa-d4c7-4bc5-8bb6-b0f0b924392f
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
+** Using Emacs Lisp
+:PROPERTIES:
+:ID:       25705cdf-182d-4f46-8ffe-3639a2b4e63d
+:END:
+#+begin_src emacs-lisp
+
+  (+ 2 2) 
+
+#+end_src         
+
+** Using python
+:PROPERTIES:
+:ID:       445154ff-0d9e-453c-bf0a-f18261d24f47
+:END:
+#+begin_src python
+import datetime
+today = datetime.date.today()
+return today
+#+end_src
+
+** Using ruby
+:PROPERTIES:
+:ID:       5128d221-ff05-4933-8ca6-65de91effaa4
+:END:
+#+begin_src ruby
+  require 'date'
+  "This file was last evaluated on #{Date.today}"
+#+end_src
+
+** Using clojure
+:PROPERTIES:
+:ID:       ac30ddff-025d-4aa4-b769-95f277092c3b
+:END:
+#+begin_src clojure
+  (defn now [] (java.util.Date.))
+  (now)
+#+end_src
+
+** Using lisp
+:PROPERTIES:
+:ID:       d29300ab-088a-4ca5-93e2-7a976ff7b2c6
+:END:
+examples - http://orgmode.org/manual/var.html
+
+note: install and enable slime for these codeblocks
+
+#+begin_src lisp
+  (defun current-date-string ()
+    "Returns current date as a string."
+    (multiple-value-bind (sec min hr day mon yr dow dst-p tz)
+                         (get-decoded-time)
+      (declare (ignore sec min hr dow dst-p tz))
+      (format nil "~4,'0d-~2,'0d-~2,'0d" yr mon day)))
+  (current-date-string)
+#+end_src
+
+#+name: hello-world
+#+header: :var message="Hello World!"
+
+#+begin_src lisp
+  (princ message)
+#+end_src
+
+#+NAME: example-table
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+#+NAME: table-length
+
+#+BEGIN_SRC emacs-lisp :var table=example-table
+  (length table)
+#+END_SRC
+
+#+RESULTS: table-length
+: 4
+
+* Working With Elasticsearch
+:PROPERTIES:
+:ID:       f9a252bd-8909-42a5-8bf5-97c67a6be20e
+:PUBDATE:  <2015-10-04 Sun 02:54>
+:END:
+** Searching ES
+:PROPERTIES:
+:ID:       2f868cbc-cf3d-48de-9f71-241ba893fc8f
+:END:
+#+BEGIN_SRC es
+POST /_search?pretty
+{
+  "query": {
+    "match_all": {}
+  }
+}
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "took" : 1,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 0,
+    "successful" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 0,
+    "max_score" : 0.0,
+    "hits" : [ ]
+  }
+}
+#+end_example
+
+** Searching ES without parameters
+:PROPERTIES:
+:ID:       ad2771ab-7bca-4f72-b7cd-8256b448f444
+:END:
+#+BEGIN_SRC es :method POST :url localhost:9200/_search?pretty
+{
+  "query": {
+    "match_all": {}
+  }
+}
+#+END_SRC
+
+** Searching ES with local jq filter
+:PROPERTIES:
+:ID:       b6f422a5-1d16-4c83-89df-6cdae7b892e8
+:END:
+#+BEGIN_SRC es :jq .name, .version.number
+GET /
+{}
+#+END_SRC
+
+** Creating and Searching for documents in ES for user data with local jq filter
+SCHEDULED: <2015-10-08 Thu>
+:PROPERTIES:
+:ID:       e364744f-5e38-4a6f-88f7-a1fe1bc7a469
+:END:
+
+
+
+#+begin_src es
+POST /twitter/tweet/
+{
+     "user" : "jclosure",
+     "@timestamp" : "2015-09-10T19:12:12-05:00",
+     "message" : "Hi Liz....",
+     "foo" : "bar"
+}
+#+end_src
+
+#+RESULTS:
+: {"_index":"twitter","_type":"tweet","_id":"AVA94UdKYRNKvUGoYQ0G","_version":1,"created":true}
+
+
+
+#+begin_src es
+GET /twitter/_search?pretty&q=user:jclosure
+{}
+#+end_src
+
+
+
+
+** Digging out logstash documents
+:PROPERTIES:
+:ID:       c5eb88c0-c027-443b-b8bc-ba39e7877f4f
+:END:
+
+#+begin_src es :jq .hits.hits[0]
+GET /logstash-2015.07.14/_search
+{}
+#+end_src
+
+** Searching ES with the CSV Plugin
+:PROPERTIES:
+:ID:       2c825527-f598-4911-bf77-a36a92b8d14c
+:END:
+#+BEGIN_SRC es
+POST /_search_csv?pretty
+{
+  "query": {
+    "match_all": {}
+  }
+}
+#+END_SRC
+   
+
+
+
+
+
+   \begin{equation}
+     x=\sqrt{b}
+   \end{equation}

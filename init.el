@@ -426,6 +426,15 @@ If no window is at direction DIR, an error is signaled."
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
+;; ALL LISPS
+;; turn on pretty mode only for lisps
+(defun my/enable-pretty-mode-for-lisps
+    (dolist (x '(scheme emacs-lisp lisp))
+      (add-hook 
+       (intern (concat (symbol-name x) "-mode-hook"))
+       'turn-on-pretty-mode)))
+;;(my/enable-pretty-mode-for-lisps)
+
 ;; COMMON LISP
 ; ref - https://www.youtube.com/watch?v=VnWVu8VVDbI
 ; replace "sbcl" with the path to your implementation
@@ -496,8 +505,6 @@ If no window is at direction DIR, an error is signaled."
 ;; M-x inf-ruby
 (global-set-key (kbd "C-c r r") 'inf-ruby)
 ;; M-x robe-start
-
-
 
 
 
@@ -769,7 +776,7 @@ If no window is at direction DIR, an error is signaled."
 
 
 ;; MY ORG-MODE SETUP
-(load "my-orgmode.el")
+(load "setup-orgmode.el")
 
 ;; For editing lisps
 (load "elisp-editing.el")

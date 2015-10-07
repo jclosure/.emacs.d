@@ -1,0 +1,81 @@
+#+TITLE: Python Code Examples in Org
+#+AUTHOR: Joel Holder
+#+EMAIL: jclosure@gmail.com
+#+STARTUP: indent
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+OPTIONS: H:3 num:nil toc:t \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS: author:nil email:nil creator:nil timestamp:nil
+#+OPTIONS: d:t
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LANGUAGE: en
+#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
+#+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
+#+XSLT: 
+
+* Controlling what get's exported
+
+<nothing> #=> Exports codeblock only (default behavior) 
+:exports results #=> Exports only results
+:exports both #=> Exporse codeblock and results
+
+See below for examples
+
+
+* working with python code blocks
+** Interacting with python
+:PROPERTIES:
+:ID:       352754a9-023d-48c8-8d5d-8a0a6a28ea5f
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+
+#+tblname: delsee
+| airmass | zenith_seeing | delivered_seeing |
+|---------+--------------+-----------------|
+|     1.3 |         0.95 |       1.1119612 |
+|     1.3 |          1.0 |       1.1704854 |
+|     1.3 |          1.1 |       1.2875340 |
+|     1.3 |          1.2 |       1.4045825 |
+#+TBLFM: $3=$2*($1**0.6)
+
+#+BEGIN_SRC python :var delsee=delsee :results output :exports both
+  print delsee
+#+END_SRC
+
+#+RESULTS:
+: [[1.3, 0.95, 1.1119612], [1.3, 1.0, 1.1704854], [1.3, 1.1, 1.287534], [1.3, 1.2, 1.4045825]]
+
+** Plotting with python
+:PROPERTIES:
+:ID:       0795c60f-b823-4afc-8d38-de8cc546526f
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+#+tblname: delsee
+| airmass | zenith_seeing | delivered_seeing |
+|---------+---------------+------------------|
+|     1.3 |          0.95 |        1.1119612 |
+|     1.3 |           1.0 |        1.1704854 |
+|     1.3 |           1.1 |        1.2875340 |
+|     1.3 |           1.2 |        1.4045825 |
+#+TBLFM: $3=$2*($1**0.6)
+
+
+#+BEGIN_SRC python :var fname="img/delseepy.png" :var delsee=delsee :results file :exports both
+  import matplotlib.pyplot as plt
+
+  x, y, z = zip(*delsee)
+
+  fig = plt.figure()
+  axes = fig.add_subplot(1,1,1)
+  axes.plot(y, z, marker='o')
+  fig.savefig(fname)
+
+  return fname
+#+END_SRC
+
+#+RESULTS:
+[[file:img/delseepy.png]]
+

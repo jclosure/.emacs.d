@@ -1,0 +1,42 @@
+#+TITLE: Previewing LaTeX Scratch Pad
+#+AUTHOR: Joel Holder
+#+EMAIL: jclosure@gmail.com
+#+STARTUP: indent latexpreview    
+
+* notes about previewing
+:PROPERTIES:
+:ID:       9f0d5caa-fc98-4f12-8dfb-619f1811a45f
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+- for starting with preview toggled on visable latex fragments use #+STARTUP: with
+  
+  latexpreview   preview LaTeX fragments
+  nolatexpreview don't preview LaTeX fragments
+
+- scaling latex preview: http://stackoverflow.com/questions/11272236/how-to-make-formule-bigger-in-org-mode-of-emacs
+- (setq org-format-latex-options (plist-put org-format-latex-options
+  :scale 4.0))
+- to view as latex fragments run: M-x org-toggle-latex-fragment with
+  point on the latex frag
+
+- note I have seen behavior where when you #+LATEX_HEADER \usepackage{...}, it breaks
+  latex preview.
+
+* preview me 
+:PROPERTIES:
+:ID:       8f09a452-0140-4807-a780-1a1cd9d0883d
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+toggle latex preview with: C-c C-x C-l
+
+
+\begin{equation}
+b=\sqrt{b}
+\end{equation}
+
+
+
+
+

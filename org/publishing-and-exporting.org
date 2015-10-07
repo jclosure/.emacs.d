@@ -1,0 +1,72 @@
+
+
+exporting - means just the current buffer
+publishing - means a group of files from the filesystem
+
+* exporting
+:PROPERTIES:
+:ID:       e4440461-c76d-4987-8315-a97ddbb3d57a
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+** export menu key strokes
+:PROPERTIES:
+:ID:       25c3d979-2711-446f-ae56-a23d795b479e
+:END:
+
+Org-mode offers a command to produce a PDF file from the LaTeX
+export. This is bound to C-c C-e p. The command C-c C-e d does all
+this and opens the PDF file in the default reader.
+
+I find that C-C C-e brings up export menu.  Then I choose:
+
+C-c C-e l p to create a pdf from the org-document
+
+or
+
+C-c C-e l o to create a pdf from the org document and open it
+
+** or export the current buffer to PDF with any latex rendered properly
+:PROPERTIES:
+:ID:       be49c197-7d0c-4836-bcb1-31d01f1330a1
+:END:
+
+M-x: org-latex-export-to-pdf
+
+\begin{equation}
+b=\sqrt{b}
+\end{equation}
+
+** or export the current buffer to HTML with any latex rendered properly
+:PROPERTIES:
+:ID:       272d16d8-c521-4e7d-bed4-9327885213fe
+:END:
+
+M-x: org-html-export-to-html
+
+\begin{equation}
+b=\sqrt{b}
+\end{equation}
+
+
+
+* publishing
+:PROPERTIES:
+:ID:       884e05cc-c861-4f7e-8b6f-39007b7680d3
+:PUBDATE:  <2015-10-07 Wed 13:36>
+:END:
+
+** publish a site straight to html
+:PROPERTIES:
+:ID:       b8eaa791-ab91-44a1-8689-1f87bef9a0cb
+:END:
+
+
+- i have defined "org-site" in ~/.emacs.d/customization/setup-orgmode.el
+
+- other websites can be defined there.
+
+- to publish the website:
+
+  do: M-x org-publish
+  then: org-site (that's the name of that I gave the site)
