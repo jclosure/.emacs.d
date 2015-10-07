@@ -10,9 +10,9 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+LANGUAGE: en
-#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
+#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES)
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
-#+XSLT: 
+#+XSLT:
 
 
 file:img/runningman.gif
@@ -59,7 +59,7 @@ http://vgoulet.act.ulaval.ca/en/emacs/
 :ID:       feaf00dd-26e7-4e56-9003-56b856a6be2e
 :END:
 http://orgmode.org/manual/Special-symbols.html
-** Greek Playing Around: 
+** Greek Playing Around:
 :PROPERTIES:
 :ID:       c7dd7ec5-5d6b-47b4-ab4f-f7bf2f41bd8d
 :END:
@@ -72,7 +72,7 @@ meanings: http://www.greece.com/info/language/greek_alphabet/
 :Greek:
 Angles are written as Greek letters \alpha, \beta and \gamma.
 \alpha \to \omega
-something is \not \empty 
+something is \not \empty
 \pi tastes like pie
 \sum of the parts
 \lambda expressions are fun
@@ -84,7 +84,7 @@ something is \not \empty
 \in infinity
 :END:
 
-** Special Symbols 
+** Special Symbols
 :PROPERTIES:
 :ID:       b4fcbf25-6aa4-4d90-8c0d-e8514049e8d2
 :END:
@@ -123,14 +123,13 @@ e^{i\pi} = -1
 \int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
 \]
 
-
 * Controlling what get's exported
 :PROPERTIES:
 :ID:       e8d1ac45-e75a-4cca-8326-de37085301c6
 :PUBDATE:  <2015-10-07 Wed 14:53>
 :END:
 
-** :exports code #=> Exports codeblock only (default behavior) 
+** :exports code #=> Exports codeblock only (default behavior)
 :PROPERTIES:
 :ID:       f307c0d8-f6c7-4c5c-b365-6c9539f376c5
 :END:
@@ -156,9 +155,9 @@ See below for examples
 :END:
 #+begin_src emacs-lisp
 
-  (+ 2 2) 
+  (+ 2 2)
 
-#+end_src         
+#+end_src
 
 ** Using python
 :PROPERTIES:
@@ -337,7 +336,7 @@ POST /_search_csv?pretty
   }
 }
 #+END_SRC
-   
+
 
 
 
@@ -362,7 +361,7 @@ Here's a Ruby block to generate a scaler value
 #+name: get_value
 #+header: :var x=4 :exports both
 #+begin_src ruby
-  # x = 4  
+  # x = 4
   3 + x
 #+end_src
 
@@ -407,7 +406,5 @@ Here's a Python block that consumes the list
 
 Note that the list is output as an org table
 #+RESULTS: print_list
-| 1 | 2 | 3 |
-
 
 

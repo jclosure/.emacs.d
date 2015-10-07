@@ -8,7 +8,7 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+LANGUAGE: en
-#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES) 
+#+TAGS: noexport(n) Emacs(E) Python(P) Ruby(R) Clojure(C) Elasticsearch(ES)
 #+HTML_HEAD: <link rel="stylesheet" title="Standard" href="./css/worg.css" type="text/css" />
 
 
@@ -32,7 +32,7 @@ CLOSED: [2015-10-01 Thu 22:45]
 :PROPERTIES:
 :ID:       faaaa818-ee53-40be-ad10-545cb5c56f84
 :END:
-HOME=%USERPROFILE% 
+HOME=%USERPROFILE%
 note this may need to be hard-coded to C:\Users\<your_name>
 *** emacs program
 :PROPERTIES:
@@ -55,7 +55,7 @@ http://vgoulet.act.ulaval.ca/en/emacs/
 :END:
 e.g. C:\emacs-24.5-bin-i686-mingw32
 this will be known as $EMACS_PATH
-**** install dependencies, if not using vgoulet 
+**** install dependencies, if not using vgoulet
 :PROPERTIES:
 :ID:       d752d852-3625-4e3f-aeef-2babb9605072
 :END:
@@ -74,7 +74,7 @@ not compiled with xmp support, so graphics won't work
 
 http://www.zlib.net/
 #+begin_src text
-  copy zlib1.dll into $EMACS_PATH\bin\    
+  copy zlib1.dll into $EMACS_PATH\bin\
 #+end_src
 
 ***** install libpng
@@ -93,7 +93,7 @@ copy the dll into $EMACS_HOME\bin
 
 http://ftp.gnu.org/gnu/aspell/w32/Aspell-en-0.50-2-3.exe
 
-***** optional install imagemagick 
+***** optional install imagemagick
 :PROPERTIES:
 :ID:       1ce22e37-0e6b-42c9-807a-ddf6f723de41
 :END:
@@ -155,7 +155,7 @@ after it completes, you will have a fully functional emacs development environme
 :END:
 
 # i want to make it's greatness more approachable and learnable
-# reasons people come up with not to learn emacs: 
+# reasons people come up with not to learn emacs:
 
 http://c2.com/cgi/wiki?WhyNotUseEmacs
 
@@ -170,7 +170,7 @@ The newbie answered: What is Emacs?
 
 A newbie asked on the newsgroup: “What is the meaning of Emacs”?
 
-“What is the value of one parenthesis evaluating?”, answered the old masters. 
+“What is the value of one parenthesis evaluating?”, answered the old masters.
 
 
 A novice of the temple once approached the Master Programmer with a question: “Master, does Emacs have the Buddha nature?” the novice asked.
@@ -214,7 +214,7 @@ C-c p f
 :PROPERTIES:
 :ID:       3364b835-a135-4751-86fa-60b5cf826ca2
 :END:
- 
+
 # This way it can be used from multiple locations and its backed up automatically.
 
 # I use google drive, but dropbox or similar will also work.
@@ -263,12 +263,12 @@ Select C:\WinPython-64bit-2.7.10.2 (or whatever version you have)
 add the following directories to the PATH variable under system
 C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64
 C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Scripts
-*** create a variable called PYTHONPATH 
+*** create a variable called PYTHONPATH
 :PROPERTIES:
 :ID:       b8a65274-2e34-4656-827c-b66f26e9318e
 :END:
 My Computer > Properties > Advanced System Settings > Environment Variables >
-Then under system variables I create a new Variable called PYTHONPATH. 
+Then under system variables I create a new Variable called PYTHONPATH.
 In this variable I have C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\DLLs;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib\lib-tk
 *** run python
 :PROPERTIES:
@@ -515,3 +515,61 @@ get sbcl
 install slime
 
 
+** installing cygwin
+
+you want to install cygwin to get the familiar power of unix in your
+windows env
+
+get the bits from here:
+
+https://cygwin.com/install.html
+
+get the correct one for your "bitness"
+
+install
+
+i suggest you add:
+
+wget
+curl
+whois
+ssh server/client
+
+ install it to:
+
+C:\cygwin64
+
+** env PATH
+
+add this to very end (right hand side of your path)
+
+C:\cygwin64\bin
+
+make sure that bin dirs like
+
+python
+ruby
+texlive
+ghostscript
+etc..
+
+come before it (are on the left of it)
+
+you want this resolved last
+
+** some convenience
+
+in your %HOME%\bin create a file called ll.cmd
+
+put this inside:
+
+ls -la
+
+save
+
+now you get a linux like directory listing capability.
+
+*** note about helm-projectile's grep capability.
+
+it won't work until you put grep into your path.
+after you've done this, it will work as expected.

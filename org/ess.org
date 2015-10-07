@@ -1,0 +1,16 @@
+
+
+* R
+
+http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html
+
+
+* Tutorial
+
+http://www.damtp.cam.ac.uk/user/sje30/ess11/
+
+note: read windows caveats in: http://www.damtp.cam.ac.uk/user/sje30/ess11/resources/ess-palatino.pdf
+
+* site
+
+http://ess.r-project.org/

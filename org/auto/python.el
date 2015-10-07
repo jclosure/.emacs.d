@@ -24,11 +24,14 @@
     "capt-of"
     "hyperref")
    (LaTeX-add-labels
+    "sec:orgheadline7"
     "sec:orgheadline1"
-    "sec:orgheadline5"
-    "sec:orgheadline2"
     "tab:orgtable1"
-    "sec:orgheadline3"
+    "sec:orgheadline2"
     "tab:orgtable2"
-    "sec:orgheadline4")))
+    "sec:orgheadline3"
+    "sec:orgheadline4"
+    "tab:orgtable3"
+    "sec:orgheadline5"
+    "sec:orgheadline6")))
 

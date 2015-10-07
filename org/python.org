@@ -76,7 +76,42 @@
 #+RESULTS:
 [[file:img/delseepy.png]]
 
+** More plotting
+#+begin_src python :results file :exports both
+import matplotlib, numpy
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(4,2))
+x=numpy.linspace(-15,15)
+plt.plot(numpy.sin(x)/x)
+fig.tight_layout()
+plt.savefig('img/python-matplot-fig.png')
+return 'img/python-matplot-fig.png' # return filename to org-mode
+#+end_src
+
+#+RESULTS:
+[[file:img/python-matplot-fig.png]]
+
+Note: you can export this document with the plot graphic with:
+
+~org-latex-export-to-pdf~
+
+** Extracting data from an org-mode table
+#+tblname: data_table
+| a | 1 |
+| b | 2 |
+| c | 3 |
+#+begin_src python :var index=1 :var data=data_table
+# Return row specified by val.
+# In non-session mode, use return to return results.
+return(data[index])
+#+end_src
+
+#+RESULTS:
+| b | 2 |
+
 ** Creating and calling code blocks
+
 :PROPERTIES:
 :ID:       485b5c57-7c68-4823-a7c3-abd11169648f
 :END:
@@ -91,7 +126,6 @@ when we say ~M-x org-latex-export-to-pdf~
 #+end_src
 
 #+call: square(7)
-
 
 
 ** Emitting output and feeding input

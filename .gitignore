@@ -26,4 +26,9 @@ org-gcal/
 request/
 org/ltxpng/
 .org-id-locations
-!org/*.org
+# negation of *.something isn't working in my version of git
+# painful
+org/*.pdf
+org/*.png
+org/*.tex
+org/*.csv
