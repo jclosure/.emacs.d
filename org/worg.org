@@ -1,0 +1,4 @@
+
+* TODO learn how to contribute to worg
+
+http://orgmode.org/worg/worg-about.html
