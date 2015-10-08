@@ -1,4 +1,59 @@
 
+* variable binding scopes
+
+local bindings demonstrating
+
+http://www.gnu.org/software/emacs/manual/html_node/elisp/Local-Variables.html
+
+let vs let*
+
+#+name: let
+#+begin_src emacs-lisp
+
+;; a let binding
+(progn
+  
+  (setq y 2)
+
+  (let ((y 1)
+        (z y))
+    (list y z)))
+
+#+end_src
+
+#+RESULTS: let
+| 1 | 2 |
+
+#+name: let*
+#+begin_src emacs-lisp
+
+;; a let* binding
+(progn
+
+  (setq y 2)
+
+  (let* ((y 1)
+         (z y))
+    (list y z)))
+
+
+#+end_src
+
+#+RESULTS: let*
+| 1 | 1 |
+
+** discusion:
+
+let binds only s-expression values from the environment outside the
+(let ...) form
+
+let* successively binds each expression within the scope of the (let
+...) form and from the environment.  the inner scope overrides the
+outter scope. 
+
+* some precise work with table data
+
+
 read up on var with tables:
 
 very powerful!

@@ -934,14 +934,79 @@ If no window is at direction DIR, an error is signaled."
       ))
 
 
+;;;;;;;;;;;;;;;;; TIMERS ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;; windows tools
+;;;;;;;;; agenda ;;;;;;;;;;
+
+;; source: http://orgmode.org/worg/org-hacks.html
+
+;; these function's keep the agenda front and center and up to date.
+
+(defun my/jump-to-org-agenda ()
+  (interactive)
+  (let ((buf (get-buffer "*Org Agenda*"))
+        wind)
+    (if buf
+        (if (setq wind (get-buffer-window buf))
+            (select-window wind)
+          (if (called-interactively-p)
+              (progn
+                (select-window (display-buffer buf t t))
+                (org-fit-window-to-buffer)
+                ;; (org-agenda-redo)
+                )
+            (with-selected-window (display-buffer buf)
+              (org-fit-window-to-buffer)
+              ;; (org-agenda-redo)
+              )))
+      (call-interactively 'org-agenda-list)))
+  ;;(let ((buf (get-buffer "*Calendar*")))
+  ;;  (unless (get-buffer-window buf)
+  ;;    (org-agenda-goto-calendar)))
+  )
+
+;; open agenda on start
+(my/jump-to-org-agenda)
+
+;; if its idle for n seconds switch to agenda
+(run-with-idle-timer 300 t 'my/jump-to-org-agenda)
+
+
+(defun my/org-agenda-redo-in-other-window ()
+  "Call org-agenda-redo function even in the non-agenda buffer."
+  (interactive)
+  (let ((agenda-window (get-buffer-window org-agenda-buffer-name t)))
+    (when agenda-window
+      (with-selected-window agenda-window (org-agenda-redo)))))
+
+;; refresh agenda view every n seconds
+(run-at-time nil 300 'my/org-agenda-redo-in-other-window)
+
+;; testing: refresh google calendar with agenda every n seconds
+;; create an idle timer that runs org-gcal-sync
+(run-at-time nil 300 'org-gcal-sync)
+
+;; helpers
+
+;; try this out!..
+(defun my/org-agenda-reschedule-to-today ()
+  (interactive)
+  (flet ((org-read-date (&rest rest) (current-time)))
+    (call-interactively 'org-agenda-schedule)))
+
+
+
+
+;;;;;;;;;;;;;;;; windows tools ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; (when (eq system-type 'windows-nt)
 ;;   (setenv "CYGWIN" "nodosfilewarning")
 ;;   ;; (setq shell-file-name "C:/emacs/libexec/emacs/24.4/i686-pc-mingw32/cmdproxy.exe")
 ;;   (add-hook 'comint-output-filter-functions 'shell-strip-ctrl-m nil t)
 ;;   (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt nil t))
+
+
+
 
 
 

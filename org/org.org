@@ -31,3 +31,8 @@ will stub out a babel source block
 
 ~/.emacs.d/customizations/my-orgmode.el
 
+* awesome org hacks
+
+** spend some time cherry picking these:
+
+http://orgmode.org/worg/org-hacks.html
