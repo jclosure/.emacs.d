@@ -77,6 +77,9 @@
 [[file:img/delseepy.png]]
 
 ** More plotting
+:PROPERTIES:
+:ID:       a9ae2901-d260-46b6-82cc-494414209293
+:END:
 #+begin_src python :results file :exports both
 import matplotlib, numpy
 matplotlib.use('Agg')
@@ -97,6 +100,9 @@ Note: you can export this document with the plot graphic with:
 ~org-latex-export-to-pdf~
 
 ** Extracting data from an org-mode table
+:PROPERTIES:
+:ID:       b938b8fa-d3cc-4acd-a4f5-6c5a706309f1
+:END:
 #+tblname: data_table
 | a | 1 |
 | b | 2 |
@@ -111,6 +117,9 @@ return(data[index])
 | b | 2 |
 
 ** Creating and calling code blocks
+:PROPERTIES:
+:ID:       42343cd6-a051-486d-8ee3-06a90e3f9ee3
+:END:
 
 :PROPERTIES:
 :ID:       485b5c57-7c68-4823-a7c3-abd11169648f

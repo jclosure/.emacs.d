@@ -1,0 +1,68 @@
+
+#+name: directories
+#+begin_src sh :results replace
+  cd ~ && du -sc * |grep -v total
+#+end_src
+
+#+RESULTS: directories
+|  5100157 | AppData                                                                                      |
+|        0 | Application Data                                                                             |
+|        1 | Contacts                                                                                     |
+|        0 | Cookies                                                                                      |
+|   883072 | Desktop                                                                                      |
+|   449257 | Documents                                                                                    |
+| 26780249 | Downloads                                                                                    |
+|        8 | Favorites                                                                                    |
+| 10655986 | Google Drive                                                                                 |
+|       10 | Links                                                                                        |
+|        0 | Local Settings                                                                               |
+|        1 | Music                                                                                        |
+|        0 | My Documents                                                                                 |
+|     8192 | NTUSER.DAT                                                                                   |
+|     1024 | NTUSER.DAT{bf54a94e-2704-11e5-80db-e41d2d743300}.TxR.0.regtrans-ms                           |
+|     1024 | NTUSER.DAT{bf54a94e-2704-11e5-80db-e41d2d743300}.TxR.1.regtrans-ms                           |
+|     1024 | NTUSER.DAT{bf54a94e-2704-11e5-80db-e41d2d743300}.TxR.2.regtrans-ms                           |
+|       64 | NTUSER.DAT{bf54a94e-2704-11e5-80db-e41d2d743300}.TxR.blf                                     |
+|       64 | NTUSER.DAT{bf54a94f-2704-11e5-80db-e41d2d743300}.TM.blf                                      |
+|      512 | NTUSER.DAT{bf54a94f-2704-11e5-80db-e41d2d743300}.TMContainer00000000000000000001.regtrans-ms |
+|      512 | NTUSER.DAT{bf54a94f-2704-11e5-80db-e41d2d743300}.TMContainer00000000000000000002.regtrans-ms |
+|        0 | NetHood                                                                                      |
+|   100527 | OneDrive                                                                                     |
+|      251 | Pictures                                                                                     |
+|        0 | PrintHood                                                                                    |
+|        0 | Recent                                                                                       |
+|        1 | Saved Games                                                                                  |
+|       11 | Searches                                                                                     |
+|        0 | SendTo                                                                                       |
+|        0 | Start Menu                                                                                   |
+|        0 | Templates                                                                                    |
+|      372 | Tracing                                                                                      |
+|  2676526 | Videos                                                                                       |
+|      565 | bin                                                                                          |
+|    20244 | eclipse                                                                                      |
+|        0 | emacs.d                                                                                      |
+|   183627 | gnu-emacs-dependencies                                                                       |
+|        4 | log                                                                                          |
+|     6848 | ntuser.dat.LOG1                                                                              |
+|     2392 | ntuser.dat.LOG2                                                                              |
+|        1 | ntuser.ini                                                                                   |
+|        9 | org                                                                                          |
+|        0 | projects                                                                                     |
+|      136 | projects.bak                                                                                 |
+|    29913 | workspaces                                                                                   |
+
+
+NOTE: This example is hanging in windows.  Figure out why...
+
+#+name: directory-pie-chart(dirs = directories)
+#+begin_src R :session R-pie-example :var dirs=directories :file img/dirs.png
+  #pie(dirs[,1], labels = dirs[,2])
+  print(dirs)
+#+end_src
+
+#+RESULTS: directory-pie-chart(dirs = directories)
+[[file:img/dirs.png]]
+
+
+
+http://orgmode.org/worg/org-contrib/babel/intro.html#meta-programming-language

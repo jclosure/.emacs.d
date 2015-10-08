@@ -514,8 +514,46 @@ you may re-evaluate code blocks over and over and they will overwrite the adjace
 get sbcl
 install slime
 
+** installing r
+
+*** get and install R
+
+https://cran.r-project.org/
+
+*** get and install R studio
+
+https://www.rstudio.com/products/rstudio/download/
+
+*** add R's bin directory to %PATH%
+
+for me it defaulted to:
+
+C:\Program Files\R\R-3.2.2\bin
+
+C:\Program Files\R\R-3.2.2\bin\x64
+
+do both of the above
+
+*** integrating R with emacs
+
+not sure about this:
+
+(setq-default inferior-R-program-name "Rterm.exe")
+
+doesn't seem to be necessary for org-babel
+
+**** TODO look into using inferior-r
+
+*** get some working examples and play around
+
+http://pj.freefaculty.org/R/WorkingExamples/
+
+
 
 ** installing cygwin
+:PROPERTIES:
+:ID:       b5891329-424a-4c21-863a-7b046d3da64e
+:END:
 
 you want to install cygwin to get the familiar power of unix in your
 windows env
@@ -540,6 +578,9 @@ ssh server/client
 C:\cygwin64
 
 ** env PATH
+:PROPERTIES:
+:ID:       592a16d2-0754-4287-8ee2-7b8c9aacda69
+:END:
 
 add this to very end (right hand side of your path)
 
@@ -558,6 +599,9 @@ come before it (are on the left of it)
 you want this resolved last
 
 ** some convenience
+:PROPERTIES:
+:ID:       c56e0d95-499e-4aab-ba92-4c956a972f32
+:END:
 
 in your %HOME%\bin create a file called ll.cmd
 
@@ -570,6 +614,9 @@ save
 now you get a linux like directory listing capability.
 
 *** note about helm-projectile's grep capability.
+:PROPERTIES:
+:ID:       cf284218-84aa-4ac0-acee-14441cf093c5
+:END:
 
 it won't work until you put grep into your path.
 after you've done this, it will work as expected.

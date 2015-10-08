@@ -1,5 +1,9 @@
 
 * org-mode reference car
+:PROPERTIES:
+:ID:       64b4c3a9-e66f-488d-9a04-de1964a7305d
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 http://orgmode.org/worg/orgcard.html
 

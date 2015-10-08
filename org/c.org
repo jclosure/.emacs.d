@@ -1,0 +1,9 @@
+
+
+* Free Faculty: working examples
+
+http://pj.freefaculty.org/guides/c-programming/
+
+read through this to get started:
+
+http://pj.freefaculty.org/guides/c-programming/C-basics-Drexel.txt

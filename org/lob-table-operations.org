@@ -1,5 +1,9 @@
 
 * Table operations --- filter or combine tables
+:PROPERTIES:
+:ID:       0e85b1f0-7e32-40b5-a2a3-7c559f980df9
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
   This section within the library of babel provides table operations.
   See the documentation just below for details and working examples.
@@ -8,8 +12,14 @@
   Version : 1.0
 
 ** Documentation
+:PROPERTIES:
+:ID:       20e813f4-2d19-4cb1-954f-ef730365ce97
+:END:
 
 *** Introduction
+:PROPERTIES:
+:ID:       8cc0445e-f380-44f8-85a7-393337beb14e
+:END:
 
     The table operations (currently four) are grouped in two categories:
     
@@ -19,6 +29,9 @@
     All four operations are demonstrated below.
 
 *** Example tables
+:PROPERTIES:
+:ID:       b2144257-7efc-4746-8b97-ac1c1df43595
+:END:
 
     To demonstrate we need three tables: upper, lower and keys:
 
@@ -58,8 +71,14 @@
     Note, that tables may have column headings or not.
 
 *** Filtering a table
+:PROPERTIES:
+:ID:       d3123487-8020-4717-bb7f-39dc6783241e
+:END:
 
 **** Keeping rows
+:PROPERTIES:
+:ID:       caefecb9-295b-46f1-bafb-c67814e84ddb
+:END:
 
      Let's say, we want to select the upper-case letters (i.e. rows from the
      table upper), that are given in table keys (i.e. the first, second and
@@ -81,6 +100,9 @@
      keys.
 
 **** Removing rows
+:PROPERTIES:
+:ID:       1bb6b743-08e2-4153-b72f-12dabdd8bd76
+:END:
 
      Now, if on the contrary you want to filter table upper to remove any rows,
      which are given in table keys:
@@ -106,6 +128,9 @@
      however, that ":colnames no" does not give the expected effect.
 
 *** Combining tables
+:PROPERTIES:
+:ID:       6d0c9495-80d4-4c75-862d-24e38c15edcc
+:END:
 
     Now, lets have a look at the tables upper and lower alone and see how to
     combine them.
@@ -114,6 +139,9 @@
     operations can be easily scaled up to seven tables.
 
 **** Merging rows
+:PROPERTIES:
+:ID:       6747c488-62be-4ae5-8649-a132fa266cc1
+:END:
 
      We have two tables, one with upper case letters and one with lower
      case. What now, if you want to have only one table, which contains both,
@@ -139,6 +167,9 @@
      their position within the alphabet.
 
 **** Intersecting rows
+:PROPERTIES:
+:ID:       7723814e-4f4f-480b-b83a-677b61800ac4
+:END:
 
      If you only want the rows, that are complete (i.e. have both upper and
      lower case letters) you may compute the intersection:
@@ -156,18 +187,30 @@
      result table has no headings.
 
 ** Internals
+:PROPERTIES:
+:ID:       dba32054-6a84-45b3-be49-eca5714c57b7
+:END:
 
    This section is not required if you just want to use table operations as
    described above. Only if you are curious about its implementation or
    development, you might want to have a look.
 
 *** Implementation
+:PROPERTIES:
+:ID:       f6fcc41b-4994-442f-b70e-8629e43c0df0
+:END:
    
    Here is the actual lisp code, that implements the functionality of table
    operations.
 
 **** table-operations-filter
+:PROPERTIES:
+:ID:       ac9208e6-7de9-43a2-abc8-ef5a9c262147
+:END:
 ***** Directly callable blocks
+:PROPERTIES:
+:ID:       61d6e9a6-a824-4c3a-85bd-f05b8ab57df6
+:END:
 
 #+name: table-operations-filter-keep
 #+begin_src emacs-lisp :noweb yes :results silent :var table=() :var filter=() 
@@ -186,6 +229,9 @@
 #+end_src
 
 ***** Included defuns
+:PROPERTIES:
+:ID:       391c43ee-8e54-401a-af35-7aa4c0c0f598
+:END:
 
 #+name: lob-table-operations-filter-defun
 #+begin_src emacs-lisp
@@ -222,7 +268,13 @@
 #+end_src
 
 **** table-operations-combine
+:PROPERTIES:
+:ID:       621d0162-147e-4e91-9f8b-332520304371
+:END:
 ***** Directly callable blocks
+:PROPERTIES:
+:ID:       c6dd7330-6da7-4cf9-93de-e134d56df143
+:END:
 
 #+name: table-operations-combine-merge 
 #+begin_src emacs-lisp :noweb yes :results silent :var t1=() :var t2=() :var t3=() :var t4=() :var t5=() :var t6=() :var t7=()
@@ -241,6 +293,9 @@
 #+end_src
 
 ***** Included defuns
+:PROPERTIES:
+:ID:       d5794639-ce79-4ba7-b469-c420aa7161d9
+:END:
 
 #+name: lob-table-operations-combine-defun
 #+begin_src emacs-lisp
@@ -380,6 +435,9 @@
 #+end_src
 
 **** Common helper functions
+:PROPERTIES:
+:ID:       e62293d0-6d81-4b5e-80b9-cb23cc99b201
+:END:
 
 #+name: lob-table-operations-helper-get-headings-defun
 #+begin_src emacs-lisp
@@ -420,7 +478,13 @@
 #+end_src
 
 **** Debugging and testing
+:PROPERTIES:
+:ID:       51ccb56b-5bbe-485c-96dd-24fff172f601
+:END:
 ***** Clean up
+:PROPERTIES:
+:ID:       82a7d762-54ae-4003-9138-85bfa8c8c6ba
+:END:
 #+begin_src emacs-lisp
   (save-excursion
     (beginning-of-buffer)
@@ -432,12 +496,21 @@
 #+results:
 
 ***** Byte Compilation
+:PROPERTIES:
+:ID:       c7a86eb3-3c2d-49a1-8c15-7030cd969650
+:END:
 
    (byte-compile 'lob-table-operations-combine)
    (byte-compile 'lob-table-operations-filter)
 
 *** Development
+:PROPERTIES:
+:ID:       a05d3078-4ab4-4242-bcad-b8ffed689130
+:END:
 **** Versions and history
+:PROPERTIES:
+:ID:       3d2ea9cb-f04f-4df4-915a-573da83e755e
+:END:
 
      [2012-03-18 So] Version 1.0: 
      - Added handling of hlines and table headings
@@ -447,6 +520,9 @@
      - Combined and restructured documentation and implementation
 
 **** Bugs and Todos
+:PROPERTIES:
+:ID:       6eb8d4e3-8a55-4656-a012-3c1bb42d41fa
+:END:
 
      - [X] Brush up documentation
      - [X] Stay below 80 columns
@@ -460,6 +536,9 @@
      - [X] Use :results silent
        
 **** Testcases
+:PROPERTIES:
+:ID:       510d013e-30a3-45aa-bf3e-6638e0cf90c9
+:END:
 
 #+name: upper-wide
 | Position | c1 | c2 | c3 | c4 |
@@ -536,6 +615,9 @@
 | 4 | D1 | D2 | D3 | D4 | d1 | d2 | d3 | d4 | Dd1 | Dd2 | Dd3 | Dd4 |
 
 **** Keeping the margins
+:PROPERTIES:
+:ID:       433d76be-4169-4e50-a6d7-a47cfdde7578
+:END:
 
      (setq-default fill-column 80)
      (column-marker-3 80)

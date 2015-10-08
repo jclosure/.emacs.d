@@ -1,15 +1,29 @@
 
 * doc
+:PROPERTIES:
+:ID:       019a942d-a3f9-40ee-805d-778c7b97f439
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 https://github.com/emacs-helm/helm/wiki
 
 * to use it:
+:PROPERTIES:
+:ID:       f1e646cd-01b3-4b5a-9e4d-afc9e9e9a9ce
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 ** find by file name
+:PROPERTIES:
+:ID:       eaddb105-1f4e-42ec-acea-804640670ce4
+:END:
 
 C-c p f
 
 ** find by recursively grepping contents
+:PROPERTIES:
+:ID:       956d4380-4472-41ac-aa5a-a86aaaa2774b
+:END:
 
 https://github.com/emacs-helm/helm/wiki#helm-do-grep
 

@@ -1,16 +1,28 @@
 
 
 * R
+:PROPERTIES:
+:ID:       987a8842-c936-4e19-8301-fbae3bf2f075
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html
 
 
 * Tutorial
+:PROPERTIES:
+:ID:       2aafd8e8-e7d5-462c-8bb5-8526f190d0b6
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 http://www.damtp.cam.ac.uk/user/sje30/ess11/
 
 note: read windows caveats in: http://www.damtp.cam.ac.uk/user/sje30/ess11/resources/ess-palatino.pdf
 
 * site
+:PROPERTIES:
+:ID:       cc32dbac-6155-48d2-8a24-cedcfc4ce808
+:PUBDATE:  <2015-10-07 Wed 17:37>
+:END:
 
 http://ess.r-project.org/
