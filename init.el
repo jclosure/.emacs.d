@@ -979,12 +979,18 @@ If no window is at direction DIR, an error is signaled."
     (when agenda-window
       (with-selected-window agenda-window (org-agenda-redo)))))
 
-;; refresh agenda view every n seconds
-(run-at-time nil 300 'my/org-agenda-redo-in-other-window)
+
 
 ;; testing: refresh google calendar with agenda every n seconds
+;; refresh agenda view every n seconds
 ;; create an idle timer that runs org-gcal-sync
-(run-at-time nil 300 'org-gcal-sync)
+(defun my-complete-gcal-sync ()
+  (org-gcal-sync)
+  (my/org-agenda-redo-in-other-window))
+
+(run-at-time nil 300 'my-complete-gcal-sync)
+
+
 
 ;; helpers
 
@@ -993,6 +999,8 @@ If no window is at direction DIR, an error is signaled."
   (interactive)
   (flet ((org-read-date (&rest rest) (current-time)))
     (call-interactively 'org-agenda-schedule)))
+
+
 
 
 
