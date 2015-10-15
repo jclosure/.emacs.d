@@ -1,5 +1,9 @@
 
 * variable binding scopes
+:PROPERTIES:
+:ID:       7a159cef-753c-4eb0-ad0d-a1c08206b38d
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 
 local bindings demonstrating
 
@@ -12,7 +16,7 @@ let vs let*
 
 ;; a let binding
 (progn
-  
+
   (setq y 2)
 
   (let ((y 1)
@@ -43,15 +47,22 @@ let vs let*
 | 1 | 1 |
 
 ** discusion:
+:PROPERTIES:
+:ID:       fb0c8475-36da-448a-aee4-3db97a645b76
+:END:
 
 let binds only s-expression values from the environment outside the
 (let ...) form
 
 let* successively binds each expression within the scope of the (let
 ...) form and from the environment.  the inner scope overrides the
-outter scope. 
+outter scope.
 
 * some precise work with table data
+:PROPERTIES:
+:ID:       254d7e8e-34e5-42cd-bfd2-8ddc6aa1d832
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 
 
 read up on var with tables:

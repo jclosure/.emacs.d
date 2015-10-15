@@ -1,4 +1,8 @@
 
 * TODO learn how to contribute to worg
+:PROPERTIES:
+:ID:       f7d55c77-e846-4868-b208-8e28647b7542
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
 
 http://orgmode.org/worg/worg-about.html

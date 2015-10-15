@@ -14,7 +14,6 @@
 
 
 
-
 ;; Start up config
 ;(setq initial-major-mode (quote text-mode))
 (setq inhibit-startup-message t)
@@ -151,6 +150,7 @@
         
  
         ;; global packages
+        'el-get
         'dash
         'use-package
         'helm
@@ -214,6 +214,10 @@
         ;; node
         'sws-mode
         'jade-mode
+        'js3-mode
+        'nodejs-repl
+  
+        
 
         ;; elasticsearch
         'es-mode
@@ -719,6 +723,48 @@ If no window is at direction DIR, an error is signaled."
 ;(workgroups-mode 1)
 
 
+;; JAVASCRIPT
+
+
+;; ome
+
+;; ;;(load-library "js3-mode")
+;; (defun my-tern-setup ()
+;;   (when (el-get-package-installed-p 'js2-mode)
+;;     (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+;;   (when (el-get-package-installed-p 'js3-mode)
+;;     (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
+;;   (setq tern-command (cons (executable-find "tern") '()))
+;;   (eval-after-load 'tern
+;;     '(progn
+;;        (require 'tern-auto-complete)
+;;        (tern-ac-setup))))
+
+;; (my-tern-setup)
+
+;; ;; sachacs
+
+
+;; (use-package skewer-mode
+;;   :ensure t :defer t
+;;   :config (skewer-setup))
+
+;; (use-package company
+;;   :ensure t
+;;   :config
+;;   (add-hook 'prog-mode-hook 'company-mode))
+
+
+;; (use-package company-tern
+;; :ensure t
+;; :defer t
+;; :init (add-to-list 'company-backends 'company-tern))
+
+
+
+
+
+
 ;; SET DARK
 ;; run (customize) in scratch and search for what you want to customize
 ;; (custom-set-variables
@@ -966,7 +1012,7 @@ If no window is at direction DIR, an error is signaled."
   )
 
 ;; open agenda on start
-(my/jump-to-org-agenda)
+;(my/jump-to-org-agenda)
 
 ;; if its idle for n seconds switch to agenda
 (run-with-idle-timer 300 t 'my/jump-to-org-agenda)
@@ -984,11 +1030,11 @@ If no window is at direction DIR, an error is signaled."
 ;; testing: refresh google calendar with agenda every n seconds
 ;; refresh agenda view every n seconds
 ;; create an idle timer that runs org-gcal-sync
-(defun my-complete-gcal-sync ()
+(defun my-full-gcal-sync ()
   (org-gcal-sync)
   (my/org-agenda-redo-in-other-window))
 
-(run-at-time nil 300 'my-complete-gcal-sync)
+;(run-at-time nil 300 'my-full-gcal-sync)
 
 
 
@@ -999,6 +1045,7 @@ If no window is at direction DIR, an error is signaled."
   (interactive)
   (flet ((org-read-date (&rest rest) (current-time)))
     (call-interactively 'org-agenda-schedule)))
+
 
 
 

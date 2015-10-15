@@ -12,21 +12,46 @@
 #+LINK_HOME: http://orgmode.org/worg
 
 * Improving this document                                          :noexport:
+:PROPERTIES:
+:ID:       a20bc479-f27f-4920-b626-2c48f72e896a
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 ** DONE Document slice indexing of tables
+:PROPERTIES:
+:ID:       3f8a7b0b-ef9e-4619-8fa9-2f98bf695b9c
+:END:
 ** DONE Document synonymous alternatives
+:PROPERTIES:
+:ID:       383ef922-f320-4fd5-89a0-339aa1726322
+:END:
    {call,lob}, {source, function, srcname}, {results, resname}
 ** DONE Describe useful functions
+:PROPERTIES:
+:ID:       9df5da34-b7a4-49bb-9d3b-4a8040804a0e
+:END:
    - `org-babel-execute-buffer'
    - `org-babel-execute-subtree'
 
 ** DONE Language support
+:PROPERTIES:
+:ID:       75a83326-a12d-487f-afc7-7cb0d75dfd8c
+:END:
  Hopefully we will be breaking out a separate section for
 each language, and expanding the portion which documents the actual
 usage of header-arguments and noweb references as those sections are
 woefully out of date.
 ** DONE Document noweb references
+:PROPERTIES:
+:ID:       704c93c2-c765-4cfc-b00f-19d62dd9c1db
+:END:
 *** DONE Why is :noweb needed for execution but not for tangling?
+:PROPERTIES:
+:ID:       7d23e7a0-c7cd-46cc-a1b1-2389d2ec9bbd
+:END:
 ** TODO Developments
+:PROPERTIES:
+:ID:       0bd73ca8-5c73-434c-85ed-d1209c49167a
+:END:
 - org-babel can now cache the results of source block execution to avoid
  rerunning the same calculation.  The cache uses a sha1 hash key of the
  source code body and the header arguments to determine if
@@ -53,8 +78,14 @@ woefully out of date.
  :file (format "%s/img/pca-scatter.png" dir)
 
 ** DONE Useful variables
+:PROPERTIES:
+:ID:       a2de9495-d6ef-4e4a-b684-747d78d020de
+:END:
    - # -*- org-src-preserve-indentation: t -*-
 ** TODO Language specific header arguments
+:PROPERTIES:
+:ID:       b6d28e3c-b364-41ad-aec0-2d0f0ef1f714
+:END:
    -    org-babel: capture graphical output from R
 
    If a [:file filename.ext] header arg is provided, then all graphical
@@ -125,12 +156,21 @@ may have further ideas / views here.
 
 
 ** DONE What function is bound to C-c '?
+:PROPERTIES:
+:ID:       876e3fdf-082d-49d4-adab-152a26c265e7
+:END:
    - this document notes two different functions
 
 * source:
+:PROPERTIES:
+:ID:       cfb1736a-810b-4a01-9014-a8fb42602aed
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 * Introduction
   :PROPERTIES:
   :CUSTOM_ID: introduction
+  :ID:       d3dcd0cf-1b87-4a6e-af59-a5c466dbd34f
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 
   Babel is about letting many different languages work together.
@@ -153,6 +193,10 @@ may have further ideas / views here.
   - export to files for literate programming.
 
 * Overview
+:PROPERTIES:
+:ID:       a231bc38-2a53-4aaf-8847-c4478f7fb7d1
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
   Babel provides new features on a few different fronts, and
   different people may want to start in different places.
 
@@ -182,6 +226,8 @@ may have further ideas / views here.
   :PROPERTIES:
   :CUSTOM_ID: getting-started
   :results:  silent
+  :ID:       3cd5c8fb-a7cb-42e2-954c-e45992002fec
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 
   If you have a working Emacs installation, then getting started with
@@ -205,11 +251,14 @@ may have further ideas / views here.
 * Code Blocks
     :PROPERTIES:
     :CUSTOM_ID: source-code-blocks
+    :ID:       ba63e715-e839-488d-88c9-f334e5323fbb
+    :PUBDATE:  <2015-10-08 Thu 20:50>
     :END:
 
 ** Code Blocks in Org
     :PROPERTIES:
     :CUSTOM_ID: source-code-blocks-org
+    :ID:       057f7aa9-1ac7-4829-af73-3e710d7342d3
     :END:
 
     Babel is all about code blocks in Org-mode. If you are
@@ -243,6 +292,7 @@ may have further ideas / views here.
 ** Code Blocks in Babel
     :PROPERTIES:
     :CUSTOM_ID: source-code-blocks-babel
+    :ID:       c315130a-bc0f-4709-8fbf-05a1383e9a88
     :END:
 
 Babel adds some new elements to code blocks. The basic
@@ -270,6 +320,8 @@ structure becomes:
 * Source Code Execution
     :PROPERTIES:
     :CUSTOM_ID: source-code-execution
+    :ID:       35a5c8ca-7d5e-4af6-91d9-acec5b1ffe1f
+    :PUBDATE:  <2015-10-08 Thu 20:50>
     :END:
 
 Babel executes code blocks for *interpreted* languages such
@@ -282,6 +334,9 @@ followed by their output. If you are viewing the Org-mode version of
 this document in Emacs, place point anywhere inside a block and press
 C-c C-c to run the code[fn:1] (and feel free to alter it!).
 *** Ruby
+:PROPERTIES:
+:ID:       4428250c-c337-4fc1-9e55-3cc271523f37
+:END:
 In the Org-mode file:
 : #+begin_src ruby
 : "This file was last evaluated on #{Date.today}"
@@ -297,6 +352,9 @@ HTML export of the resulting string:
 : This file was last evaluated on 2009-08-09
 
 *** Shell
+:PROPERTIES:
+:ID:       daba72da-c4b8-460a-95e2-172122383ce7
+:END:
 In the Org-mode file:
 : #+begin_src sh
 :   echo "This file takes up `du -h org-babel.org |sed 's/\([0-9k]*\)[ ]*org-babel.org/\1/'`"
@@ -312,6 +370,9 @@ HTML export of the resulting string:
 : This file takes up  36K
 
 *** R
+:PROPERTIES:
+:ID:       f6998212-c5b8-47b4-bcaf-5e8c4d3af8dc
+:END:
      What are the most common words in this file?
 In the Org-mode file:
 : #+begin_src R :colnames yes
@@ -332,6 +393,9 @@ HTML export of code:
 |   85 |       60 |        47 |          44 |    40 |   38 |    35 |   34 |      33 |   33 |
 
 *** ditaa
+:PROPERTIES:
+:ID:       ee633275-8a0c-4241-833e-0a1ffe94a19c
+:END:
 
 In the Org-mode file:
 : #+begin_src ditaa :file blue.png :cmdline -r
@@ -362,6 +426,7 @@ file:img/babel/blue.png
 ** Capturing the Results of Code Evaluation
    :PROPERTIES:
    :CUSTOM_ID: results
+   :ID:       e5673e35-56a3-4e91-b269-baa1b00c89ef
    :END:
    Babel provides two fundamentally different modes for capturing
    the results of code evaluation: functional mode and scripting
@@ -370,6 +435,7 @@ file:img/babel/blue.png
 *** =:results value= (functional mode)
    :PROPERTIES:
    :CUSTOM_ID: results-value
+   :ID:       0cfaa7b8-9221-4f38-8cf9-e1447e4f0acb
    :END:
      The 'result' of code evaluation is the *value* of the last
      statement in the code block. In functional mode, the
@@ -400,6 +466,7 @@ the last statement and nothing else.
 *** =:results output= (scripting mode)
    :PROPERTIES:
    :CUSTOM_ID: results-output
+   :ID:       4dd02821-3fba-4c1c-9cb9-f8c3de4fda25
    :END:
 
      In scripting mode, Babel captures the text output of the
@@ -429,6 +496,9 @@ the code block doesn't include a =print()= statement for the last
 value, =(2 + 2)=, 4 does not appear in the results.
 
 ** Session-based Evaluation
+:PROPERTIES:
+:ID:       ee5e2cbc-2a5b-403e-940d-0257364faea3
+:END:
    For some languages, such as python, R, ruby and shell, it is
    possible to run an interactive session as an "inferior process"
    within Emacs. This means that an environment is created containing
@@ -455,6 +525,7 @@ value, =(2 + 2)=, 4 does not appear in the results.
 ** Arguments to Code Blocks
    :PROPERTIES:
    :CUSTOM_ID: arguments-to-source-code-blocks
+   :ID:       ebee6cd6-de69-444d-a77a-e85a4a44197a
    :END:
    Babel supports parameterisation of code blocks, i.e.,
    arguments can be passed to code blocks, which gives them
@@ -462,6 +533,9 @@ value, =(2 + 2)=, 4 does not appear in the results.
    both functional and scripting modes.
 
 *** Simple example of using a code block as a function
+:PROPERTIES:
+:ID:       f1dbb6fe-202b-4035-8195-c6956a1c5501
+:END:
 
      First let's look at a very simple example. The following source
      code block defines a function, using python, that squares its argument.
@@ -492,6 +566,9 @@ Now we use the source block:
 : 36
 
 *** A more complex example using an Org-mode table as input
+:PROPERTIES:
+:ID:       0098cdc2-c5de-4dd1-bba8-e4fb54d6f5e0
+:END:
 
      In this example we define a function called =fibonacci-seq=, using
      Emacs Lisp.  The function =fibonacci-seq= computes a Fibonacci
@@ -539,6 +616,9 @@ The return value of =fibonacci-seq= is a table:
 | 1 | 3 | 8 | 21 | 55 | 144 | 377 | 987 | 2584 | 6765 |
 
 ** In-line Code Blocks
+:PROPERTIES:
+:ID:       13adaba2-2567-4ee5-ad62-03909401ded2
+:END:
     Code can be evaluated in-line using the following syntax:
 
 : Without header args: src_lang{code} or with header args: src_lang[args]{code},
@@ -546,6 +626,9 @@ The return value of =fibonacci-seq= is a table:
 : python session.
 
 ** Code Block Body Expansion
+:PROPERTIES:
+:ID:       ef7b25b9-8533-4098-a47c-65099b8eb592
+:END:
      Babel "expands" code blocks prior to evaluation, i.e., the
      evaluated code comprises the code block contents augmented with
      code that assigns referenced data to variables. It is possible to
@@ -595,6 +678,7 @@ With point inside the code block,  =C-c M-b p= expands the contents:
 ** A Meta-programming Language for Org-mode
   :PROPERTIES:
   :CUSTOM_ID: meta-programming-language
+  :ID:       23e22246-e9e2-4ab7-ad90-5efd6417a453
   :END:
 
 Because the return value of a function written in one language can be
@@ -654,6 +738,8 @@ HTML export of code:
 * Using Code Blocks in Org Tables
   :PROPERTIES:
   :CUSTOM_ID: spreadsheet
+  :ID:       79c00b50-f224-44b1-8001-307644815406
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 
   In addition to passing data from tables as arguments to code
@@ -668,6 +754,9 @@ What Babel adds is the ability to use code blocks (in whatever
 language) in the =#+TBLFM= line to perform the necessary computation.
 
 *** Example 1: Data Summaries Using R
+:PROPERTIES:
+:ID:       eb694aac-259c-401c-9726-5eff3608ecea
+:END:
 As a simple example, we'll fill in a cell in an Org-mode table with the
 average value of a few numbers. First, let's make some data. The
 following source block creates an Org-mode table filled with five random
@@ -729,6 +818,9 @@ is recalculated the source block will be evaluated again, and
 therefore the calculated average value will change.
 
 *** Example 2: Babel Test Suite
+:PROPERTIES:
+:ID:       7777994b-555b-45f8-b8c6-5b7b120d584f
+:END:
 While developing Babel, we used a suite of tests implemented
 as a large Org-mode table.  To run the entire test suite we simply
 evaluate the table with C-u C-c C-c: all of the tests are run,
@@ -766,6 +858,9 @@ HTML export of code:
 #+TBLFM: $5='(if (= (length $3) 1) (sbe $2 (n $3)) (sbe $2)) :: $6='(if (string= $4 $5) "pass" (format "expected %S but was %S" $4 $5))
 
 **** code blocks for tests
+:PROPERTIES:
+:ID:       c70b829b-d29a-4d03-95c9-78d3b690496b
+:END:
 
 In the Org-mode file:
 
@@ -846,6 +941,8 @@ HTML export of code:
 * The Library of Babel
   :PROPERTIES:
   :CUSTOM_ID: library-of-babel
+  :ID:       9e4fbe73-efb5-43dd-a1e1-607d346485f9
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 
   (see also Org manual:Library-of-Babel)
@@ -890,6 +987,8 @@ HTML export of code:
 * Literate Programming
   :PROPERTIES:
   :CUSTOM_ID: literate-programming
+  :ID:       f1084e09-a61f-487d-8832-1519cdaff279
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 
 #+begin_quote
@@ -928,6 +1027,7 @@ Babel.
 *** Simple Literate Programming Example (Noweb syntax)
     :PROPERTIES:
     :CUSTOM_ID: literate-programming-example
+    :ID:       4fe50209-f685-4c68-98a4-bc17a7a4d8f7
     :END:
 
 Tangling functionality is controlled by the =tangle= family of tangle
@@ -1024,6 +1124,7 @@ block but are passed literally to =example-block()=.
 *** Emacs Initialization with Babel
     :PROPERTIES:
     :CUSTOM_ID: emacs-initialization
+    :ID:       157508db-7067-4300-aff6-6294bcd0e57d
     :END:
 
 #+attr_html: style="float:left;"
@@ -1046,6 +1147,7 @@ Org-babel-emacs-starter-kit.
 ***** Literate Emacs Initialization
       :PROPERTIES:
       :CUSTOM_ID: literate-emacs-init
+      :ID:       ebe20e90-59c7-41b4-85f6-106a77a82d8c
       :END:
 
 For a simple example of usage, follow these 5 steps:
@@ -1102,6 +1204,8 @@ For a simple example of usage, follow these 5 steps:
 * Reproducible Research
   :PROPERTIES:
   :CUSTOM_ID: reproducable-research
+  :ID:       10309edc-4fba-4666-a9f9-5dea1757f6d9
+  :PUBDATE:  <2015-10-08 Thu 20:50>
   :END:
 #+begin_quote
 An article about computational science in a scientific publication is
@@ -1138,6 +1242,10 @@ advantages:
    planning and task management.
 
 * Footnotes
+:PROPERTIES:
+:ID:       edc88d7a-9861-430f-821a-d408dd2e2848
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 [fn:1] Calling =C-c C-o= on a code block will open the
 block's results in a separate buffer.
 

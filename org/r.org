@@ -2,6 +2,10 @@
 
 
 * Free Faculty: working examples
+:PROPERTIES:
+:ID:       d2361185-7120-47dc-b6e1-619583e4b249
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
 
 http://pj.freefaculty.org/R/WorkingExamples/
 

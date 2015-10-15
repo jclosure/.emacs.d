@@ -1,7 +1,7 @@
 #+TITLE: Org-Mode Scratch Pad
 #+AUTHOR: Joel Holder
 #+EMAIL: jclosure@gmail.com
-#+STARTUP: indent latexpreview    
+#+STARTUP: indent latexpreview
 
 
 
@@ -11,6 +11,22 @@
 :PUBDATE:  <2015-10-04 Sun 02:54>
 :END:
 
+** naked
+:PROPERTIES:
+:ID:       3786764a-6bfe-4d2a-83b7-eb27fdb35c85
+:END:
+%JAVA_HOME%
+** \=something\=
+:PROPERTIES:
+:ID:       8f7785c0-8d8b-4edc-b1a4-f564f5241125
+:END:
+=%JAVA_HOME%=
+
+** \~something\~
+:PROPERTIES:
+:ID:       8ec90e41-8371-4510-915f-03210fafd40a
+:END:
+~%JAVA_HOME%~
 
 ** ASDFASDF
 :PROPERTIES:

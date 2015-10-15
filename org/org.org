@@ -18,7 +18,7 @@ http://orgmode.org/worg/orgcard.html
 :ID:       a3d3c73c-bfc6-4518-8840-c00991827f88
 :END:
 
-# <S[TAB] 
+# <S[TAB]
 
 will stub out a babel source block
 
@@ -32,7 +32,14 @@ will stub out a babel source block
 ~/.emacs.d/customizations/my-orgmode.el
 
 * awesome org hacks
+:PROPERTIES:
+:ID:       f76ef08a-e984-4cd7-a282-58f3d04ef2f6
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
 
 ** spend some time cherry picking these:
+:PROPERTIES:
+:ID:       823bd18a-85f2-4860-8325-91a2a237ab74
+:END:
 
 http://orgmode.org/worg/org-hacks.html

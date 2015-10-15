@@ -19,7 +19,9 @@
 :END:
 
 ** emacs
-
+:PROPERTIES:
+:ID:       0c431239-6ee6-4fc4-b1d3-d291a7ea0edc
+:END:
 *** DONE installing emacs
 CLOSED: [2015-10-01 Thu 22:45]
 :PROPERTIES:
@@ -35,7 +37,7 @@ CLOSED: [2015-10-01 Thu 22:45]
 :ID:       faaaa818-ee53-40be-ad10-545cb5c56f84
 :END:
 HOME=%USERPROFILE%
-note this may need to be hard-coded to C:\Users\<your_name>
+note this may need to be hard-coded to =C:\Users\<your_name>=
 **** emacs program
 :PROPERTIES:
 :ID:       03545263-14cf-4d03-b815-02c68b5133b0
@@ -45,19 +47,29 @@ note this may need to be hard-coded to C:\Users\<your_name>
 :ID:       d25cdbc1-2b2d-42a4-8ffe-e41ceae40fe6
 :END:
 
+**** option 1: vgoulet install (recommended)
+:PROPERTIES:
+:ID:       70266e18-5bff-426e-b304-6e3f90dea070
+:END:
+
+if you do want PDF and Graphic Support get:
+http://vgoulet.act.ulaval.ca/en/emacs/
+
+**** option 2: stock emacs install
+:PROPERTIES:
+:ID:       6a72f81a-e1af-47c1-8b40-57db427b3784
+:END:
+
 if you want no PDF and Graphics support get:
 https://ftp.gnu.org/gnu/emacs/windows/
-
-if you do want PDF and Graphic Support get: (recommended)
-http://vgoulet.act.ulaval.ca/en/emacs/
 
 ***** unpack and copy folder to c:\
 :PROPERTIES:
 :ID:       f3f995e4-d86d-4efb-a110-85791eadc8f0
 :END:
-e.g. C:\emacs-24.5-bin-i686-mingw32
-this will be known as $EMACS_PATH
-***** install dependencies, if not using vgoulet
+e.g. =C:\emacs-24.5-bin-i686-mingw32=
+this will be known as =$EMACS_PATH=
+***** install dependencies, if NOT using vgoulet
 :PROPERTIES:
 :ID:       d752d852-3625-4e3f-aeef-2babb9605072
 :END:
@@ -93,9 +105,9 @@ copy the dll into $EMACS_HOME\bin
 :ID:       73db7415-c7b3-4cf9-81dc-79e70d1f90d8
 :END:
 
-http://ftp.gnu.org/gnu/aspell/w32/Aspell-en-0.50-2-3.exe
+http://ftp.gnu.org/gnu/aspell/w32/Aspell-en-0.50-2-3.ex
 
-****** optional install imagemagick
+**** install imagemagick
 :PROPERTIES:
 :ID:       1ce22e37-0e6b-42c9-807a-ddf6f723de41
 :END:
@@ -105,16 +117,17 @@ http://imagemagick.org/script/binary-releases.php#windows
 for me:
 ftp://ftp.imagemagick.org/pub/ImageMagick/binaries/ImageMagick-6.9.2-3-Q16-x64-dll.exe
 
-****** pdf
+
+**** pdf
 :PROPERTIES:
 :ID:       f320304a-07f6-49a1-a8c3-39f0ad5a40d4
 :END:
-******* install texlive
+***** install texlive
 :PROPERTIES:
 :ID:       5ce7fa26-5580-4c20-96f3-fe5fecf50b76
 :END:
 for MiKTeX install nec for PDFs
-******* install ghostscript
+***** install ghostscript
 :PROPERTIES:
 :ID:       0397a27b-2ea8-4baf-b73a-afd6d2e2a7c3
 :END:
@@ -124,7 +137,12 @@ put it in path
 
 C:\Program Files\gs\gs9.16\bin
 
+
 **** emacs configuration
+:PROPERTIES:
+:ID:       cc191d11-6d7b-479e-8c7c-11c5869ddec3
+:END:
+
 :PROPERTIES:
 :ID:       9bb0d10f-5f80-4079-9177-53e831b30c45
 :END:
@@ -151,7 +169,12 @@ git clone https://github.com/jclosure/.emacs.d.git
 emacs will start up and detect missing packages that it needs to support development
 after it completes, you will have a fully functional emacs development environment
 
-***** emacs is too hard to learn
+*** why emacs
+:PROPERTIES:
+:ID:       53fa584d-3fe9-43c1-800b-60a7b2ca107c
+:END:
+
+**** emacs is too hard to learn
 :PROPERTIES:
 :ID:       5de07641-0395-4d37-b1dc-e11e53f50c9c
 :END:
@@ -208,11 +231,12 @@ C-c p f
 # list colors and change faces
 # change themes
 
-**** recommendations about way to work
+*** recommendations about way to work
 :PROPERTIES:
 :ID:       ca4abe04-462c-4565-a559-6d7b780b17c3
 :END:
-***** use a cloud-synced folder for project work
+
+**** use a cloud-synced folder for project work
 :PROPERTIES:
 :ID:       3364b835-a135-4751-86fa-60b5cf826ca2
 :END:
@@ -229,8 +253,7 @@ Create a folder at %USERPROFILE%\Google Drive\projects
 Create a hard symlink from it into your profile directory
 
 # Example Command:
-C:\Users\Joel>mklink /J C:\Users\Joel\projects "C:\Users\Joel\Google Drive\proje
-cts"
+C:\Users\Joel>mklink /J C:\Users\Joel\projects "C:\Users\Joel\Google Drive\projects"
 
 # Output:
 Junction created for C:\Users\Joel\projects <<===>> C:\Users\Joel\Google Drive\p
@@ -240,6 +263,35 @@ rojects
 C:\Users\Joel\projects
 
 ** dev runtimes
+:PROPERTIES:
+:ID:       5e289b20-66b6-4750-a564-10cf83bbea7a
+:END:
+*** DONE installing java
+CLOSED: [2015-10-08 Thu 20:46]
+:PROPERTIES:
+:ID:       703e5428-858a-46aa-807f-a77134dfe2db
+:END:
+
+download the latest hotspot jdk (Java SE) from Oracle:
+
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+I am installing:  Java SE Development Kit 8u60 for Windows x64:
+
+install it.
+
+Set =%JAVA_HOME= appropriately
+
+The installer will put it in your %PATH%, so you don't need to do that.
+
+**** install eclipse:
+:PROPERTIES:
+:ID:       d67c42c6-089e-482a-ac2d-4b929944015f
+:END:
+
+https://eclipse.org/downloads/
+
+grab the latest 64bit version
 
 *** DONE installing python
 CLOSED: [2015-10-01 Thu 22:45]
@@ -290,6 +342,7 @@ pip install epc
 pip install pyflakes
 pip install pyreadline
 pip install jupyter
+pip install ipdb
 **** adapt your emacs configuration to pickup the python directory
 :PROPERTIES:
 :ID:       880b444d-400c-42fe-9a78-6c5f778f662f
@@ -426,6 +479,39 @@ it will evalue to 4
 :END:
 
 *** TODO installing node
+:PROPERTIES:
+:ID:       ca3ced92-6389-48aa-bc1f-051641bbd96c
+:END:
+
+Before installing, note that you need to have Python already setup and
+done.  See Python section of this document: you must have python 2.7 or higher
+
+If node already got installed on your system, uninstall it via: "add remove programs"
+
+download the latest node msi from joyent:
+
+https://nodejs.org/en/download/
+
+You are most likely using a 64bit machine, so get that version.
+
+I am installing:
+
+node-v4.1.2-x64.msi
+
+Once install completes, reboot.
+
+The installer will put it in your %PATH%, so you don't need to do that.
+
+**** install baseline npm packages
+:PROPERTIES:
+:ID:       9f2368ef-24f9-43c2-90b0-df5e1dde7cf5
+:END:
+
+npm -g install phantomjs
+npm -g install bower
+npm -g install browserfy
+npm -g install tern
+
 *** TODO installing clojure
 :PROPERTIES:
 :ID:       32ea7862-04bc-4344-bf31-a8c827a19e09
@@ -444,16 +530,28 @@ https://www.youtube.com/watch?v=VnWVu8VVDbI
 
 *** DONE installing r
 CLOSED: [2015-10-07 Wed 22:24]
+:PROPERTIES:
+:ID:       903409fd-5693-471e-960d-767cb18d3886
+:END:
 
 **** get and install R
+:PROPERTIES:
+:ID:       b8b72e99-0e22-4c34-9762-1c061e29945a
+:END:
 
 https://cran.r-project.org/
 
 **** get and install R studio
+:PROPERTIES:
+:ID:       bff51121-7fe6-4601-a877-164d1465ac19
+:END:
 
 https://www.rstudio.com/products/rstudio/download/
 
 **** add R's bin directory to %PATH%
+:PROPERTIES:
+:ID:       69a09622-ea50-44a3-8be5-e5aea94c1ca7
+:END:
 
 for me it defaulted to:
 
@@ -464,6 +562,9 @@ C:\Program Files\R\R-3.2.2\bin\x64
 do both of the above
 
 **** integrating R with emacs
+:PROPERTIES:
+:ID:       41849004-a5a0-4372-9722-7b323148ef28
+:END:
 
 not sure about this:
 
@@ -472,8 +573,14 @@ not sure about this:
 doesn't seem to be necessary for org-babel
 
 ***** TODO look into using inferior-r
+:PROPERTIES:
+:ID:       47742cd8-8a83-4313-b594-2c01e5f11d73
+:END:
 
 **** get some working examples and play around
+:PROPERTIES:
+:ID:       cfca77a5-3f5c-4146-a066-8fd2e5a225f7
+:END:
 
 http://pj.freefaculty.org/R/WorkingExamples/
 
@@ -549,8 +656,10 @@ now you get a linux like directory listing capability.
 it won't work until you put grep into your path.
 after you've done this, it will work as expected.
 
-** server
-
+** servers
+:PROPERTIES:
+:ID:       0a6f15ad-5a3d-4ff9-bedd-24240c54e477
+:END:
 *** DONE installing elasticsearch
 CLOSED: [2015-10-01 Thu 22:46]
 :PROPERTIES:
@@ -569,12 +678,12 @@ http://www.oracle.com/technetwork/java/javase/downloads/index.html
 :PROPERTIES:
 :ID:       68d77b7f-56cd-496a-9501-d686cea7627d
 :END:
-***** make sure you have a %JAVA_HOME% environment variable set to the location where you installed the JDK
+***** make sure you have a =%JAVA_HOME%= environment variable set to the location where you installed the JDK
 :PROPERTIES:
 :ID:       3e49c8cf-fca2-47d7-a437-6abe16fae5fb
 :END:
 In my case I installed Java8, and it went here by default: C:\Program Files\Java\jdk1.8.0_60
-So I set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60
+So I set =JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60=
 **** download the latest zip version from:
 :PROPERTIES:
 :ID:       3bddc8cd-1e1a-4f2d-b76f-06f29be19ad7
@@ -633,14 +742,194 @@ you may re-evaluate code blocks over and over and they will overwrite the adjace
 :ID:       57881ec1-8660-4947-8dfd-cfc2c6fc8c22
 :END:
 
+*** DONE installing neo4j
+CLOSED: [2015-10-08 Thu 20:45]
+:PROPERTIES:
+:ID:       9719de70-86e9-4bc3-9846-525994d759be
+:END:
+
+download neo4j community edition
+
+http://neo4j.com/download/
+
+You may need to have already installed Java for this.  If so, use
+Java8 or higher.  If you haven't already installed it, go ahead and
+do it.  See Java8 section of this document.
+
+Start neo once it's done installing.
+
+Note that the location of the graph database that it will use.  Mine
+is here: C:\Users\Joel\Documents\Neo4j\default.graphdb
+
+You can always wipe out and start over by deleted or moving this file
+out of the way.  You can also back it up and take it in your backpack
+on a usb stick. :)
+
+You are rocking with Neo.
+
 *** TODO installing mongodb
+:PROPERTIES:
+:ID:       5815c1bd-b9ca-4e47-8502-1bfb221ec837
+:END:
 *** TODO installing mysql
+:PROPERTIES:
+:ID:       efe2e9b3-4b42-4a32-ba01-fd210a413c9b
+:END:
 *** TODO installing wildfly
+:PROPERTIES:
+:ID:       3adc93d5-0c9a-45f1-849c-b07f3a559d34
+:END:
 *** TODO installing fuse
+:PROPERTIES:
+:ID:       5624f132-a8bc-4656-a039-edd40b5d236c
+:END:
 
 ** setting up frameworks
+:PROPERTIES:
+:ID:       9ca76075-69cd-4ac0-b380-5498d1442134
+:END:
+*** TODO mean stack
+:PROPERTIES:
+:ID:       29da1d23-11de-40fa-81bb-687f6cb76d03
+:END:
+*** TODO rails
+:PROPERTIES:
+:ID:       68a10e9c-bf29-43de-999e-da81eab1ed16
+:END:
+*** TODO ring + compojure
+:PROPERTIES:
+:ID:       cc4a62eb-0ff6-474a-9cb0-53f9fe9e2d57
+:END:
+*** TODO clojure script
+:PROPERTIES:
+:ID:       389e0ade-3cc7-47f8-a03c-4c3ca9b4a19f
+:END:
 
-*** mean stack
-*** rails
-*** ring + compojure
-*** clojure script
+* dumping my env just in case for reference:
+
+#+BEGIN_EXAMPLE
+
+- windows world view
+
+
+C:\Users\Joel>set
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\Joel\AppData\Roaming
+CommonProgramFiles=C:\Program Files\Common Files
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+CommonProgramW6432=C:\Program Files\Common Files
+COMPUTERNAME=DESKTOP-FPQC169
+ComSpec=C:\Windows\system32\cmd.exe
+HOME=C:\Users\Joel
+HOMEDRIVE=C:
+HOMEPATH=\Users\Joel
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60
+LOCALAPPDATA=C:\Users\Joel\AppData\Local
+LOGONSERVER=\\MicrosoftAccount
+NUMBER_OF_PROCESSORS=8
+OS=Windows_NT
+Path=C:\Program Files\ImageMagick-6.9.2-Q16;C:\Program Files\gs\gs9.16\bin;C:\texlive\2015\bin\win32;C:\Users\Joel\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\Window
+sPowerShell\v1.0\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Program Files (x86)\Skype\Phone\;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Scripts;C:\Program Files\Git\cmd;C:\Prog
+ram Files (x86)\Common Files\Acronis\SnapAPI\;C:\Users\Joel\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Progra
+m Files (x86)\Microsoft Emulator Manager\1.0\;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Program Files\nodejs\;C:\Ruby22-x64\bin;C:\cygwin64\bin;C:\Program Files\R\R-3.2.2\bin;C:\Program Files\R\R-3.2.2\bin\x64;C:\Users\Joel\AppDat
+a\Roaming\npm
+PATHEXT=.SCM;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=AMD64 Family 21 Model 2 Stepping 0, AuthenticAMD
+PROCESSOR_LEVEL=21
+PROCESSOR_REVISION=0200
+ProgramData=C:\ProgramData
+ProgramFiles=C:\Program Files
+ProgramFiles(x86)=C:\Program Files (x86)
+ProgramW6432=C:\Program Files
+PROMPT=$P$G
+PSModulePath=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+PYTHONPATH=C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\DLLs;C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib\lib-tk
+SESSIONNAME=Console
+SystemDrive=C:
+SystemRoot=C:\Windows
+TEMP=C:\Users\Joel\AppData\Local\Temp
+TMP=C:\Users\Joel\AppData\Local\Temp
+USERDOMAIN=DESKTOP-FPQC169
+USERDOMAIN_ROAMINGPROFILE=DESKTOP-FPQC169
+USERNAME=Joel
+USERPROFILE=C:\Users\Joel
+VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\
+VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\
+VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+VSSDK140Install=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VSSDK\
+windir=C:\Windows
+
+
+- cygwin world view
+
+C:\Users\Joel>env
+!::=::\
+!C:=C:\Users\Joel
+ALLUSERSPROFILE=C:\ProgramData
+APPDATA=C:\Users\Joel\AppData\Roaming
+COMMONPROGRAMFILES=C:\Program Files\Common Files
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+CommonProgramW6432=C:\Program Files\Common Files
+COMPUTERNAME=DESKTOP-FPQC169
+COMSPEC=C:\Windows\system32\cmd.exe
+HOME=/cygdrive/c/Users/Joel
+HOMEDRIVE=C:
+HOMEPATH=\Users\Joel
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60
+LOCALAPPDATA=C:\Users\Joel\AppData\Local
+LOGONSERVER=\\MicrosoftAccount
+NUMBER_OF_PROCESSORS=8
+OS=Windows_NT
+PATH=/cygdrive/c/Program Files/ImageMagick-6.9.2-Q16:/cygdrive/c/Program Files/g
+s/gs9.16/bin:/cygdrive/c/texlive/2015/bin/win32:/cygdrive/c/Users/Joel/bin:/cygd
+rive/c/ProgramData/Oracle/Java/javapath:/cygdrive/c/Windows/system32:/cygdrive/c
+/Windows:/cygdrive/c/Windows/System32/Wbem:/cygdrive/c/Windows/System32/WindowsP
+owerShell/v1.0:/cygdrive/c/Program Files (x86)/AMD/ATI.ACE/Core-Static:/cygdrive
+/c/Program Files (x86)/Skype/Phone:/cygdrive/c/WinPython-64bit-2.7.10.2/python-2
+.7.10.amd64:/cygdrive/c/WinPython-64bit-2.7.10.2/python-2.7.10.amd64/Scripts:/cy
+gdrive/c/Program Files/Git/cmd:/cygdrive/c/Program Files (x86)/Common Files/Acro
+nis/SnapAPI:/cygdrive/c/Users/Joel/.dnx/bin:/cygdrive/c/Program Files/Microsoft
+DNX/Dnvm:/cygdrive/c/Program Files/Microsoft SQL Server/120/Tools/Binn:/cygdrive
+/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit:/cygdrive/c/P
+rogram Files (x86)/Microsoft Emulator Manager/1.0:/cygdrive/c/Program Files (x86
+)/MiKTeX 2.9/miktex/bin:/cygdrive/c/Program Files/nodejs:/cygdrive/c/Ruby22-x64/
+bin:/usr/bin:/cygdrive/c/Program Files/R/R-3.2.2/bin:/cygdrive/c/Program Files/R
+/R-3.2.2/bin/x64:/cygdrive/c/Users/Joel/AppData/Roaming/npm
+PATHEXT=.SCM;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW
+PROCESSOR_ARCHITECTURE=AMD64
+PROCESSOR_IDENTIFIER=AMD64 Family 21 Model 2 Stepping 0, AuthenticAMD
+PROCESSOR_LEVEL=21
+PROCESSOR_REVISION=0200
+ProgramData=C:\ProgramData
+PROGRAMFILES=C:\Program Files
+ProgramFiles(x86)=C:\Program Files (x86)
+ProgramW6432=C:\Program Files
+PROMPT=$P$G
+PSModulePath=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+PUBLIC=C:\Users\Public
+PYTHONPATH=C:\WinPython-64bit-2.7.10.2\python-2.7.10.amd64\Lib;C:\WinPython-64bi
+t-2.7.10.2\python-2.7.10.amd64\DLLs;C:\WinPython-64bit-2.7.10.2\python-2.7.10.am
+d64\Lib\lib-tk
+SESSIONNAME=Console
+SYSTEMDRIVE=C:
+SYSTEMROOT=C:\Windows
+TEMP=/cygdrive/c/Users/Joel/AppData/Local/Temp
+TMP=/cygdrive/c/Users/Joel/AppData/Local/Temp
+USERDOMAIN=DESKTOP-FPQC169
+USERDOMAIN_ROAMINGPROFILE=DESKTOP-FPQC169
+USERNAME=Joel
+USERPROFILE=C:\Users\Joel
+VS110COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools
+\
+VS120COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools
+\
+VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools
+\
+VSSDK140Install=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VSSDK\
+WINDIR=C:\Windows
+TERM=cygwin
+
+
+#+END_EXAMPLE

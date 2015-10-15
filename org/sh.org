@@ -1,5 +1,9 @@
 
 * metaprogramming
+:PROPERTIES:
+:ID:       25bc8a09-c5d7-4096-aefa-8dd4ddd75372
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
 
 #+name: directories
 #+begin_src sh :results replace

@@ -1,6 +1,10 @@
 
 
 * Free Faculty: working examples
+:PROPERTIES:
+:ID:       f2b591d7-a020-4054-ab22-ca30306b2d3f
+:PUBDATE:  <2015-10-08 Thu 20:50>
+:END:
 
 http://pj.freefaculty.org/guides/c-programming/
 
