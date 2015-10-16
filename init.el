@@ -170,8 +170,9 @@
         'helm-projectile
         'magit
         'gist
+        'powerline
+        'company-quickhelp
         
-
         ;; org
         'gntp
         'org-gcal
@@ -230,6 +231,13 @@
 
 (require 'use-package)
 
+
+
+;; packages from git ./lib
+
+(load-file "~/.emacs.d/lib/emacs-tdd/tdd.el")
+
+
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
 ;; terminal window, because OS X does not run a shell during the
@@ -250,8 +258,6 @@
 ; (electric-pair-mode 1)
 ; highlight entire bracket expression
 ;(setq show-paren-style 'expression) 
-; display line numbers in margin.
-;(global-linum-mode 1) 
 
 
 ; clean wrapping of text
@@ -281,8 +287,18 @@
 
 ;;; GLOBAL STUFF
 
+;; no windows support for xpm
+;; powerline setup
+;; (require 'powerline)
+
+
+
+;;(setq powerline-color1 "grey22")
+;;(setq powerline-color2 "grey40")
+
+
 ;; turning company-mode on globally
-(global-company-mode t)
+;;(global-company-mode t)
 
 ;; turning projectile on globally
 (projectile-global-mode)
@@ -310,9 +326,13 @@ If buffer-or-name is nil return current buffer's mode."
    (if buffer-or-name (get-buffer buffer-or-name) (current-buffer))))
 ;;(global-set-key (kbd "<f5>") 'buffer-mode)
 
+
+
+
+;; TABS
 ;; toggle tab widths
 ;; Obviously substitute your preferred key for <f4>
-(global-set-key (kbd "<f5>") 'my-toggle-tab-width-setting)
+;(global-set-key (kbd "<f5>") 'my-toggle-tab-width-setting)
 (defun my-toggle-tab-width-setting ()    "toggle setting tab widths between 2 and 4"
     (interactive)
     (setq tab-width (if (= tab-width 2) 4 2))
@@ -320,15 +340,15 @@ If buffer-or-name is nil return current buffer's mode."
     (redraw-display)
 )
 
-
 ;; Toggle indention with spaces instead of tabs
-(global-set-key (kbd "<f6>") 'my-toggle-indent-mode-setting)
+;(global-set-key (kbd "<f6>") 'my-toggle-indent-mode-setting)
 (defun my-toggle-indent-mode-setting ()
     "toggle indenting modes"
     (interactive)
     (setq indent-tabs-mode (if (eq indent-tabs-mode t) nil t))
     (message "Indenting using %s." (if (eq indent-tabs-mode t) "tabs" "spaces"))
 )
+
 
 
 
@@ -434,21 +454,41 @@ If no window is at direction DIR, an error is signaled."
 
 ;;turn on global goodies
 
+;; WHICH DO YOU WANT AUTOCOMPLETE OR COMPANY MODE?
+
 ; setup global auto complete
-(add-hook 'after-init-hook 'global-auto-complete-mode)
+; (add-hook 'after-init-hook 'global-auto-complete-mode)
 
 ;; setup company mode
 (add-hook 'after-init-hook 'global-company-mode)
+(company-quickhelp-mode 1)
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 
+;; LINE NUMBERS
 ;; add | between linenumbers
 ;;(setq linum-format "%4d \u2502 ")
 (setq linum-format "%4d ")
-(linum-mode)
+
+;; for everything
+;;(global-linum-mode)
+
+;; on only certain modes
+;; (add-hook 'clojure-mode-hook 'linum-mode)
+;; (add-hook 'python-mode-hook 'linum-mode)
+;; (add-hook 'ruby-mode-hook 'linum-mode)
+;; (add-hook 'clojure-mode-hook 'linum-mode)
+;; (add-hook 'c++-mode-hook 'linum-mode)
+;; (add-hook 'c-mode-hook 'linum-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'linum-mode)
+;; (add-hook 'shell-script-mode-hook 'linum-mode)
+;; (add-hook 'js-mode-hook 'linum-mode)
+;; (add-hook 'js2-mode-hook 'linum-mode)
+;; (add-hook 'js3-mode-hook 'linum-mode)
+
 
 ;; THEMES
 ;; (require 'sublime-themes)
@@ -507,8 +547,6 @@ If no window is at direction DIR, an error is signaled."
 ;; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlqv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlpv01:9200/_search?pretty=true")
-
-
 
 
 ;; RUBY
@@ -738,19 +776,21 @@ If no window is at direction DIR, an error is signaled."
                                   (define-key python-mode-map (kbd "C-c b") 'python-add-breakpoint)
                                   
                                   ;; drop into or out of python interactive mode
-                                  (if (equal (my-buffer-mode) 'inferior-python-mode) 
-                                      (setq python-interactive-status "exit()")
-                                    (defun python-interactive ()
-                                      "Enter the interactive Python environment"
-                                      (interactive)
-                                      (progn
-                                        (setq python-interactive-status (if (equal python-interactive-status "exit()")
-                                                                            "import IPython; IPython.embed()"
-                                                                          "exit()"))
-                                        (insert python-interactive-status)
-                                        (move-end-of-line 1)
-                                        (comint-send-input))))
+                                  (setq python-interactive-status "exit()")
+                                  (defun python-interactive ()
+                                    "Enter the interactive Python environment"
+                                    (interactive)
+                                    (progn
+                                     (if (equal (my-buffer-mode) 'inferior-python-mode) 
+                                         (progn 
+                                           (setq python-interactive-status (if (equal python-interactive-status "exit()")
+                                                                               "import IPython; IPython.embed()"
+                                                                             "exit()"))
+                                           (insert python-interactive-status)
+                                           (move-end-of-line 1)
+                                           (comint-send-input)))))
                                   
+                                  ;; trigger for it
                                   (global-set-key (kbd "C-c i") 'python-interactive)
                                   
                                   ))
@@ -763,92 +803,114 @@ If no window is at direction DIR, an error is signaled."
     (setq jedi:setup-keys t)                      ; optional
     (setq jedi:complete-on-dot t)                 ; optional
     (jedi:setup)
-    (elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
-    ;(elpy-use-ipython) ;deprecated
-  
-  )
-
-;;(add-hook 'python-mode-hook 'setup-python-env)
-(setup-python-env)
-
-;: WORKGROUPS
-;; workgroups2 enables saving window configurations, etc..
-;(require 'workgroups2)
-
-;; Change workgroups session file
-;(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
-
-;; What to do on Emacs exit / workgroups-mode exit?
-;(setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
-;(setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
-
-;(workgroups-mode 1)
+    (elpy-enable)
 
 
-;; JAVASCRIPT
+    ;; NOTE: THIS SECTION IS CONFIGURING ELPY
+    ;; IT REMOVES hight-indentation-mode
+    ;; IT CAN ALWAYS BE REDONE INTERACTIVELY BY:
+    ;; (M-x customize-variable RET elpy-modules RET)
+    ;; SEE PYTHON SECTION
+
+    ;; (add-hook 'python-mode-hook (lambda (elpy-modules
+    ;;                                        (quote
+    ;;                                         (elpy-module-company
+    ;;                                          elpy-module-eldoc
+    ;;                                          elpy-module-flymake
+    ;;                                          ;; elpy-module-highlight-indentation
+    ;;                                          elpy-module-pyvenv
+    ;;                                          elpy-module-yasnippet
+    ;;                                          elpy-module-sane-defaults)))))
+
+    ;; defaulting my elpy test runner to py.test (see M-x elpy-set-test-runner) for supported test backends
+
+    ;; (add-hook 'python-mode-hook '(elpy-test-runner (quote elpy-test-pytest-runner)))
+
+    
+ 
+    ) ;; end python-setup()
+
+    ;;(add-hook 'python-mode-hook 'setup-python-env)
+    (setup-python-env)
+
+                                        ;: WORKGROUPS
+    ;; workgroups2 enables saving window configurations, etc..
+                                        ;(require 'workgroups2)
+
+    ;; Change workgroups session file
+                                        ;(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+
+    ;; What to do on Emacs exit / workgroups-mode exit?
+                                        ;(setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
+                                        ;(setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
+
+                                        ;(workgroups-mode 1)
 
 
-;; ome
-
-;; ;;(load-library "js3-mode")
-;; (defun my-tern-setup ()
-;;   (when (el-get-package-installed-p 'js2-mode)
-;;     (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
-;;   (when (el-get-package-installed-p 'js3-mode)
-;;     (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
-;;   (setq tern-command (cons (executable-find "tern") '()))
-;;   (eval-after-load 'tern
-;;     '(progn
-;;        (require 'tern-auto-complete)
-;;        (tern-ac-setup))))
-
-;; (my-tern-setup)
-
-;; ;; sachacs
+    ;; JAVASCRIPT
 
 
-;; (use-package skewer-mode
-;;   :ensure t :defer t
-;;   :config (skewer-setup))
+    ;; ome
 
-;; (use-package company
-;;   :ensure t
-;;   :config
-;;   (add-hook 'prog-mode-hook 'company-mode))
+    ;; ;;(load-library "js3-mode")
+    ;; (defun my-tern-setup ()
+    ;;   (when (el-get-package-installed-p 'js2-mode)
+    ;;     (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
+    ;;   (when (el-get-package-installed-p 'js3-mode)
+    ;;     (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
+    ;;   (setq tern-command (cons (executable-find "tern") '()))
+    ;;   (eval-after-load 'tern
+    ;;     '(progn
+    ;;        (require 'tern-auto-complete)
+    ;;        (tern-ac-setup))))
+
+    ;; (my-tern-setup)
+
+    ;; ;; sachacs
 
 
-;; (use-package company-tern
-;; :ensure t
-;; :defer t
-;; :init (add-to-list 'company-backends 'company-tern))
+    ;; (use-package skewer-mode
+    ;;   :ensure t :defer t
+    ;;   :config (skewer-setup))
+
+    ;; (use-package company
+    ;;   :ensure t
+    ;;   :config
+    ;;   (add-hook 'prog-mode-hook 'company-mode))
 
 
-
-
-
-
-;; SET DARK
-;; run (customize) in scratch and search for what you want to customize
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(coffee-tab-width 2)
-;;  '(frame-background-mode (quote dark))
-;;  '(tabbar-separator (quote (0.5))))
+    ;; (use-package company-tern
+    ;; :ensure t
+    ;; :defer t
+    ;; :init (add-to-list 'company-backends 'company-tern))
 
 
 
-;; TABBAR
-(tabbar-mode t)
-(load "my-tabbar-style.el")
 
-(global-set-key [(control ?c) (left)] 'tabbar-backward)
-(global-set-key [(control ?c) (right)] 'tabbar-forward)
 
-;; these don't work in osx terminal becaues of need for C-S-kp-next
-(global-set-key (kbd "C-S-p") 'tabbar-backward-group)
+
+    ;; SET DARK
+    ;; run (customize) in scratch and search for what you want to customize
+    ;; (custom-set-variables
+    ;;  ;; custom-set-variables was added by Custom.
+    ;;  ;; If you edit it by hand, you could mess it up, so be careful.
+    ;;  ;; Your init file should contain only one such instance.
+    ;;  ;; If there is more than one, they won't work right.
+    ;;  '(coffee-tab-width 2)
+    ;;  '(frame-background-mode (quote dark))
+    ;;  '(tabbar-separator (quote (0.5))))
+
+
+
+    ;; TABBAR
+    (tabbar-mode t)
+    (load "my-tabbar-style.el")
+
+    (global-set-key [(control ?c) (left)] 'tabbar-backward)
+    (global-set-key [(control ?c) (right)] 'tabbar-forward)
+
+    ;; these don't work in osx terminal becaues of need for C-S-kp-next
+    (global-set-key (kbd "C-S-p") 'tabbar-backward-group)
 (global-set-key (kbd "C-S-n") 'tabbar-forward-group)
 (global-set-key (kbd "C-<") 'tabbar-backward)
 (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
@@ -1148,17 +1210,17 @@ If no window is at direction DIR, an error is signaled."
 
 
 
-
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(coffee-tab-width 2)
-;;  '(tabbar-separator (quote (0.5))))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(tabbar-modified ((t (:inherit tabbar-default :foreground "red4" :box (:line-width 1 :color "white" :style released-button)))))c)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '
+ '(tabbar-separator (quote (0.5))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -162,3 +162,18 @@ With prefix argument, wrap search query in quotes."
     (shell-command-on-region
      (point) (mark) "pbcopy")
     (kill-buffer "*Shell Command Output*")))
+
+
+;; Basic util function to set specific tab config for diff modes
+(defun my-tabs-stuff (tabs length)
+  (setq indent-tabs-mode tabs)
+  (setq tab-width length)
+  (setq tab-stop-list (number-sequence length 100 length)))
+
+(defun my-tabs-emacs-lisp-hook ()
+  (my-tabs-stuff nil 2))
+(defun my-tabs-shell-script-hook ()
+  (my-tabs-stuff 1 4))
+(defun my-tabs-js-hook ()
+  (my-tabs-stuff 1 2))
+;; ...

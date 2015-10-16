@@ -340,6 +340,8 @@ close it
 :PROPERTIES:
 :ID:       986fa16b-4f93-4fc5-91d4-17be37d2a7c7
 :END:
+
+# must have
 pip install virtualenv
 pip install epc
 pip install pyflakes
@@ -347,15 +349,21 @@ pip install pyreadline
 pip install jupyter
 pip install ipdb
 
-# Either of these
-pip install rope
-pip install jedi
-# flake8 for code checks
-pip install flake8
 # importmagic for automatic imports
 pip install importmagic
+
+# Both of these
+pip install rope
+pip install jedi
+ 
 # and autopep8 for automatic PEP8 formatting
-pip install autopep8
+# pip install autopep8
+
+# can haves 
+
+# if you want hard core linting and style nanny!!!
+# flake8 for code checks
+# pip install flake8
 
 **** adapt your emacs configuration to pickup the python directory
 :PROPERTIES:
@@ -401,6 +409,20 @@ it evaluates to 4
 :PROPERTIES:
 :ID:       28e52208-b369-4ef3-84fe-b526619eeae7
 :END:
+
+**** configuring elpy:
+
+This is the pyton IDE that will be installed with my Python configuration.
+
+Configuring the syntax checker (flake8)
+elpy uses flake8 for syntax checking. This is a wrapper around pep8, PyFlake and Ned Batchelder’s McCabe script. You can change the flake8 settings globally by editing its config file. For windows the filename is ~/.flake8 and all other operating systems it is ~/.config/flake8. 
+
+I have include my preconfigured flake8 file in .emacs.d/extra/.flake8
+file.
+
+Note that if you are running this on Linux or OSX, the file will not
+have the . at the beginning.  See the statement above and the comments
+in the file that I included for all that you need to know.
 
 *** DONE installing ruby
 CLOSED: [2015-10-01 Thu 22:45]

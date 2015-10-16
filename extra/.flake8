@@ -1,0 +1,17 @@
+
+# Configuring the syntax checker (flake8)
+# elpy uses flake8 for syntax checking. This is a wrapper around pep8, PyFlake and Ned Batchelder’s McCabe script. You can change the flake8 settings globally by editing its config file. For windows the filename is ~/.flake8 and all other operating systems it is ~/.config/flake8. The flake8 config options are located in the flake8 docs here.
+
+# As an example, you can change the max default line length from 79 to 99 on linux by C-x C-f ~/.config/flake8 then edit the config file to be:
+
+# The user settings are read from the ~/.config/flake8 file (or the ~/.flake8 file on Windows). Example:
+
+# elpy documentation on subject: http://flake8.readthedocs.org/en/latest/config.html#global
+
+# pep 8 error codes: http://pep8.readthedocs.org/en/latest/intro.html#error-codes
+
+[flake8]
+ignore = E226,E302,E401,F401,W201,W293,W291
+max-line-length = 160
+exclude = tests/*
+max-complexity = 10
