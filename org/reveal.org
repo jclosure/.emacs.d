@@ -1,0 +1,16 @@
+
+* use org-reveal
+:PROPERTIES:
+:ID:       6df81e9c-0bb5-4dca-a890-5c425148a296
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
+
+https://github.com/yjwen/org-reveal/
+
+* reveal
+:PROPERTIES:
+:ID:       62692691-2e37-409b-bcf0-cfcf4eeee441
+:PUBDATE:  <2015-10-08 Thu 20:49>
+:END:
+
+http://lab.hakim.se/reveal-js/#/

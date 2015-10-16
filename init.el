@@ -302,6 +302,34 @@
 ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 
+;; util for determining if an action is appropriate for current buffer
+(defun my-buffer-mode (&optional buffer-or-name)
+  "Returns the major mode associated with a buffer.
+If buffer-or-name is nil return current buffer's mode."
+  (buffer-local-value 'major-mode
+   (if buffer-or-name (get-buffer buffer-or-name) (current-buffer))))
+;;(global-set-key (kbd "<f5>") 'buffer-mode)
+
+;; toggle tab widths
+;; Obviously substitute your preferred key for <f4>
+(global-set-key (kbd "<f5>") 'my-toggle-tab-width-setting)
+(defun my-toggle-tab-width-setting ()    "toggle setting tab widths between 2 and 4"
+    (interactive)
+    (setq tab-width (if (= tab-width 2) 4 2))
+    (message "set tab-width to %d." tab-width)
+    (redraw-display)
+)
+
+
+;; Toggle indention with spaces instead of tabs
+(global-set-key (kbd "<f6>") 'my-toggle-indent-mode-setting)
+(defun my-toggle-indent-mode-setting ()
+    "toggle indenting modes"
+    (interactive)
+    (setq indent-tabs-mode (if (eq indent-tabs-mode t) nil t))
+    (message "Indenting using %s." (if (eq indent-tabs-mode t) "tabs" "spaces"))
+)
+
 
 
 ;; front of line jump fix
@@ -694,7 +722,42 @@ If no window is at direction DIR, an error is signaled."
        python-shell-completion-string-code
        "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
+    ;; ipython debugging hax
+    ;; source: http://wenshanren.org/?p=351
+    (add-hook 'python-mode-hook (lambda ()
 
+                                  ;; add easy breakpoints for ipdb
+                                  
+                                  (defun python-add-breakpoint ()
+                                    "Add a break point"
+                                    (interactive)
+                                    (newline-and-indent)
+                                    (insert "import ipdb; ipdb.set_trace()")
+                                    (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
+    
+                                  (define-key python-mode-map (kbd "C-c b") 'python-add-breakpoint)
+                                  
+                                  ;; drop into or out of python interactive mode
+                                  (if (equal (my-buffer-mode) 'inferior-python-mode) 
+                                      (setq python-interactive-status "exit()")
+                                    (defun python-interactive ()
+                                      "Enter the interactive Python environment"
+                                      (interactive)
+                                      (progn
+                                        (setq python-interactive-status (if (equal python-interactive-status "exit()")
+                                                                            "import IPython; IPython.embed()"
+                                                                          "exit()"))
+                                        (insert python-interactive-status)
+                                        (move-end-of-line 1)
+                                        (comint-send-input))))
+                                  
+                                  (global-set-key (kbd "C-c i") 'python-interactive)
+                                  
+                                  ))
+
+    
+    
+    
     ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
     ;(add-hook 'python-mode-hook 'jedi:setup)
     (setq jedi:setup-keys t)                      ; optional
@@ -702,7 +765,6 @@ If no window is at direction DIR, an error is signaled."
     (jedi:setup)
     (elpy-enable) ; http://elpy.readthedocs.org/en/latest/ide.html#interactive-python - keystrokes documentation
     ;(elpy-use-ipython) ;deprecated
-
   
   )
 

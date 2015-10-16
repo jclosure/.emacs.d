@@ -15,6 +15,11 @@
 #+XSLT: 
 
 
+* debugging commands
+
+** keys
+
+https://docs.python.org/2/library/pdb.html
 
 * working with python code blocks
 :PROPERTIES:

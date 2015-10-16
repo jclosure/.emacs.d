@@ -127,6 +127,9 @@ ftp://ftp.imagemagick.org/pub/ImageMagick/binaries/ImageMagick-6.9.2-3-Q16-x64-d
 :ID:       5ce7fa26-5580-4c20-96f3-fe5fecf50b76
 :END:
 for MiKTeX install nec for PDFs
+
+unpack texlive first then run the installer according to readme
+
 ***** install ghostscript
 :PROPERTIES:
 :ID:       0397a27b-2ea8-4baf-b73a-afd6d2e2a7c3
@@ -343,6 +346,17 @@ pip install pyflakes
 pip install pyreadline
 pip install jupyter
 pip install ipdb
+
+# Either of these
+pip install rope
+pip install jedi
+# flake8 for code checks
+pip install flake8
+# importmagic for automatic imports
+pip install importmagic
+# and autopep8 for automatic PEP8 formatting
+pip install autopep8
+
 **** adapt your emacs configuration to pickup the python directory
 :PROPERTIES:
 :ID:       880b444d-400c-42fe-9a78-6c5f778f662f
@@ -804,6 +818,10 @@ You are rocking with Neo.
 :PROPERTIES:
 :ID:       389e0ade-3cc7-47f8-a03c-4c3ca9b4a19f
 :END:
+
+**** read the elpy docs
+
+http://elpy.readthedocs.org/en/latest/index.html
 
 * dumping my env just in case for reference:
 
