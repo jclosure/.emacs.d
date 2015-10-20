@@ -212,13 +212,14 @@
         'haml-mode
         'projectile-rails
 
-        ;; node
+        ;; node/javascript
         'sws-mode
         'jade-mode
+        'js2-mode
         'js3-mode
-        'nodejs-repl
-  
-        
+        ;; 'nodejs-repl ;; doesn't work in win
+        'tern
+        'company-tern
 
         ;; elasticsearch
         'es-mode
@@ -234,8 +235,9 @@
 
 
 ;; packages from git ./lib
-
-(load-file "~/.emacs.d/lib/emacs-tdd/tdd.el")
+(let ((tdd.el  "~/.emacs.d/lib/emacs-tdd/tdd.el"))
+  (if  (file-exists-p tdd.el)
+      (load-file tdd.el)))
 
 
 ;; On OS X, an Emacs instance started from the graphical user
@@ -847,70 +849,84 @@ If no window is at direction DIR, an error is signaled."
                                         ;(workgroups-mode 1)
 
 
-    ;; JAVASCRIPT
+;; JAVASCRIPT
 
 
-    ;; ome
+;; (use-package skewer-mode
+;;   :ensure t :defer t
+;;   :config (skewer-setup))
 
-    ;; ;;(load-library "js3-mode")
-    ;; (defun my-tern-setup ()
-    ;;   (when (el-get-package-installed-p 'js2-mode)
-    ;;     (add-hook 'js2-mode-hook (lambda () (tern-mode t))))
-    ;;   (when (el-get-package-installed-p 'js3-mode)
-    ;;     (add-hook 'js3-mode-hook (lambda () (tern-mode t))))
-    ;;   (setq tern-command (cons (executable-find "tern") '()))
-    ;;   (eval-after-load 'tern
-    ;;     '(progn
-    ;;        (require 'tern-auto-complete)
-    ;;        (tern-ac-setup))))
+;; (use-package company
+;;   :ensure t
+;;   :config
+;;   (add-hook 'prog-mode-hook 'company-mode))
 
-    ;; (my-tern-setup)
-
-    ;; ;; sachacs
-
-
-    ;; (use-package skewer-mode
-    ;;   :ensure t :defer t
-    ;;   :config (skewer-setup))
-
-    ;; (use-package company
-    ;;   :ensure t
-    ;;   :config
-    ;;   (add-hook 'prog-mode-hook 'company-mode))
+  
+(defun tern-setup ()
+  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+  (add-hook 'js3-mode-hook (lambda () (tern-mode t)))
+  (setq tern-command (cons (executable-find "tern") '()))
+  (eval-after-load 'tern
+    '(progn
+       (add-to-list 'company-backends 'company-tern)
+       (setq company-tooltip-align-annotations t)
+       )))
 
 
-    ;; (use-package company-tern
-    ;; :ensure t
-    ;; :defer t
-    ;; :init (add-to-list 'company-backends 'company-tern))
+;; setup tern
+(tern-setup)
+(require 'tern)
+
+
+;; setup repl
+(require 'js-comint)
+(setq inferior-js-program-command "node --interactive")
+(setenv "NODE_NO_READLINE" "1")
+;; use your favorite js mode here:
+(add-hook 'js-mode-hook '(lambda () 
+			    (local-set-key "\C-x\C-e" 
+					   'js-send-last-sexp)
+			    (local-set-key "\C-\M-x" 
+					   'js-send-last-sexp-and-go)
+			    (local-set-key "\C-cb" 
+					   'js-send-buffer)
+                            (local-set-key "\C-cr"
+                                           'js-send-region)
+			    (local-set-key "\C-c\C-b" 
+					   'js-send-buffer-and-go)
+			    (local-set-key "\C-cl" 
+					   'js-load-file-and-go)
+			    ))
+
+
+;; add syntax checking with minor 
+(add-hook 'js-mode-hook 'js2-minor-mode)
 
 
 
+;; SET DARK
+;; run (customize) in scratch and search for what you want to customize
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(coffee-tab-width 2)
+;;  '(frame-background-mode (quote dark))
+;;  '(tabbar-separator (quote (0.5))))
 
 
 
-    ;; SET DARK
-    ;; run (customize) in scratch and search for what you want to customize
-    ;; (custom-set-variables
-    ;;  ;; custom-set-variables was added by Custom.
-    ;;  ;; If you edit it by hand, you could mess it up, so be careful.
-    ;;  ;; Your init file should contain only one such instance.
-    ;;  ;; If there is more than one, they won't work right.
-    ;;  '(coffee-tab-width 2)
-    ;;  '(frame-background-mode (quote dark))
-    ;;  '(tabbar-separator (quote (0.5))))
+;; TABBAR
+(tabbar-mode t)
+(load "my-tabbar-style.el")
 
+(global-set-key [(control ?c) (left)] 'tabbar-backward)
+(global-set-key [(control ?c) (right)] 'tabbar-forward)
 
-
-    ;; TABBAR
-    (tabbar-mode t)
-    (load "my-tabbar-style.el")
-
-    (global-set-key [(control ?c) (left)] 'tabbar-backward)
-    (global-set-key [(control ?c) (right)] 'tabbar-forward)
-
-    ;; these don't work in osx terminal becaues of need for C-S-kp-next
-    (global-set-key (kbd "C-S-p") 'tabbar-backward-group)
+;; these don't work in osx terminal becaues of need for C-S-kp-next
+(global-set-key (kbd "C-S-p") 'tabbar-backward-group)
 (global-set-key (kbd "C-S-n") 'tabbar-forward-group)
 (global-set-key (kbd "C-<") 'tabbar-backward)
 (global-set-key (kbd "C->") 'tabbar-forward) ;; tabbar.el, put all the buffers on the tabs.
