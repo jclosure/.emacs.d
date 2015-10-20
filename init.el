@@ -183,7 +183,9 @@
         ;; web
         'tagedit
         'web-mode
-
+        ;;'skewer-reload-stylesheets
+        ;;'skewer-less
+        
         ;; clojure packages
         'cider
         'clojure-mode
@@ -212,7 +214,7 @@
         'haml-mode
         'projectile-rails
 
-        ;; node/javascript
+        ;; skewer/node/javascript
         'sws-mode
         'jade-mode
         'js2-mode
@@ -220,7 +222,12 @@
         ;; 'nodejs-repl ;; doesn't work in win
         'tern
         'company-tern
+        'skewer-mode
 
+        ;; http
+        'simple-httpd
+
+        
         ;; elasticsearch
         'es-mode
         'logstash-conf
@@ -851,17 +858,6 @@ If no window is at direction DIR, an error is signaled."
 
 ;; JAVASCRIPT
 
-
-;; (use-package skewer-mode
-;;   :ensure t :defer t
-;;   :config (skewer-setup))
-
-;; (use-package company
-;;   :ensure t
-;;   :config
-;;   (add-hook 'prog-mode-hook 'company-mode))
-
-  
 (defun tern-setup ()
   (add-hook 'js-mode-hook (lambda () (tern-mode t)))
   (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
@@ -879,7 +875,7 @@ If no window is at direction DIR, an error is signaled."
 (require 'tern)
 
 
-;; setup repl
+;; setup node repl
 (require 'js-comint)
 (setq inferior-js-program-command "node --interactive")
 (setenv "NODE_NO_READLINE" "1")
@@ -902,6 +898,14 @@ If no window is at direction DIR, an error is signaled."
 
 ;; add syntax checking with minor 
 (add-hook 'js-mode-hook 'js2-minor-mode)
+
+
+;; setup skewer for browser and repl
+;; ref: https://github.com/skeeto/skewer-mode
+(add-hook 'js-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)
+
 
 
 
