@@ -59,10 +59,10 @@
 
 
 ;; set default directory and agenda files for org
-(setq org-directory "~/org/")
-(setq org-agenda-files (list "~/org/work.org"
-                             "~/org/school.org" 
-                             "~/org/home.org"))
+(setq org-directory "~/org/agenda/")
+(setq org-agenda-files (list (concat org-directory "work.org")
+                             (concat org-directory  "school.org") 
+                             (concat org-directory "home.org")))
 
 (ensure-directory org-directory)
 (mapcar 'ensure-text-file org-agenda-files)
