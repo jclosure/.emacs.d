@@ -1,3 +1,3 @@
-[submodule "lib\\emacs-tdd"]
-	path = lib\\emacs-tdd
-	url = git@github.com:jorgenschaefer/emacs-tdd.git
+[submodule "lib/emacs-tdd"]
+	path = lib/emacs-tdd
+	url = https://github.com/jorgenschaefer/emacs-tdd.git
