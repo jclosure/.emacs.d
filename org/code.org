@@ -159,6 +159,9 @@ See below for examples
 
 #+end_src
 
+#+RESULTS:
+: 4
+
 ** Using python
 :PROPERTIES:
 :ID:       445154ff-0d9e-453c-bf0a-f18261d24f47
@@ -169,6 +172,9 @@ today = datetime.date.today()
 return today
 #+end_src
 
+#+RESULTS:
+: 2015-10-20
+
 ** Using ruby
 :PROPERTIES:
 :ID:       5128d221-ff05-4933-8ca6-65de91effaa4
@@ -177,6 +183,9 @@ return today
   require 'date'
   "This file was last evaluated on #{Date.today}"
 #+end_src
+
+#+RESULTS:
+: This file was last evaluated on 2015-10-20
 
 ** Using clojure
 :PROPERTIES:
@@ -225,6 +234,35 @@ note: install and enable slime for these codeblocks
 
 #+RESULTS: table-length
 : 4
+
+** Using c
+#+HEADERS: :includes <math.h> :flags -lm 
+#+HEADERS: :var x=1.0 :var y=4.0 :var z=10.0
+#+BEGIN_SRC C :exports both
+double pi = 4*atan(1);
+double r, theta, phi;
+r = sqrt(x*x+y*y+z*z);
+theta = acos(z/r) * 180.0/pi;
+phi = atan2(y,x) * 180.0/pi;
+printf("%f %f %f", r, theta, phi);
+#+END_SRC
+
+#+RESULTS:
+: 10.816654 22.406871 75.963757
+
+** Using java
+#+HEADERS: :classname HelloWorld :cmdline "-cp ."
+#+begin_src java  :results output :exports both :dir "./java" 
+  public class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello, World");
+      }
+  }
+#+end_src
+
+#+RESULTS:
+: Hello, World
+
 
 * Working With Elasticsearch
 :PROPERTIES:

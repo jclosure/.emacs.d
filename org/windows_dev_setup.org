@@ -283,9 +283,26 @@ I am installing:  Java SE Development Kit 8u60 for Windows x64:
 
 install it.
 
+**** set =JAVA_home=
+
 Set =%JAVA_HOME= appropriately
 
-The installer will put it in your %PATH%, so you don't need to do that.
+In my case it's: =C:\Program Files\Java\jdk1.8.0_60=
+
+
+
+**** put java bin on path
+
+The installer will put it in your %PATH%, so you don't need to do
+that.
+
+Still you need to add it to %PATH%:
+
+you need to do this to get javac and other tools into your path
+
+=C:\Program Files\Java\jdk1.8.0_60\bin=
+
+
 
 **** install eclipse:
 :PROPERTIES:

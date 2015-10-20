@@ -35,6 +35,7 @@
                   (ruby . t)
                   (python . t)
                   (lisp . t)
+                  (scheme . t)
                   (sh . t)
                   (R . t)
                   (ocaml . t)
@@ -45,6 +46,8 @@
                   (perl . t)
                   (org . t)
                   (latex . t)
+                  (java . t)
+                  (C . t)
                   (makefile . t)))
                ;; To use this type <S and then TAB
                (add-to-list 'org-structure-template-alist
