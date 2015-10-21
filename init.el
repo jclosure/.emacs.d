@@ -1207,11 +1207,7 @@ If no window is at direction DIR, an error is signaled."
 
 
 
-
-
-
-
-;;;; recursive grep with helm
+;;;;;;;; recursive grep with helm ;;;;;;;;;;;;;
 
 ;; You could try helm-do-grep. Calling it with a prefix arg gives you a recursive grep, as explained in the Helm Wiki.
 
@@ -1229,18 +1225,20 @@ If no window is at direction DIR, an error is signaled."
 ;; C-u helm-command-prefix-key M-g s
 
 
-
+;; CUSTOMIZATIONS SET BY EMACS
+;; note: I have overridden the highlight forground to be black, making it easier to see
+;;       This should be removed if you run a different theme than mine (tomorrow-night-bright)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
- '
+ '(quote (tabbar-separator (quote (0.5))))
  '(tabbar-separator (quote (0.5))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(highlight ((t (:background "#b9ca4a" :foreground "black" :inverse-video nil)))))
