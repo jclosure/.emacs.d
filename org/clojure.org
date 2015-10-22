@@ -1,0 +1,23 @@
+
+
+#+begin_src clojure
+
+(message "hello")
+
+#+end_src
+
+#+RESULTS:
+
+;; requires:
+http://orgmode.org/cgit.cgi/org-mode.git/plain/lisp/ob-clojure.el
+;; to deal with changes to cider
+
+(progn 
+  '(require 'org)
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider)
+  (require 'cider))
+
+(cider-current-session)
+
+(cider-current-connection)

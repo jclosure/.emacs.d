@@ -1,0 +1,42 @@
+
+* org-mode
+
+** code
+** latex
+** pdf
+** html
+
+* latex
+
+** live preview
+
+* python
+
+** elpy
+** debugging
+** unit-testing
+*** tdd
+
+* ruby
+
+** pry
+
+* javascript
+
+** node
+*** repl
+*** server
+
+** tern
+
+** skewer
+javascript
+css
+
+* web
+
+** impatient
+
+* gcal
+
+* erc

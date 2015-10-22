@@ -394,11 +394,11 @@ pip install importmagic
 # Both of these
 pip install rope
 pip install jedi
- 
+
 # and autopep8 for automatic PEP8 formatting
 # pip install autopep8
 
-# can haves 
+# can haves
 
 # if you want hard core linting and style nanny!!!
 # flake8 for code checks
@@ -454,7 +454,7 @@ it evaluates to 4
 This is the pyton IDE that will be installed with my Python configuration.
 
 Configuring the syntax checker (flake8)
-elpy uses flake8 for syntax checking. This is a wrapper around pep8, PyFlake and Ned Batchelder’s McCabe script. You can change the flake8 settings globally by editing its config file. For windows the filename is ~/.flake8 and all other operating systems it is ~/.config/flake8. 
+elpy uses flake8 for syntax checking. This is a wrapper around pep8, PyFlake and Ned Batchelder’s McCabe script. You can change the flake8 settings globally by editing its config file. For windows the filename is ~/.flake8 and all other operating systems it is ~/.config/flake8.
 
 I have include my preconfigured flake8 file in .emacs.d/extra/.flake8
 file.
@@ -554,7 +554,8 @@ it will evalue to 4
 :ID:       f710dbfd-c4e0-4a21-a55a-fd99938338be
 :END:
 
-*** TODO installing node
+*** DONE installing node
+CLOSED: [2015-10-22 Thu 00:26]
 :PROPERTIES:
 :ID:       ca3ced92-6389-48aa-bc1f-051641bbd96c
 :END:
@@ -590,21 +591,130 @@ npm -g install tern
 npm -g install nodemon
 npm -g install babel
 
-*** TODO installing clojure
+*** DONE installing clojure
+CLOSED: [2015-10-22 Thu 00:26]
 :PROPERTIES:
 :ID:       32ea7862-04bc-4344-bf31-a8c827a19e09
 :END:
 
-*** TODO installing common lisp
+**** install leiningen
+
+download the batch field at:
+
+https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein.bat
+
+put it into %HOME%\bin (which is on your path)
+
+run:
+
+=lein self-install=
+
+**** for cider to work, you'll need to add a profiles.clj with the right nrepl version:
+
+here's mine from the time of this document:
+
+#+begin_example
+{:user {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]]}}
+#+end_example
+
+place your's with the correct cider-nrepl version in
+%HOME%\.lein\profiles.clj
+
+you will know the correct version if you run M-x: cider-jack-in and it
+show's a bunch of red error text about not having the correct version
+of nrepl.  adjust your's accordingly.
+
+*** DONE installing common lisp
+CLOSED: [2015-10-22 Thu 01:10]
 :PROPERTIES:
 :ID:       01e1beb5-fa91-462e-a29d-b7b13cf30707
 :END:
-get sbcl
-install slime
+
+derived from:
 
 watch this to see what to do:
 
 https://www.youtube.com/watch?v=VnWVu8VVDbI
+
+**** get sbcl
+
+http://www.sbcl.org/platform-table.html
+
+As of now, I'm installing:
+
+AMD64 1.2.16
+
+Install in default location
+
+**** get quicklisp
+
+https://www.quicklisp.org/beta/
+
+download quicklisp.lisp
+
+install it with:
+
+navigate to directory where quicklisp.lisp is
+
+run:
+
+#+begin_example
+sbcl --load quicklisp.lisp
+#+end_example
+
+install it permanently with the following at the sbcl prompt
+
+#+begin_example
+(quicklisp-quickstart:install)
+(ql:add-to-init-file)
+#+end_example
+
+note that it creates a .sbclrc in your %HOME%\
+
+this will ensure that quicklisp is always started in your sbcl env
+when it fires up now
+
+**** install slime
+
+now you will need to quickload slime.  quickloading is the way that
+libraries are installed in lisp now adays.
+
+#+begin_example
+(ql:quickload "quicklisp-slime-helper")
+#+end_example
+
+now to use slime in emacs, you copy and paste this from the sbcl repl
+into your .emacs.  in this case, I have already created a bit of code
+in init.el that looks for it in windows:
+
+#+begin_example
+  (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "sbcl")
+#+end_example
+
+**** test slime like this:
+
+create a file called test.lisp
+
+split the window and M-x: slime
+
+type this code test.lisp buffer:
+
+#+BEGIN_SRC lisp
+  (defun testfun (x y)
+    (+ y x))
+#+END_SRC
+
+C-c C-c will send it to the repl
+
+in the repl type:
+
+#+BEGIN_SRC lisp
+  (testfun 2 4)
+#+END_SRC
+
+hit enter
 
 *** DONE installing r
 CLOSED: [2015-10-07 Wed 22:24]

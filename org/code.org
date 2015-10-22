@@ -189,7 +189,7 @@ return today
 :ID:       ac30ddff-025d-4aa4-b769-95f277092c3b
 :END:
 #+begin_src clojure
-  (defn now [] (java.util.Date.)) 
+  (defn now [] (java.util.Date.))
   (now)
 #+end_src
 
@@ -256,7 +256,7 @@ note: install and enable slime for these codeblocks
 #+end_src
 
 ** Using c
-#+HEADERS: :includes <math.h> :flags -lm 
+#+HEADERS: :includes <math.h> :flags -lm
 #+HEADERS: :var x=1.0 :var y=4.0 :var z=10.0
 #+BEGIN_SRC C :exports both
 double pi = 4*atan(1);
@@ -269,13 +269,30 @@ printf("%f %f %f", r, theta, phi);
 
 ** Using java
 #+HEADERS: :classname HelloWorld :cmdline "-cp ."
-#+begin_src java  :results output :exports both :dir "./java" 
+#+begin_src java  :results output :exports both :dir "./java"
   public class HelloWorld {
       public static void main(String[] args) {
           System.out.println("Hello, World");
       }
   }
 #+end_src
+
+** Using R
+
+#+begin_src R :file 3.png :results output graphics
+library(lattice)
+xyplot(1:10 ~ 1:10)
+#+end_src
+
+** Using shellscript
+
+#+begin_src bash
+
+echo "Hello my darling Shell..."
+
+#+end_src
+
+
 
 * Working With Elasticsearch
 :PROPERTIES:
