@@ -987,6 +987,24 @@ If no window is at direction DIR, an error is signaled."
 
 ;; Langauage-specific
 (load "setup-clojure.el")
+
+;;;; HACK
+;; hack for ob-clojure.el to handle changes in cider
+;; should be fixed upstream soon
+;; requires: http://orgmode.org/cgit.cgi/org-mode.git/plain/lisp/ob-clojure.el
+;; byte-compiled and replaced current one
+;; also cider needs to be jacked-in for ob-clojure eval to work!!!
+
+;; pull in ob-clojure and set it's backend
+(progn 
+  '(require 'org)
+  (require 'ob-clojure)
+  (setq org-babel-clojure-backend 'cider)
+  (require 'cider))
+
+
+
+;; javascript setup
 (load "setup-js.el")                                     
 
 

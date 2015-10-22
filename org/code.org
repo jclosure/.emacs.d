@@ -70,18 +70,31 @@ meanings: http://www.greece.com/info/language/greek_alphabet/
 :END:
 
 :Greek:
+
 Angles are written as Greek letters \alpha, \beta and \gamma.
+
 \alpha \to \omega
+
 something is \not \empty
+
 \pi tastes like pie
+
 \sum of the parts
+
 \lambda expressions are fun
-\psi chological wonderland
+
+\psi chological
+
 \theta theta cool
+
 \epsilon epsilon
+
 \ni ni
+
 \nu nu
+
 \in infinity
+
 :END:
 
 ** Special Symbols
@@ -120,7 +133,7 @@ e^{i\pi} = -1
 \]
 
 \[
-\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}
+\int_0^\infty e^{-x^8} dx = \frac{\sqrt{\pi}}{2}
 \]
 
 * Controlling what get's exported
@@ -149,18 +162,8 @@ See below for examples
 :ID:       ac7cb5aa-d4c7-4bc5-8bb6-b0f0b924392f
 :PUBDATE:  <2015-10-04 Sun 02:54>
 :END:
-** Using Emacs Lisp
-:PROPERTIES:
-:ID:       25705cdf-182d-4f46-8ffe-3639a2b4e63d
-:END:
-#+begin_src emacs-lisp
 
-  (+ 2 2)
-
-#+end_src
-
-#+RESULTS:
-: 4
+I am going to show you some elisp
 
 ** Using python
 :PROPERTIES:
@@ -172,9 +175,6 @@ today = datetime.date.today()
 return today
 #+end_src
 
-#+RESULTS:
-: 2015-10-20
-
 ** Using ruby
 :PROPERTIES:
 :ID:       5128d221-ff05-4933-8ca6-65de91effaa4
@@ -184,19 +184,53 @@ return today
   "This file was last evaluated on #{Date.today}"
 #+end_src
 
-#+RESULTS:
-: This file was last evaluated on 2015-10-20
-
 ** Using clojure
 :PROPERTIES:
 :ID:       ac30ddff-025d-4aa4-b769-95f277092c3b
 :END:
 #+begin_src clojure
-  (defn now [] (java.util.Date.))
+  (defn now [] (java.util.Date.)) 
   (now)
 #+end_src
 
-** Using lisp
+** Using emacs lisp
+:PROPERTIES:
+:ID:       25705cdf-182d-4f46-8ffe-3639a2b4e63d
+:END:
+
+simple form evaluation
+
+#+begin_src emacs-lisp
+
+  (+ (* 2 3) 9)
+
+#+end_src
+
+
+using tables
+
+
+#+NAME: example-table
+| col1 | col2 |
+|------+------|
+|    1 | abc  |
+|    2 | def  |
+|    3 | ghi  |
+|    4 | jkl  |
+|    5 | mno  |
+#+NAME: table-length
+
+
+#+BEGIN_SRC emacs-lisp :var table=example-table
+  (length table)
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :var table=example-table
+  (cdr table)
+#+END_SRC
+
+** Using common lisp
 :PROPERTIES:
 :ID:       d29300ab-088a-4ca5-93e2-7a976ff7b2c6
 :END:
@@ -221,20 +255,6 @@ note: install and enable slime for these codeblocks
   (princ message)
 #+end_src
 
-#+NAME: example-table
-| 1 |
-| 2 |
-| 3 |
-| 4 |
-#+NAME: table-length
-
-#+BEGIN_SRC emacs-lisp :var table=example-table
-  (length table)
-#+END_SRC
-
-#+RESULTS: table-length
-: 4
-
 ** Using c
 #+HEADERS: :includes <math.h> :flags -lm 
 #+HEADERS: :var x=1.0 :var y=4.0 :var z=10.0
@@ -247,9 +267,6 @@ phi = atan2(y,x) * 180.0/pi;
 printf("%f %f %f", r, theta, phi);
 #+END_SRC
 
-#+RESULTS:
-: 10.816654 22.406871 75.963757
-
 ** Using java
 #+HEADERS: :classname HelloWorld :cmdline "-cp ."
 #+begin_src java  :results output :exports both :dir "./java" 
@@ -259,10 +276,6 @@ printf("%f %f %f", r, theta, phi);
       }
   }
 #+end_src
-
-#+RESULTS:
-: Hello, World
-
 
 * Working With Elasticsearch
 :PROPERTIES:
@@ -281,24 +294,6 @@ POST /_search?pretty
   }
 }
 #+END_SRC
-
-#+RESULTS:
-#+begin_example
-{
-  "took" : 1,
-  "timed_out" : false,
-  "_shards" : {
-    "total" : 0,
-    "successful" : 0,
-    "failed" : 0
-  },
-  "hits" : {
-    "total" : 0,
-    "max_score" : 0.0,
-    "hits" : [ ]
-  }
-}
-#+end_example
 
 ** Searching ES without parameters
 :PROPERTIES:
@@ -321,6 +316,7 @@ GET /
 {}
 #+END_SRC
 
+
 ** Creating and Searching for documents in ES for user data with local jq filter
 SCHEDULED: <2015-10-08 Thu>
 :PROPERTIES:
@@ -332,25 +328,18 @@ SCHEDULED: <2015-10-08 Thu>
 #+begin_src es
 POST /twitter/tweet/
 {
-     "user" : "jclosure",
+     "user" : "blah",
      "@timestamp" : "2015-09-10T19:12:12-05:00",
-     "message" : "Hi Liz....",
+     "message" : "foobar123 abc asdf ....",
      "foo" : "bar"
 }
 #+end_src
 
-#+RESULTS:
-: {"_index":"twitter","_type":"tweet","_id":"AVA94UdKYRNKvUGoYQ0G","_version":1,"created":true}
-
-
 
 #+begin_src es
-GET /twitter/_search?pretty&q=user:jclosure
+GET /twitter/_search?pretty&q=user:blah
 {}
 #+end_src
-
-
-
 
 ** Digging out logstash documents
 :PROPERTIES:
@@ -375,15 +364,6 @@ POST /_search_csv?pretty
 }
 #+END_SRC
 
-
-
-
-
-
-   \begin{equation}
-     x=\sqrt{b}
-   \end{equation}
-
 * Crossing Language boundaries in blocks
 :PROPERTIES:
 :ID:       4a239992-09d4-4d23-9494-85ae4f3a3591
@@ -400,13 +380,8 @@ Here's a Ruby block to generate a scaler value
 #+header: :var x=4 :exports both
 #+begin_src ruby
   # x = 4
-  3 + x
+  5 + x
 #+end_src
-
-Step result
-#+RESULTS: get_value
-: 7
-
 
 
 Here's a Python block that consumes the scalar value
@@ -415,10 +390,6 @@ Here's a Python block that consumes the scalar value
 #+begin_src python :exports code
   return x*x
 #+end_src
-
-Final result
-#+RESULTS: square
-: 49
 
 
 ** Emitting lists output and feeding input
@@ -430,9 +401,9 @@ Here's a Ruby block to generate a list
 #+name: get_list
 #+header: :exports both
 #+begin_src ruby
-  [1 , 2, 3]
+  [[1 , 2, 3],
+   [1 , 2, 3]]
 #+end_src
-
 
 
 Here's a Python block that consumes the list
@@ -442,7 +413,5 @@ Here's a Python block that consumes the list
   return x
 #+end_src
 
-Note that the list is output as an org table
-#+RESULTS: print_list
 
 
