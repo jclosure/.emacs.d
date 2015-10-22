@@ -269,7 +269,29 @@ C:\Users\Joel\projects
 :PROPERTIES:
 :ID:       5e289b20-66b6-4750-a564-10cf83bbea7a
 :END:
+*** DONE installing git
+CLOSED: [2015-10-21 Wed 01:57]
+
+https://git-scm.com/download/win
+
+I am installing 64bit version.
+
+Install it.
+
+Allow it to add the bin into the cmd path..
+
+**** fix long paths limitation in windows:
+
+open cmd as administrator
+
+run:
+
+#+begin_example
+git config --system core.longpaths true
+#+end_example
+
 *** DONE installing java
+
 CLOSED: [2015-10-08 Thu 20:46]
 :PROPERTIES:
 :ID:       703e5428-858a-46aa-807f-a77134dfe2db
@@ -497,6 +519,7 @@ gem install pry
 gem install pry-byebug
 gem install pry-doc
 gem install rspec
+gem install guard guard-livereload
 **** add .pryrc (do this only if your pry sessions hang in emacs)
 :PROPERTIES:
 :ID:       594405c4-b117-4f93-a3c2-251119de4f44
@@ -564,6 +587,8 @@ npm -g install phantomjs
 npm -g install bower
 npm -g install browserfy
 npm -g install tern
+npm -g install nodemon
+npm -g install babel
 
 *** TODO installing clojure
 :PROPERTIES:

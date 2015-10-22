@@ -183,6 +183,7 @@
         ;; web
         'tagedit
         'web-mode
+        'impatient-mode
         ;;'skewer-reload-stylesheets
         ;;'skewer-less
         
@@ -537,6 +538,19 @@ If no window is at direction DIR, an error is signaled."
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (require 'haml-mode)
+
+;; setup impatient-mode
+(defun be-impatient ()
+  "Setup impatient-mode env"
+  (interactive)
+  (httpd-start)
+  (impatient-mode)
+  (browse-url "http://localhost:8080/imp/"))
+
+(add-hook 'web-mode-hook (lambda ()
+                           "Automates setting up the environment for impatient-mode"
+                           (interactive)
+                           (local-set-key (kbd "\C-ci") 'be-impatient)))
 
 
 ;; ELASTICSEARCH - note: set to your desired es host url
