@@ -1,0 +1,31 @@
+
+
+* basic gradle build script
+
+** given
+
+src/main
+src/main/com/joelholder/MyClass.main
+
+src/test
+
+** the build script looks like this
+
+#+begin_example
+
+apply plugin: "java"
+
+sourceSets {
+    main.java.srcDir "src/main"
+    test.java.srcDir "src/test"
+}
+
+jar {
+    mainifest.attributes "Main-Class": "com.joelholder.MyClass
+}
+
+#+end_example
+
+** run with
+
+gradle build in project root

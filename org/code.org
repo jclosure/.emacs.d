@@ -250,7 +250,6 @@ note: install and enable slime for these codeblocks
 
 #+name: hello-world
 #+header: :var message="Hello World!"
-
 #+begin_src lisp
   (princ message)
 #+end_src
@@ -429,6 +428,8 @@ Here's a Python block that consumes the list
 #+begin_src python :exports code
   return x
 #+end_src
+
+
 
 
 

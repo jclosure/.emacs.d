@@ -28,6 +28,8 @@
                )
              :config
              (progn
+               (setq org-todo-keywords
+                     '((sequence "TODO" "WAITING" "DONE")))
                (setq org-log-done t)
                (org-babel-do-load-languages
                 'org-babel-load-languages
@@ -49,9 +51,12 @@
                   (java . t)
                   (C . t)
                   (makefile . t)))
-               ;; To use this type <S and then TAB
+               ;; To create a src block, type <S and then TAB
                (add-to-list 'org-structure-template-alist
                             '("S" "#+begin_src ?\n\n#+end_src" "<src lang=\"?\">\n\n</src>"))
+               ;; To create an example block, type <E and then TAB
+               (add-to-list 'org-structure-template-alist
+                            '("E" "#+begin_example ?\n\n#+end_example" "<src lang=\"text\">\n\n</src>"))
                ;; more convenient link navigation
                (define-key org-mode-map "\C-n" 'org-next-link)
                (define-key org-mode-map "\C-p" 'org-previous-link))
@@ -61,7 +66,7 @@
 ;; set default directory and agenda files for org
 (setq org-directory "~/org/agenda/")
 (setq org-agenda-files (list (concat org-directory "work.org")
-                             (concat org-directory  "school.org") 
+                             (concat org-directory  "school.org")
                              (concat org-directory "home.org")))
 
 (ensure-directory org-directory)
@@ -93,7 +98,7 @@
 ;; #+OPTIONS: ^:nil
 
 
-;; if you don't want normal auto src indentation from emacs  
+;; if you don't want normal auto src indentation from emacs
 ;;(setq org-src-preserve-indentation t)
 
 ;; seamless use of babel
@@ -205,7 +210,7 @@
   "1-click blog publishing"
   ;;(interactive)
   ;;(org-capture nil "b")
-  (org-publish "org-site")) 
+  (org-publish "org-site"))
 
 
 ;; custom html
@@ -270,7 +275,7 @@
          :html-head-extra ,my-head-extra
          :html-head-include-default-style nil
          :html-head-include-scripts nil
-         
+
          ;;:exclude "\\^\\([0-9]\\{4\\}-[0-9]+-[0-9]+\\)"
          )
         ("org-site-static"
@@ -291,3 +296,19 @@
         )
       )
 
+
+;;;;;;;;;;;;;;;; wp-blog setup
+
+;; documentation of org2blog: https://github.com/punchagan/org2blog/
+
+(require 'auth-source) ;; or nothing if already in the load-path
+
+(let (credentials)
+  ;; only required if your auth file is not already in the list of auth-sources
+  (add-to-list 'auth-sources "~/org/.wpauth")
+  (setq credentials (auth-source-user-and-password "uberpwn"))
+  (setq org2blog/wp-blog-alist
+        `(("uberpwn"
+           :url "http://joelholder.com/xmlrpc.php"
+           :username ,(car credentials)
+           :password ,(cadr credentials)))))

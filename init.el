@@ -176,6 +176,7 @@
         ;; org
         'gntp
         'org-gcal
+        'org2blog ;; wp-blog publishing
         
         ;; general
         'yaml-mode

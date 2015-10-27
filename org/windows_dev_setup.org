@@ -17,6 +17,17 @@
 :ID:       114afc14-3106-4fa8-976b-88f7ae7a7d86
 :PUBDATE:  <2015-10-04 Sun 02:54>
 :END:
+** essentials
+*** 7zip
+*** symbolic linking explorer extension
+
+http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#contact
+
+install prereq and ext
+
+tutorial:
+
+http://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/
 
 ** emacs
 :PROPERTIES:
@@ -624,7 +635,7 @@ you will know the correct version if you run M-x: cider-jack-in and it
 show's a bunch of red error text about not having the correct version
 of nrepl.  adjust your's accordingly.
 
-*** DONE installing common lisp
+*** DONE installing common lisp (sbcl)
 CLOSED: [2015-10-22 Thu 01:10]
 :PROPERTIES:
 :ID:       01e1beb5-fa91-462e-a29d-b7b13cf30707
@@ -715,6 +726,10 @@ in the repl type:
 #+END_SRC
 
 hit enter
+
+*** TODO installing scheme (racket)
+
+
 
 *** DONE installing r
 CLOSED: [2015-10-07 Wed 22:24]
@@ -959,6 +974,9 @@ You are rocking with Neo.
 :PROPERTIES:
 :ID:       5815c1bd-b9ca-4e47-8502-1bfb221ec837
 :END:
+
+install meanstack in windows
+
 *** TODO installing mysql
 :PROPERTIES:
 :ID:       efe2e9b3-4b42-4a32-ba01-fd210a413c9b
