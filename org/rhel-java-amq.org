@@ -1,0 +1,155 @@
+* install java8
+download java8: jdk-8u60-linux-x64.rpm
+** copy to /opt/installers and from there do the following:
+
+
+#+BEGIN_EXAMPLE
+
+rpm -Uvh jdk-8u60-linux-x64.rpm
+
+#+END_EXAMPLE
+
+# Swap between OpenJDK and Sun/Oracle Java JDK/JRE
+
+
+#+BEGIN_EXAMPLE
+
+alternatives --config java
+alternatives --config javaws
+alternatives --config libjavaplugin.so
+alternatives --config libjavaplugin.so.x86_64
+alternatives --config javac
+
+#+END_EXAMPLE
+
+
+# Post-Installation Setup
+
+
+#+BEGIN_EXAMPLE
+
+export JAVA_HOME="/usr/java/latest"
+
+echo 'export JAVA_HOME="/usr/java/latest"' >> /etc/bashrc
+
+source /etc/bashrc
+
+#+END_EXAMPLE
+
+
+
+* install JCE Unlimited for JDK8
+
+http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
+
+#+BEGIN_EXAMPLE
+
+ unzip jce_policy-8.zip
+ cd UnlimitedJCEPolicy 
+ cp -prv /usr/java/latest/jre/lib/security /usr/java/latest/jre/lib/security.orig
+ cp *.jar /usr/java/latest/jre/lib/security/
+
+
+
+#+END_EXAMPLE
+
+
+* install amq
+download amd amq bits: jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.AMD.CLEAN.GOLDEN.tar.gz
+
+copy to /opt/installers:
+
+** do the following:
+
+#+BEGIN_EXAMPLE
+
+cd /opt
+tar xzvf ./installers/jboss-a-mq-pre-patch-6.2.0.redhat-143-p1.GOLDEN.ga.1.0.tar.gz
+chown -R jboss:jboss jboss-a-mq-pre-patch-6.2.0.redhat-143-p1
+ln -s /opt/jboss-a-mq-pre-patch-6.2.0.redhat-143-p1 /opt/jboss-a-mq
+cd /data/esbdata
+mkdir amq-6.2
+chown -R jboss:jboss amq-6.2
+
+#+END_EXAMPLE
+
+** setup to run as a service
+
+*** setup the bits to run as a service
+
+The way the service is installed depends upon your flavor of Linux.
+
+On Redhat/Fedora/CentOS Systems:
+  To install the service:
+    $ ln -s /opt/jboss-a-mq-pre-patch-6.2.0.redhat-143-p1/bin/amq-service /etc/init.d/
+    $ chkconfig amq-service --add
+
+  To start the service when the machine is rebooted:
+    $ chkconfig amq-service on
+
+  To disable starting the service when the machine is rebooted:
+    $ chkconfig amq-service off
+
+  To start the service:
+    $ service amq-service start
+
+  To stop the service:
+    $ service amq-service stop
+
+  To uninstall the service :
+    $ chkconfig amq-service --del
+    $ rm /etc/init.d/amq-service
+
+You may have problems after installing with error's like "cannot start
+session.."
+
+If this is the case just generate a new wrapper, and you should be good.
+
+*** generate a wrapper new
+ref: https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_A-MQ/6.2/html/Managing_and_Monitoring_a_Broker/FMQAdminService.html
+
+**** cleanup old wrapper
+
+
+***** files to clean output when cleaning
+
+#+BEGIN_EXAMPLE
+
+cd /opt/jboss-a-mq/bin
+
+rm amq-wrapper
+rm amq-service
+rm ../etc/amq-wrapper.conf
+rm ../lib/libwrapper.so
+rm ../lib/karaf-wrapper.jar
+
+#+END_EXAMPLE
+
+**** install new wrapper
+
+run: ./bin/amq
+***** issue:
+JBossA-MQ:karaf@root> features:install wrapper
+JBossA-MQ:karaf@root> wrapper:install -n amq -d "AMQ Service" -D "AMQ Message Broker Service (Provided by wrapper)"
+***** instructions - do the following for your platform:
+
+
+Setup complete.  You may wish to tweak the JVM properties in the wrapper configuration file:
+        /opt/jboss-a-mq/etc/amq-wrapper.conf
+before installing and starting the service.
+
+
+
+*** if you can't login to hawtio
+
+clean out the data directory
+
+#+begin_example
+
+service amq-service stop
+
+rm -rf /opt/jboss-a-mq/data
+
+service amq-service start
+
+#+end_example
