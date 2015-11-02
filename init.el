@@ -1,14 +1,14 @@
 ;; Add extra directories to load-path  
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lib"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations"))
+
 
 ;; load some extra libraries
 (load-library "support-functions")
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations"))
-
 ;; emacs25 workarounds
-(load-library "emacs25.hacks")
+;;(load-library "emacs25.hacks")
 
 (delete-selection-mode 1)
 
@@ -78,27 +78,27 @@
 ;; START - OSX/LINUX/WINDOWS RELATED - START
 ;; ------------------------------------------------------
 
-;; (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
-;;     (progn
+(if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
+    (progn
 	
-;; 		;; EXTEND PATH INTO EMACS
-;; 	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
-;; 	    (if (not (getenv "TERM_PROGRAM"))
-;; 		(setenv "PATH"
-;; 			(shell-command-to-string "source $HOME/.profile && printf $PATH")))
+		;; EXTEND PATH INTO EMACS
+	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
+	    (if (not (getenv "TERM_PROGRAM"))
+		(setenv "PATH"
+			(shell-command-to-string "source $HOME/.bash_profile && printf $PATH")))
 
-;; 	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
-;; 	    (setq explicit-bash-args (list "--login" "-i"))
+	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
+	    (setq explicit-bash-args (list "--login" "-i"))
 
-;; 	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
-;; 	    (defun set-exec-path-from-shell-PATH ()
-;; 	      (let ((path-from-shell
-;; 		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
-;; 		(setenv "PATH" path-from-shell)
-;; 		(setq exec-path (split-string path-from-shell path-separator))))
+	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
+	    (defun set-exec-path-from-shell-PATH ()
+	      (let ((path-from-shell
+		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
+		(setenv "PATH" path-from-shell)
+		(setq exec-path (split-string path-from-shell path-separator))))
 
-;; 	    (when window-system (set-exec-path-from-shell-PATH)))
-;;  )
+	    (when window-system (set-exec-path-from-shell-PATH)))
+ )
  
  ;; wire up the osx pastboard
 (if (or (eq system-type 'darwin))
@@ -150,6 +150,7 @@
         
  
         ;; global packages
+        'exec-path-from-shell
         'el-get
         'dash
         'use-package
@@ -172,6 +173,9 @@
         'gist
         'powerline
         'company-quickhelp
+
+        ;;tex
+        'auctex
         
         ;; org
         'gntp
@@ -373,71 +377,71 @@ If buffer-or-name is nil return current buffer's mode."
       (define-key input-decode-map "\e[1;2A" [S-up])
       (define-key input-decode-map "\e[1;2B" [S-down])
       (define-key input-decode-map "\e[1;2C" [S-right])
-      (define-key input-decode-map "\e[1;2D" [S-left])))
+      (define-key input-decode-map "\e[1;2D" [S-left]))
 
 
-;; for use in putty
+  ;; for use in putty
 
-(if (eq system-uses-terminfo t)
-    (progn                              ;; PuTTY hack - needs to be in Linux or SCO mode
-      (define-key key-translation-map [\e] [\M])
-      (define-key input-decode-map "\e[H" [home])
-      (define-key input-decode-map "\e[F" [end])
-      (define-key input-decode-map "\e[D" [S-left])
-      (define-key input-decode-map "\e[C" [S-right])
-      (define-key input-decode-map "\e[A" [S-up])
-      (define-key input-decode-map "\e[B" [S-down])
-      (define-key input-decode-map "\e[C" [S-right])
-      (define-key input-decode-map "\e[I" [prior])
-      (define-key input-decode-map "\e[G" [next])
-      (define-key input-decode-map "\e[M" [f1])
-      (define-key input-decode-map "\e[Y" [S-f1])
-      (define-key input-decode-map "\e[k" [C-f1])
-      (define-key input-decode-map "\e\e[M" [M-f1])
-      (define-key input-decode-map "\e[N" [f2])
-      (define-key input-decode-map "\e[Z" [S-f2])
-      (define-key input-decode-map "\e[l" [C-f2])
-      (define-key input-decode-map "\e\e[N" [M-f2])
-      (define-key input-decode-map "\e[O" [f3])
-      (define-key input-decode-map "\e[a" [S-f3])
-      (define-key input-decode-map "\e[m" [C-f3])
-      (define-key input-decode-map "\e\e[O" [M-f3])
-      (define-key input-decode-map "\e[P" [f4])
-      (define-key input-decode-map "\e[b" [S-f4])
-      (define-key input-decode-map "\e[n" [C-f4])
-      (define-key input-decode-map "\e\e[P" [M-f4])
-      (define-key input-decode-map "\e[Q" [f5])
-      (define-key input-decode-map "\e[c" [S-f5])
-      (define-key input-decode-map "\e[o" [C-f5])
-      (define-key input-decode-map "\e\e[Q" [M-f5])
-      (define-key input-decode-map "\e[R" [f6])
-      (define-key input-decode-map "\e[d" [S-f6])
-      (define-key input-decode-map "\e[p" [C-f6])
-      (define-key input-decode-map "\e\e[R" [M-f6])
-      (define-key input-decode-map "\e[S" [f7])
-      (define-key input-decode-map "\e[e" [S-f7])
-      (define-key input-decode-map "\e[q" [C-f7])
-      (define-key input-decode-map "\e\e[S" [M-f7])
-      (define-key input-decode-map "\e[T" [f8])
-      (define-key input-decode-map "\e[f" [S-f8])
-      (define-key input-decode-map "\e[r" [C-f8])
-      (define-key input-decode-map "\e\e[T" [M-f8])
-      (define-key input-decode-map "\e[U" [f9])
-      (define-key input-decode-map "\e[g" [S-f9])
-      (define-key input-decode-map "\e[s" [C-f9])
-      (define-key input-decode-map "\e\e[U" [M-f9])
-      (define-key input-decode-map "\e[V" [f10])
-      (define-key input-decode-map "\e[h" [S-f10])
-      (define-key input-decode-map "\e[_" [C-f10])
-      (define-key input-decode-map "\e\e[V" [M-f10])
-      (define-key input-decode-map "\e[W" [f11])
-      (define-key input-decode-map "\e[i" [S-f11])
-      (define-key input-decode-map "\e[u" [C-f11])
-      (define-key input-decode-map "\e\e[W" [M-f11])
-      (define-key input-decode-map "\e[X" [f12])
-      (define-key input-decode-map "\e[j" [S-f12])
-      (define-key input-decode-map "\e[v" [C-f12])
-      (define-key input-decode-map "\e\e[X" [M-f12])))
+  (if (eq system-uses-terminfo t)
+      (progn                              ;; PuTTY hack - needs to be in Linux or SCO mode
+        (define-key key-translation-map [\e] [\M])
+        (define-key input-decode-map "\e[H" [home])
+        (define-key input-decode-map "\e[F" [end])
+        (define-key input-decode-map "\e[D" [S-left])
+        (define-key input-decode-map "\e[C" [S-right])
+        (define-key input-decode-map "\e[A" [S-up])
+        (define-key input-decode-map "\e[B" [S-down])
+        (define-key input-decode-map "\e[C" [S-right])
+        (define-key input-decode-map "\e[I" [prior])
+        (define-key input-decode-map "\e[G" [next])
+        (define-key input-decode-map "\e[M" [f1])
+        (define-key input-decode-map "\e[Y" [S-f1])
+        (define-key input-decode-map "\e[k" [C-f1])
+        (define-key input-decode-map "\e\e[M" [M-f1])
+        (define-key input-decode-map "\e[N" [f2])
+        (define-key input-decode-map "\e[Z" [S-f2])
+        (define-key input-decode-map "\e[l" [C-f2])
+        (define-key input-decode-map "\e\e[N" [M-f2])
+        (define-key input-decode-map "\e[O" [f3])
+        (define-key input-decode-map "\e[a" [S-f3])
+        (define-key input-decode-map "\e[m" [C-f3])
+        (define-key input-decode-map "\e\e[O" [M-f3])
+        (define-key input-decode-map "\e[P" [f4])
+        (define-key input-decode-map "\e[b" [S-f4])
+        (define-key input-decode-map "\e[n" [C-f4])
+        (define-key input-decode-map "\e\e[P" [M-f4])
+        (define-key input-decode-map "\e[Q" [f5])
+        (define-key input-decode-map "\e[c" [S-f5])
+        (define-key input-decode-map "\e[o" [C-f5])
+        (define-key input-decode-map "\e\e[Q" [M-f5])
+        (define-key input-decode-map "\e[R" [f6])
+        (define-key input-decode-map "\e[d" [S-f6])
+        (define-key input-decode-map "\e[p" [C-f6])
+        (define-key input-decode-map "\e\e[R" [M-f6])
+        (define-key input-decode-map "\e[S" [f7])
+        (define-key input-decode-map "\e[e" [S-f7])
+        (define-key input-decode-map "\e[q" [C-f7])
+        (define-key input-decode-map "\e\e[S" [M-f7])
+        (define-key input-decode-map "\e[T" [f8])
+        (define-key input-decode-map "\e[f" [S-f8])
+        (define-key input-decode-map "\e[r" [C-f8])
+        (define-key input-decode-map "\e\e[T" [M-f8])
+        (define-key input-decode-map "\e[U" [f9])
+        (define-key input-decode-map "\e[g" [S-f9])
+        (define-key input-decode-map "\e[s" [C-f9])
+        (define-key input-decode-map "\e\e[U" [M-f9])
+        (define-key input-decode-map "\e[V" [f10])
+        (define-key input-decode-map "\e[h" [S-f10])
+        (define-key input-decode-map "\e[_" [C-f10])
+        (define-key input-decode-map "\e\e[V" [M-f10])
+        (define-key input-decode-map "\e[W" [f11])
+        (define-key input-decode-map "\e[i" [S-f11])
+        (define-key input-decode-map "\e[u" [C-f11])
+        (define-key input-decode-map "\e\e[W" [M-f11])
+        (define-key input-decode-map "\e[X" [f12])
+        (define-key input-decode-map "\e[j" [S-f12])
+        (define-key input-decode-map "\e[v" [C-f12])
+        (define-key input-decode-map "\e\e[X" [M-f12]))))
 
 
 ;;; windmove configuration
@@ -472,7 +476,9 @@ If no window is at direction DIR, an error is signaled."
 
 ;; setup company mode
 (add-hook 'after-init-hook 'global-company-mode)
-(company-quickhelp-mode 1)
+;; this is only for gui
+(if window-system
+    (company-quickhelp-mode 1))
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
@@ -756,115 +762,119 @@ If no window is at direction DIR, an error is signaled."
 ;; SETUP PYTHON ENVIRONMENT
 (defun setup-python-env ()
 
-    ;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
-    ;(require 'python-mode)
-    ;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
+  ;; setup our virtual environment.
+  ;; NOTE: venv must already have been created
+  ;;(add-hook 'python-mode-hook (pyvenv-workon "venv"))
+  
+  ;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
+                                        ;(require 'python-mode)
+                                        ;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
 
-    ;; setting up IPython
-    (progn 
-      ;; NOTE: set this to the correct path for your python installation in windows
-      (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
-          (setq
-           python-shell-interpreter "C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\python.exe"
-           python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console"
-           ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
-           warning-suppress-types '((emacs)))
+  ;; setting up IPython
+  (progn 
+    ;; NOTE: set this to the correct path for your python installation in windows
+    (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
         (setq
-         python-shell-interpreter "ipython"))
-
+         python-shell-interpreter "C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\python.exe"
+         python-shell-interpreter-args "-i C:\\WinPython-64bit-2.7.10.2\\python-2.7.10.amd64\\Scripts\\ipython.exe console"
+         ;; turning off emacs warnings in windows because of interactive python warning.  dirty: todo - cleaner solution
+         warning-suppress-types '((emacs)))
       (setq
-       ;python-shell-interpreter "ipython"
-       ;python-shell-interpreter-args ""
-       python-shell-prompt-regexp "In \\[[0-9]+\\]: "
-       python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
-       python-shell-completion-setup-code
-       "from IPython.core.completerlib import module_completion"
-       python-shell-completion-module-string-code
-       "';'.join(module_completion('''%s'''))\n"
-       python-shell-completion-string-code
-       "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
+       python-shell-interpreter "ipython"))
 
-    ;; ipython debugging hax
-    ;; source: http://wenshanren.org/?p=351
-    (add-hook 'python-mode-hook (lambda ()
+    (setq
+                                        ;python-shell-interpreter "ipython"
+                                        ;python-shell-interpreter-args ""
+     python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+     python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+     python-shell-completion-setup-code
+     "from IPython.core.completerlib import module_completion"
+     python-shell-completion-module-string-code
+     "';'.join(module_completion('''%s'''))\n"
+     python-shell-completion-string-code
+     "';'.join(get_ipython().Completer.all_completions('''%s'''))\n"))
 
-                                  ;; add easy breakpoints for ipdb
-                                  
-                                  (defun python-add-breakpoint ()
-                                    "Add a break point"
-                                    (interactive)
-                                    (newline-and-indent)
-                                    (insert "import ipdb; ipdb.set_trace()")
-                                    (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
-    
-                                  (define-key python-mode-map (kbd "C-c b") 'python-add-breakpoint)
-                                  
-                                  ;; drop into or out of python interactive mode
-                                  (setq python-interactive-status "exit()")
-                                  (defun python-interactive ()
-                                    "Enter the interactive Python environment"
-                                    (interactive)
-                                    (progn
-                                     (if (equal (my-buffer-mode) 'inferior-python-mode) 
-                                         (progn 
-                                           (setq python-interactive-status (if (equal python-interactive-status "exit()")
-                                                                               "import IPython; IPython.embed()"
-                                                                             "exit()"))
-                                           (insert python-interactive-status)
-                                           (move-end-of-line 1)
-                                           (comint-send-input)))))
-                                  
-                                  ;; trigger for it
-                                  (global-set-key (kbd "C-c i") 'python-interactive)
-                                  
-                                  ))
+  ;; ipython debugging hax
+  ;; source: http://wenshanren.org/?p=351
+  (add-hook 'python-mode-hook (lambda ()
 
-    
-    
-    
-    ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
-    ;(add-hook 'python-mode-hook 'jedi:setup)
-    (setq jedi:setup-keys t)                      ; optional
-    (setq jedi:complete-on-dot t)                 ; optional
-    (jedi:setup)
-    (elpy-enable)
+                                ;; add easy breakpoints for ipdb
+                                
+                                (defun python-add-breakpoint ()
+                                  "Add a break point"
+                                  (interactive)
+                                  (newline-and-indent)
+                                  (insert "import ipdb; ipdb.set_trace()")
+                                  (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
+                                
+                                (define-key python-mode-map (kbd "C-c b") 'python-add-breakpoint)
+                                
+                                ;; drop into or out of python interactive mode
+                                (setq python-interactive-status "exit()")
+                                (defun python-interactive ()
+                                  "Enter the interactive Python environment"
+                                  (interactive)
+                                  (progn
+                                    (if (equal (my-buffer-mode) 'inferior-python-mode) 
+                                        (progn 
+                                          (setq python-interactive-status (if (equal python-interactive-status "exit()")
+                                                                              "import IPython; IPython.embed()"
+                                                                            "exit()"))
+                                          (insert python-interactive-status)
+                                          (move-end-of-line 1)
+                                          (comint-send-input)))))
+                                
+                                ;; trigger for it
+                                (global-set-key (kbd "C-c i") 'python-interactive)
+                                
+                                ))
+
+  
+  
+  
+                                        ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
+                                        ;(add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:setup-keys t)                      ; optional
+  (setq jedi:complete-on-dot t)                 ; optional
+  (jedi:setup)
+  (elpy-enable)
 
 
-    ;; NOTE: THIS SECTION IS CONFIGURING ELPY
-    ;; IT REMOVES hight-indentation-mode
-    ;; IT CAN ALWAYS BE REDONE INTERACTIVELY BY:
-    ;; (M-x customize-variable RET elpy-modules RET)
-    ;; SEE PYTHON SECTION
+  ;; NOTE: THIS SECTION IS CONFIGURING ELPY
+  ;; IT REMOVES hight-indentation-mode
+  ;; IT CAN ALWAYS BE REDONE INTERACTIVELY BY:
+  ;; (M-x customize-variable RET elpy-modules RET)
+  ;; SEE PYTHON SECTION
 
-    ;; (add-hook 'python-mode-hook (lambda (elpy-modules
-    ;;                                        (quote
-    ;;                                         (elpy-module-company
-    ;;                                          elpy-module-eldoc
-    ;;                                          elpy-module-flymake
-    ;;                                          ;; elpy-module-highlight-indentation
-    ;;                                          elpy-module-pyvenv
-    ;;                                          elpy-module-yasnippet
-    ;;                                          elpy-module-sane-defaults)))))
+  ;; (add-hook 'python-mode-hook (lambda (elpy-modules
+  ;;                                        (quote
+  ;;                                         (elpy-module-company
+  ;;                                          elpy-module-eldoc
+  ;;                                          elpy-module-flymake
+  ;;                                          ;; elpy-module-highlight-indentation
+  ;;                                          elpy-module-pyvenv
+  ;;                                          elpy-module-yasnippet
+  ;;                                          elpy-module-sane-defaults)))))
 
-    ;; defaulting my elpy test runner to py.test (see M-x elpy-set-test-runner) for supported test backends
+  ;; defaulting my elpy test runner to py.test (see M-x elpy-set-test-runner) for supported test backends
 
-    ;; (add-hook 'python-mode-hook '(elpy-test-runner (quote elpy-test-pytest-runner)))
+  ;; (add-hook 'python-mode-hook '(elpy-test-runner (quote elpy-test-pytest-runner)))
 
-    
- 
-    ) ;; end python-setup()
+  
+  
+  ) ;; end python-setup()
 
-    ;;(add-hook 'python-mode-hook 'setup-python-env)
-    (setup-python-env)
+;;(add-hook 'python-mode-hook 'setup-python-env)
+(setup-python-env)
 
                                         ;: WORKGROUPS
-    ;; workgroups2 enables saving window configurations, etc..
+;; workgroups2 enables saving window configurations, etc..
                                         ;(require 'workgroups2)
 
-    ;; Change workgroups session file
+;; Change workgroups session file
                                         ;(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
 
-    ;; What to do on Emacs exit / workgroups-mode exit?
+;; What to do on Emacs exit / workgroups-mode exit?
                                         ;(setq wg-emacs-exit-save-behavior           'save)      ; Options: 'save 'ask nil
                                         ;(setq wg-workgroups-mode-exit-save-behavior 'save)      ; Options: 'save 'ask nil
 

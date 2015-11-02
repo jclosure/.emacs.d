@@ -104,7 +104,7 @@ have the same meaning as in `defun'."
      (memoize (quote ,name))))
 
 (defun memoize-by-buffer-contents (func)
-    "Memoize the given function by buffer contents. If argument
+  "Memoize the given function by buffer contents. If argument
 is a symbol then install the memoized function over the original
 function."
   (typecase func
