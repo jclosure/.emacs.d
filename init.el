@@ -72,55 +72,6 @@
 (setq save-place-file (format "%s/%s" emacs-tmp-dir "saved-places"))
 
 
-
-
-;; ------------------------------------------------------
-;; START - OSX/LINUX/WINDOWS RELATED - START
-;; ------------------------------------------------------
-
-(if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
-    (progn
-	
-		;; EXTEND PATH INTO EMACS
-	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
-	    (if (not (getenv "TERM_PROGRAM"))
-		(setenv "PATH"
-			(shell-command-to-string "source $HOME/.bash_profile && printf $PATH")))
-
-	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
-	    (setq explicit-bash-args (list "--login" "-i"))
-
-	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
-	    (defun set-exec-path-from-shell-PATH ()
-	      (let ((path-from-shell
-		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
-		(setenv "PATH" path-from-shell)
-		(setq exec-path (split-string path-from-shell path-separator))))
-
-	    (when window-system (set-exec-path-from-shell-PATH)))
- )
- 
- ;; wire up the osx pastboard
-(if (or (eq system-type 'darwin))
-    (progn
-	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
-	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
-)
-
-
-;; force start in homedirs
-;(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
-;  (setq default-directory (concat (getenv "USERPROFILE") "/"))
-;  (setq default-directory (concat (getenv "HOME") "/")))
-
-
-
-
-;; --------------------------------------------------
-;; END - OSX/LINUX/WINDOWS RELATED - END
-;; --------------------------------------------------
-
-
 ;; Define package repositories
 (require 'package)
 (add-to-list 'package-archives
@@ -253,17 +204,66 @@
       (load-file tdd.el)))
 
 
-;; On OS X, an Emacs instance started from the graphical user
-;; interface will have a different environment than a shell in a
-;; terminal window, because OS X does not run a shell during the
-;; login. Obviously this will lead to unexpected results when
-;; calling external utilities like make from Emacs.
-;; This library works around this problem by copying important
-;; environment variables from the user's shell.
-;; https://github.com/purcell/exec-path-from-shell
 
-;; (if (eq system-type 'darwin)
-;;     (package-refresh-and-install 'exec-path-from-shell))
+;; ------------------------------------------------------
+;; START - OSX/LINUX/WINDOWS RELATED - START
+;; ------------------------------------------------------
+
+(exec-path-from-shell-initialize)
+;; (exec-path-from-shell-copy-env "PYTHONPATH")
+;; (exec-path-from-shell-copy-env "CLICOLOR")
+;; (exec-path-from-shell-copy-env "LSCOLORS")
+;; (exec-path-from-shell-copy-env "PS1")
+;; (exec-path-from-shell-copy-env "TERM")
+
+;; osx iterm2 - track mouse in shell
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e))
+
+(if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
+    (progn
+	
+		;; EXTEND PATH INTO EMACS
+	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
+	    (if (not (getenv "TERM_PROGRAM"))
+		(setenv "PATH"
+			(shell-command-to-string "source $HOME/.bash_profile && printf $PATH")))
+
+	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
+	    (setq explicit-bash-args (list "--login" "-i"))
+
+	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
+	    (defun set-exec-path-from-shell-PATH ()
+	      (let ((path-from-shell
+		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
+		(setenv "PATH" path-from-shell)
+		(setq exec-path (split-string path-from-shell path-separator))))
+
+	    (when window-system (set-exec-path-from-shell-PATH)))
+ )
+ 
+ ;; wire up the osx pastboard
+(if (or (eq system-type 'darwin))
+    (progn
+	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
+	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
+)
+
+
+;; force start in homedirs
+;(if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
+;  (setq default-directory (concat (getenv "USERPROFILE") "/"))
+;  (setq default-directory (concat (getenv "HOME") "/")))
+
+
+
+
+;; --------------------------------------------------
+;; END - OSX/LINUX/WINDOWS RELATED - END
+;; --------------------------------------------------
+
+
 
 
 

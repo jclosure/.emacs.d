@@ -1,0 +1,2817 @@
+Key translations:
+key             binding
+---             -------
+
+C-x             Prefix Command
+<double-down-mouse-1> mouse--down-1-maybe-follows-link
+<down-mouse-1>  mouse--down-1-maybe-follows-link
+
+C-x 8           iso-transl-ctl-x-8-map
+
+C-x 8 SPC        
+C-x 8 !         ¡
+C-x 8 "         Prefix Command
+C-x 8 $         ¤
+C-x 8 '         Prefix Command
+C-x 8 *         Prefix Command
+C-x 8 +         ±
+C-x 8 ,         Prefix Command
+C-x 8 -         ­
+C-x 8 .         ·
+C-x 8 /         Prefix Command
+C-x 8 1         Prefix Command
+C-x 8 3         Prefix Command
+C-x 8 <         «
+C-x 8 =         ¯
+C-x 8 >         »
+C-x 8 ?         ¿
+C-x 8 C         ©
+C-x 8 L         £
+C-x 8 P         ¶
+C-x 8 R         ®
+C-x 8 S         §
+C-x 8 Y         ¥
+C-x 8 ^         Prefix Command
+C-x 8 _         Prefix Command
+C-x 8 `         Prefix Command
+C-x 8 c         ¢
+C-x 8 m         µ
+C-x 8 o         °
+C-x 8 u         µ
+C-x 8 x         ×
+C-x 8 |         ¦
+C-x 8 ~         Prefix Command
+
+
+`override-global-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+
+`ido-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+<remap>         Prefix Command
+
+<remap> <dired>                 ido-dired
+<remap> <display-buffer>        ido-display-buffer
+<remap> <find-alternate-file>   ido-find-alternate-file
+<remap> <find-file>             ido-find-file
+<remap> <find-file-other-frame>
+                                ido-find-file-other-frame
+<remap> <find-file-other-window>
+                                ido-find-file-other-window
+<remap> <find-file-read-only>   ido-find-file-read-only
+<remap> <find-file-read-only-other-frame>
+                                ido-find-file-read-only-other-frame
+<remap> <find-file-read-only-other-window>
+                                ido-find-file-read-only-other-window
+<remap> <insert-buffer>         ido-insert-buffer
+<remap> <insert-file>           ido-insert-file
+<remap> <kill-buffer>           ido-kill-buffer
+<remap> <list-directory>        ido-list-directory
+<remap> <switch-to-buffer>      ido-switch-buffer
+<remap> <switch-to-buffer-other-frame>
+                                ido-switch-buffer-other-frame
+<remap> <switch-to-buffer-other-window>
+                                ido-switch-buffer-other-window
+<remap> <write-file>            ido-write-file
+
+
+`recentf-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+
+`tabbar-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+C-c             Prefix Command
+
+C-c <C-down>    tabbar-forward-group
+C-c <C-f10>     tabbar-local-mode
+C-c <C-home>    tabbar-press-home
+C-c <C-left>    tabbar-backward
+C-c <C-next>    tabbar-press-scroll-right
+C-c <C-prior>   tabbar-press-scroll-left
+C-c <C-right>   tabbar-forward
+C-c <C-up>      tabbar-backward-group
+
+
+`company-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+
+`pyvenv-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+
+`semantic-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+C-c             Prefix Command
+
+C-c ,           Prefix Command
+
+C-c , C-w       senator-kill-tag
+C-c , C-y       senator-yank-tag
+C-c , ESC       Prefix Command
+C-c , SPC       semantic-complete-analyze-inline
+C-c , ,         semantic-force-refresh
+C-c , G         semantic-symref
+C-c , J         semantic-complete-jump
+C-c , g         semantic-symref-symbol
+C-c , j         semantic-complete-jump-local
+C-c , l         semantic-analyze-possible-completions
+C-c , m         semantic-complete-jump-local-members
+C-c , n         senator-next-tag
+C-c , p         senator-previous-tag
+C-c , r         senator-copy-tag-to-register
+C-c , u         senator-go-to-up-reference
+C-c , <down>    senator-transpose-tags-down
+C-c , <up>      senator-transpose-tags-up
+
+C-c , M-w       senator-copy-tag
+
+
+`projectile-mode' Minor Mode Bindings:
+key             binding
+---             -------
+
+C-c             Prefix Command
+
+C-c p           projectile-command-map
+
+C-c p ESC       projectile-project-buffers-other-buffer
+C-c p !         projectile-run-shell-command-in-root
+C-c p &         projectile-run-async-shell-command-in-root
+C-c p 4         Prefix Command
+C-c p D         projectile-dired
+C-c p F         helm-projectile-find-file-in-known-projects
+C-c p I         projectile-ibuffer
+C-c p P         projectile-test-project
+C-c p R         projectile-regenerate-tags
+C-c p S         projectile-save-project-buffers
+C-c p T         projectile-find-test-file
+C-c p a         helm-projectile-find-other-file
+C-c p b         helm-projectile-switch-to-buffer
+C-c p c         projectile-compile-project
+C-c p d         helm-projectile-find-dir
+C-c p e         helm-projectile-recentf
+C-c p f         helm-projectile-find-file
+C-c p g         helm-projectile-find-file-dwim
+C-c p h         helm-projectile
+C-c p i         projectile-invalidate-cache
+C-c p j         projectile-find-tag
+C-c p k         projectile-kill-buffers
+C-c p l         projectile-find-file-in-directory
+C-c p m         projectile-commander
+C-c p o         projectile-multi-occur
+C-c p p         helm-projectile-switch-project
+C-c p r         projectile-replace
+C-c p s         Prefix Command
+C-c p t         projectile-toggle-between-implementation-and-test
+C-c p u         projectile-run-project
+C-c p v         projectile-vc
+C-c p z         projectile-cache-current-file
+
+C-c p s a       helm-projectile-ack
+C-c p s g       helm-projectile-grep
+C-c p s s       helm-projectile-ag
+
+C-c p 4 C-o     projectile-display-buffer
+C-c p 4 a       projectile-find-other-file-other-window
+C-c p 4 b       projectile-switch-to-buffer-other-window
+C-c p 4 d       projectile-find-dir-other-window
+C-c p 4 f       projectile-find-file-other-window
+C-c p 4 g       projectile-find-file-dwim-other-window
+C-c p 4 t       projectile-find-implementation-or-test-other-window
+
+
+Major Mode Bindings:
+key             binding
+---             -------
+
+C-c             Prefix Command
+TAB             org-agenda-goto
+C-k             org-agenda-kill
+RET             org-agenda-switch-to
+C-n             org-agenda-next-line
+C-p             org-agenda-previous-line
+C-x             Prefix Command
+ESC             Prefix Command
+C-_             org-agenda-undo
+SPC             org-agenda-show-and-scroll-up
+!               org-agenda-toggle-deadlines
+#               org-agenda-dim-blocked-tasks
+$               org-agenda-archive
+%               org-agenda-bulk-mark-regexp
+*               org-agenda-bulk-mark-all
++               org-agenda-priority-up
+,               org-agenda-priority
+-               org-agenda-priority-down
+.               org-agenda-goto-today
+/               org-agenda-filter-by-tag
+0 .. 9          digit-argument
+:               org-agenda-set-tags
+;               org-timer-set-timer
+<               org-agenda-filter-by-category
+=               org-agenda-filter-by-regexp
+>               org-agenda-date-prompt
+?               org-agenda-show-the-flagging-note
+A               org-agenda-append-agenda
+B               org-agenda-bulk-action
+C               org-agenda-convert-date
+D               org-agenda-toggle-diary
+E               org-agenda-entry-text-mode
+F               org-agenda-follow-mode
+G               org-agenda-toggle-time-grid
+H               org-agenda-holidays
+I               org-agenda-clock-in
+J               org-agenda-clock-goto
+L               org-agenda-recenter
+M               org-agenda-phases-of-moon
+N               org-agenda-next-item
+O               org-agenda-clock-out
+P               org-agenda-previous-item
+Q               org-agenda-Quit
+R               org-agenda-clockreport-mode
+S               org-agenda-sunrise-sunset
+T               org-agenda-show-tags
+U               org-agenda-bulk-unmark-all
+X               org-agenda-clock-cancel
+[               org-agenda-manipulate-query-add
+\               org-agenda-filter-by-tag-refine
+]               org-agenda-manipulate-query-subtract
+^               org-agenda-filter-by-top-headline
+_               org-agenda-filter-by-effort
+a               org-agenda-archive-default-with-confirmation
+b               org-agenda-earlier
+c               org-agenda-goto-calendar
+d               org-agenda-day-view
+e               org-agenda-set-effort
+f               org-agenda-later
+g               ??
+h               org-agenda-holidays
+i               org-agenda-diary-entry
+j               org-agenda-goto-date
+k               org-agenda-capture
+l               org-agenda-log-mode
+m               org-agenda-bulk-mark
+n               org-agenda-next-line
+o               delete-other-windows
+p               org-agenda-previous-line
+q               org-agenda-quit
+r               org-agenda-redo
+s               org-save-all-org-buffers
+t               org-agenda-todo
+u               org-agenda-bulk-unmark
+v               org-agenda-view-mode-dispatch
+w               org-agenda-week-view
+x               org-agenda-exit
+y               org-agenda-year-view
+z               org-agenda-add-note
+{               org-agenda-manipulate-query-add-re
+|               org-agenda-filter-remove-all
+}               org-agenda-manipulate-query-subtract-re
+~               org-agenda-limit-interactively
+DEL             org-agenda-show-scroll-down
+C-/             org-agenda-undo
+<C-S-left>      org-agenda-todo-previousset
+<C-S-right>     org-agenda-todo-nextset
+<M-down>        org-agenda-drag-line-forward
+<M-up>          org-agenda-drag-line-backward
+<S-down>        org-agenda-priority-down
+<S-left>        org-agenda-do-date-earlier
+<S-right>       org-agenda-do-date-later
+<S-up>          org-agenda-priority-up
+<backspace>     org-agenda-show-scroll-down
+<down>          org-agenda-next-line
+<mouse-2>       org-agenda-goto-mouse
+<mouse-3>       org-agenda-show-mouse
+<remap>         Prefix Command
+<tab>           org-agenda-goto
+<undo>          org-agenda-undo
+<up>            org-agenda-previous-line
+
+<remap> <backward-paragraph>    org-agenda-backward-block
+<remap> <forward-paragraph>     org-agenda-forward-block
+
+M-*             org-agenda-bulk-toggle-all
+M-m             org-agenda-bulk-toggle
+
+C-c C-a         org-attach
+C-c C-d         org-agenda-deadline
+C-c C-n         org-agenda-next-date-line
+C-c C-o         org-agenda-open-link
+C-c C-p         org-agenda-previous-date-line
+C-c C-q         org-agenda-set-tags
+C-c C-s         org-agenda-schedule
+C-c C-t         org-agenda-todo
+C-c C-w         org-agenda-refile
+C-c C-x         Prefix Command
+C-c C-z         org-agenda-add-note
+C-c $           org-agenda-archive
+
+C-x C-s         org-save-all-org-buffers
+C-x C-w         org-agenda-write
+C-x u           org-agenda-undo
+
+C-c C-x C-a     org-agenda-archive-default
+C-c C-x C-c     org-agenda-columns
+C-c C-x C-e     org-clock-modify-effort-estimate
+C-c C-x TAB     org-agenda-clock-in
+C-c C-x C-j     org-clock-goto
+C-c C-x RET     Prefix Command
+C-c C-x C-o     org-agenda-clock-out
+C-c C-x C-s     org-agenda-archive
+C-c C-x C-x     org-agenda-clock-cancel
+C-c C-x !       org-reload
+C-c C-x >       org-agenda-remove-restriction-lock
+C-c C-x A       org-agenda-archive-to-archive-sibling
+C-c C-x a       org-agenda-toggle-archive-tag
+C-c C-x b       org-agenda-tree-to-indirect-buffer
+C-c C-x e       org-agenda-set-effort
+C-c C-x p       org-agenda-set-property
+C-c C-x <down>  org-agenda-priority-down
+C-c C-x <left>  org-agenda-do-date-earlier
+C-c C-x <right>                 org-agenda-do-date-later
+C-c C-x <up>                    org-agenda-priority-up
+
+C-c C-x RET g   org-mobile-pull
+C-c C-x RET p   org-mobile-push
+
+
+Global Bindings:
+key             binding
+---             -------
+
+ .. �����       self-insert-command
+� .. �    self-insert-command
+
+C-@             set-mark-command
+C-a             smart-line-beginning
+C-b             backward-char
+C-c             mode-specific-command-prefix
+C-d             delete-char
+C-e             move-end-of-line
+C-f             forward-char
+C-g             keyboard-quit
+C-h             help-command
+C-j             electric-newline-and-maybe-indent
+C-l             recenter-top-bottom
+C-o             open-line
+C-q             quoted-insert
+C-r             isearch-backward-regexp
+C-s             isearch-forward-regexp
+C-t             transpose-chars
+C-u             universal-argument
+C-v             scroll-up-command
+C-w             kill-region
+C-x             Control-X-prefix
+C-y             yank
+C-z             suspend-frame
+ESC             ESC-prefix
+C-\             toggle-input-method
+C-]             abort-recursive-edit
+C-S-c           comment-region
+C-S-n           tabbar-forward-group
+C-S-p           tabbar-backward-group
+C-S-u           uncomment-region
+C-SPC           set-mark-command
+C--             negative-argument
+C-0 .. C-9      digit-argument
+C-;             my-comment-line-or-region
+C-<             tabbar-backward
+C->             tabbar-forward
+<C-M-down>      down-list
+<C-M-end>       end-of-defun
+<C-M-home>      beginning-of-defun
+<C-M-left>      backward-sexp
+<C-M-right>     forward-sexp
+<C-M-up>        backward-up-list
+<C-S-backspace>                 kill-whole-line
+<C-backspace>                   backward-kill-word
+<C-delete>      kill-word
+<C-down>        forward-paragraph
+<C-down-mouse-1>                mouse-buffer-menu
+<C-down-mouse-2>                facemenu-menu
+<C-end>         end-of-buffer
+<C-home>        beginning-of-buffer
+<C-insert>      kill-ring-save
+<C-insertchar>  kill-ring-save
+<C-left>        left-word
+<C-next>        scroll-left
+<C-prior>       scroll-right
+<C-right>       right-word
+<C-up>          backward-paragraph
+<M-begin>       beginning-of-buffer-other-window
+<M-down-mouse-1>                mouse-drag-secondary
+<M-drag-mouse-1>                mouse-set-secondary
+<M-end>         end-of-buffer-other-window
+<M-f10>         toggle-frame-maximized
+<M-home>        beginning-of-buffer-other-window
+<M-left>        left-word
+<M-mouse-1>     mouse-start-secondary
+<M-mouse-2>     mouse-yank-secondary
+<M-mouse-3>     mouse-secondary-save-then-kill
+<M-next>        scroll-other-window
+<M-prior>       scroll-other-window-down
+<M-right>       right-word
+<S-delete>      kill-region
+<S-down-mouse-1>                mouse-appearance-menu
+<S-insert>      yank
+<S-insertchar>  yank
+<S-mouse-3>     kmacro-end-call-mouse
+<XF86Back>      previous-buffer
+<XF86Forward>   next-buffer
+<again>         repeat-complex-command
+<begin>         beginning-of-buffer
+<bottom-divider>                Prefix Command
+<company-dummy-event>           company-ignore
+<compose-last-chars>            compose-last-chars
+<delete-frame>                  handle-delete-frame
+<deletechar>                    delete-forward-char
+<deleteline>                    kill-line
+<double-mouse-1>                mouse-set-point
+<down-mouse-1>                  mouse-drag-region
+<drag-mouse-1>                  mouse-set-region
+<end>           move-end-of-line
+<execute>       execute-extended-command
+<f1>            help-command
+<f10>           menu-bar-open
+<f11>           toggle-frame-fullscreen
+<f2>            2C-command
+<f3>            kmacro-start-macro-or-insert-counter
+<f4>            kmacro-end-or-call-macro
+<f7>            paredit-mode
+<f8>            neotree-toggle
+<f9>            cider-jack-in
+<find>          search-forward
+<header-line>   Prefix Command
+<help>          help-command
+<home>          move-beginning-of-line
+<iconify-frame>                 ignore-event
+<insert>        overwrite-mode
+<insertchar>    overwrite-mode
+<insertline>    open-line
+<left>          left-char
+<make-frame-visible>            ignore-event
+<menu>          execute-extended-command
+<mode-line>     Prefix Command
+<mouse-1>       mouse-set-point
+<mouse-movement>                ignore
+<next>          scroll-up-command
+<open>          find-file
+<prior>         scroll-down-command
+<redo>          repeat-complex-command
+<remap>         Prefix Command
+<right>         right-char
+<right-divider>                 Prefix Command
+<select-window>                 handle-select-window
+<switch-frame>                  handle-switch-frame
+<triple-mouse-1>                mouse-set-point
+<vertical-line>                 Prefix Command
+<vertical-scroll-bar>           Prefix Command
+
+C-c a           org-agenda
+C-c l           org-store-link
+C-c r           Prefix Command
+C-c <left>      tabbar-backward
+C-c <right>     tabbar-forward
+
+C-h C-a         about-emacs
+C-h C-c         describe-copying
+C-h C-d         view-emacs-debugging
+C-h C-e         view-external-packages
+C-h C-f         view-emacs-FAQ
+C-h C-h         help-for-help
+C-h RET         view-order-manuals
+C-h C-n         view-emacs-news
+C-h C-o         describe-distribution
+C-h C-p         view-emacs-problems
+C-h C-t         view-emacs-todo
+C-h C-w         describe-no-warranty
+C-h C-\         describe-input-method
+C-h .           display-local-help
+C-h 4           Prefix Command
+C-h ?           help-for-help
+C-h C           describe-coding-system
+C-h F           Info-goto-emacs-command-node
+C-h I           describe-input-method
+C-h K           Info-goto-emacs-key-command-node
+C-h L           describe-language-environment
+C-h P           describe-package
+C-h S           info-lookup-symbol
+C-h a           apropos-command
+C-h b           describe-bindings
+C-h c           describe-key-briefly
+C-h d           apropos-documentation
+C-h e           view-echo-area-messages
+C-h f           describe-function
+C-h g           describe-gnu-project
+C-h h           view-hello-file
+C-h i           info
+C-h k           describe-key
+C-h l           view-lossage
+C-h m           describe-mode
+C-h n           view-emacs-news
+C-h p           finder-by-keyword
+C-h q           help-quit
+C-h r           info-emacs-manual
+C-h s           describe-syntax
+C-h t           help-with-tutorial
+C-h v           describe-variable
+C-h w           where-is
+C-h <f1>        help-for-help
+C-h <help>      help-for-help
+
+C-x C-@         pop-global-mark
+C-x C-b         ibuffer
+C-x C-c         my-kill-emacs
+C-x C-d         list-directory
+C-x C-e         eval-last-sexp
+C-x C-f         find-file
+C-x TAB         indent-rigidly
+C-x C-j         dired-jump
+C-x C-k         kmacro-keymap
+C-x C-l         downcase-region
+C-x RET         Prefix Command
+C-x C-n         set-goal-column
+C-x C-o         delete-blank-lines
+C-x C-p         mark-page
+C-x C-q         read-only-mode
+C-x C-r         find-file-read-only
+C-x C-t         transpose-lines
+C-x C-u         upcase-region
+C-x C-v         find-alternate-file
+C-x C-x         exchange-point-and-mark
+C-x C-y         pt-pbpaste
+C-x C-z         suspend-frame
+C-x ESC         Prefix Command
+C-x SPC         rectangle-mark-mode
+C-x $           set-selective-display
+C-x '           expand-abbrev
+C-x (           kmacro-start-macro
+C-x )           kmacro-end-macro
+C-x *           calc-dispatch
+C-x +           balance-windows
+C-x -           shrink-window-if-larger-than-buffer
+C-x .           set-fill-prefix
+C-x 0           delete-window
+C-x 1           delete-other-windows
+C-x 2           split-window-below
+C-x 3           split-window-right
+C-x 4           ctl-x-4-prefix
+C-x 5           ctl-x-5-prefix
+C-x 6           2C-command
+C-x 8           Prefix Command
+C-x ;           comment-set-column
+C-x <           scroll-left
+C-x =           what-cursor-position
+C-x >           scroll-right
+C-x [           backward-page
+C-x ]           forward-page
+C-x ^           enlarge-window
+C-x `           next-error
+C-x a           Prefix Command
+C-x b           switch-to-buffer
+C-x d           dired
+C-x e           kmacro-end-and-call-macro
+C-x f           set-fill-column
+C-x h           mark-whole-buffer
+C-x i           insert-file
+C-x k           kill-buffer
+C-x l           count-lines-page
+C-x m           compose-mail
+C-x n           Prefix Command
+C-x o           other-window
+C-x q           kbd-macro-query
+C-x r           Prefix Command
+C-x s           save-some-buffers
+C-x v           vc-prefix-map
+C-x z           repeat
+C-x {           shrink-window-horizontally
+C-x }           enlarge-window-horizontally
+C-x DEL         backward-kill-sentence
+C-x C-SPC       pop-global-mark
+C-x C-+         text-scale-adjust
+C-x C--         text-scale-adjust
+C-x C-0         text-scale-adjust
+C-x C-=         text-scale-adjust
+C-x <C-left>    previous-buffer
+C-x <C-right>   next-buffer
+C-x <left>      previous-buffer
+C-x <right>     next-buffer
+
+M-0 .. M-9      digit-argument
+
+C-M-@           mark-sexp
+C-M-a           beginning-of-defun
+C-M-b           backward-sexp
+C-M-c           exit-recursive-edit
+C-M-d           down-list
+C-M-e           end-of-defun
+C-M-f           forward-sexp
+C-M-h           mark-defun
+C-M-i           complete-symbol
+C-M-j           indent-new-comment-line
+C-M-k           kill-sexp
+C-M-l           reposition-window
+C-M-n           forward-list
+C-M-o           split-line
+C-M-p           backward-list
+C-M-r           isearch-backward
+C-M-s           isearch-forward
+C-M-t           transpose-sexps
+C-M-u           backward-up-list
+C-M-v           scroll-other-window
+C-M-w           append-next-kill
+ESC ESC         Prefix Command
+C-M-\           indent-region
+M-SPC           just-one-space
+M-!             shell-command
+M-$             ispell-word
+M-%             query-replace
+M-&             async-shell-command
+M-'             abbrev-prefix-mark
+M-(             insert-parentheses
+M-)             move-past-close-and-reindent
+M-,             tags-loop-continue
+M--             negative-argument
+M-.             find-tag
+M-/             hippie-expand
+M-:             eval-expression
+M-;             comment-dwim
+M-<             beginning-of-buffer
+M-=             count-words-region
+M->             end-of-buffer
+M-@             mark-word
+M-\             delete-horizontal-space
+M-^             delete-indentation
+M-`             tmm-menubar
+M-a             backward-sentence
+M-b             backward-word
+M-c             capitalize-word
+M-d             kill-word
+M-e             forward-sentence
+M-f             forward-word
+M-g             Prefix Command
+M-h             mark-paragraph
+M-i             tab-to-tab-stop
+M-j             indent-new-comment-line
+M-k             kill-sentence
+M-l             downcase-word
+M-o             facemenu-keymap
+M-q             fill-paragraph
+M-r             move-to-window-line-top-bottom
+M-s             Prefix Command
+M-t             transpose-words
+M-u             upcase-word
+M-v             scroll-down-command
+M-w             kill-ring-save
+M-x             smex
+M-y             yank-pop
+M-z             zap-to-char
+M-{             backward-paragraph
+M-|             shell-command-on-region
+M-}             forward-paragraph
+M-~             not-modified
+M-DEL           backward-kill-word
+C-M-S-v         scroll-other-window-down
+C-M-SPC         mark-sexp
+C-M-%           query-replace-regexp
+C-M--           negative-argument
+C-M-.           find-tag-regexp
+C-M-/           dabbrev-completion
+C-M-0 .. C-M-9  digit-argument
+ESC <C-backspace>               backward-kill-sexp
+ESC <C-delete>                  backward-kill-sexp
+ESC <C-down>                    down-list
+ESC <C-end>                     end-of-defun
+ESC <C-home>                    beginning-of-defun
+ESC <C-left>                    backward-sexp
+ESC <C-right>                   forward-sexp
+ESC <C-up>      backward-up-list
+ESC <begin>     beginning-of-buffer-other-window
+ESC <end>       end-of-buffer-other-window
+ESC <f10>       toggle-frame-maximized
+ESC <home>      beginning-of-buffer-other-window
+ESC <left>      backward-word
+ESC <next>      scroll-other-window
+ESC <prior>     scroll-other-window-down
+ESC <right>     forward-word
+
+M-s .           isearch-forward-symbol-at-point
+M-s _           isearch-forward-symbol
+M-s h           Prefix Command
+M-s o           occur
+M-s w           isearch-forward-word
+
+M-o ESC         Prefix Command
+M-o b           facemenu-set-bold
+M-o d           facemenu-set-default
+M-o i           facemenu-set-italic
+M-o l           facemenu-set-bold-italic
+M-o o           facemenu-set-face
+M-o u           facemenu-set-underline
+
+M-g TAB         move-to-column
+M-g ESC         Prefix Command
+M-g c           goto-char
+M-g g           goto-line
+M-g n           next-error
+M-g p           previous-error
+
+M-ESC ESC       keyboard-escape-quit
+M-ESC :         eval-expression
+
+<remap> <goto-line>             goto-line-with-feedback
+
+<bottom-divider> <down-mouse-1>
+                                mouse-drag-mode-line
+
+<right-divider> <down-mouse-1>  mouse-drag-vertical-line
+
+<vertical-line> <C-mouse-2>     mouse-split-window-vertically
+<vertical-line> <down-mouse-1>  mouse-drag-vertical-line
+<vertical-line> <mouse-1>       mouse-select-window
+
+<vertical-scroll-bar> <C-mouse-2>
+                                mouse-split-window-vertically
+
+<header-line> <down-mouse-1>    mouse-drag-header-line
+<header-line> <mouse-1>         mouse-select-window
+
+<mode-line> <C-mouse-2>         mouse-split-window-horizontally
+<mode-line> <down-mouse-1>      mouse-drag-mode-line
+<mode-line> <drag-mouse-1>      mouse-select-window
+<mode-line> <mouse-1>           mouse-select-window
+<mode-line> <mouse-2>           mouse-delete-other-windows
+<mode-line> <mouse-3>           mouse-delete-window
+
+<C-down-mouse-2> <bg>           facemenu-background-menu
+<C-down-mouse-2> <dc>           list-colors-display
+<C-down-mouse-2> <df>           list-faces-display
+<C-down-mouse-2> <dp>           describe-text-properties
+<C-down-mouse-2> <fc>           facemenu-face-menu
+<C-down-mouse-2> <fg>           facemenu-foreground-menu
+<C-down-mouse-2> <in>           facemenu-indentation-menu
+<C-down-mouse-2> <ju>           facemenu-justification-menu
+<C-down-mouse-2> <ra>           facemenu-remove-all
+<C-down-mouse-2> <rm>           facemenu-remove-face-props
+<C-down-mouse-2> <sp>           facemenu-special-menu
+
+<f1> C-a        about-emacs
+<f1> C-c        describe-copying
+<f1> C-d        view-emacs-debugging
+<f1> C-e        view-external-packages
+<f1> C-f        view-emacs-FAQ
+<f1> C-h        help-for-help
+<f1> RET        view-order-manuals
+<f1> C-n        view-emacs-news
+<f1> C-o        describe-distribution
+<f1> C-p        view-emacs-problems
+<f1> C-t        view-emacs-todo
+<f1> C-w        describe-no-warranty
+<f1> C-\        describe-input-method
+<f1> .          display-local-help
+<f1> 4          Prefix Command
+<f1> ?          help-for-help
+<f1> C          describe-coding-system
+<f1> F          Info-goto-emacs-command-node
+<f1> I          describe-input-method
+<f1> K          Info-goto-emacs-key-command-node
+<f1> L          describe-language-environment
+<f1> P          describe-package
+<f1> S          info-lookup-symbol
+<f1> a          apropos-command
+<f1> b          describe-bindings
+<f1> c          describe-key-briefly
+<f1> d          apropos-documentation
+<f1> e          view-echo-area-messages
+<f1> f          describe-function
+<f1> g          describe-gnu-project
+<f1> h          view-hello-file
+<f1> i          info
+<f1> k          describe-key
+<f1> l          view-lossage
+<f1> m          describe-mode
+<f1> n          view-emacs-news
+<f1> p          finder-by-keyword
+<f1> q          help-quit
+<f1> r          info-emacs-manual
+<f1> s          describe-syntax
+<f1> t          help-with-tutorial
+<f1> v          describe-variable
+<f1> w          where-is
+<f1> <f1>       help-for-help
+<f1> <help>     help-for-help
+
+<help> C-a      about-emacs
+<help> C-c      describe-copying
+<help> C-d      view-emacs-debugging
+<help> C-e      view-external-packages
+<help> C-f      view-emacs-FAQ
+<help> C-h      help-for-help
+<help> RET      view-order-manuals
+<help> C-n      view-emacs-news
+<help> C-o      describe-distribution
+<help> C-p      view-emacs-problems
+<help> C-t      view-emacs-todo
+<help> C-w      describe-no-warranty
+<help> C-\      describe-input-method
+<help> .        display-local-help
+<help> 4        Prefix Command
+<help> ?        help-for-help
+<help> C        describe-coding-system
+<help> F        Info-goto-emacs-command-node
+<help> I        describe-input-method
+<help> K        Info-goto-emacs-key-command-node
+<help> L        describe-language-environment
+<help> P        describe-package
+<help> S        info-lookup-symbol
+<help> a        apropos-command
+<help> b        describe-bindings
+<help> c        describe-key-briefly
+<help> d        apropos-documentation
+<help> e        view-echo-area-messages
+<help> f        describe-function
+<help> g        describe-gnu-project
+<help> h        view-hello-file
+<help> i        info
+<help> k        describe-key
+<help> l        view-lossage
+<help> m        describe-mode
+<help> n        view-emacs-news
+<help> p        finder-by-keyword
+<help> q        help-quit
+<help> r        info-emacs-manual
+<help> s        describe-syntax
+<help> t        help-with-tutorial
+<help> v        describe-variable
+<help> w        where-is
+<help> <f1>     help-for-help
+<help> <help>   help-for-help
+
+<f2> 2          2C-two-columns
+<f2> b          2C-associate-buffer
+<f2> s          2C-split
+<f2> <f2>       2C-two-columns
+
+C-c r r         inf-ruby
+
+C-h 4 i         info-other-window
+
+C-x C-k C-a     kmacro-add-counter
+C-x C-k C-c     kmacro-set-counter
+C-x C-k C-d     kmacro-delete-ring-head
+C-x C-k C-e     kmacro-edit-macro-repeat
+C-x C-k C-f     kmacro-set-format
+C-x C-k TAB     kmacro-insert-counter
+C-x C-k C-k     kmacro-end-or-call-macro-repeat
+C-x C-k C-l     kmacro-call-ring-2nd-repeat
+C-x C-k RET     kmacro-edit-macro
+C-x C-k C-n     kmacro-cycle-ring-next
+C-x C-k C-p     kmacro-cycle-ring-previous
+C-x C-k C-s     kmacro-start-macro
+C-x C-k C-t     kmacro-swap-ring
+C-x C-k C-v     kmacro-view-macro-repeat
+C-x C-k SPC     kmacro-step-edit-macro
+C-x C-k b       kmacro-bind-to-key
+C-x C-k e       edit-kbd-macro
+C-x C-k l       kmacro-edit-lossage
+C-x C-k n       kmacro-name-last-macro
+C-x C-k q       kbd-macro-query
+C-x C-k r       apply-macro-to-region-lines
+C-x C-k s       kmacro-start-macro
+C-x C-k x       kmacro-to-register
+
+C-x RET C-\     set-input-method
+C-x RET F       set-file-name-coding-system
+C-x RET X       set-next-selection-coding-system
+C-x RET c       universal-coding-system-argument
+C-x RET f       set-buffer-file-coding-system
+C-x RET k       set-keyboard-coding-system
+C-x RET l       set-language-environment
+C-x RET p       set-buffer-process-coding-system
+C-x RET r       revert-buffer-with-coding-system
+C-x RET t       set-terminal-coding-system
+C-x RET x       set-selection-coding-system
+
+C-x ESC ESC     repeat-complex-command
+C-x M-:         repeat-complex-command
+C-x M-w         pt-pbcopy
+
+C-x 4 C-f       find-file-other-window
+C-x 4 C-j       dired-jump-other-window
+C-x 4 C-o       display-buffer
+C-x 4 .         find-tag-other-window
+C-x 4 0         kill-buffer-and-window
+C-x 4 a         add-change-log-entry-other-window
+C-x 4 b         switch-to-buffer-other-window
+C-x 4 c         clone-indirect-buffer-other-window
+C-x 4 d         dired-other-window
+C-x 4 f         find-file-other-window
+C-x 4 m         compose-mail-other-window
+C-x 4 r         find-file-read-only-other-window
+
+C-x 5 C-f       find-file-other-frame
+C-x 5 C-o       display-buffer-other-frame
+C-x 5 .         find-tag-other-frame
+C-x 5 0         delete-frame
+C-x 5 1         delete-other-frames
+C-x 5 2         make-frame-command
+C-x 5 b         switch-to-buffer-other-frame
+C-x 5 d         dired-other-frame
+C-x 5 f         find-file-other-frame
+C-x 5 m         compose-mail-other-frame
+C-x 5 o         other-frame
+C-x 5 r         find-file-read-only-other-frame
+
+C-x 6 2         2C-two-columns
+C-x 6 b         2C-associate-buffer
+C-x 6 s         2C-split
+C-x 6 <f2>      2C-two-columns
+
+C-x 8 RET       insert-char
+
+C-x a C-a       add-mode-abbrev
+C-x a '         expand-abbrev
+C-x a +         add-mode-abbrev
+C-x a -         inverse-add-global-abbrev
+C-x a e         expand-abbrev
+C-x a g         add-global-abbrev
+C-x a i         Prefix Command
+C-x a l         add-mode-abbrev
+C-x a n         expand-jump-to-next-slot
+C-x a p         expand-jump-to-previous-slot
+
+C-x n b         org-narrow-to-block
+C-x n d         narrow-to-defun
+C-x n e         org-narrow-to-element
+C-x n n         narrow-to-region
+C-x n p         narrow-to-page
+C-x n s         org-narrow-to-subtree
+C-x n w         widen
+
+C-x r C-@       point-to-register
+C-x r ESC       Prefix Command
+C-x r SPC       point-to-register
+C-x r +         increment-register
+C-x r N         rectangle-number-lines
+C-x r b         bookmark-jump
+C-x r c         clear-rectangle
+C-x r d         delete-rectangle
+C-x r f         frameset-to-register
+C-x r g         insert-register
+C-x r i         insert-register
+C-x r j         jump-to-register
+C-x r k         kill-rectangle
+C-x r l         bookmark-bmenu-list
+C-x r m         bookmark-set
+C-x r n         number-to-register
+C-x r o         open-rectangle
+C-x r r         copy-rectangle-to-register
+C-x r s         copy-to-register
+C-x r t         string-rectangle
+C-x r w         window-configuration-to-register
+C-x r x         copy-to-register
+C-x r y         yank-rectangle
+C-x r C-SPC     point-to-register
+
+C-x v +         vc-update
+C-x v =         vc-diff
+C-x v D         vc-root-diff
+C-x v G         vc-ignore
+C-x v I         vc-log-incoming
+C-x v L         vc-print-root-log
+C-x v O         vc-log-outgoing
+C-x v a         vc-update-change-log
+C-x v b         vc-switch-backend
+C-x v c         vc-rollback
+C-x v d         vc-dir
+C-x v g         vc-annotate
+C-x v h         vc-insert-headers
+C-x v i         vc-register
+C-x v l         vc-print-log
+C-x v m         vc-merge
+C-x v r         vc-retrieve-tag
+C-x v s         vc-create-tag
+C-x v u         vc-revert
+C-x v v         vc-next-action
+C-x v ~         vc-revision-other-window
+
+M-s h .         highlight-symbol-at-point
+M-s h f         hi-lock-find-patterns
+M-s h l         highlight-lines-matching-regexp
+M-s h p         highlight-phrase
+M-s h r         highlight-regexp
+M-s h u         unhighlight-regexp
+M-s h w         hi-lock-write-interactive-patterns
+
+M-o M-S         center-paragraph
+M-o M-o         font-lock-fontify-block
+M-o M-s         center-line
+
+M-g M-g         goto-line
+M-g M-n         next-error
+M-g M-p         previous-error
+
+<C-down-mouse-2> <fc> b         facemenu-set-bold
+<C-down-mouse-2> <fc> d         facemenu-set-default
+<C-down-mouse-2> <fc> i         facemenu-set-italic
+<C-down-mouse-2> <fc> l         facemenu-set-bold-italic
+<C-down-mouse-2> <fc> o         facemenu-set-face
+<C-down-mouse-2> <fc> u         facemenu-set-underline
+
+<C-down-mouse-2> <fg> o         facemenu-set-foreground
+
+<C-down-mouse-2> <bg> o         facemenu-set-background
+
+<C-down-mouse-2> <sp> r         facemenu-set-read-only
+<C-down-mouse-2> <sp> s         facemenu-remove-special
+<C-down-mouse-2> <sp> t         facemenu-set-intangible
+<C-down-mouse-2> <sp> v         facemenu-set-invisible
+
+<C-down-mouse-2> <ju> b         set-justification-full
+<C-down-mouse-2> <ju> c         set-justification-center
+<C-down-mouse-2> <ju> l         set-justification-left
+<C-down-mouse-2> <ju> r         set-justification-right
+<C-down-mouse-2> <ju> u         set-justification-none
+
+<C-down-mouse-2> <in> <decrease-left-margin>
+                                decrease-left-margin
+<C-down-mouse-2> <in> <decrease-right-margin>
+                                decrease-right-margin
+<C-down-mouse-2> <in> <increase-left-margin>
+                                increase-left-margin
+<C-down-mouse-2> <in> <increase-right-margin>
+                                increase-right-margin
+
+<f1> 4 i        info-other-window
+
+<help> 4 i      info-other-window
+
+C-x a i g       inverse-add-global-abbrev
+C-x a i l       inverse-add-mode-abbrev
+
+C-x r M-w       copy-rectangle-as-kill
+
+
+Function key map translations:
+key             binding
+---             -------
+
+C-@             C-SPC
+C-x             Prefix Command
+<C-M-S-kp-0>    C-M-S-0
+<C-M-S-kp-1>    C-M-S-1
+<C-M-S-kp-2>    C-M-S-2
+<C-M-S-kp-3>    C-M-S-3
+<C-M-S-kp-4>    C-M-S-4
+<C-M-S-kp-5>    C-M-S-5
+<C-M-S-kp-6>    C-M-S-6
+<C-M-S-kp-7>    C-M-S-7
+<C-M-S-kp-8>    C-M-S-8
+<C-M-S-kp-9>    C-M-S-9
+<C-M-S-kp-add>  C-M-S-+
+<C-M-S-kp-begin> <C-M-S-begin>
+<C-M-S-kp-decimal> C-M-S-.
+<C-M-S-kp-delete> <C-M-S-delete>
+<C-M-S-kp-divide> C-M-S-/
+<C-M-S-kp-down> <C-M-S-down>
+<C-M-S-kp-end>  <C-M-S-end>
+<C-M-S-kp-enter> <C-M-S-enter>
+<C-M-S-kp-home> <C-M-S-home>
+<C-M-S-kp-insert> <C-M-S-insert>
+<C-M-S-kp-left> <C-M-S-left>
+<C-M-S-kp-multiply> C-M-S-*
+<C-M-S-kp-next> <C-M-S-next>
+<C-M-S-kp-prior> <C-M-S-prior>
+<C-M-S-kp-right> <C-M-S-right>
+<C-M-S-kp-subtract> C-M-S--
+<C-M-S-kp-up>   <C-M-S-up>
+<C-M-kp-0>      C-M-0
+<C-M-kp-1>      C-M-1
+<C-M-kp-2>      C-M-2
+<C-M-kp-3>      C-M-3
+<C-M-kp-4>      C-M-4
+<C-M-kp-5>      C-M-5
+<C-M-kp-6>      C-M-6
+<C-M-kp-7>      C-M-7
+<C-M-kp-8>      C-M-8
+<C-M-kp-9>      C-M-9
+<C-M-kp-add>    C-M-+
+<C-M-kp-begin>  <C-M-begin>
+<C-M-kp-decimal> C-M-.
+<C-M-kp-delete> <C-M-delete>
+<C-M-kp-divide> C-M-/
+<C-M-kp-down>   <C-M-down>
+<C-M-kp-end>    <C-M-end>
+<C-M-kp-enter>  <C-M-enter>
+<C-M-kp-home>   <C-M-home>
+<C-M-kp-insert> <C-M-insert>
+<C-M-kp-left>   <C-M-left>
+<C-M-kp-multiply> C-M-*
+<C-M-kp-next>   <C-M-next>
+<C-M-kp-prior>  <C-M-prior>
+<C-M-kp-right>  <C-M-right>
+<C-M-kp-subtract> C-M--
+<C-M-kp-up>     <C-M-up>
+<C-S-kp-0>      C-S-0
+<C-S-kp-1>      C-S-1
+<C-S-kp-2>      C-S-2
+<C-S-kp-3>      C-S-3
+<C-S-kp-4>      C-S-4
+<C-S-kp-5>      C-S-5
+<C-S-kp-6>      C-S-6
+<C-S-kp-7>      C-S-7
+<C-S-kp-8>      C-S-8
+<C-S-kp-9>      C-S-9
+<C-S-kp-add>    C-S-+
+<C-S-kp-begin>  <C-S-begin>
+<C-S-kp-decimal> C-S-.
+<C-S-kp-delete> <C-S-delete>
+<C-S-kp-divide> C-S-/
+<C-S-kp-down>   <C-S-down>
+<C-S-kp-end>    <C-S-end>
+<C-S-kp-enter>  <C-S-enter>
+<C-S-kp-home>   <C-S-home>
+<C-S-kp-insert> <C-S-insert>
+<C-S-kp-left>   <C-S-left>
+<C-S-kp-multiply> C-S-*
+<C-S-kp-next>   <C-S-next>
+<C-S-kp-prior>  <C-S-prior>
+<C-S-kp-right>  <C-S-right>
+<C-S-kp-subtract> C-S--
+<C-S-kp-up>     <C-S-up>
+<C-kp-0>        C-0
+<C-kp-1>        C-1
+<C-kp-2>        C-2
+<C-kp-3>        C-3
+<C-kp-4>        C-4
+<C-kp-5>        C-5
+<C-kp-6>        C-6
+<C-kp-7>        C-7
+<C-kp-8>        C-8
+<C-kp-9>        C-9
+<C-kp-add>      C-+
+<C-kp-begin>    <C-begin>
+<C-kp-decimal>  C-.
+<C-kp-delete>   <C-delete>
+<C-kp-divide>   C-/
+<C-kp-down>     <C-down>
+<C-kp-end>      <C-end>
+<C-kp-enter>    <C-enter>
+<C-kp-home>     <C-home>
+<C-kp-insert>   <C-insert>
+<C-kp-left>     <C-left>
+<C-kp-multiply> C-*
+<C-kp-next>     <C-next>
+<C-kp-prior>    <C-prior>
+<C-kp-right>    <C-right>
+<C-kp-subtract> C--
+<C-kp-up>       <C-up>
+<M-S-kp-0>      M-S-0
+<M-S-kp-1>      M-S-1
+<M-S-kp-2>      M-S-2
+<M-S-kp-3>      M-S-3
+<M-S-kp-4>      M-S-4
+<M-S-kp-5>      M-S-5
+<M-S-kp-6>      M-S-6
+<M-S-kp-7>      M-S-7
+<M-S-kp-8>      M-S-8
+<M-S-kp-9>      M-S-9
+<M-S-kp-add>    M-S-+
+<M-S-kp-begin>  <M-S-begin>
+<M-S-kp-decimal> M-S-.
+<M-S-kp-delete> <M-S-delete>
+<M-S-kp-divide> M-S-/
+<M-S-kp-down>   <M-S-down>
+<M-S-kp-end>    <M-S-end>
+<M-S-kp-enter>  <M-S-enter>
+<M-S-kp-home>   <M-S-home>
+<M-S-kp-insert> <M-S-insert>
+<M-S-kp-left>   <M-S-left>
+<M-S-kp-multiply> M-S-*
+<M-S-kp-next>   <M-S-next>
+<M-S-kp-prior>  <M-S-prior>
+<M-S-kp-right>  <M-S-right>
+<M-S-kp-subtract> M-S--
+<M-S-kp-up>     <M-S-up>
+<M-kp-0>        M-0
+<M-kp-1>        M-1
+<M-kp-2>        M-2
+<M-kp-3>        M-3
+<M-kp-4>        M-4
+<M-kp-5>        M-5
+<M-kp-6>        M-6
+<M-kp-7>        M-7
+<M-kp-8>        M-8
+<M-kp-9>        M-9
+<M-kp-add>      M-+
+<M-kp-begin>    <M-begin>
+<M-kp-decimal>  M-.
+<M-kp-delete>   <M-delete>
+<M-kp-divide>   M-/
+<M-kp-down>     <M-down>
+<M-kp-end>      <M-end>
+<M-kp-enter>    <M-enter>
+<M-kp-home>     <M-home>
+<M-kp-insert>   <M-insert>
+<M-kp-left>     <M-left>
+<M-kp-multiply> M-*
+<M-kp-next>     <M-next>
+<M-kp-prior>    <M-prior>
+<M-kp-right>    <M-right>
+<M-kp-subtract> M--
+<M-kp-up>       <M-up>
+<S-kp-0>        S-0
+<S-kp-1>        S-1
+<S-kp-2>        S-2
+<S-kp-3>        S-3
+<S-kp-4>        S-4
+<S-kp-5>        S-5
+<S-kp-6>        S-6
+<S-kp-7>        S-7
+<S-kp-8>        S-8
+<S-kp-9>        S-9
+<S-kp-add>      S-+
+<S-kp-begin>    <S-begin>
+<S-kp-decimal>  S-.
+<S-kp-delete>   <S-delete>
+<S-kp-divide>   S-/
+<S-kp-down>     <S-down>
+<S-kp-end>      <S-end>
+<S-kp-enter>    <S-enter>
+<S-kp-home>     <S-home>
+<S-kp-insert>   <S-insert>
+<S-kp-left>     <S-left>
+<S-kp-multiply> S-*
+<S-kp-next>     <S-next>
+<S-kp-prior>    <S-prior>
+<S-kp-right>    <S-right>
+<S-kp-subtract> S--
+<S-kp-up>       <S-up>
+<S-tab>         <backtab>
+<backspace>     DEL
+<clear>         C-l
+<delete>        DEL
+<escape>        ESC
+<f13>           <S-f1>
+<f14>           <S-f2>
+<f15>           <S-f3>
+<f16>           <S-f4>
+<f17>           <S-f5>
+<f18>           <S-f6>
+<f19>           <S-f7>
+<f20>           <S-f8>
+<f21>           <S-f9>
+<f22>           <S-f10>
+<f23>           <S-f11>
+<f24>           <S-f12>
+<f25>           <C-f1>
+<f26>           <C-f2>
+<f27>           <C-f3>
+<f28>           <C-f4>
+<f29>           <C-f5>
+<f30>           <C-f6>
+<f31>           <C-f7>
+<f32>           <C-f8>
+<f33>           <C-f9>
+<f34>           <C-f10>
+<f35>           <C-f11>
+<f36>           <C-f12>
+<f37>           <C-S-f1>
+<f38>           <C-S-f2>
+<f39>           <C-S-f3>
+<f40>           <C-S-f4>
+<f41>           <C-S-f5>
+<f42>           <C-S-f6>
+<f43>           <C-S-f7>
+<f44>           <C-S-f8>
+<f45>           <C-S-f9>
+<f46>           <C-S-f10>
+<f47>           <C-S-f11>
+<f48>           <C-S-f12>
+<f49>           <M-f1>
+<f50>           <M-f2>
+<f51>           <M-f3>
+<f52>           <M-f4>
+<f53>           <M-f5>
+<f54>           <M-f6>
+<f55>           <M-f7>
+<f56>           <M-f8>
+<f57>           <M-f9>
+<f58>           <M-f10>
+<f59>           <M-f11>
+<f60>           <M-f12>
+<kp-0>          0
+<kp-1>          1
+<kp-2>          2
+<kp-3>          3
+<kp-4>          4
+<kp-5>          5
+<kp-6>          6
+<kp-7>          7
+<kp-8>          8
+<kp-9>          9
+<kp-add>        +
+<kp-begin>      <begin>
+<kp-decimal>    .
+<kp-delete>     DEL
+<kp-divide>     /
+<kp-down>       <down>
+<kp-end>        <end>
+<kp-enter>      RET
+<kp-equal>      =
+<kp-home>       <home>
+<kp-insert>     <insert>
+<kp-left>       <left>
+<kp-multiply>   *
+<kp-next>       <next>
+<kp-prior>      <prior>
+<kp-right>      <right>
+<kp-separator>  ,
+<kp-space>      SPC
+<kp-subtract>   -
+<kp-tab>        TAB
+<kp-up>         <up>
+<left-fringe>   Prefix Command
+<linefeed>      C-j
+<return>        RET
+<right-fringe>  Prefix Command
+<tab>           TAB
+
+<right-fringe> <mouse-1> mouse--strip-first-event
+<right-fringe> <mouse-2> mouse--strip-first-event
+<right-fringe> <mouse-3> mouse--strip-first-event
+
+<left-fringe> <mouse-1> mouse--strip-first-event
+<left-fringe> <mouse-2> mouse--strip-first-event
+<left-fringe> <mouse-3> mouse--strip-first-event
+
+C-x @           Prefix Command
+
+C-x @ S         event-apply-shift-modifier
+C-x @ a         event-apply-alt-modifier
+C-x @ c         event-apply-control-modifier
+C-x @ h         event-apply-hyper-modifier
+C-x @ m         event-apply-meta-modifier
+C-x @ s         event-apply-super-modifier
+
+
+Input decoding map translations:
+key             binding
+---             -------
+
+ESC             Prefix Command
+
+M-O             Prefix Command
+M-[             Prefix Command
+
+M-O A           <up>
+M-O B           <down>
+M-O C           <right>
+M-O D           <left>
+M-O E           <kp-5>
+M-O F           <end>
+M-O H           <home>
+M-O M           <kp-enter>
+M-O P           <f1>
+M-O Q           <f2>
+M-O R           <f3>
+M-O S           <f4>
+
+M-[ 1           Prefix Command
+M-[ 2           Prefix Command
+M-[ 3           Prefix Command
+M-[ 5           Prefix Command
+M-[ 6           Prefix Command
+M-[ <           xterm-mouse-translate-extended
+M-[ M           xterm-mouse-translate
+M-[ Z           <backtab>
+
+M-O             Prefix Command
+M-[             Prefix Command
+
+M-O 2           Prefix Command
+M-O 3           Prefix Command
+M-O 4           Prefix Command
+M-O 5           Prefix Command
+M-O 6           Prefix Command
+M-O j           <kp-multiply>
+M-O k           <kp-add>
+M-O l           <kp-separator>
+M-O m           <kp-subtract>
+M-O o           <kp-divide>
+M-O p           <kp-0>
+M-O q           <kp-1>
+M-O r           <kp-2>
+M-O s           <kp-3>
+M-O t           <kp-4>
+M-O u           <kp-5>
+M-O v           <kp-6>
+M-O w           <kp-7>
+M-O x           <kp-8>
+M-O y           <kp-9>
+
+M-[ 1           Prefix Command
+M-[ 2           Prefix Command
+M-[ 3           Prefix Command
+M-[ 4           Prefix Command
+M-[ 5           Prefix Command
+M-[ 6           Prefix Command
+M-[ 9           Prefix Command
+M-[ A           <up>
+M-[ B           <down>
+M-[ C           <right>
+M-[ D           <left>
+
+M-[ 5 ;         Prefix Command
+M-[ 5 ~         <prior>
+
+M-[ 6 ;         Prefix Command
+M-[ 6 ~         <next>
+
+M-[ 1 5         Prefix Command
+M-[ 1 7         Prefix Command
+M-[ 1 8         Prefix Command
+M-[ 1 9         Prefix Command
+M-[ 1 ;         Prefix Command
+
+M-[ 3 ;         Prefix Command
+M-[ 3 ~         <deletechar>
+
+M-[ 2 0         Prefix Command
+M-[ 2 1         Prefix Command
+M-[ 2 3         Prefix Command
+M-[ 2 4         Prefix Command
+M-[ 2 ;         Prefix Command
+M-[ 2 ~         <insertchar>
+
+M-O 4 P         <M-S-f1>
+M-O 4 Q         <M-S-f2>
+M-O 4 R         <M-S-f3>
+M-O 4 S         <M-S-f4>
+
+M-O 3 P         <M-f1>
+M-O 3 Q         <M-f2>
+M-O 3 R         <M-f3>
+M-O 3 S         <M-f4>
+
+M-O 6 P         <C-S-f1>
+M-O 6 Q         <C-S-f2>
+M-O 6 R         <C-S-f3>
+M-O 6 S         <C-S-f4>
+
+M-O 5 A         <C-up>
+M-O 5 B         <C-down>
+M-O 5 C         <C-right>
+M-O 5 D         <C-left>
+M-O 5 F         <C-end>
+M-O 5 H         <C-home>
+M-O 5 P         <C-f1>
+M-O 5 Q         <C-f2>
+M-O 5 R         <C-f3>
+M-O 5 S         <C-f4>
+
+M-O 2 A         <S-up>
+M-O 2 B         <S-down>
+M-O 2 C         <S-right>
+M-O 2 D         <S-left>
+M-O 2 F         <S-end>
+M-O 2 H         <S-home>
+M-O 2 P         <S-f1>
+M-O 2 Q         <S-f2>
+M-O 2 R         <S-f3>
+M-O 2 S         <S-f4>
+
+M-[ 9 2         Prefix Command
+M-[ 9 ;         Prefix Command
+
+M-[ 4 0         Prefix Command
+M-[ 4 1         Prefix Command
+M-[ 4 2         Prefix Command
+M-[ 4 3         Prefix Command
+M-[ 4 4         Prefix Command
+M-[ 4 5         Prefix Command
+M-[ 4 6         Prefix Command
+M-[ 4 7         Prefix Command
+M-[ 4 8         Prefix Command
+M-[ 4 9         Prefix Command
+M-[ 4 ~         <select>
+
+M-[ 6 0         Prefix Command
+M-[ 6 1         Prefix Command
+M-[ 6 2         Prefix Command
+M-[ 6 3         Prefix Command
+M-[ 6 ;         Prefix Command
+
+M-[ 5 0         Prefix Command
+M-[ 5 1         Prefix Command
+M-[ 5 2         Prefix Command
+M-[ 5 3         Prefix Command
+M-[ 5 4         Prefix Command
+M-[ 5 5         Prefix Command
+M-[ 5 6         Prefix Command
+M-[ 5 7         Prefix Command
+M-[ 5 8         Prefix Command
+M-[ 5 9         Prefix Command
+M-[ 5 ;         Prefix Command
+
+M-[ 3 2         Prefix Command
+M-[ 3 3         Prefix Command
+M-[ 3 4         Prefix Command
+M-[ 3 5         Prefix Command
+M-[ 3 6         Prefix Command
+M-[ 3 7         Prefix Command
+M-[ 3 8         Prefix Command
+M-[ 3 9         Prefix Command
+M-[ 3 ;         Prefix Command
+
+M-[ 2 0         Prefix Command
+M-[ 2 1         Prefix Command
+M-[ 2 3         Prefix Command
+M-[ 2 4         Prefix Command
+M-[ 2 7         Prefix Command
+M-[ 2 9         Prefix Command
+M-[ 2 ;         Prefix Command
+
+M-[ 1 1         Prefix Command
+M-[ 1 2         Prefix Command
+M-[ 1 3         Prefix Command
+M-[ 1 4         Prefix Command
+M-[ 1 5         Prefix Command
+M-[ 1 7         Prefix Command
+M-[ 1 8         Prefix Command
+M-[ 1 9         Prefix Command
+M-[ 1 ;         Prefix Command
+M-[ 1 ~         <home>
+
+M-[ 5 ; 2       Prefix Command
+
+M-[ 6 ; 2       Prefix Command
+
+M-[ 1 ; 2       Prefix Command
+M-[ 1 ; 3       Prefix Command
+M-[ 1 ; 4       Prefix Command
+M-[ 1 ; 5       Prefix Command
+M-[ 1 ; 6       Prefix Command
+
+M-[ 1 9 ;       Prefix Command
+M-[ 1 9 ~       <f8>
+
+M-[ 1 8 ;       Prefix Command
+M-[ 1 8 ~       <f7>
+
+M-[ 1 7 ;       Prefix Command
+M-[ 1 7 ~       <f6>
+
+M-[ 1 5 ;       Prefix Command
+M-[ 1 5 ~       <f5>
+
+M-[ 3 ; 2       Prefix Command
+
+M-[ 2 4 ;       Prefix Command
+M-[ 2 4 ~       <f12>
+
+M-[ 2 3 ;       Prefix Command
+M-[ 2 3 ~       <f11>
+
+M-[ 2 1 ;       Prefix Command
+M-[ 2 1 ~       <f10>
+
+M-[ 2 ; 2       Prefix Command
+
+M-[ 2 0 ;       Prefix Command
+M-[ 2 0 ~       <f9>
+
+M-[ 9 2 ;       Prefix Command
+
+M-[ 9 ; 1       Prefix Command
+M-[ 9 ; 2       Prefix Command
+M-[ 9 ; 5       Prefix Command
+M-[ 9 ; 6       Prefix Command
+M-[ 9 ; 7       Prefix Command
+
+M-[ 4 3 ;       Prefix Command
+
+M-[ 4 2 ;       Prefix Command
+
+M-[ 4 1 ;       Prefix Command
+
+M-[ 4 0 ;       Prefix Command
+
+M-[ 4 9 ;       Prefix Command
+
+M-[ 4 8 ;       Prefix Command
+
+M-[ 4 7 ;       Prefix Command
+
+M-[ 4 6 ;       Prefix Command
+
+M-[ 4 5 ;       Prefix Command
+
+M-[ 4 4 ;       Prefix Command
+
+M-[ 6 3 ;       Prefix Command
+
+M-[ 6 2 ;       Prefix Command
+
+M-[ 6 0 ;       Prefix Command
+
+M-[ 6 1 ;       Prefix Command
+
+M-[ 6 ; 2       Prefix Command
+M-[ 6 ; 3       Prefix Command
+M-[ 6 ; 4       Prefix Command
+M-[ 6 ; 5       Prefix Command
+M-[ 6 ; 6       Prefix Command
+M-[ 6 ; 7       Prefix Command
+M-[ 6 ; 8       Prefix Command
+
+M-[ 5 6 ;       Prefix Command
+
+M-[ 5 5 ;       Prefix Command
+
+M-[ 5 4 ;       Prefix Command
+
+M-[ 5 3 ;       Prefix Command
+
+M-[ 5 2 ;       Prefix Command
+
+M-[ 5 1 ;       Prefix Command
+
+M-[ 5 0 ;       Prefix Command
+
+M-[ 5 8 ;       Prefix Command
+
+M-[ 5 9 ;       Prefix Command
+
+M-[ 5 7 ;       Prefix Command
+
+M-[ 5 ; 2       Prefix Command
+M-[ 5 ; 3       Prefix Command
+M-[ 5 ; 4       Prefix Command
+M-[ 5 ; 5       Prefix Command
+M-[ 5 ; 6       Prefix Command
+M-[ 5 ; 7       Prefix Command
+M-[ 5 ; 8       Prefix Command
+
+M-[ 3 2 ;       Prefix Command
+
+M-[ 3 8 ;       Prefix Command
+
+M-[ 3 7 ;       Prefix Command
+
+M-[ 3 6 ;       Prefix Command
+
+M-[ 3 5 ;       Prefix Command
+
+M-[ 3 4 ;       Prefix Command
+
+M-[ 3 3 ;       Prefix Command
+
+M-[ 3 9 ;       Prefix Command
+
+M-[ 3 ; 2       Prefix Command
+M-[ 3 ; 3       Prefix Command
+M-[ 3 ; 4       Prefix Command
+M-[ 3 ; 5       Prefix Command
+M-[ 3 ; 6       Prefix Command
+M-[ 3 ; 7       Prefix Command
+M-[ 3 ; 8       Prefix Command
+
+M-[ 2 7 ;       Prefix Command
+
+M-[ 2 9 ~       <print>
+
+M-[ 2 ; 2       Prefix Command
+M-[ 2 ; 3       Prefix Command
+M-[ 2 ; 4       Prefix Command
+M-[ 2 ; 5       Prefix Command
+M-[ 2 ; 6       Prefix Command
+M-[ 2 ; 7       Prefix Command
+M-[ 2 ; 8       Prefix Command
+
+M-[ 2 4 ;       Prefix Command
+
+M-[ 2 3 ;       Prefix Command
+
+M-[ 2 1 ;       Prefix Command
+
+M-[ 2 0 ;       Prefix Command
+
+M-[ 1 4 ~       <f4>
+
+M-[ 1 2 ~       <f2>
+
+M-[ 1 1 ~       <f1>
+
+M-[ 1 3 ;       Prefix Command
+M-[ 1 3 ~       <f3>
+
+M-[ 1 ; 2       Prefix Command
+M-[ 1 ; 3       Prefix Command
+M-[ 1 ; 4       Prefix Command
+M-[ 1 ; 5       Prefix Command
+M-[ 1 ; 6       Prefix Command
+M-[ 1 ; 7       Prefix Command
+M-[ 1 ; 8       Prefix Command
+
+M-[ 1 9 ;       Prefix Command
+
+M-[ 1 8 ;       Prefix Command
+
+M-[ 1 7 ;       Prefix Command
+
+M-[ 1 5 ;       Prefix Command
+
+M-[ 5 ; 2 ~     <S-prior>
+
+M-[ 6 ; 2 ~     <S-next>
+
+M-[ 1 ; 4 P     <f61>
+M-[ 1 ; 4 Q     <f62>
+M-[ 1 ; 4 R     <f63>
+
+M-[ 1 ; 3 P     <f49>
+M-[ 1 ; 3 Q     <f50>
+M-[ 1 ; 3 R     <f51>
+M-[ 1 ; 3 S     <f52>
+
+M-[ 1 ; 6 P     <f37>
+M-[ 1 ; 6 Q     <f38>
+M-[ 1 ; 6 R     <f39>
+M-[ 1 ; 6 S     <f40>
+
+M-[ 1 ; 5 P     <f25>
+M-[ 1 ; 5 Q     <f26>
+M-[ 1 ; 5 R     <f27>
+M-[ 1 ; 5 S     <f28>
+
+M-[ 1 ; 2 A     <S-up>
+M-[ 1 ; 2 B     <S-down>
+M-[ 1 ; 2 C     <S-right>
+M-[ 1 ; 2 D     <S-left>
+M-[ 1 ; 2 F     <S-end>
+M-[ 1 ; 2 H     <S-home>
+M-[ 1 ; 2 P     <f13>
+M-[ 1 ; 2 Q     <f14>
+M-[ 1 ; 2 R     <f15>
+M-[ 1 ; 2 S     <f16>
+
+M-[ 1 9 ; 2     Prefix Command
+M-[ 1 9 ; 3     Prefix Command
+M-[ 1 9 ; 5     Prefix Command
+M-[ 1 9 ; 6     Prefix Command
+
+M-[ 1 8 ; 2     Prefix Command
+M-[ 1 8 ; 3     Prefix Command
+M-[ 1 8 ; 5     Prefix Command
+M-[ 1 8 ; 6     Prefix Command
+
+M-[ 1 7 ; 2     Prefix Command
+M-[ 1 7 ; 3     Prefix Command
+M-[ 1 7 ; 5     Prefix Command
+M-[ 1 7 ; 6     Prefix Command
+
+M-[ 1 5 ; 2     Prefix Command
+M-[ 1 5 ; 3     Prefix Command
+M-[ 1 5 ; 5     Prefix Command
+M-[ 1 5 ; 6     Prefix Command
+
+M-[ 3 ; 2 ~     <S-delete>
+
+M-[ 2 4 ; 2     Prefix Command
+M-[ 2 4 ; 3     Prefix Command
+M-[ 2 4 ; 5     Prefix Command
+M-[ 2 4 ; 6     Prefix Command
+
+M-[ 2 3 ; 2     Prefix Command
+M-[ 2 3 ; 3     Prefix Command
+M-[ 2 3 ; 5     Prefix Command
+M-[ 2 3 ; 6     Prefix Command
+
+M-[ 2 1 ; 2     Prefix Command
+M-[ 2 1 ; 3     Prefix Command
+M-[ 2 1 ; 5     Prefix Command
+M-[ 2 1 ; 6     Prefix Command
+
+M-[ 2 ; 2 ~     <S-insert>
+
+M-[ 2 0 ; 2     Prefix Command
+M-[ 2 0 ; 3     Prefix Command
+M-[ 2 0 ; 5     Prefix Command
+M-[ 2 0 ; 6     Prefix Command
+
+M-[ 9 2 ; 1     Prefix Command
+M-[ 9 2 ; 5     Prefix Command
+M-[ 9 2 ; 7     Prefix Command
+
+M-[ 9 ; 6 u     <C-S-tab>
+
+M-[ 9 ; 2 u     <S-tab>
+
+M-[ 9 ; 7 u     <C-M-tab>
+
+M-[ 9 ; 1 3     Prefix Command
+
+M-[ 9 ; 5 u     <C-tab>
+
+M-[ 4 3 ; 1     Prefix Command
+M-[ 4 3 ; 6     Prefix Command
+M-[ 4 3 ; 8     Prefix Command
+
+M-[ 4 2 ; 1     Prefix Command
+M-[ 4 2 ; 6     Prefix Command
+M-[ 4 2 ; 8     Prefix Command
+
+M-[ 4 1 ; 1     Prefix Command
+M-[ 4 1 ; 6     Prefix Command
+M-[ 4 1 ; 8     Prefix Command
+
+M-[ 4 0 ; 1     Prefix Command
+M-[ 4 0 ; 6     Prefix Command
+M-[ 4 0 ; 8     Prefix Command
+
+M-[ 4 9 ; 1     Prefix Command
+M-[ 4 9 ; 5     Prefix Command
+M-[ 4 9 ; 7     Prefix Command
+
+M-[ 4 8 ; 1     Prefix Command
+M-[ 4 8 ; 5     Prefix Command
+M-[ 4 8 ; 7     Prefix Command
+
+M-[ 4 7 ; 1     Prefix Command
+M-[ 4 7 ; 5     Prefix Command
+M-[ 4 7 ; 7     Prefix Command
+
+M-[ 4 6 ; 1     Prefix Command
+M-[ 4 6 ; 5     Prefix Command
+M-[ 4 6 ; 7     Prefix Command
+
+M-[ 4 5 ; 1     Prefix Command
+M-[ 4 5 ; 5     Prefix Command
+M-[ 4 5 ; 7     Prefix Command
+
+M-[ 4 4 ; 1     Prefix Command
+M-[ 4 4 ; 5     Prefix Command
+M-[ 4 4 ; 7     Prefix Command
+
+M-[ 6 3 ; 1     Prefix Command
+M-[ 6 3 ; 6     Prefix Command
+M-[ 6 3 ; 8     Prefix Command
+
+M-[ 6 2 ; 1     Prefix Command
+M-[ 6 2 ; 6     Prefix Command
+M-[ 6 2 ; 8     Prefix Command
+
+M-[ 6 0 ; 1     Prefix Command
+M-[ 6 0 ; 6     Prefix Command
+M-[ 6 0 ; 8     Prefix Command
+
+M-[ 6 1 ; 1     Prefix Command
+M-[ 6 1 ; 5     Prefix Command
+M-[ 6 1 ; 7     Prefix Command
+
+M-[ 6 ; 3 ~     <M-next>
+
+M-[ 6 ; 8 ~     <C-M-S-next>
+
+M-[ 6 ; 7 ~     <C-M-next>
+
+M-[ 6 ; 6 ~     <C-S-next>
+
+M-[ 6 ; 5 ~     <C-next>
+
+M-[ 6 ; 4 ~     <M-S-next>
+
+M-[ 5 6 ; 1     Prefix Command
+M-[ 5 6 ; 7     Prefix Command
+
+M-[ 5 5 ; 1     Prefix Command
+M-[ 5 5 ; 7     Prefix Command
+
+M-[ 5 4 ; 1     Prefix Command
+M-[ 5 4 ; 7     Prefix Command
+
+M-[ 5 3 ; 1     Prefix Command
+M-[ 5 3 ; 7     Prefix Command
+
+M-[ 5 2 ; 1     Prefix Command
+M-[ 5 2 ; 7     Prefix Command
+
+M-[ 5 1 ; 1     Prefix Command
+M-[ 5 1 ; 7     Prefix Command
+
+M-[ 5 0 ; 1     Prefix Command
+M-[ 5 0 ; 7     Prefix Command
+
+M-[ 5 8 ; 1     Prefix Command
+M-[ 5 8 ; 6     Prefix Command
+M-[ 5 8 ; 8     Prefix Command
+
+M-[ 5 9 ; 1     Prefix Command
+M-[ 5 9 ; 5     Prefix Command
+M-[ 5 9 ; 7     Prefix Command
+
+M-[ 5 7 ; 1     Prefix Command
+M-[ 5 7 ; 5     Prefix Command
+M-[ 5 7 ; 7     Prefix Command
+
+M-[ 5 ; 3 ~     <M-prior>
+
+M-[ 5 ; 8 ~     <C-M-S-prior>
+
+M-[ 5 ; 7 ~     <C-M-prior>
+
+M-[ 5 ; 6 ~     <C-S-prior>
+
+M-[ 5 ; 5 ~     <C-prior>
+
+M-[ 5 ; 4 ~     <M-S-prior>
+
+M-[ 3 2 ; 7     Prefix Command
+
+M-[ 3 8 ; 1     Prefix Command
+M-[ 3 8 ; 6     Prefix Command
+M-[ 3 8 ; 8     Prefix Command
+
+M-[ 3 7 ; 1     Prefix Command
+M-[ 3 7 ; 6     Prefix Command
+M-[ 3 7 ; 8     Prefix Command
+
+M-[ 3 6 ; 1     Prefix Command
+M-[ 3 6 ; 6     Prefix Command
+M-[ 3 6 ; 8     Prefix Command
+
+M-[ 3 5 ; 1     Prefix Command
+M-[ 3 5 ; 6     Prefix Command
+M-[ 3 5 ; 8     Prefix Command
+
+M-[ 3 4 ; 1     Prefix Command
+M-[ 3 4 ; 6     Prefix Command
+M-[ 3 4 ; 8     Prefix Command
+
+M-[ 3 3 ; 1     Prefix Command
+M-[ 3 3 ; 6     Prefix Command
+M-[ 3 3 ; 8     Prefix Command
+
+M-[ 3 9 ; 1     Prefix Command
+M-[ 3 9 ; 5     Prefix Command
+M-[ 3 9 ; 7     Prefix Command
+
+M-[ 3 ; 3 ~     <M-delete>
+
+M-[ 3 ; 8 ~     <C-M-S-delete>
+
+M-[ 3 ; 7 ~     <C-M-delete>
+
+M-[ 3 ; 6 ~     <C-S-delete>
+
+M-[ 3 ; 5 ~     <C-delete>
+
+M-[ 3 ; 4 ~     <M-S-delete>
+
+M-[ 2 7 ; 1     Prefix Command
+M-[ 2 7 ; 2     Prefix Command
+M-[ 2 7 ; 5     Prefix Command
+M-[ 2 7 ; 6     Prefix Command
+M-[ 2 7 ; 7     Prefix Command
+M-[ 2 7 ; 8     Prefix Command
+
+M-[ 2 ; 3 ~     <M-insert>
+
+M-[ 2 ; 8 ~     <C-M-S-insert>
+
+M-[ 2 ; 7 ~     <C-M-insert>
+
+M-[ 2 ; 6 ~     <C-S-insert>
+
+M-[ 2 ; 5 ~     <C-insert>
+
+M-[ 2 ; 4 ~     <M-S-insert>
+
+M-[ 2 4 ; 2     Prefix Command
+M-[ 2 4 ; 3     Prefix Command
+M-[ 2 4 ; 4     Prefix Command
+M-[ 2 4 ; 5     Prefix Command
+M-[ 2 4 ; 6     Prefix Command
+
+M-[ 2 3 ; 2     Prefix Command
+M-[ 2 3 ; 3     Prefix Command
+M-[ 2 3 ; 4     Prefix Command
+M-[ 2 3 ; 5     Prefix Command
+M-[ 2 3 ; 6     Prefix Command
+
+M-[ 2 1 ; 2     Prefix Command
+M-[ 2 1 ; 3     Prefix Command
+M-[ 2 1 ; 4     Prefix Command
+M-[ 2 1 ; 5     Prefix Command
+M-[ 2 1 ; 6     Prefix Command
+
+M-[ 2 0 ; 2     Prefix Command
+M-[ 2 0 ; 3     Prefix Command
+M-[ 2 0 ; 4     Prefix Command
+M-[ 2 0 ; 5     Prefix Command
+M-[ 2 0 ; 6     Prefix Command
+
+M-[ 1 3 ; 1     Prefix Command
+M-[ 1 3 ; 2     Prefix Command
+M-[ 1 3 ; 5     Prefix Command
+M-[ 1 3 ; 6     Prefix Command
+M-[ 1 3 ; 7     Prefix Command
+
+M-[ 1 ; 3 A     <M-up>
+M-[ 1 ; 3 B     <M-down>
+M-[ 1 ; 3 C     <M-right>
+M-[ 1 ; 3 D     <M-left>
+M-[ 1 ; 3 F     <M-end>
+M-[ 1 ; 3 H     <M-home>
+
+M-[ 1 ; 8 A     <C-M-S-up>
+M-[ 1 ; 8 B     <C-M-S-down>
+M-[ 1 ; 8 C     <C-M-S-right>
+M-[ 1 ; 8 D     <C-M-S-left>
+M-[ 1 ; 8 F     <C-M-S-end>
+M-[ 1 ; 8 H     <C-M-S-home>
+
+M-[ 1 ; 7 A     <C-M-up>
+M-[ 1 ; 7 B     <C-M-down>
+M-[ 1 ; 7 C     <C-M-right>
+M-[ 1 ; 7 D     <C-M-left>
+M-[ 1 ; 7 F     <C-M-end>
+M-[ 1 ; 7 H     <C-M-home>
+
+M-[ 1 ; 6 A     <C-S-up>
+M-[ 1 ; 6 B     <C-S-down>
+M-[ 1 ; 6 C     <C-S-right>
+M-[ 1 ; 6 D     <C-S-left>
+M-[ 1 ; 6 F     <C-S-end>
+M-[ 1 ; 6 H     <C-S-home>
+
+M-[ 1 ; 5 A     <C-up>
+M-[ 1 ; 5 B     <C-down>
+M-[ 1 ; 5 C     <C-right>
+M-[ 1 ; 5 D     <C-left>
+M-[ 1 ; 5 F     <C-end>
+M-[ 1 ; 5 H     <C-home>
+
+M-[ 1 ; 4 A     <M-S-up>
+M-[ 1 ; 4 B     <M-S-down>
+M-[ 1 ; 4 C     <M-S-right>
+M-[ 1 ; 4 D     <M-S-left>
+M-[ 1 ; 4 F     <M-S-end>
+M-[ 1 ; 4 H     <M-S-home>
+
+M-[ 1 9 ; 2     Prefix Command
+M-[ 1 9 ; 3     Prefix Command
+M-[ 1 9 ; 4     Prefix Command
+M-[ 1 9 ; 5     Prefix Command
+M-[ 1 9 ; 6     Prefix Command
+
+M-[ 1 8 ; 2     Prefix Command
+M-[ 1 8 ; 3     Prefix Command
+M-[ 1 8 ; 4     Prefix Command
+M-[ 1 8 ; 5     Prefix Command
+M-[ 1 8 ; 6     Prefix Command
+
+M-[ 1 7 ; 2     Prefix Command
+M-[ 1 7 ; 3     Prefix Command
+M-[ 1 7 ; 4     Prefix Command
+M-[ 1 7 ; 5     Prefix Command
+M-[ 1 7 ; 6     Prefix Command
+
+M-[ 1 5 ; 2     Prefix Command
+M-[ 1 5 ; 3     Prefix Command
+M-[ 1 5 ; 4     Prefix Command
+M-[ 1 5 ; 5     Prefix Command
+M-[ 1 5 ; 6     Prefix Command
+
+M-[ 1 9 ; 3 ~   <f56>
+
+M-[ 1 9 ; 6 ~   <f44>
+
+M-[ 1 9 ; 5 ~   <f32>
+
+M-[ 1 9 ; 2 ~   <f20>
+
+M-[ 1 8 ; 3 ~   <f55>
+
+M-[ 1 8 ; 6 ~   <f43>
+
+M-[ 1 8 ; 5 ~   <f31>
+
+M-[ 1 8 ; 2 ~   <f19>
+
+M-[ 1 7 ; 3 ~   <f54>
+
+M-[ 1 7 ; 6 ~   <f42>
+
+M-[ 1 7 ; 5 ~   <f30>
+
+M-[ 1 7 ; 2 ~   <f18>
+
+M-[ 1 5 ; 3 ~   <f53>
+
+M-[ 1 5 ; 6 ~   <f41>
+
+M-[ 1 5 ; 5 ~   <f29>
+
+M-[ 1 5 ; 2 ~   <f17>
+
+M-[ 2 4 ; 3 ~   <f60>
+
+M-[ 2 4 ; 6 ~   <f48>
+
+M-[ 2 4 ; 5 ~   <f36>
+
+M-[ 2 4 ; 2 ~   <f24>
+
+M-[ 2 3 ; 3 ~   <f59>
+
+M-[ 2 3 ; 6 ~   <f47>
+
+M-[ 2 3 ; 5 ~   <f35>
+
+M-[ 2 3 ; 2 ~   <f23>
+
+M-[ 2 1 ; 3 ~   <f58>
+
+M-[ 2 1 ; 6 ~   <f46>
+
+M-[ 2 1 ; 5 ~   <f34>
+
+M-[ 2 1 ; 2 ~   <f22>
+
+M-[ 2 0 ; 3 ~   <f57>
+
+M-[ 2 0 ; 6 ~   <f45>
+
+M-[ 2 0 ; 5 ~   <f33>
+
+M-[ 2 0 ; 2 ~   <f21>
+
+M-[ 9 2 ; 7 u   C-M-\
+
+M-[ 9 2 ; 1 3   Prefix Command
+
+M-[ 9 2 ; 5 u   C-\
+
+M-[ 9 ; 1 3 u   <C-M-tab>
+
+M-[ 4 3 ; 8 u   C-M-+
+
+M-[ 4 3 ; 1 4   Prefix Command
+
+M-[ 4 3 ; 6 u   C-+
+
+M-[ 4 2 ; 8 u   C-M-*
+
+M-[ 4 2 ; 1 4   Prefix Command
+
+M-[ 4 2 ; 6 u   C-*
+
+M-[ 4 1 ; 8 u   C-M-)
+
+M-[ 4 1 ; 1 4   Prefix Command
+
+M-[ 4 1 ; 6 u   C-)
+
+M-[ 4 0 ; 8 u   C-M-(
+
+M-[ 4 0 ; 1 4   Prefix Command
+
+M-[ 4 0 ; 6 u   C-(
+
+M-[ 4 9 ; 7 u   C-M-1
+
+M-[ 4 9 ; 1 3   Prefix Command
+
+M-[ 4 9 ; 5 u   C-1
+
+M-[ 4 8 ; 7 u   C-M-0
+
+M-[ 4 8 ; 1 3   Prefix Command
+
+M-[ 4 8 ; 5 u   C-0
+
+M-[ 4 7 ; 7 u   C-M-/
+
+M-[ 4 7 ; 1 3   Prefix Command
+
+M-[ 4 7 ; 5 u   C-/
+
+M-[ 4 6 ; 7 u   C-M-.
+
+M-[ 4 6 ; 1 3   Prefix Command
+
+M-[ 4 6 ; 5 u   C-.
+
+M-[ 4 5 ; 7 u   C-M--
+
+M-[ 4 5 ; 1 3   Prefix Command
+
+M-[ 4 5 ; 5 u   C--
+
+M-[ 4 4 ; 7 u   C-M-,
+
+M-[ 4 4 ; 1 3   Prefix Command
+
+M-[ 4 4 ; 5 u   C-,
+
+M-[ 6 3 ; 8 u   C-M-?
+
+M-[ 6 3 ; 1 4   Prefix Command
+
+M-[ 6 3 ; 6 u   C-?
+
+M-[ 6 2 ; 8 u   C-M->
+
+M-[ 6 2 ; 1 4   Prefix Command
+
+M-[ 6 2 ; 6 u   C->
+
+M-[ 6 0 ; 8 u   C-M-<
+
+M-[ 6 0 ; 1 4   Prefix Command
+
+M-[ 6 0 ; 6 u   C-<
+
+M-[ 6 1 ; 7 u   C-M-=
+
+M-[ 6 1 ; 1 3   Prefix Command
+
+M-[ 6 1 ; 5 u   C-=
+
+M-[ 5 6 ; 7 u   C-M-8
+
+M-[ 5 6 ; 1 3   Prefix Command
+
+M-[ 5 5 ; 7 u   C-M-7
+
+M-[ 5 5 ; 1 3   Prefix Command
+
+M-[ 5 4 ; 7 u   C-M-6
+
+M-[ 5 4 ; 1 3   Prefix Command
+
+M-[ 5 3 ; 7 u   C-M-5
+
+M-[ 5 3 ; 1 3   Prefix Command
+
+M-[ 5 2 ; 7 u   C-M-4
+
+M-[ 5 2 ; 1 3   Prefix Command
+
+M-[ 5 1 ; 7 u   C-M-3
+
+M-[ 5 1 ; 1 3   Prefix Command
+
+M-[ 5 0 ; 7 u   C-M-2
+
+M-[ 5 0 ; 1 3   Prefix Command
+
+M-[ 5 8 ; 8 u   C-M-:
+
+M-[ 5 8 ; 1 4   Prefix Command
+
+M-[ 5 8 ; 6 u   C-:
+
+M-[ 5 9 ; 7 u   C-M-;
+
+M-[ 5 9 ; 1 3   Prefix Command
+
+M-[ 5 9 ; 5 u   C-;
+
+M-[ 5 7 ; 7 u   C-M-9
+
+M-[ 5 7 ; 1 3   Prefix Command
+
+M-[ 5 7 ; 5 u   C-9
+
+M-[ 3 2 ; 7 u   C-M-SPC
+
+M-[ 3 8 ; 8 u   C-M-&
+
+M-[ 3 8 ; 1 4   Prefix Command
+
+M-[ 3 8 ; 6 u   C-&
+
+M-[ 3 7 ; 8 u   C-M-%
+
+M-[ 3 7 ; 1 4   Prefix Command
+
+M-[ 3 7 ; 6 u   C-%
+
+M-[ 3 6 ; 8 u   C-M-$
+
+M-[ 3 6 ; 1 4   Prefix Command
+
+M-[ 3 6 ; 6 u   C-$
+
+M-[ 3 5 ; 8 u   C-M-#
+
+M-[ 3 5 ; 1 4   Prefix Command
+
+M-[ 3 5 ; 6 u   C-#
+
+M-[ 3 4 ; 8 u   C-M-"
+
+M-[ 3 4 ; 1 4   Prefix Command
+
+M-[ 3 4 ; 6 u   C-"
+
+M-[ 3 3 ; 8 u   C-M-!
+
+M-[ 3 3 ; 1 4   Prefix Command
+
+M-[ 3 3 ; 6 u   C-!
+
+M-[ 3 9 ; 7 u   C-M-'
+
+M-[ 3 9 ; 1 3   Prefix Command
+
+M-[ 3 9 ; 5 u   C-'
+
+M-[ 2 7 ; 2 ;   Prefix Command
+
+M-[ 2 7 ; 8 ;   Prefix Command
+
+M-[ 2 7 ; 7 ;   Prefix Command
+
+M-[ 2 7 ; 1 3   Prefix Command
+M-[ 2 7 ; 1 4   Prefix Command
+
+M-[ 2 7 ; 6 ;   Prefix Command
+
+M-[ 2 7 ; 5 ;   Prefix Command
+
+M-[ 2 4 ; 4 ~   <M-S-f12>
+
+M-[ 2 3 ; 4 ~   <M-S-f11>
+
+M-[ 2 1 ; 4 ~   <M-S-f10>
+
+M-[ 2 0 ; 4 ~   <M-S-f9>
+
+M-[ 1 3 ; 6 u   <C-S-return>
+
+M-[ 1 3 ; 2 u   <S-return>
+
+M-[ 1 3 ; 7 u   <C-M-return>
+
+M-[ 1 3 ; 1 3   Prefix Command
+
+M-[ 1 3 ; 5 u   <C-return>
+
+M-[ 1 9 ; 4 ~   <M-S-f8>
+
+M-[ 1 8 ; 4 ~   <M-S-f7>
+
+M-[ 1 7 ; 4 ~   <M-S-f6>
+
+M-[ 1 5 ; 4 ~   <M-S-f5>
+
+M-[ 9 2 ; 1 3 u C-M-\
+
+M-[ 4 3 ; 1 4 u C-M-+
+
+M-[ 4 2 ; 1 4 u C-M-*
+
+M-[ 4 1 ; 1 4 u C-M-)
+
+M-[ 4 0 ; 1 4 u C-M-(
+
+M-[ 4 9 ; 1 3 u C-M-1
+
+M-[ 4 8 ; 1 3 u C-M-0
+
+M-[ 4 7 ; 1 3 u C-M-/
+
+M-[ 4 6 ; 1 3 u C-M-.
+
+M-[ 4 5 ; 1 3 u C-M--
+
+M-[ 4 4 ; 1 3 u C-M-,
+
+M-[ 6 3 ; 1 4 u C-M-?
+
+M-[ 6 2 ; 1 4 u C-M->
+
+M-[ 6 0 ; 1 4 u C-M-<
+
+M-[ 6 1 ; 1 3 u C-M-=
+
+M-[ 5 6 ; 1 3 u C-M-8
+
+M-[ 5 5 ; 1 3 u C-M-7
+
+M-[ 5 4 ; 1 3 u C-M-6
+
+M-[ 5 3 ; 1 3 u C-M-5
+
+M-[ 5 2 ; 1 3 u C-M-4
+
+M-[ 5 1 ; 1 3 u C-M-3
+
+M-[ 5 0 ; 1 3 u C-M-2
+
+M-[ 5 8 ; 1 4 u C-M-:
+
+M-[ 5 9 ; 1 3 u C-M-;
+
+M-[ 5 7 ; 1 3 u C-M-9
+
+M-[ 3 8 ; 1 4 u C-M-&
+
+M-[ 3 7 ; 1 4 u C-M-%
+
+M-[ 3 6 ; 1 4 u C-M-$
+
+M-[ 3 5 ; 1 4 u C-M-#
+
+M-[ 3 4 ; 1 4 u C-M-"
+
+M-[ 3 3 ; 1 4 u C-M-!
+
+M-[ 3 9 ; 1 3 u C-M-'
+
+M-[ 2 7 ; 2 ; 1 Prefix Command
+M-[ 2 7 ; 2 ; 9 Prefix Command
+
+M-[ 2 7 ; 8 ; 3 Prefix Command
+M-[ 2 7 ; 8 ; 4 Prefix Command
+M-[ 2 7 ; 8 ; 5 Prefix Command
+M-[ 2 7 ; 8 ; 6 Prefix Command
+
+M-[ 2 7 ; 7 ; 1 Prefix Command
+M-[ 2 7 ; 7 ; 3 Prefix Command
+M-[ 2 7 ; 7 ; 4 Prefix Command
+M-[ 2 7 ; 7 ; 5 Prefix Command
+M-[ 2 7 ; 7 ; 6 Prefix Command
+M-[ 2 7 ; 7 ; 9 Prefix Command
+
+M-[ 2 7 ; 1 4 ; Prefix Command
+
+M-[ 2 7 ; 1 3 ; Prefix Command
+
+M-[ 2 7 ; 6 ; 1 Prefix Command
+M-[ 2 7 ; 6 ; 3 Prefix Command
+M-[ 2 7 ; 6 ; 4 Prefix Command
+M-[ 2 7 ; 6 ; 5 Prefix Command
+M-[ 2 7 ; 6 ; 6 Prefix Command
+M-[ 2 7 ; 6 ; 9 Prefix Command
+
+M-[ 2 7 ; 5 ; 1 Prefix Command
+M-[ 2 7 ; 5 ; 3 Prefix Command
+M-[ 2 7 ; 5 ; 4 Prefix Command
+M-[ 2 7 ; 5 ; 5 Prefix Command
+M-[ 2 7 ; 5 ; 6 Prefix Command
+M-[ 2 7 ; 5 ; 9 Prefix Command
+
+M-[ 1 3 ; 1 3 u <C-M-return>
+
+M-[ 2 7 ; 2 ; 1 3 Prefix Command
+
+M-[ 2 7 ; 2 ; 9 ~ <S-tab>
+
+M-[ 2 7 ; 8 ; 6 0 Prefix Command
+M-[ 2 7 ; 8 ; 6 2 Prefix Command
+M-[ 2 7 ; 8 ; 6 3 Prefix Command
+
+M-[ 2 7 ; 8 ; 5 8 Prefix Command
+
+M-[ 2 7 ; 8 ; 4 0 Prefix Command
+M-[ 2 7 ; 8 ; 4 1 Prefix Command
+M-[ 2 7 ; 8 ; 4 2 Prefix Command
+M-[ 2 7 ; 8 ; 4 3 Prefix Command
+
+M-[ 2 7 ; 8 ; 3 3 Prefix Command
+M-[ 2 7 ; 8 ; 3 4 Prefix Command
+M-[ 2 7 ; 8 ; 3 5 Prefix Command
+M-[ 2 7 ; 8 ; 3 6 Prefix Command
+M-[ 2 7 ; 8 ; 3 7 Prefix Command
+M-[ 2 7 ; 8 ; 3 8 Prefix Command
+
+M-[ 2 7 ; 7 ; 6 1 Prefix Command
+
+M-[ 2 7 ; 7 ; 5 0 Prefix Command
+M-[ 2 7 ; 7 ; 5 1 Prefix Command
+M-[ 2 7 ; 7 ; 5 2 Prefix Command
+M-[ 2 7 ; 7 ; 5 3 Prefix Command
+M-[ 2 7 ; 7 ; 5 4 Prefix Command
+M-[ 2 7 ; 7 ; 5 5 Prefix Command
+M-[ 2 7 ; 7 ; 5 6 Prefix Command
+M-[ 2 7 ; 7 ; 5 7 Prefix Command
+M-[ 2 7 ; 7 ; 5 9 Prefix Command
+
+M-[ 2 7 ; 7 ; 4 4 Prefix Command
+M-[ 2 7 ; 7 ; 4 5 Prefix Command
+M-[ 2 7 ; 7 ; 4 6 Prefix Command
+M-[ 2 7 ; 7 ; 4 7 Prefix Command
+M-[ 2 7 ; 7 ; 4 8 Prefix Command
+M-[ 2 7 ; 7 ; 4 9 Prefix Command
+
+M-[ 2 7 ; 7 ; 3 2 Prefix Command
+M-[ 2 7 ; 7 ; 3 9 Prefix Command
+
+M-[ 2 7 ; 7 ; 1 3 Prefix Command
+
+M-[ 2 7 ; 7 ; 9 2 Prefix Command
+M-[ 2 7 ; 7 ; 9 ~ <C-M-tab>
+
+M-[ 2 7 ; 1 4 ; 3 Prefix Command
+M-[ 2 7 ; 1 4 ; 4 Prefix Command
+M-[ 2 7 ; 1 4 ; 5 Prefix Command
+M-[ 2 7 ; 1 4 ; 6 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 1 Prefix Command
+M-[ 2 7 ; 1 3 ; 3 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 Prefix Command
+M-[ 2 7 ; 1 3 ; 6 Prefix Command
+M-[ 2 7 ; 1 3 ; 9 Prefix Command
+
+M-[ 2 7 ; 6 ; 1 3 Prefix Command
+
+M-[ 2 7 ; 6 ; 9 ~ <C-S-tab>
+
+M-[ 2 7 ; 6 ; 6 0 Prefix Command
+M-[ 2 7 ; 6 ; 6 2 Prefix Command
+M-[ 2 7 ; 6 ; 6 3 Prefix Command
+
+M-[ 2 7 ; 6 ; 5 8 Prefix Command
+
+M-[ 2 7 ; 6 ; 4 0 Prefix Command
+M-[ 2 7 ; 6 ; 4 1 Prefix Command
+M-[ 2 7 ; 6 ; 4 2 Prefix Command
+M-[ 2 7 ; 6 ; 4 3 Prefix Command
+
+M-[ 2 7 ; 6 ; 3 3 Prefix Command
+M-[ 2 7 ; 6 ; 3 4 Prefix Command
+M-[ 2 7 ; 6 ; 3 5 Prefix Command
+M-[ 2 7 ; 6 ; 3 6 Prefix Command
+M-[ 2 7 ; 6 ; 3 7 Prefix Command
+M-[ 2 7 ; 6 ; 3 8 Prefix Command
+
+M-[ 2 7 ; 5 ; 6 1 Prefix Command
+
+M-[ 2 7 ; 5 ; 5 7 Prefix Command
+M-[ 2 7 ; 5 ; 5 9 Prefix Command
+
+M-[ 2 7 ; 5 ; 4 4 Prefix Command
+M-[ 2 7 ; 5 ; 4 5 Prefix Command
+M-[ 2 7 ; 5 ; 4 6 Prefix Command
+M-[ 2 7 ; 5 ; 4 7 Prefix Command
+M-[ 2 7 ; 5 ; 4 8 Prefix Command
+M-[ 2 7 ; 5 ; 4 9 Prefix Command
+
+M-[ 2 7 ; 5 ; 3 9 Prefix Command
+
+M-[ 2 7 ; 5 ; 1 3 Prefix Command
+
+M-[ 2 7 ; 5 ; 9 2 Prefix Command
+M-[ 2 7 ; 5 ; 9 ~ <C-tab>
+
+M-[ 2 7 ; 2 ; 1 3 ~ <S-return>
+
+M-[ 2 7 ; 8 ; 6 3 ~ C-M-?
+
+M-[ 2 7 ; 8 ; 6 2 ~ C-M->
+
+M-[ 2 7 ; 8 ; 6 0 ~ C-M-<
+
+M-[ 2 7 ; 8 ; 5 8 ~ C-M-:
+
+M-[ 2 7 ; 8 ; 4 3 ~ C-M-+
+
+M-[ 2 7 ; 8 ; 4 2 ~ C-M-*
+
+M-[ 2 7 ; 8 ; 4 1 ~ C-M-)
+
+M-[ 2 7 ; 8 ; 4 0 ~ C-M-(
+
+M-[ 2 7 ; 8 ; 3 8 ~ C-M-&
+
+M-[ 2 7 ; 8 ; 3 7 ~ C-M-%
+
+M-[ 2 7 ; 8 ; 3 6 ~ C-M-$
+
+M-[ 2 7 ; 8 ; 3 5 ~ C-M-#
+
+M-[ 2 7 ; 8 ; 3 4 ~ C-M-"
+
+M-[ 2 7 ; 8 ; 3 3 ~ C-M-!
+
+M-[ 2 7 ; 7 ; 6 1 ~ C-M-=
+
+M-[ 2 7 ; 7 ; 5 9 ~ C-M-;
+
+M-[ 2 7 ; 7 ; 5 7 ~ C-M-9
+
+M-[ 2 7 ; 7 ; 5 6 ~ C-M-8
+
+M-[ 2 7 ; 7 ; 5 5 ~ C-M-7
+
+M-[ 2 7 ; 7 ; 5 4 ~ C-M-6
+
+M-[ 2 7 ; 7 ; 5 3 ~ C-M-5
+
+M-[ 2 7 ; 7 ; 5 2 ~ C-M-4
+
+M-[ 2 7 ; 7 ; 5 1 ~ C-M-3
+
+M-[ 2 7 ; 7 ; 5 0 ~ C-M-2
+
+M-[ 2 7 ; 7 ; 4 9 ~ C-M-1
+
+M-[ 2 7 ; 7 ; 4 8 ~ C-M-0
+
+M-[ 2 7 ; 7 ; 4 7 ~ C-M-/
+
+M-[ 2 7 ; 7 ; 4 6 ~ C-M-.
+
+M-[ 2 7 ; 7 ; 4 5 ~ C-M--
+
+M-[ 2 7 ; 7 ; 4 4 ~ C-M-,
+
+M-[ 2 7 ; 7 ; 3 9 ~ C-M-'
+
+M-[ 2 7 ; 7 ; 3 2 ~ C-M-SPC
+
+M-[ 2 7 ; 7 ; 1 3 ~ <C-M-return>
+
+M-[ 2 7 ; 7 ; 9 2 ~ C-M-\
+
+M-[ 2 7 ; 1 4 ; 6 0 Prefix Command
+M-[ 2 7 ; 1 4 ; 6 2 Prefix Command
+M-[ 2 7 ; 1 4 ; 6 3 Prefix Command
+
+M-[ 2 7 ; 1 4 ; 5 8 Prefix Command
+
+M-[ 2 7 ; 1 4 ; 4 0 Prefix Command
+M-[ 2 7 ; 1 4 ; 4 1 Prefix Command
+M-[ 2 7 ; 1 4 ; 4 2 Prefix Command
+M-[ 2 7 ; 1 4 ; 4 3 Prefix Command
+
+M-[ 2 7 ; 1 4 ; 3 3 Prefix Command
+M-[ 2 7 ; 1 4 ; 3 4 Prefix Command
+M-[ 2 7 ; 1 4 ; 3 5 Prefix Command
+M-[ 2 7 ; 1 4 ; 3 6 Prefix Command
+M-[ 2 7 ; 1 4 ; 3 7 Prefix Command
+M-[ 2 7 ; 1 4 ; 3 8 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 6 1 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 5 0 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 1 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 2 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 3 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 4 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 5 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 6 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 7 Prefix Command
+M-[ 2 7 ; 1 3 ; 5 9 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 4 4 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 5 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 6 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 7 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 8 Prefix Command
+M-[ 2 7 ; 1 3 ; 4 9 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 3 9 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 1 3 Prefix Command
+
+M-[ 2 7 ; 1 3 ; 9 2 Prefix Command
+M-[ 2 7 ; 1 3 ; 9 ~ <C-M-tab>
+
+M-[ 2 7 ; 6 ; 1 3 ~ <C-S-return>
+
+M-[ 2 7 ; 6 ; 6 3 ~ C-?
+
+M-[ 2 7 ; 6 ; 6 2 ~ C->
+
+M-[ 2 7 ; 6 ; 6 0 ~ C-<
+
+M-[ 2 7 ; 6 ; 5 8 ~ C-:
+
+M-[ 2 7 ; 6 ; 4 3 ~ C-+
+
+M-[ 2 7 ; 6 ; 4 2 ~ C-*
+
+M-[ 2 7 ; 6 ; 4 1 ~ C-)
+
+M-[ 2 7 ; 6 ; 4 0 ~ C-(
+
+M-[ 2 7 ; 6 ; 3 8 ~ C-&
+
+M-[ 2 7 ; 6 ; 3 7 ~ C-%
+
+M-[ 2 7 ; 6 ; 3 6 ~ C-$
+
+M-[ 2 7 ; 6 ; 3 5 ~ C-#
+
+M-[ 2 7 ; 6 ; 3 4 ~ C-"
+
+M-[ 2 7 ; 6 ; 3 3 ~ C-!
+
+M-[ 2 7 ; 5 ; 6 1 ~ C-=
+
+M-[ 2 7 ; 5 ; 5 9 ~ C-;
+
+M-[ 2 7 ; 5 ; 5 7 ~ C-9
+
+M-[ 2 7 ; 5 ; 4 9 ~ C-1
+
+M-[ 2 7 ; 5 ; 4 8 ~ C-0
+
+M-[ 2 7 ; 5 ; 4 7 ~ C-/
+
+M-[ 2 7 ; 5 ; 4 6 ~ C-.
+
+M-[ 2 7 ; 5 ; 4 5 ~ C--
+
+M-[ 2 7 ; 5 ; 4 4 ~ C-,
+
+M-[ 2 7 ; 5 ; 3 9 ~ C-'
+
+M-[ 2 7 ; 5 ; 1 3 ~ <C-return>
+
+M-[ 2 7 ; 5 ; 9 2 ~ C-\
+
+M-[ 2 7 ; 1 4 ; 6 3 ~ C-M-?
+
+M-[ 2 7 ; 1 4 ; 6 2 ~ C-M->
+
+M-[ 2 7 ; 1 4 ; 6 0 ~ C-M-<
+
+M-[ 2 7 ; 1 4 ; 5 8 ~ C-M-:
+
+M-[ 2 7 ; 1 4 ; 4 3 ~ C-M-+
+
+M-[ 2 7 ; 1 4 ; 4 2 ~ C-M-*
+
+M-[ 2 7 ; 1 4 ; 4 1 ~ C-M-)
+
+M-[ 2 7 ; 1 4 ; 4 0 ~ C-M-(
+
+M-[ 2 7 ; 1 4 ; 3 8 ~ C-M-&
+
+M-[ 2 7 ; 1 4 ; 3 7 ~ C-M-%
+
+M-[ 2 7 ; 1 4 ; 3 6 ~ C-M-$
+
+M-[ 2 7 ; 1 4 ; 3 5 ~ C-M-#
+
+M-[ 2 7 ; 1 4 ; 3 4 ~ C-M-"
+
+M-[ 2 7 ; 1 4 ; 3 3 ~ C-M-!
+
+M-[ 2 7 ; 1 3 ; 6 1 ~ C-M-=
+
+M-[ 2 7 ; 1 3 ; 5 9 ~ C-M-;
+
+M-[ 2 7 ; 1 3 ; 5 7 ~ C-M-9
+
+M-[ 2 7 ; 1 3 ; 5 6 ~ C-M-8
+
+M-[ 2 7 ; 1 3 ; 5 5 ~ C-M-7
+
+M-[ 2 7 ; 1 3 ; 5 4 ~ C-M-6
+
+M-[ 2 7 ; 1 3 ; 5 3 ~ C-M-5
+
+M-[ 2 7 ; 1 3 ; 5 2 ~ C-M-4
+
+M-[ 2 7 ; 1 3 ; 5 1 ~ C-M-3
+
+M-[ 2 7 ; 1 3 ; 5 0 ~ C-M-2
+
+M-[ 2 7 ; 1 3 ; 4 9 ~ C-M-1
+
+M-[ 2 7 ; 1 3 ; 4 8 ~ C-M-0
+
+M-[ 2 7 ; 1 3 ; 4 7 ~ C-M-/
+
+M-[ 2 7 ; 1 3 ; 4 6 ~ C-M-.
+
+M-[ 2 7 ; 1 3 ; 4 5 ~ C-M--
+
+M-[ 2 7 ; 1 3 ; 4 4 ~ C-M-,
+
+M-[ 2 7 ; 1 3 ; 3 9 ~ C-M-'
+
+M-[ 2 7 ; 1 3 ; 1 3 ~ <C-M-return>
+
+M-[ 2 7 ; 1 3 ; 9 2 ~ C-M-\
