@@ -1,0 +1,12 @@
+
+* themes
+
+http://marketplace.eclipse.org/content/color-ide-pack
+
+* ruby and dynamic language debugging support
+
+http://marketplace.eclipse.org/content/ruby-dltk
+
+* uml2ruby
+
+http://marketplace.eclipse.org/content/uml2ruby

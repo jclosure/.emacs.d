@@ -598,8 +598,9 @@ If no window is at direction DIR, an error is signaled."
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 (require 'inf-ruby)
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
-(add-hook 'after-init-hook (lambda () (setq inf-ruby-default-implementation "pry"))) 
+;; use pry
+;;(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+;;(add-hook 'after-init-hook (lambda () (setq inf-ruby-default-implementation "pry"))) 
 
 ;; note: to use ruby dev stuff
 ;; M-x inf-ruby
@@ -1202,7 +1203,7 @@ If no window is at direction DIR, an error is signaled."
 ;(my/jump-to-org-agenda)
 
 ;; if its idle for n seconds switch to agenda
-(run-with-idle-timer 300 t 'my/jump-to-org-agenda)
+(run-with-idle-timer 1800 t 'my/jump-to-org-agenda)
 
 
 (defun my/org-agenda-redo-in-other-window ()
@@ -1221,7 +1222,7 @@ If no window is at direction DIR, an error is signaled."
   (org-gcal-sync)
   (my/org-agenda-redo-in-other-window))
 
-;(run-at-time nil 300 'my-full-gcal-sync)
+(run-at-time nil 1800 'my-full-gcal-sync)
 
 
 

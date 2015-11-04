@@ -1,0 +1,111 @@
+4
+* how to use the tools
+
+READ!
+
+http://www.alanmacdougall.com/blog/2012/06/08/interactive-debugging-with-pry/
+
+* osx
+
+** keys
+
+disable cmd-w
+
+http://apple.stackexchange.com/questions/44412/disable-command-w-in-the-terminal
+
+* rbenv
+
+** prep
+
+*** prereq - READ THIS!
+
+https://github.com/sstephenson/ruby-build/wiki
+
+*** note: pre 1.9.3 requires a real version of gcc (not llvm-gcc)
+
+install in osx with:
+
+# required for building Ruby <= 1.9.3-p0:
+brew tap homebrew/dupes && brew install apple-gcc42
+
+# optional, but recommended:
+brew install readline openssl libyaml libffi gdbm
+
+# install command
+
+#+begin_example
+
+env CONFIGURE_OPTS="--with-openssl-dir=`brew --prefix openssl` --with-readline-dir=`brew --prefix readline` --with-yaml-dir=`brew --prefix libyaml`  --with-gdbm-dir=`brew --prefix gdbm` --with-libffi-dir=`brew  --prefix libffi` --enable-install-doc --enable-install-rdoc" rbenv install 1.8.7-p375
+
+#+end_example
+
+# now has ri docs
+
+ri String#upcase
+
+# also has ssl support
+
+** list available versions
+
+rbenv install -l
+
+** set a ver global
+
+rbenv global 1.8.7-p375
+
+
+
+* gems
+
+
+** listing avail versions of a gem
+
+gem list pry --remote --all
+
+** install a specific version
+
+gem install pry -v 0.9.12.6
+
+* ruby-debug
+
+http://blog.pivotal.io/labs/labs/ruby-debug-in-30-seconds-we-don-t-need-no-stinkin-gui
+
+* pry
+
+install:
+
+=pry=
+=pry_debug=
+https://github.com/Mon-Ouie/pry_debug
+
+* ri
+
+** install documenation
+
+generate darkfish documentation with latest rdoc
+
+rbenv global 2.2.3 <or whatever is your latest>
+
+cd ~/.rbenv/versions/1.8.7-p375/lib/ruby/1.8
+
+rdoc
+
+generates ./doc
+
+** generate ri docs for all gems
+
+gem rdoc --all --ri --no-rdoc
+
+http://www.jstorimer.com/blogs/workingwithcode/7766081-5-reasons-you-should-use-ri-to-read-ruby-documentation
+
+** documenation repl
+
+ri
+
+** list all known classes
+
+ri -c
+
+** list all known names
+
+ri -l
