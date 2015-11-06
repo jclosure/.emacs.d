@@ -209,13 +209,6 @@
 ;; START - OSX/LINUX/WINDOWS RELATED - START
 ;; ------------------------------------------------------
 
-(exec-path-from-shell-initialize)
-;; (exec-path-from-shell-copy-env "PYTHONPATH")
-;; (exec-path-from-shell-copy-env "CLICOLOR")
-;; (exec-path-from-shell-copy-env "LSCOLORS")
-;; (exec-path-from-shell-copy-env "PS1")
-;; (exec-path-from-shell-copy-env "TERM")
-
 ;; osx iterm2 - track mouse in shell
 (require 'mouse)
 (xterm-mouse-mode t)
@@ -223,6 +216,13 @@
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
     (progn
+
+      (exec-path-from-shell-initialize)
+;; (exec-path-from-shell-copy-env "PYTHONPATH")
+;; (exec-path-from-shell-copy-env "CLICOLOR")
+;; (exec-path-from-shell-copy-env "LSCOLORS")
+;; (exec-path-from-shell-copy-env "PS1")
+;; (exec-path-from-shell-copy-env "TERM")
 	
 		;; EXTEND PATH INTO EMACS
 	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
@@ -1222,7 +1222,9 @@ If no window is at direction DIR, an error is signaled."
   (org-gcal-sync)
   (my/org-agenda-redo-in-other-window))
 
-(run-at-time nil 1800 'my-full-gcal-sync)
+;; getting Wrong type argument: char-or-string-p, nil
+;; may need to be interactive...
+;;(run-at-time nil 1800 'my-full-gcal-sync)
 
 
 
