@@ -170,7 +170,9 @@
         'robe
         'haml-mode
         'projectile-rails
-
+        'yari
+        'ruby-tools
+        
         ;; skewer/node/javascript
         'sws-mode
         'jade-mode
@@ -473,12 +475,24 @@ If no window is at direction DIR, an error is signaled."
 
 ; setup global auto complete
 ; (add-hook 'after-init-hook 'global-auto-complete-mode)
+; make sure auto-complete package installed
+; start auto-complete within emacs
+;; NOTE: this enables company-mode globally
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;; setup company mode
+(require 'company)
+;; set tab to be global complete key
+;;(global-set-key "\t" 'company-complete-common)
 (add-hook 'after-init-hook 'global-company-mode)
+
 ;; this is only for gui
 (if window-system
     (company-quickhelp-mode 1))
+
+
 
 ;; neotree setup
 (add-to-list 'load-path "~/projects/")
@@ -589,9 +603,14 @@ If no window is at direction DIR, an error is signaled."
 (add-hook 'ruby-mode-hook 'robe-mode)
 
 ;; auto-complete from company in robe
-;; (eval-after-load 'company
-;;   '(push 'company-robe company-backends))
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
+
+;; (add-hook 'ruby-mode-hook
+;;         (lambda ()
+;;           (setq-local company-backends '((company-robe)))))
+
+;;(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;; rails support in projectile
 ;; (projectile-global-mode)
@@ -599,12 +618,33 @@ If no window is at direction DIR, an error is signaled."
 
 (require 'inf-ruby)
 ;; use pry
-;;(add-hook 'after-init-hook 'inf-ruby-switch-setup)
-;;(add-hook 'after-init-hook (lambda () (setq inf-ruby-default-implementation "pry"))) 
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
+(add-hook 'after-init-hook (lambda () (setq inf-ruby-default-implementation "pry")))
+
+(add-hook 'ruby-mode
+  '(progn
+     (defun ruby-mode-defaults ()
+       ;;(inf-ruby-minor-mode +1)
+       ;;(ruby-tools-mode +1)
+       ;;;; CamelCase aware editing operations
+       ;;(subword-mode +1)
+       )))
+
+
+;; may need to disable this to let company have f1
+;; yari - http://melpa.org/#/yari
+(defun ri-bind-key ()
+  (local-set-key [f1] 'yari-helm))
+
+(add-hook 'ruby-mode-hook 'ri-bind-key)
 
 ;; note: to use ruby dev stuff
 ;; M-x inf-ruby
-(global-set-key (kbd "C-c r r") 'inf-ruby)
+(global-set-key (kbd "C-c r r") '(lambda ()
+                                  (interactive)
+                                  (progn
+                                    (inf-ruby)
+                                    (robe-start))))
 ;; M-x robe-start
 
 
@@ -654,14 +694,6 @@ If no window is at direction DIR, an error is signaled."
 
 ; debugging c++-mode
 ; (debug (c++-mode t))
-
-
-; make sure auto-complete package installed
-; start auto-complete within emacs
-(require 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
-
 
 
 ;; C/C++ ENV LOADER FUNCTION
@@ -866,7 +898,9 @@ If no window is at direction DIR, an error is signaled."
   ) ;; end python-setup()
 
 ;;(add-hook 'python-mode-hook 'setup-python-env)
-(setup-python-env)
+
+;; ENABLE PYTHON DEV ENV
+;;(setup-python-env)
 
                                         ;: WORKGROUPS
 ;; workgroups2 enables saving window configurations, etc..
