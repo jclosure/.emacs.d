@@ -39,7 +39,7 @@
 ;; values in order to set the width (in characters wide) and height
 ;; (in lines high) Emacs will have whenever you start it
 (if (eq system-type 'darwin)
-    (setq initial-frame-alist '((top . 0) (left . 0) (width . 175) (height . 53))))
+    (setq initial-frame-alist '((top . 0) (left . 0) (width . 140) (height . 53))))
 
 
 

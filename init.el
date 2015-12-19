@@ -214,7 +214,7 @@
 ;; osx iterm2 - track mouse in shell
 (require 'mouse)
 (xterm-mouse-mode t)
-(defun track-mouse (e))
+;; (defun track-mouse (e)) ; NOTE: this breaks window resizing in gui mode
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
     (progn
