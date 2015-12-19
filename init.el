@@ -1322,3 +1322,7 @@ If no window is at direction DIR, an error is signaled."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight ((t (:background "#b9ca4a" :foreground "black" :inverse-video nil)))))
+
+;; Unbind Pesky Sleep Button
+(global-unset-key [(control z)])
+(global-unset-key [(control x)(control z)])
