@@ -110,6 +110,7 @@
         'tabbar-ruler
         'ir-black-theme
         'sublime-themes
+        'idea-darkula-theme
         'pretty-mode
         'undo-tree
         'workgroups2
@@ -198,7 +199,9 @@
 
 (require 'use-package)
 
-
+;; set theme early
+(require 'idea-darkula-theme)
+(set-frame-font "Inconsolata-16") ;; your preferred main font face here
 
 ;; packages from git ./lib
 (let ((tdd.el  "~/.emacs.d/lib/emacs-tdd/tdd.el"))
@@ -212,8 +215,8 @@
 ;; ------------------------------------------------------
 
 ;; osx iterm2 - track mouse in shell
-(require 'mouse)
-(xterm-mouse-mode t)
+;; (require 'mouse)
+;; (xterm-mouse-mode t)
 ;; (defun track-mouse (e)) ; NOTE: this breaks window resizing in gui mode
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
@@ -1007,23 +1010,7 @@ If no window is at direction DIR, an error is signaled."
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 
-;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; ;; environment variables
-(load "shell-integration.el")
 
-;; ;; These customizations make it easier for you to navigate files,
-;; ;; switch buffers, and choose options from the minibuffer.
-(load "navigation.el")
-
-;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
-(load "ui.el")
-
-;; These customizations make editing a bit nicer.
-(load "editing.el")
-
-;; Hard-to-categorize customizations
-(load "misc.el")
 
 
 ;; MY ORG-MODE SETUP
