@@ -245,12 +245,12 @@
 	    (when window-system (set-exec-path-from-shell-PATH)))
  )
  
- ;; wire up the osx pastboard
-(if (or (eq system-type 'darwin))
-    (progn
-	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
-	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
-)
+;;  ;; wire up the osx pastboard
+;; (if (or (eq system-type 'darwin))
+;;     (progn
+;; 	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
+;; 	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
+;; )
 
 
 ;; force start in homedirs
@@ -266,7 +266,8 @@
 ;; --------------------------------------------------
 
 
-
+;; enable cua mode for natural cut/paste
+(cua-mode 1)
 
 
 ;; show parenthesis mode
