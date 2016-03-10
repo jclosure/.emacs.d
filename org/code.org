@@ -315,7 +315,8 @@ POST /_search?pretty
 :PROPERTIES:
 :ID:       ad2771ab-7bca-4f72-b7cd-8256b448f444
 :END:
-#+BEGIN_SRC es :method POST :url localhost:9200/_search?pretty
+#+BEGIN_SRC es :method 
+POST :url localhost:9200/_search?pretty
 {
   "query": {
     "match_all": {}
@@ -349,6 +350,20 @@ POST /twitter/tweet/
      "message" : "foobar123 abc asdf ....",
      "foo" : "bar"
 }
+#+end_src
+
+
+#+begin_src es
+DELETE /logstash-2016.02.15
+{}
+#+end_src
+
+http://joelabrahamsson.com/dynamic-mappings-and-dates-in-elasticsearch/
+
+#+begin_src es
+// curl -XDELETE 'http://localhost:9200/twitter/'
+GET /logstash-2016.02.17/_search?pretty
+{}
 #+end_src
 
 
