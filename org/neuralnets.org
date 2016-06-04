@@ -1,0 +1,15 @@
+
+* Base Case: Single Gate Circuit
+
+#+begin_src js
+
+  var forwardMultiplygate = function(x, y) {
+    return x * y;
+  }
+  console.log(forwardMultiplygate(-2, 3));
+
+#+end_src
+
+#+RESULTS:
+: undefined
+

@@ -49,7 +49,8 @@
                   (org . t)
                   (latex . t)
                   (java . t)
-                  (C . t)
+		  (js . t)
+		  (C . t)
                   (makefile . t)))
                ;; To create a src block, type <S and then TAB
                (add-to-list 'org-structure-template-alist
