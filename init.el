@@ -110,7 +110,6 @@
         'tabbar-ruler
         'ir-black-theme
         'sublime-themes
-        'idea-darkula-theme
         'pretty-mode
         'undo-tree
         'workgroups2
@@ -173,6 +172,17 @@
         'projectile-rails
         'yari
         'ruby-tools
+
+        ;; go
+        'go-eldoc      
+        'go-guru       
+        'go-mode       
+        'go-playground 
+        'go-projectile 
+        'go-rename     
+        'go-scratch    
+        'go-stacktracer
+
         
         ;; skewer/node/javascript
         'sws-mode
@@ -199,9 +209,7 @@
 
 (require 'use-package)
 
-;; set theme early
-(require 'idea-darkula-theme)
-(set-frame-font "Inconsolata-16") ;; your preferred main font face here
+
 
 ;; packages from git ./lib
 (let ((tdd.el  "~/.emacs.d/lib/emacs-tdd/tdd.el"))
@@ -215,10 +223,9 @@
 ;; ------------------------------------------------------
 
 ;; osx iterm2 - track mouse in shell
-(if (not window-system)
-    (progn (require 'mouse)
-	   (xterm-mouse-mode t)
-	   (defun track-mouse (e)))) ; NOTE: this line breaks window resizing in gui mode
+(require 'mouse)
+(xterm-mouse-mode t)
+; (defun track-mouse (e))
 
 (if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
     (progn
@@ -249,12 +256,12 @@
 	    (when window-system (set-exec-path-from-shell-PATH)))
  )
  
-;;  ;; wire up the osx pastboard
-;; (if (or (eq system-type 'darwin))
-;;     (progn
-;; 	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
-;; 	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
-;; )
+ ;; wire up the osx pastboard
+(if (or (eq system-type 'darwin))
+    (progn
+	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
+	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
+)
 
 
 ;; force start in homedirs
@@ -270,8 +277,7 @@
 ;; --------------------------------------------------
 
 
-;; enable cua mode for natural cut/paste
-(cua-mode 1)
+
 
 
 ;; show parenthesis mode
@@ -1011,7 +1017,23 @@ If no window is at direction DIR, an error is signaled."
 (add-to-list 'load-path "~/.emacs.d/customizations")
 
 
+;; ;; Sets up exec-path-from-shell so that Emacs will use the correct
+;; ;; environment variables
+(load "shell-integration.el")
 
+;; ;; These customizations make it easier for you to navigate files,
+;; ;; switch buffers, and choose options from the minibuffer.
+(load "navigation.el")
+
+;; These customizations change the way emacs looks and disable/enable
+;; some user interface elements
+(load "ui.el")
+
+;; These customizations make editing a bit nicer.
+(load "editing.el")
+
+;; Hard-to-categorize customizations
+(load "misc.el")
 
 
 ;; MY ORG-MODE SETUP
@@ -1311,7 +1333,3 @@ If no window is at direction DIR, an error is signaled."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight ((t (:background "#b9ca4a" :foreground "black" :inverse-video nil)))))
-
-;; Unbind Pesky Sleep Button
-(global-unset-key [(control z)])
-(global-unset-key [(control x)(control z)])
