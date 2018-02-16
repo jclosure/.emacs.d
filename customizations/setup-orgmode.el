@@ -38,7 +38,7 @@
                   (python . t)
                   (lisp . t)
                   (scheme . t)
-                  (sh . t)
+                  (shell . t)
                   (R . t)
                   (ocaml . t)
                   (ditaa . t)

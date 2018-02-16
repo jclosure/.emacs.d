@@ -1,4 +1,4 @@
-;; Add extra directories to load-path  
+;; Add extra directories to load-path
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-lib"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/extra"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/customizations"))
@@ -7,12 +7,7 @@
 ;; load some extra libraries
 (load-library "support-functions")
 
-;; emacs25 workarounds
-;;(load-library "emacs25.hacks")
-
 (delete-selection-mode 1)
-
-
 
 ;; Start up config
 ;(setq initial-major-mode (quote text-mode))
@@ -23,13 +18,13 @@
 (add-hook 'emacs-startup-hook
           (lambda ()
             (when (string= (buffer-name) "*scratch*")
-              (progn 
+              (progn
                 (animate-string ";; Your command is my wish..." (/ (frame-height) 2)))
                 (goto-char (point-min)))))
 
 
 ;; Don't annoy me with those messages about active processes when I exit
-(add-hook 'comint-exec-hook 
+(add-hook 'comint-exec-hook
       (lambda () (set-process-query-on-exit-flag (get-buffer-process (current-buffer)) nil)))
 
 ;; A better version of kill-emacs bound to the standard C-x C-c
@@ -77,7 +72,7 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/" ) t)            
+             '("org" . "http://orgmode.org/elpa/" ) t)
 ;(add-to-list 'package-archives
 ;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;(add-to-list 'package-archives
@@ -86,7 +81,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 
-;; Initialize all the ELPA packages (what is installed using the packages commands)    
+;; Initialize all the ELPA packages (what is installed using the packages commands)
 (package-initialize)
 
 ;; Ensure my packages are all installed
@@ -96,10 +91,10 @@
         ;; testing
 
         ;; from org repo because org-20150929 broken
-        ;; 
-        'org-plus-contrib 
-        
- 
+        ;;
+        'org-plus-contrib
+
+
         ;; global packages
         'exec-path-from-shell
         'el-get
@@ -127,14 +122,19 @@
 
         ;;tex
         'auctex
-        
+
         ;; org
         'gntp
         'org-gcal
         'org2blog ;; wp-blog publishing
-        
+
         ;; general
         'yaml-mode
+
+        ;; 'nodejs-repl ;; doesn't work in win
+        'tern
+        'company-tern
+        'skewer-mode
 
         ;; web
         'tagedit
@@ -142,7 +142,7 @@
         'impatient-mode
         ;;'skewer-reload-stylesheets
         ;;'skewer-less
-        
+
         ;; clojure packages
         'cider
         'clojure-mode
@@ -174,30 +174,24 @@
         'ruby-tools
 
         ;; go
-        'go-eldoc      
-        'go-guru       
-        'go-mode       
-        'go-playground 
-        'go-projectile 
-        'go-rename     
-        'go-scratch    
+        'go-eldoc
+        'go-guru
+        'go-mode
+        'go-playground
+        'go-projectile
+        'go-rename
+        'go-scratch
         'go-stacktracer
 
-        
+
         ;; skewer/node/javascript
         'sws-mode
         'jade-mode
-        'js2-mode
-        'js3-mode
-        ;; 'nodejs-repl ;; doesn't work in win
-        'tern
-        'company-tern
-        'skewer-mode
 
         ;; http
         'simple-httpd
 
-        
+
         ;; elasticsearch
         'es-mode
         'logstash-conf
@@ -211,57 +205,17 @@
 
 
 
-;; packages from git ./lib
-(let ((tdd.el  "~/.emacs.d/lib/emacs-tdd/tdd.el"))
-  (if  (file-exists-p tdd.el)
-      (load-file tdd.el)))
-
-
-
 ;; ------------------------------------------------------
 ;; START - OSX/LINUX/WINDOWS RELATED - START
 ;; ------------------------------------------------------
 
 ;; osx iterm2 - track mouse in shell
-(require 'mouse)
-(xterm-mouse-mode t)
-; (defun track-mouse (e))
-
-(if (or (eq system-type 'darwin) (eq system-type 'gnu) (eq system-type 'gnu/linux) (eq system-type 'cygwin))
-    (progn
-
-      (exec-path-from-shell-initialize)
-;; (exec-path-from-shell-copy-env "PYTHONPATH")
-;; (exec-path-from-shell-copy-env "CLICOLOR")
-;; (exec-path-from-shell-copy-env "LSCOLORS")
-;; (exec-path-from-shell-copy-env "PS1")
-;; (exec-path-from-shell-copy-env "TERM")
-	
-		;; EXTEND PATH INTO EMACS
-	    ;; Read in PATH from .profile or .bash_profile - nec to fix and find /usr/local/bin/lein
-	    (if (not (getenv "TERM_PROGRAM"))
-		(setenv "PATH"
-			(shell-command-to-string "source $HOME/.bash_profile && printf $PATH")))
-
-	    ;; set the path as terminal path [http://lists.gnu.org/archive/html/help-gnu-emacs/2011-10/msg00237.html]
-	    (setq explicit-bash-args (list "--login" "-i"))
-
-	    ;; fix the PATH variable for GUI [http://clojure-doc.org/articles/tutorials/emacs.html#osx]
-	    (defun set-exec-path-from-shell-PATH ()
-	      (let ((path-from-shell
-		     (shell-command-to-string "$SHELL -i -l -c 'echo $PATH'")))
-		(setenv "PATH" path-from-shell)
-		(setq exec-path (split-string path-from-shell path-separator))))
-
-	    (when window-system (set-exec-path-from-shell-PATH)))
- )
- 
- ;; wire up the osx pastboard
-(if (or (eq system-type 'darwin))
-    (progn
-	   (global-set-key [?\C-x ?\C-y] 'pt-pbpaste)
-	   (global-set-key [?\C-x ?\M-w] 'pt-pbcopy))
-)
+(unless window-system
+  (require 'mouse)
+  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'scroll-up-line)
+  ; (defun track-mouse (e))
+  (xterm-mouse-mode t))
 
 
 ;; force start in homedirs
@@ -270,13 +224,27 @@
 ;  (setq default-directory (concat (getenv "HOME") "/")))
 
 
-
-
 ;; --------------------------------------------------
 ;; END - OSX/LINUX/WINDOWS RELATED - END
 ;; --------------------------------------------------
 
-
+;; TODO: Get these working rigidly for both single line and region
+;; my keyed functions
+; (global-set-key (kbd "C-,") 'my-indent-region)
+; (global-set-key (kbd "C-.") 'my-unindent-region)
+;
+; (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
+; (defun un-indent-by-removing-4-spaces ()
+;   "remove 4 spaces from beginning of of line"
+;   (interactive)
+;   (save-excursion
+;     (save-match-data
+;       (beginning-of-line)
+;       ;; get rid of tabs at beginning of line
+;       (when (looking-at "^\\s-+")
+;         (untabify (match-beginning 0) (match-end 0)))
+;       (when (looking-at "^    ")
+;         (replace-match "")))))
 
 
 
@@ -285,7 +253,7 @@
 ;; auto-insert/close bracket pairs
 ; (electric-pair-mode 1)
 ; highlight entire bracket expression
-;(setq show-paren-style 'expression) 
+;(setq show-paren-style 'expression)
 
 
 ; clean wrapping of text
@@ -300,8 +268,6 @@
 ;(setq-default sh-basic-offset 2)
 ;(setq-default sh-indentation 2)
 
-
-
 ;; Undo/Redo - activate with "C-x u"
 (require 'undo-tree)
 (global-undo-tree-mode 1)
@@ -312,13 +278,11 @@
 ;(global-set-key (kbd "C-y") 'redo) ; [Ctrl+y] Microsoft Windows style
 
 
-
 ;;; GLOBAL STUFF
 
 ;; no windows support for xpm
 ;; powerline setup
 ;; (require 'powerline)
-
 
 
 ;;(setq powerline-color1 "grey22")
@@ -327,6 +291,8 @@
 
 ;; turning company-mode on globally
 ;;(global-company-mode t)
+
+; TODO: Determine whether we want to use swiper or helm with projectile
 
 ;; turning projectile on globally
 (projectile-global-mode)
@@ -340,7 +306,7 @@
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-;; testing mouse setting: 
+;; testing mouse setting:
 ;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 ;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 ;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
@@ -353,8 +319,6 @@ If buffer-or-name is nil return current buffer's mode."
   (buffer-local-value 'major-mode
    (if buffer-or-name (get-buffer buffer-or-name) (current-buffer))))
 ;;(global-set-key (kbd "<f5>") 'buffer-mode)
-
-
 
 
 ;; TABS
@@ -376,8 +340,6 @@ If buffer-or-name is nil return current buffer's mode."
     (setq indent-tabs-mode (if (eq indent-tabs-mode t) nil t))
     (message "Indenting using %s." (if (eq indent-tabs-mode t) "tabs" "spaces"))
 )
-
-
 
 
 ;; front of line jump fix
@@ -540,21 +502,13 @@ If no window is at direction DIR, an error is signaled."
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-;; ALL LISPS
-;; turn on pretty mode only for lisps
-(defun my/enable-pretty-mode-for-lisps
-    (dolist (x '(scheme emacs-lisp lisp))
-      (add-hook 
-       (intern (concat (symbol-name x) "-mode-hook"))
-       'turn-on-pretty-mode)))
-;;(my/enable-pretty-mode-for-lisps)
 
 ;; COMMON LISP
 ; ref - https://www.youtube.com/watch?v=VnWVu8VVDbI
 ; replace "sbcl" with the path to your implementation
 ; books - https://www.youtube.com/watch?v=YwDpjDZOxF0
 (if (executable-find "sbcl")
-    (progn 
+    (progn
       (setq inferior-lisp-program "sbcl")
       ; setup slime
       (load (expand-file-name "~/quicklisp/slime-helper.el"))))
@@ -597,7 +551,7 @@ If no window is at direction DIR, an error is signaled."
 ;; (setq  es-default-url "http://192.168.59.103:9200/_search?pretty=true")
 
 ;; ;place
-;; (setq  es-default-url "http://atlcrmbestgv01:9200/_search?pretty=true") 
+;; (setq  es-default-url "http://atlcrmbestgv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://ausfusppdap00:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbdv01:9200/_search?pretty=true")
 ;; (setq  es-default-url "http://atlesbanlqv01:9200/_search?pretty=true")
@@ -706,7 +660,7 @@ If no window is at direction DIR, an error is signaled."
 ; debugging c++-mode
 ; (debug (c++-mode t))
 
-
+; TODO: Move to customization and look at simplifying with: https://gist.github.com/jclosure/323a8b58b8c7d9f1c52329cc236a8b10
 ;; C/C++ ENV LOADER FUNCTION
 (defun setup-cpp-env ()
   (progn
@@ -755,7 +709,7 @@ If no window is at direction DIR, an error is signaled."
     ;; NOTE: you must install cpplint with: pip install cpplint (note the dir it installs into, must be below)
     ;; start flymake-google-cpplint-load
     ;; let's define a function for flymake initialization
-    (defun my:flymake-google-init () 
+    (defun my:flymake-google-init ()
       (require 'flymake-google-cpplint)
       (custom-set-variables
        '(flymake-google-cpplint-command "cpplint")) ; cpplint executable in $PATH, e.g. /usr/local/bin/cpplint
@@ -774,11 +728,11 @@ If no window is at direction DIR, an error is signaled."
 
     ;; let's define a function which adds semantic as a suggestion backend to auto complete
     ;; and hook this function to c-mode-common-hook
-    (defun my:add-semantic-to-autocomplete() 
+    (defun my:add-semantic-to-autocomplete()
       (add-to-list 'ac-sources 'ac-source-semantic)
     )
     (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-    ;; turn on ede mode 
+    ;; turn on ede mode
     (global-ede-mode 1)
 
 
@@ -789,7 +743,7 @@ If no window is at direction DIR, an error is signaled."
     ;  :file "~/projects/demos/cpp/my_program/src/main.cpp"
     ;  :include-path '("/../my_inc"))
 
-    
+
     ))
 
 
@@ -803,19 +757,20 @@ If no window is at direction DIR, an error is signaled."
 (add-hook 'c-mode-hook 'setup-cpp-env)
 
 
+; TODO: Move to customization
 ;; SETUP PYTHON ENVIRONMENT
 (defun setup-python-env ()
 
   ;; setup our virtual environment.
   ;; NOTE: venv must already have been created
   ;;(add-hook 'python-mode-hook (pyvenv-workon "venv"))
-  
+
   ;; enable repl with "C-c C-p" and transfer buffer to repl with "C-c C-c"
                                         ;(require 'python-mode)
                                         ;(setq-default py-split-windows-on-execute-function 'split-window-horizontally)
 
   ;; setting up IPython
-  (progn 
+  (progn
     ;; NOTE: set this to the correct path for your python installation in windows
     (if (or (eq system-type 'ms-dos) (eq system-type 'windows-nt))
         (setq
@@ -843,39 +798,39 @@ If no window is at direction DIR, an error is signaled."
   (add-hook 'python-mode-hook (lambda ()
 
                                 ;; add easy breakpoints for ipdb
-                                
+
                                 (defun python-add-breakpoint ()
                                   "Add a break point"
                                   (interactive)
                                   (newline-and-indent)
                                   (insert "import ipdb; ipdb.set_trace()")
                                   (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
-                                
+
                                 (define-key python-mode-map (kbd "C-c b") 'python-add-breakpoint)
-                                
+
                                 ;; drop into or out of python interactive mode
                                 (setq python-interactive-status "exit()")
                                 (defun python-interactive ()
                                   "Enter the interactive Python environment"
                                   (interactive)
                                   (progn
-                                    (if (equal (my-buffer-mode) 'inferior-python-mode) 
-                                        (progn 
+                                    (if (equal (my-buffer-mode) 'inferior-python-mode)
+                                        (progn
                                           (setq python-interactive-status (if (equal python-interactive-status "exit()")
                                                                               "import IPython; IPython.embed()"
                                                                             "exit()"))
                                           (insert python-interactive-status)
                                           (move-end-of-line 1)
                                           (comint-send-input)))))
-                                
+
                                 ;; trigger for it
                                 (global-set-key (kbd "C-c i") 'python-interactive)
-                                
+
                                 ))
 
-  
-  
-  
+
+
+
                                         ;(add-hook 'python-mode-hook 'python-shell-switch-to-shell)
                                         ;(add-hook 'python-mode-hook 'jedi:setup)
   (setq jedi:setup-keys t)                      ; optional
@@ -904,8 +859,8 @@ If no window is at direction DIR, an error is signaled."
 
   ;; (add-hook 'python-mode-hook '(elpy-test-runner (quote elpy-test-pytest-runner)))
 
-  
-  
+
+
   ) ;; end python-setup()
 
 ;;(add-hook 'python-mode-hook 'setup-python-env)
@@ -927,6 +882,7 @@ If no window is at direction DIR, an error is signaled."
                                         ;(workgroups-mode 1)
 
 
+; TODO: Move to customization
 ;; JAVASCRIPT
 
 (defun tern-setup ()
@@ -951,23 +907,23 @@ If no window is at direction DIR, an error is signaled."
 (setq inferior-js-program-command "node --interactive")
 (setenv "NODE_NO_READLINE" "1")
 ;; use your favorite js mode here:
-(add-hook 'js-mode-hook '(lambda () 
-			    (local-set-key "\C-x\C-e" 
+(add-hook 'js-mode-hook '(lambda ()
+			    (local-set-key "\C-x\C-e"
 					   'js-send-last-sexp)
-			    (local-set-key "\C-\M-x" 
+			    (local-set-key "\C-\M-x"
 					   'js-send-last-sexp-and-go)
-			    (local-set-key "\C-cb" 
+			    (local-set-key "\C-cb"
 					   'js-send-buffer)
                             (local-set-key "\C-cr"
                                            'js-send-region)
-			    (local-set-key "\C-c\C-b" 
+			    (local-set-key "\C-c\C-b"
 					   'js-send-buffer-and-go)
-			    (local-set-key "\C-cl" 
+			    (local-set-key "\C-cl"
 					   'js-load-file-and-go)
 			    ))
 
 
-;; add syntax checking with minor 
+;; add syntax checking with minor
 (add-hook 'js-mode-hook 'js2-minor-mode)
 
 
@@ -1053,7 +1009,7 @@ If no window is at direction DIR, an error is signaled."
 ;; also cider needs to be jacked-in for ob-clojure eval to work!!!
 
 ;; pull in ob-clojure and set it's backend
-(progn 
+(progn
   '(require 'org)
   (require 'ob-clojure)
   (setq org-babel-clojure-backend 'cider)
@@ -1062,7 +1018,7 @@ If no window is at direction DIR, an error is signaled."
 
 
 ;; javascript setup
-(load "setup-js.el")                                     
+(load "setup-js.el")
 
 
 ;; late fly-make support for jade templates
@@ -1092,7 +1048,7 @@ If no window is at direction DIR, an error is signaled."
 ; (1on1-emacs)
 
 
-;; configure TRAMP (Transparent Remote (file) Access, Multiple Protocol) 
+;; configure TRAMP (Transparent Remote (file) Access, Multiple Protocol)
 (require 'tramp)
 (setq tramp-default-method "scp")
 ;; example: C-x C-f /user@your.host.com:/path/to/file
@@ -1156,9 +1112,9 @@ If no window is at direction DIR, an error is signaled."
     ;; To enable smooth live previewing in emacs use latex-preview-pane-mode or latex-preview-pane-enable
 
     ;; note: latex-preview-pane uses doc-view to render pdfs
-    ;; 
+    ;;
     ;;       for latex-preview-pane to render pdf's, the following must be the case:
-    ;;       1. ghostscript must be installed and gswin64c.exe must be in the path 
+    ;;       1. ghostscript must be installed and gswin64c.exe must be in the path
     ;;       2. you must be using emacs from the gui
     ;;       3. emacs must be compiled with xpm support
     ;;
@@ -1325,6 +1281,9 @@ If no window is at direction DIR, an error is signaled."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(package-selected-packages
+   (quote
+    (latex-preview-pane logstash-conf es-mode jade-mode sws-mode go-stacktracer go-scratch go-projectile go-playground go-guru go-eldoc ruby-tools yari projectile-rails haml-mode robe inf-ruby flymake-ruby jedi elpy google-c-style flymake-cursor flymake-google-cpplint iedit auto-complete-c-headers yasnippet rainbow-delimiters paredit ac-cider clojure-mode-extra-font-locking cider impatient-mode web-mode tagedit skewer-mode company-tern tern yaml-mode org2blog org-gcal gntp auctex company-quickhelp gist magit helm-projectile projectile smex flx-ido ido-ubiquitous neotree auto-complete workgroups2 undo-tree pretty-mode sublime-themes ir-black-theme tabbar-ruler tabbar helm use-package dash el-get exec-path-from-shell org-plus-contrib)))
  '(quote (tabbar-separator (quote (0.5))))
  '(tabbar-separator (quote (0.5))))
 (custom-set-faces

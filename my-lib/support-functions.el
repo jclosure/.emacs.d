@@ -1,7 +1,7 @@
 
 (load-library "memoize")
 
-;; memoized version 
+;; memoized version
 (defun memo-package-refresh-contents ()
   (progn
     (package-refresh-contents)
@@ -18,12 +18,12 @@
 
 (defun ensure-text-file (file)
   "Utility function to create files in a path if they do not already exist"
-  (unless (file-exists-p file) 
+  (unless (file-exists-p file)
     (write-region "" nil file)))
 
 (defun ensure-directory (dir)
   "Utility function to create directories in a path if they do not already exist"
-  (unless (file-exists-p dir)         
+  (unless (file-exists-p dir)
     (make-directory dir t)))
 
 
@@ -57,11 +57,6 @@ the current position of point, then move it to the beginning of the line."
              (setq deactivate-mark nil))
     (self-insert-command N)))
 
-(global-set-key ">" 'my-indent-region)
-(global-set-key "<" 'my-unindent-region)
-
-
-
 ; if no selection just comment line or comment selection
 (defun my-comment-line-or-region ()
   (interactive "*")
@@ -90,8 +85,6 @@ the current position of point, then move it to the beginning of the line."
 	(goto-line (read-number "Goto line: ")))
         (linum-mode -1)))
 
-
-; Quickly try a lisp on the web downloading and evaluating it.
 (defun my-try-el(url)
   "Quickly try a lisp file downloading and evaluating it"
   (interactive "sEmacs lisp url to retrieve: ")
@@ -141,27 +134,6 @@ With prefix argument, wrap search query in quotes."
 	     (set-window-start w1 s2)
 	     (set-window-start w2 s1)
 	                  (setq i (1+ i)))))))
-
-
-;; Functions to hook into osx pasteboard
-;; Use C-x C-y to paste C-x M-w to copy.
-
-(defun pt-pbpaste ()
-  "Paste data from pasteboard."
-  (interactive)
-  (shell-command-on-region
-   (point)
-   (if mark-active (mark) (point))
-   "pbpaste" nil t))
-
-(defun pt-pbcopy ()
-  "Copy region to pasteboard."
-  (interactive)
-  (print (mark))
-  (when mark-active
-    (shell-command-on-region
-     (point) (mark) "pbcopy")
-    (kill-buffer "*Shell Command Output*")))
 
 
 ;; Basic util function to set specific tab config for diff modes
